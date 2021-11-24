@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, INTEGER } = require("sequelize");
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -7,18 +7,17 @@ module.exports = (sequelize) => {
         "subcategory",
         {
             id: {
-                type: DataTypes.UUID,
+                type: DataTypes.INTEGER,
+                autoIncrement: true,
                 primaryKey: true,
-                defaultValue: DataTypes.UUIDV4,
             },
 
             name: {
                 type: DataTypes.STRING,
-                defaultValue: false,
             },
 
 
         },
-        { timestamps: true, paranoid: true }
+        { timestamps: false, paranoid: true }
     );
 };

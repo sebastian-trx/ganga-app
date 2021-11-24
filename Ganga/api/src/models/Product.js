@@ -18,12 +18,12 @@ module.exports = (sequelize) => {
             },
 
             description: {
-                type: DataTypes.STRING,
+                type: DataTypes.TEXT,
                 allowNull: false,
             },
 
             price: {
-                type: DataTypes.STRING,
+                type: DataTypes.FLOAT,
                 allowNull: false,
             },
 
@@ -36,6 +36,6 @@ module.exports = (sequelize) => {
             },
                         
         },
-        { timestamps: true, paranoid: true }
+        { timestamps: false, paranoid: true }
     );
 };

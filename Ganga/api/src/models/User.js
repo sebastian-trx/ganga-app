@@ -32,10 +32,6 @@ module.exports = (sequelize) => {
                 allowNull: false,
             },
 
-            birthdate: {
-                type: DataTypes.DATEONLY,
-            },
-
             address: {
                 type: DataTypes.STRING,
             },
@@ -45,10 +41,11 @@ module.exports = (sequelize) => {
             },
             
             seller: {
-                type: DataTypes.STRING,
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
             },
 
         },
-        { timestamps: true, paranoid: true }
+        { timestamps: false, paranoid: true }
     );
 };
