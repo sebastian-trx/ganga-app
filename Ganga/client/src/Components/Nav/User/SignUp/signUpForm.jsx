@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
 
-export default function SignUp() {
+import s from "./signup.module.css";
+
+
+export default function SignUpForm() {
   const [input, setInput] = useState({
     nombre: "",
     apellido: "",
