@@ -1,29 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../Logo/logo";
+import Logo from '../Logo/logo';
 import Marca from "../Brands/brands";
-import Categoria from "../Categorias/categorias";
-import Buscar from "../Buscar/buscar";
+import Categoria from '../Categories/categories';
+import BuscarProducto from '../Search/search';
 import Carrito from "../Cart/cart";
 import Catalago from "../Catalog/catalog";
+import a from './NavBar.module.css'
 
 
 export default function Nav() {
   return (
-    <div>
-      <div >
-        <Logo />
+    <div ClassName={a.nav}>
+      <div ><Logo/></div>
+      <div className={a.centrado}>
+      <div><Marca/></div>
+      <div><Categoria /></div>
+      <div><Catalago /></div>
+      <div><Link to="">Nosotros</Link></div>
+      <div><Link to="">Contacto</Link></div>
       </div>
-      <div>
-        <Marca />
-        <Categoria />
-        <Catalago />
-        <Link to="">Nosotros</Link>
-        <Link to="">Contacto</Link>
-      </div>
-      <div>
-        <Buscar />
-        <Carrito />
+      <div className={a.izq}>
+      <div><BuscarProducto /></div>
+      <div> <Carrito /></div>
       </div>
     </div>
   );
