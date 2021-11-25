@@ -50,12 +50,6 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit}>
         <h4>Login</h4>
         <hr />
-        <div>
-          <button //onClick= {}
-          >
-            <FaGoogle />
-          </button>
-        </div>
 
         <div className="">
           <input
@@ -86,7 +80,7 @@ export default function LoginForm() {
           value="submit"
           disabled={!(input.contraseña && input.correo)}
         >
-          Ingresar
+          Iniciar sesión
         </button>
       </form>
 
@@ -94,6 +88,14 @@ export default function LoginForm() {
       <Link to="">
         <button> Registrate aquí</button>
       </Link>
+
+      <h5> o entra con Google</h5>
+      <div>
+          <button //onClick= {}
+          >
+            <FaGoogle /> Iniciar sesión
+          </button>
+        </div>
     </div>
   );
 }

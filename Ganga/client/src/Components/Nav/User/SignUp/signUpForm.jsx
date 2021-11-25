@@ -68,9 +68,11 @@ export default function SignUpForm() {
         <h2>Registrate</h2>
         <hr />
         <div>
+
+        <h5>puedes registrarte usando tu cuenta de Google.</h5>
           <button //onClick= {}
           >
-            <FaGoogle />
+            <FaGoogle /> Crear cuenta
           </button>
         </div>
 
@@ -160,7 +162,7 @@ export default function SignUpForm() {
             )
           }
         >
-          Ingresar
+        Crear cuenta
         </button>
       </form>
 
