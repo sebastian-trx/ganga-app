@@ -26,11 +26,13 @@ function handelFilterCat(){
   return (
     <div>
      <select  onChange={handelFilterCat}>
+       <option> Categorias </option>
           {
               categorias.map((el, i) => {
                   return (
                   <>
-                  <option key={"marca" + 1} value ={el.Id}>{el.Nombre}</option>
+                  
+                  <option key={"Cate" + i} value ={el.Id}>{el.Nombre}</option>
                   </>
                   )
               })
