@@ -4,6 +4,7 @@ import Home from './Components/Home/Home/home'
 import Catalogo from "./Components/Nav/Catalog/catalog";
 import Login from "./Components/Nav/User/Login/login";
 import SignUp from "./Components/Nav/User/SignUp/singUp";
+import LoginSuccess from "./Components/Nav/User/LoginGoogle/loginSuccess";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
          <Route path ='/catalogo' element={<Catalogo/>}/>
          <Route path ='/ingresar' element={<Login/>}/>
          <Route path ='/registrarme' element={<SignUp/>}/>
-        </Routes>
+        <Route exact path="/login/success" element={LoginSuccess} />
+      </Routes>
     </BrowserRouter>
   );
 }
