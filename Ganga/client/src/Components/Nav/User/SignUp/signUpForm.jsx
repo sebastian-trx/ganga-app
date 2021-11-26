@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
+// import { FaGoogle } from "react-icons/fa";
+import LoginG from '../LoginGoogle/loginG'
 
-import s from "./signup.module.css";
+// import s from "./signup.module.css";
 
 
 export default function SignUpForm() {
@@ -70,10 +71,11 @@ export default function SignUpForm() {
         <div>
 
         <h5>puedes registrarte usando tu cuenta de Google.</h5>
-          <button //onClick= {}
+          {/* <button //onClick= {}
           >
             <FaGoogle /> Crear cuenta
-          </button>
+          </button> */}
+          <LoginG/>
         </div>
 
         <div className="">
