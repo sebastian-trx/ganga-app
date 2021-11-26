@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle  } from "react-icons/fc";
 
 import s from "./signup.module.css";
 
@@ -65,90 +65,76 @@ export default function SignUpForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2>Registrate</h2>
-        <hr />
-        <div>
+        <h2 className="text-left pl-10 pb-3 pt-5 text-2xl">Registrate</h2>
+        <hr className="border-black mx-10"/>
 
-        <h5>puedes registrarte usando tu cuenta de Google.</h5>
-          <button //onClick= {}
-          >
-            <FaGoogle /> Crear cuenta
-          </button>
-        </div>
-
-        <div className="">
-          <input
+        <div className="pt-6">
+          <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="nombre"
             type="text"
-            placeholder="Nombre"
+            placeholder="nombre"
             value={input.nombre}
             onChange={handleChange}
-            //className={}
           ></input>
           {errors.nombre && <p>{errors.nombre}</p>}
         </div>
 
-        <div className="">
-          <input
+        <div className="pt-6">
+          <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="apellido"
             type="text"
-            placeholder="Apellido"
+            placeholder="apellido"
             value={input.apellido}
             onChange={handleChange}
-            //className={}
           ></input>
           {errors.apellido && <p>{errors.apellido}</p>}
         </div>
 
-        <div className="">
-          <input
+        <div className="pt-6">
+          <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="correo"
             type="email"
-            placeholder="Correo electrónico*"
+            placeholder="correo electrónico"
             value={input.correo}
             onChange={handleChange}
-            //className={}
           ></input>
           {errors.correo && <p>{errors.correo}</p>}
         </div>
 
-        <div className="">
-          <input
+        <div className="pt-6">
+          <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="contraseña"
             type="password"
-            placeholder="Contraseña*"
+            placeholder="contraseña"
             value={input.contraseña}
             onChange={handleChange}
-            // className={}
           ></input>
           {errors.contraseña && <p>{errors.contraseña}</p>}
         </div>
 
-        <div className="">
-          <input
+        <div className="pt-6">
+          <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="numero"
             type="number"
-            placeholder="Numero"
+            placeholder="numero"
             value={input.numero}
             onChange={handleChange}
-            // className={}
           ></input>
           {errors.numero && <p>{errors.numero}</p>}
         </div>
 
-        <div className="">
-          <input
+        <div className="py-6">
+          <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="dirección"
             type="text"
-            placeholder="Dirección"
+            placeholder="dirección"
             value={input.dirección}
             onChange={handleChange}
-            // className={}
           ></input>
           {errors.dirección && <p>{errors.dirección}</p>}
         </div>
 
-        <button
+        <button className="border-gray-400 border-2 rounded px-3 py-1 text-xl"
           type="submit"
           value="submit"
           disabled={
@@ -166,9 +152,17 @@ export default function SignUpForm() {
         </button>
       </form>
 
-      <h5> ¿Ya tienes cuenta?</h5>
-      <Link to="">
-        <button> Entra aquí</button>
+        <div>
+        <h5 className=" text-lg py-6">O puedes registrarte usando tu cuenta de Google</h5>
+          <button className="border-2 border-black px-2 text-xl"//onClick= {}
+          >
+            <FcGoogle  className="inline-block px-1 w-10 h-10"/> Crear cuenta
+          </button>
+        </div>
+
+      <h5 className="pt-6 pb-4 text-lg"> ¿Ya tienes una cuenta?</h5>
+      <Link to="/ingresar">
+        <button className="text-red-400 pb-5  text-lg"> Entra aquí</button>
       </Link>
     </div>
   );
