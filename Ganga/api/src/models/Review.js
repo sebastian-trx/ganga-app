@@ -18,10 +18,14 @@ module.exports = (sequelize) => {
             },
 
             qualificacion: {
-                type: DataTypes.STRING,
+                type: DataTypes.INTEGER,
                 allowNull: false,
+                validate: {
+                    min: 1,
+                    max: 10
+                },
             },
         },
-        { timestamps: true, paranoid: true }
+        { timestamps: false, paranoid: true }
     );
 };

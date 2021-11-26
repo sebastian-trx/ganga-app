@@ -16,11 +16,7 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING,
             },
             
-            MP_Id: {
-                type: DataTypes.STRING,
-            },
-
         },
-        { timestamps: true, paranoid: true }
+        { timestamps: false, paranoid: true }
     );
 };
