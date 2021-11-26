@@ -49,6 +49,10 @@ module.exports = (sequelize) => {
                 defaultValue: false,
             },
 
+            password: {
+                type: DataTypes.STRING,
+              },
+
         },
         { timestamps: false, paranoid: true }
     );
