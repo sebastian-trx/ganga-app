@@ -2,10 +2,9 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 // import { FaGoogle } from "react-icons/fa";
-import LoginG from '../LoginGoogle/loginG'
+// import LoginG from "../Login/LoginGoogle/loginG";
 
 // import s from "./signup.module.css";
-
 
 export default function SignUpForm() {
   const [input, setInput] = useState({
@@ -69,13 +68,12 @@ export default function SignUpForm() {
         <h2>Registrate</h2>
         <hr />
         <div>
-
-        <h5>puedes registrarte usando tu cuenta de Google.</h5>
+          <h5>puedes registrarte usando tu cuenta de Google.</h5>
           {/* <button //onClick= {}
           >
             <FaGoogle /> Crear cuenta
           </button> */}
-          <LoginG/>
+          {/* <LoginG /> */}
         </div>
 
         <div className="">
@@ -164,7 +162,7 @@ export default function SignUpForm() {
             )
           }
         >
-        Crear cuenta
+          Crear cuenta
         </button>
       </form>
 

@@ -1,6 +1,12 @@
 import axios from "axios";
 
-import { GET_PRODUCT, GET_INFO_GOOGLE, LOCAL_LOGIN, URL } from "./const";
+import {
+  GET_PRODUCT,
+  GET_INFO_GOOGLE,
+  LOCAL_LOGIN,
+  GET_PRODUCT_BY_NAME,
+  URL,
+} from "./const";
 
 export function getProduct() {
   return async function (dispatch) {
@@ -9,6 +15,22 @@ export function getProduct() {
       type: GET_PRODUCT,
       payload: product.data,
     });
+  };
+}
+
+export function getProductByName(name) {
+  return async function (dispatch) {
+    try {
+      let product = await axios.get(
+        "http://localhost:3001/product?name=" + name
+      );
+      return dispatch({
+        type: GET_PRODUCT_BY_NAME,
+        payload: product.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 }
 

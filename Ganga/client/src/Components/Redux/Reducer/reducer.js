@@ -1,4 +1,9 @@
-import { GET_PRODUCT, GET_INFO_GOOGLE, LOCAL_LOGIN } from "../Actions/const";
+import {
+  GET_PRODUCT,
+  GET_INFO_GOOGLE,
+  LOCAL_LOGIN,
+  GET_PRODUCT_BY_NAME,
+} from "../Actions/const";
 
 const initialState = {
   product: [],
@@ -6,26 +11,21 @@ const initialState = {
   getInfoGoogle: [],
 };
 
-function rootReducer(state = initialState, {type, payload}) {
-    switch (type) {
-
-        case GET_PRODUCT: {
-            
-            return {
-                ...state,
-                product: payload,
-                allProducts2: payload,
-            }
-
-        }
-
-        case GET_PRODUCT_BY_NAME: {
-            return {
-                ...state,
-                product: payload
-            }
-        }
-
+function rootReducer(state = initialState, { type, payload }) {
+  switch (type) {
+    case GET_PRODUCT: {
+      return {
+        ...state,
+        product: payload,
+        allProducts2: payload,
+      };
+    }
+    case GET_PRODUCT_BY_NAME: {
+      return {
+        ...state,
+        product: payload,
+      };
+    }
     case GET_INFO_GOOGLE:
       return {
         ...state,

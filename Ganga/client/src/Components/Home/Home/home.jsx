@@ -1,21 +1,29 @@
 import React from "react";
 import { /*useState,*/ useEffect } from "react";
-import { useDispatch /*useSelector*/ } from "react-redux";
+import {Link} from "react-router-dom"
+import { useDispatch, /*useSelector*/ } from "react-redux";
 import { getProduct } from "../../Redux/Actions/actions";
-import s from "./home.module.css";
+import Nav from "../../Nav/NavBar/nav";
+import headphones  from "../../Resources/headphones.jpg"
+import f from "./home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
-  // const allProduct = useSelector((state) => state.allProduct)
+  // let products = useSelector((state) => state.allProduct2)
+ 
 
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
 
   return (
-    <div className={s.home}>
-      <div>
+    <div>
+      <Nav />
+      <div /*className={f.imgsProducts}*/>
+        <Link to="/catalogo">
+        <img className={f.hp} src={headphones} alt="headphones" />
+        </Link>
       </div>
-    </div>
+      </div>
   );
 }
