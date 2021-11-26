@@ -9,7 +9,7 @@ import { VscDebugRestart } from "react-icons/vsc";
 import { Link } from "react-router-dom"
 
 
-export default function Catalog() {
+export default function Catalogo() {
     const dispatch = useDispatch()
     const allProduct = useSelector((state) => state.product)
 
@@ -32,12 +32,12 @@ export default function Catalog() {
                         <VscDebugRestart /></button>
                 </div>
                 <div>
-                    < BuscarProducto />
+                    <BuscarProducto />
                 </div>
             </div>
             <div className={s.cards} >
                 {
-                    allProduct.length === 0 ?
+                    allProduct?.length === 0 ?
                         <div className={s.Cargando}>
                             <h1>Cargando</h1>
                         </div>
