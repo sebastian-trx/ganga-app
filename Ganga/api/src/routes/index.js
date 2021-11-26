@@ -8,6 +8,9 @@ const payment = require("./paymentRouting.js");
 const order = require("./orderRouting.js");
 const category = require("./categoryRouting.js");
 const subCategory = require("./subCategoryRouting.js");
+const loginGoogle = require("./loginGoogleRouting")
+const localLogin = require("./localLoginRouting")
+const sessionActive  = require('./sessionActiveRouting');
 
 const router = Router();
 
@@ -21,5 +24,8 @@ router.use("/payment", payment);
 router.use("/order", order);
 router.use("/category", category);
 router.use("/subcategory", subCategory);
+router.use("/loginGoogle",loginGoogle)
+router.use("/sessionActive",sessionActive)
+router.use("/localLogin",localLogin)
 
 module.exports = router;

@@ -3,6 +3,11 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+// passport
+const passport = require('passport');                   //se importa passport para autenticacion con google
+const session = require("express-session");             //se importa session para el manejo de sesiones con passport
+require('./utils/google-passport-setup');              //se importa para toda la app, la estructura de passport con google
+require('./utils/local-passport-setup')
 
 require('./db.js');
 
@@ -21,6 +26,18 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
+
+server.use(                                             //se habilita el manejo de sesiones para el server
+  session({
+    secret: "secretcode",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+
+server.use(passport.initialize());                    //se inicializa passport y passport session para el manejo de la session con passport
+server.use(passport.session());
 
 server.use('/', routes);
 
