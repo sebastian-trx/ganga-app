@@ -60,7 +60,26 @@ async function allReviews(req, res) {
   const { id } = req.query;
 
   try {
-    const allReviews = await Review.findAll();
+    const allReviews = await Review.findAll({
+      include: [{
+        model: Product,
+        attributes: ['name', 
+          'description',
+          'price',
+          'stock',
+          'image',]
+      },
+    {
+      model: User,
+      attributes: ['name',
+        'lastname',
+        'mail',
+        'address',
+        'image',
+        'seller',
+        'birthdate'] 
+    }]
+    });
 
     if (id) {
       const reviewById = await Review.findByPk(id);
