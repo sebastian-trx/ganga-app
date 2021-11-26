@@ -14,9 +14,8 @@ module.exports = (sequelize) => {
 
       state: {
         type: DataTypes.STRING,
-        defaultValue: false,
       },
     },
-    { timestamps: true, paranoid: true }
+    { timestamps: false, paranoid: true }
   );
 };
