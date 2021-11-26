@@ -4,10 +4,7 @@ import { IoIosCart } from "react-icons/io";
 import { ImSearch } from "react-icons/im";
 
 import Logo from "../Logo/logo";
-import Marca from "../Brands/brands";
 import Categoria from "../Categories/categories";
-import BuscarProducto from '../Search/search';
-import Carrito from "../Cart/cart";
 import Catalog from "../Catalog/catalog";
 import User from "../User/user";
 
@@ -26,10 +23,6 @@ export default function Nav() {
           </div>
         </Link>
 
-        <div>
-          <Marca />
-        </div>
-
         <div className="pr-10">
           <Link to="/catalogo" className="px-6">
             <span>
@@ -39,7 +32,7 @@ export default function Nav() {
 
           <Link to="/catalogo" className="px-6">
             <span>
-              <Catalog />
+              catalogo
             </span>
           </Link>
 
@@ -56,20 +49,14 @@ export default function Nav() {
             <ImSearch />
           </button>
 
-          <div>
-            <BuscarProducto />
-          </div>
 
           <Link to="/carrito" className=" pl-6 pr-10">
             <button>
               <IoIosCart />
-
-              <Carrito />
-
             </button>
           </Link>
 
-          <User />
+          <User/>
 
         </div>
       </nav>
