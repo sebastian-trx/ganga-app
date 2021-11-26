@@ -30,7 +30,7 @@ export default function Nav() {
           </Link>
 
           <Link to="/catalogo" className="px-6">
-            <span>catalago</span>
+            <span>catalogo</span>
           </Link>
 
           <Link to="/" className="px-6">
