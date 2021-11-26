@@ -2,7 +2,7 @@ import React from "react";
 import { ImSearch } from "react-icons/im";
 
 export default function BuscarProducto() {
-  function handleSumit() {}
+  function handleSubmit() {}
 
   function handleInput() {}
 
@@ -10,10 +10,9 @@ export default function BuscarProducto() {
     <div>
       <input
         type="text"
-        placeholder="Nombre del producto"
         onChange={handleInput}
       />
-      <button type="submit" onClick={handleSumit}>
+      <button type="submit" onClick={handleSubmit} className="pl-2 pt-2">
         <ImSearch />
       </button>
     </div>
