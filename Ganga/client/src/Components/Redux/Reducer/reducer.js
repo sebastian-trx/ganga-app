@@ -6,15 +6,15 @@ const initialState = {
 
 }
 
-function rootReducer(state = initialState, action) {
-    switch (action) {
+function rootReducer(state = initialState, {type, payload}) {
+    switch (type) {
 
         case GET_PRODUCT: {
+            
             return {
                 ...state,
-                allProduct: action.payload,
-                allProducts2: action.payload,
-
+                product: payload,
+                allProducts2: payload,
             }
 
         }
@@ -22,7 +22,7 @@ function rootReducer(state = initialState, action) {
         case GET_PRODUCT_BY_NAME: {
             return {
                 ...state,
-                product: action.payload
+                product: payload
             }
         }
         
