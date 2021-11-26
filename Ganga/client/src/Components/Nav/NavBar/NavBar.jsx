@@ -5,7 +5,7 @@ import Marca from "../Brands/brands";
 import Categoria from '../Categories/categories';
 import BuscarProducto from '../Search/search';
 import Carrito from "../Cart/cart";
-import Catalago from "../Catalog/catalog";
+import Catalog from "../Catalog/catalog";
 import a from './NavBar.module.css'
 
 
@@ -16,7 +16,7 @@ export default function Nav() {
       <div className={a.centrado}>
       <div><Marca/></div>
       <div><Categoria /></div>
-      <div><Catalago /></div>
+      <div><Link to='/catalog' component={Catalog}>Catalogo</Link></div>
       <div><Link to="">Nosotros</Link></div>
       <div><Link to="">Contacto</Link></div>
       </div>
