@@ -1,28 +1,24 @@
 .body {
-    min-height: 100vh;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+    
   }
   
-.Left {
+.left {
   position: absolute;
-  height: 650px;
-  width: 780px;
-  left: 60px;
-  right: 60px;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 12px;
+  height: 688px;
+  width: 698px;
   background-image: url("");
+  background-color: thistle;
 }
 
-.Right {
+.right {
     position: absolute;
-    height: 650px;
-    width: 720px;
-    right: 60px;
-    border-bottom-right-radius: 15px;
-    border-top-right-radius: 15px;
+    height: 688px;
+    width: 698px;
+    right: 0px;
+    text-align: center;
   }
   
