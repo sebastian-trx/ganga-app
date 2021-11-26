@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 
-import s from "./login.module.css";
+// import s from "./login.module.css";
 
 export default function LoginForm() {
   const [input, setInput] = useState({
