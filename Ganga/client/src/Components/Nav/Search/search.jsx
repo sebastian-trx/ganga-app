@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { ImSearch } from "react-icons/im";
+import { useDispatch } from 'react-redux';
+import { getProductByName } from '../../Redux/Actions/actions'
 
 export default function BuscarProducto() {
-  function handleSumit() {}
+  const dispatch = useDispatch()
+  const [name, setName] = useState(" ")
 
-  function handleInput() {}
+  function handleSumit(e) {
+    dispatch(getProductByName(name))
+    setName("")
+  }
+
+  function handleInput(e) {
+    setName(e.target.value)
+  }
 
   return (
     <div>

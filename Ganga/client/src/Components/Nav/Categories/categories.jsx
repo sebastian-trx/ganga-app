@@ -24,20 +24,20 @@ function handelFilterCat(){
 }
 
   return (
-    <div>
-     <select  onChange={handelFilterCat}>
-       <option> Categorias </option>
+   
+     <select className="w-24" onChange={handelFilterCat}>
+       <option> categorias </option>
           {
               categorias.map((el, i) => {
                   return (
                   <>
                   
-                  <option key={"Cate" + i} value ={el.Id}>{el.Nombre}</option>
+                  <option  key={"Cate" + i} value ={el.Id}>{el.Nombre}</option>
                   </>
                   )
               })
           }
       </select>
-    </div>
+
   );
 }
