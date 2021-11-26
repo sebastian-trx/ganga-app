@@ -1,4 +1,6 @@
-import { GET_PRODUCT, GET_PRODUCT_BY_NAME  } from '../Actions/const'
+import { GET_PRODUCT, GET_PRODUCT_BY_NAME } from '../Actions/const'
+
+
 
 const initialState = {
     product: [],
@@ -6,14 +8,18 @@ const initialState = {
 
 }
 
-function rootReducer(state = initialState, action) {
-    switch (action.type) {
+
+function rootReducer(state = initialState, { type, payload }) {
+    switch (type) {
+
 
         case GET_PRODUCT: {
+
             return {
                 ...state,
-                product: action.payload,
-                allProducts2: action.payload,
+
+                product: payload,
+                allProducts2: payload,
 
             }
 
@@ -22,10 +28,9 @@ function rootReducer(state = initialState, action) {
         case GET_PRODUCT_BY_NAME: {
             return {
                 ...state,
-               product: action.payload
+                product: payload,
             }
         }
-
         default: {
             return state
         }

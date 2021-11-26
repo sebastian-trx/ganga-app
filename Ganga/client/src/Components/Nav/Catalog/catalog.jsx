@@ -6,10 +6,11 @@ import s from './catalog.module.css'
 import BuscarProducto from '../Search/search'
 import Logo from '../Logo/logo'
 import { VscDebugRestart } from "react-icons/vsc";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
-export default function Catalog() {
+export default function Catalogo() {
+
     const dispatch = useDispatch()
     const allProduct = useSelector((state) => state.product)
 
@@ -26,6 +27,7 @@ export default function Catalog() {
     return (
         <div className={s.nav}>
             <div>
+
               <Link to='/' >  <Logo/> </Link>
             <div>
                 <button onClick={handleClick}>    
@@ -37,7 +39,7 @@ export default function Catalog() {
             </div>
             <div className={s.cards} >
                 {
-                    allProduct.length === 0 ?
+                    allProduct?.length === 0 ?
                         <div className={s.Cargando}>
                             <h1>Cargando</h1>
                         </div>
