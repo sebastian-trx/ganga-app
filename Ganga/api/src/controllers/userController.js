@@ -6,7 +6,7 @@ async function postUser(req, res) {
       y se crea en caso de no haber
     */
 
-  const { name, lastname, mail, address, image, seller } =
+  const { name, lastname, mail, address, image, seller, birthdate } =
     req.body;
   // Formato para enviar cumpleaños: 1991-11-28
 
@@ -25,6 +25,7 @@ async function postUser(req, res) {
       address,
       image,
       seller,
+      birthdate
     };
 
     try {
@@ -46,7 +47,8 @@ async function putUser(req, res) {
     mail,
     address,
     image,
-    seller
+    seller,
+    birthdate
   } = req.body;
 
       try
@@ -57,7 +59,8 @@ async function putUser(req, res) {
               mail,
               address,
               image,
-              seller
+              seller,
+              birthdate
             }
 
           const userById = await User.findByPk(id);
@@ -95,7 +98,7 @@ async function allUsers(req, res) {
 
     if(name) {
 
-        const userByName = await User.findAll({where: {name: name}})
+        const userByName = await User.findAll({where: { name: {[Op.iLike] : `%${name}%`}}})
 
         userByName ? res.send(userByName) : res.send('No se ha encontrado un usuario con ese nombre')
     }
