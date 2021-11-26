@@ -22,6 +22,10 @@ module.exports = (sequelize) => {
                 allowNull: false,
             },
 
+            birthdate: {
+                type: DataTypes.DATEONLY,
+            },
+
             lastname: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -44,6 +48,10 @@ module.exports = (sequelize) => {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false,
             },
+
+            password: {
+                type: DataTypes.STRING,
+              },
 
         },
         { timestamps: false, paranoid: true }

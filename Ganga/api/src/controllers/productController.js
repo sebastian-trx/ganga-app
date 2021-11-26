@@ -1,4 +1,5 @@
-const { Product, User, Category } = require("../db.js");
+const { Op } = require('sequelize');
+const { Product, User, Category, Review } = require("../db.js");
 
 async function postProduct(req, res) {
   /*
@@ -13,7 +14,8 @@ async function postProduct(req, res) {
     stock,
     image,
     idUser,
-    idCategory } =
+    idCategory,
+    idReview } =
     req.body;
   // Formato para enviar cumpleaños: 1991-11-28
 
@@ -36,14 +38,18 @@ async function postProduct(req, res) {
     try {
       const newProduct = await Product.create(product);
 
-      newProduct ? await newProduct.setUser(idUser) : console.log('no se ha podido relacionar el producto con el usuario')
+      newProduct ? await newProduct.setUser(idUser) : console.log('No se ha podido relacionar el producto con el usuario')
 
-      newProduct ? await newProduct.setCategory(idCategory) : console.log('no se ha podido relacionar el producto con la categoria')
+      newProduct ? await newProduct.setCategory(idCategory) : console.log('No se ha podido relacionar el producto con la categoria')
+      
+      // console.log('soy el idReview: ', idReview)
+      // newProduct ? await newProduct.setReview(idReview) : console.log('No se ha podido relacionar el producto con la devolucion')
 
-      if (newProduct) res.json({ type: "success", data: product });
-      else {
-        res.json({ type: "failure", data: "Error en creación de producto" });
-      }
+      // if (newProduct) res.json({ type: "success", data: product });
+      // else {
+      //   res.json({ type: "failure", data: "Error en creación de producto" });
+      // }
+      newProduct ? res.send({type:"success", data: newProduct}) : res.json({ type: "failure", data: "Error en creación de producto" })
     } catch (error) {
       res.send({ type: "failure", data: error });
     }
@@ -103,7 +109,7 @@ async function deleteProduct(req, res) {
 
         if(name) {
 
-            const productByName = await Product.findAll({where: {name: name}})
+            const productByName = await Product.findAll({where: { name: {[Op.iLike] : `%${name}%`}}})
 
             productByName ? res.send(productByName) : res.send('No se ha encontrado un producto con ese nombre')
         }
