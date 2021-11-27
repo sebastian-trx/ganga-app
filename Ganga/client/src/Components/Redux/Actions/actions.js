@@ -6,6 +6,7 @@ import {
   LOCAL_LOGIN,
   GET_PRODUCT_BY_NAME,
   URL,
+  SIGNUP,
 } from "./const";
 
 export function getProduct() {
@@ -55,6 +56,21 @@ export function localLogin(payload) {
       .then((response) => {
         dispatch({
           type: LOCAL_LOGIN,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+}
+
+// action para crear un usuario
+export function signUp(payload) {
+  return async function (dispatch) {
+    await axios
+      .post(`${URL}user/`, payload)
+      .then((response) => {
+        dispatch({
+          type: SIGNUP,
           payload: response.data,
         });
       })

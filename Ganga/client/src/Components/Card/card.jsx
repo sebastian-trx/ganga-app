@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import s from "./card.module.css";
 
-export default function Card({ image, name, price, id }) {
+export default function Card({ image, name, price /*id*/ }) {
   return (
     <div className={s.container}>
       <div className={s.div1}>
-        <img className={s.img} src={image} alt="image" />
+        <image className={s.img} src={image} alt="image" />
       </div>
       <div className={s.name}>
         <h1>{name.toUpperCase()}</h1>

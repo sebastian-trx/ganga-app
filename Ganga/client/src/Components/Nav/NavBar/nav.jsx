@@ -7,7 +7,6 @@ import Logo from "../Logo/logo";
 import Categoria from "../Categories/categories";
 // import Catalog from "../Catalog/catalog";
 import User from "../User/user";
-import n from "../NavBar/nav.module.css"
 
 export default function Nav() {
   function handleSubmit() {}
@@ -15,11 +14,11 @@ export default function Nav() {
   function handleInput() {}
 
   return (
-    <div>
-      <nav className="flex justify-between items-center h-20  text-black">
+    <div className="z-20">
+      <nav className="flex justify-between items-center h-20  text-black z-20">
         <Link to="/" className="pl-10">
-          <div className=" w-16">
-            <Logo className={n.logo} />
+          <div className=" w-30">
+            <Logo />
           </div>
         </Link>
 
@@ -50,7 +49,7 @@ export default function Nav() {
           <button
             type="submit"
             onClick={handleSubmit}
-            className=" px-1  h-8 bg-gray-300 mr-4 mb-1 border-gray-500 border-r-2 border-t-2 border-b-2"
+            className=" px-1  h-8 bg-gray-300 mr-4 mb-1 border-gray-500 border-r-2 border-t-1 border-b-2"
           >
             <ImSearch />
           </button>

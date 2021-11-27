@@ -3,6 +3,7 @@ import {
   GET_INFO_GOOGLE,
   LOCAL_LOGIN,
   GET_PRODUCT_BY_NAME,
+  SIGNUP,
 } from "../Actions/const";
 
 const initialState = {
@@ -32,6 +33,10 @@ function rootReducer(state = initialState, { type, payload }) {
         getInfoGoogle: payload,
       };
     case LOCAL_LOGIN:
+      return {
+        ...state,
+      };
+    case SIGNUP:
       return {
         ...state,
       };
