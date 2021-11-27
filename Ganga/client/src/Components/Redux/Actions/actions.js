@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_PRODUCT, GET_PRODUCT_BY_NAME } from './const'
+import { GET_PRODUCT, GET_PRODUCT_BY_NAME, GET_USER } from './const'
 
 
 
@@ -26,5 +26,15 @@ export function getProductByName(name) {
         } catch (err) {
             console.log(err)
         }
+    }
+}
+
+export function getUser(){
+    return async function (dispatch) {
+        const info = await axios.get("http://localhost:3001/sessionActive")
+        return dispatch({
+            type: GET_USER,
+            payload: info
+        })
     }
 }

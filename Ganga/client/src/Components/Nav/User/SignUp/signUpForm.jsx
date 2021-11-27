@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FcGoogle  } from "react-icons/fc";
 
-import s from "./signup.module.css";
 
 
 export default function SignUpForm() {
@@ -65,10 +64,10 @@ export default function SignUpForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2 className="text-left pl-10 pb-3 pt-5 text-2xl">Registrate</h2>
-        <hr className="border-black mx-10"/>
+        <h2 className="text-left pl-20 pb-2 pt-3 text-2xl">Registrate</h2>
+        <hr className="border-black mx-20"/>
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="nombre"
             type="text"
@@ -79,7 +78,7 @@ export default function SignUpForm() {
           {errors.nombre && <p>{errors.nombre}</p>}
         </div>
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="apellido"
             type="text"
@@ -90,7 +89,7 @@ export default function SignUpForm() {
           {errors.apellido && <p>{errors.apellido}</p>}
         </div>
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="correo"
             type="email"
@@ -101,7 +100,7 @@ export default function SignUpForm() {
           {errors.correo && <p>{errors.correo}</p>}
         </div>
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="contraseña"
             type="password"
@@ -112,7 +111,7 @@ export default function SignUpForm() {
           {errors.contraseña && <p>{errors.contraseña}</p>}
         </div>
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="numero"
             type="number"
@@ -123,7 +122,7 @@ export default function SignUpForm() {
           {errors.numero && <p>{errors.numero}</p>}
         </div>
 
-        <div className="py-6">
+        <div className="py-5">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"
             name="dirección"
             type="text"
@@ -153,16 +152,16 @@ export default function SignUpForm() {
       </form>
 
         <div>
-        <h5 className=" text-lg py-6">O puedes registrarte usando tu cuenta de Google</h5>
+        <h5 className=" text-lg py-4">O puedes registrarte usando tu cuenta de Google</h5>
           <button className="border-2 border-black px-2 text-xl"//onClick= {}
           >
             <FcGoogle  className="inline-block px-1 w-10 h-10"/> Crear cuenta
           </button>
         </div>
 
-      <h5 className="pt-6 pb-4 text-lg"> ¿Ya tienes una cuenta?</h5>
+      <h5 className="pt-4 pb-4 text-lg"> ¿Ya tienes una cuenta?</h5>
       <Link to="/ingresar">
-        <button className="text-red-400 pb-5  text-lg"> Entra aquí</button>
+        <button className="text-red-400 pb-3  text-lg"> Entra aquí</button>
       </Link>
     </div>
   );
