@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FcGoogle  } from "react-icons/fc";
+// import { FaGoogle } from "react-icons/fa";
+import LoginG from '../LoginGoogle/loginG'
 
+<<<<<<< HEAD
+=======
+// import s from "./signup.module.css";
+>>>>>>> 3aae4c7f9f8046097882bddbb81cada63d6319f6
 
 
 export default function SignUpForm() {
@@ -64,8 +70,25 @@ export default function SignUpForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+<<<<<<< HEAD
         <h2 className="text-left pl-20 pb-2 pt-3 text-2xl">Registrate</h2>
         <hr className="border-black mx-20"/>
+=======
+        <h2 className="text-left pl-10 pb-3 pt-5 text-2xl">Registrate</h2>
+        <hr className="border-black mx-10"/>
+          
+//         <h2>Registrate</h2>
+//         <hr />
+//         <div>
+
+//         <h5>puedes registrarte usando tu cuenta de Google.</h5>
+//           {/* <button //onClick= {}
+//           >
+//             <FaGoogle /> Crear cuenta
+//           </button> */}
+//           <LoginG/>
+//         </div>
+>>>>>>> 3aae4c7f9f8046097882bddbb81cada63d6319f6
 
         <div className="pt-5">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"

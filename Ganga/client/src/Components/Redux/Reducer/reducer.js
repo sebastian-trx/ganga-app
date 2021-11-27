@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { GET_PRODUCT, GET_PRODUCT_BY_NAME, GET_USER } from '../Actions/const'
 
 const initialState = {
@@ -6,6 +7,15 @@ const initialState = {
     user:[],
 
 }
+=======
+import { GET_PRODUCT, GET_INFO_GOOGLE, LOCAL_LOGIN } from "../Actions/const";
+
+const initialState = {
+  product: [],
+  allProducts2: [],
+  getInfoGoogle: [],
+};
+>>>>>>> 3aae4c7f9f8046097882bddbb81cada63d6319f6
 
 function rootReducer(state = initialState, {type, payload}) {
     switch (type) {
@@ -26,6 +36,7 @@ function rootReducer(state = initialState, {type, payload}) {
                 product: payload
             }
         }
+<<<<<<< HEAD
 
         case GET_USER:{
             return {
@@ -38,8 +49,22 @@ function rootReducer(state = initialState, {type, payload}) {
         default: {
             return state
         }
+=======
+>>>>>>> 3aae4c7f9f8046097882bddbb81cada63d6319f6
 
+    case GET_INFO_GOOGLE:
+      return {
+        ...state,
+        getInfoGoogle: payload,
+      };
+    case LOCAL_LOGIN:
+      return {
+        ...state,
+      };
+    default: {
+      return state;
     }
+  }
 }
 
 export default rootReducer;

@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
+<<<<<<< HEAD
+=======
+// import s from "./login.module.css";
+
+>>>>>>> 3aae4c7f9f8046097882bddbb81cada63d6319f6
 export default function LoginForm() {
   const [input, setInput] = useState({
     correo: "",
