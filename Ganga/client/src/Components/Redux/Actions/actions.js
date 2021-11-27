@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {GET_PRODUCT, GET_PRODUCT_BY_NAME, FILTER_PRICE_BY_RANGE} from './const'
+import {GET_PRODUCT, GET_PRODUCT_BY_NAME, FILTER_PRICE_BY_RANGE, ORDER_BY_PRICE} from './const'
 
 
 
@@ -34,10 +34,18 @@ export function getProductByName(name){
 }
 
 export function filterPriceByRange(price1, price2){
-    console.log("soy uno", price1, "soy el 2", price2)
     return{
         type: FILTER_PRICE_BY_RANGE,
         price1, price2 
+    }
+
+}
+
+export function orderByPrice (payload){
+    console.log(payload)
+    return {
+        type:ORDER_BY_PRICE,
+        payload
     }
 
 }
