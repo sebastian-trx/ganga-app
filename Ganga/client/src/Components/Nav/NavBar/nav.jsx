@@ -32,16 +32,16 @@ export default function Nav() {
 
           <Link to="/catalogo" className="px-6">
             <span>
-              catalogo
+              Catalogo
             </span>
           </Link>
 
           <Link to="/" className="px-6">
-            <span>nosotros</span>
+            <span>Nosotros</span>
           </Link>
 
           <Link to="/" className="pl-6 pr-8">
-            <span>contacto</span>
+            <span>Contacto</span>
           </Link>
 
           <input type="text" onChange={handleInput} className="bg-gray-300 pt-1 ml-10 h-8 border-gray-500 border-l-2 border-t-2 border-b-2" />
