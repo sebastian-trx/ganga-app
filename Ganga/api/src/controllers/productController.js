@@ -1,5 +1,5 @@
-const { Op } = require('sequelize');
 const { Product, User, Category, Review } = require("../db.js");
+const { Op } = require('sequelize');
 
 async function postProduct(req, res) {
   /*
@@ -121,11 +121,30 @@ async function deleteProduct(req, res) {
           console.log(error)
       }
   }
+
+  const productInfo = async(req, res) => {
+    const { id } = req.query;
+
+    try{
+      const dbProduct = await Product.findByPk(id);
+      console.log('soy el dbProduct: ', dbProduct)
+      const productReview = await Review.findAll({  // seria algo parecido para el review del usuario
+        where:{productId: id}
+      })
+      console.log('soy el productReview: ', productReview)
+      dbProduct ? res.send({product: dbProduct,
+      review: productReview}) : res.send(`No se ha encontrado el producto con el id: ${id}`)
+    }
+    catch(error) {
+      console.log(error)
+    }
+  }
   
 
 module.exports = {
     postProduct,
     putProduct,
     deleteProduct,
-    allProducts
+    allProducts,
+    productInfo
 };

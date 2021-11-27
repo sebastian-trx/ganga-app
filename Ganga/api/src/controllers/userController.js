@@ -1,4 +1,5 @@
-const { User } = require("../db.js");
+const { User, Review } = require("../db.js");
+const { Op } = require('sequelize');
 
 async function postUser(req, res) {
   /*
@@ -6,7 +7,7 @@ async function postUser(req, res) {
       y se crea en caso de no haber
     */
 
-  const { name, lastname, mail, address, image, seller, birthdate, password } =
+  const { name, lastname, mail, address, image, seller, birthdate,  } =
     req.body;
   // Formato para enviar cumpleaños: 1991-11-28
 
@@ -26,7 +27,7 @@ async function postUser(req, res) {
       image,
       seller,
       birthdate,
-      password
+      
     };
 
     try {
@@ -112,9 +113,28 @@ async function allUsers(req, res) {
   }
 }
 
+const userInfo = async(req, res) => {
+  const { id } = req.query;
+
+  try{
+    const dbUser = await User.findByPk(id);
+    console.log('soy el dbUser: ', dbUser)
+    const userReview = await Review.findAll({  // seria algo parecido para el review del usuario
+      where:{userId: id}
+    })
+    console.log('soy el userReview: ', userReview)
+    dbUser ? res.send({user: dbUser,
+    review: userReview}) : res.send(`No se ha encontrado el producto con el id: ${id}`)
+  }
+  catch(error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   postUser,
   putUser,
   deleteUser,
   allUsers,
+  userInfo
 };
