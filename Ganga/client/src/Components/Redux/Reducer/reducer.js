@@ -1,4 +1,4 @@
-import { GET_PRODUCT, GET_PRODUCT_BY_NAME } from '../Actions/const'
+import { GET_PRODUCT, GET_PRODUCT_BY_NAME, FILTER_PRICE_BY_RANGE } from '../Actions/const'
 
 
 
@@ -9,7 +9,7 @@ const initialState = {
 }
 
 
-function rootReducer(state = initialState, { type, payload }) {
+function rootReducer(state = initialState, { type, payload, price1 , price2 }) {
     switch (type) {
 
 
@@ -29,6 +29,16 @@ function rootReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 product: payload,
+            }
+        }
+        case FILTER_PRICE_BY_RANGE:{
+            console.log("Soy reducer", price1, price2)
+            const products = state.product
+            let filterPrice = products.filter(el => (el.price) >= price1 && el.price <= price2)
+            console.log("soy filtrados", filterPrice)
+            return {
+                ...state,
+                product: filterPrice
             }
         }
         default: {

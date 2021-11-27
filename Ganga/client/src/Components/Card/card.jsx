@@ -17,7 +17,7 @@ export default function Card({ image, name, price, id }) {
                 </div>
 
                 <div className={s.div2}>
-                    <h3>{price} USD</h3>
+                    <h3>$ {price} usd</h3>
                 </div>
 
                 <div className={s.star}>

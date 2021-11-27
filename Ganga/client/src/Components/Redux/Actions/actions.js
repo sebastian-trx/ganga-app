@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {GET_PRODUCT, GET_PRODUCT_BY_NAME} from './const'
+import {GET_PRODUCT, GET_PRODUCT_BY_NAME, FILTER_PRICE_BY_RANGE} from './const'
 
 
 
@@ -9,7 +9,6 @@ import {GET_PRODUCT, GET_PRODUCT_BY_NAME} from './const'
 export function getProduct() {
     return async function (dispatch) {
         let product = await axios.get('http://localhost:3001/product')
-        console.log('soy el product de getProduct: ', product)
         dispatch({
             type: GET_PRODUCT,
             payload: product.data
@@ -32,4 +31,13 @@ export function getProductByName(name){
             console.log(err)
         }
     }
+}
+
+export function filterPriceByRange(price1, price2){
+    console.log("soy uno", price1, "soy el 2", price2)
+    return{
+        type: FILTER_PRICE_BY_RANGE,
+        price1, price2 
+    }
+
 }

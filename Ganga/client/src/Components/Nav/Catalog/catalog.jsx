@@ -7,6 +7,7 @@ import BuscarProducto from '../Search/search'
 import Logo from '../Logo/logo'
 import { VscDebugRestart } from "react-icons/vsc";
 import { Link } from "react-router-dom"
+import FilterPrice from '../Filter/filterPrice'
 
 
 export default function Catalogo() {
@@ -36,6 +37,7 @@ export default function Catalogo() {
             <div>
                 < BuscarProducto />
             </div>
+            <div><FilterPrice/></div>
             </div>
             <div className={s.cards} >
                 {
