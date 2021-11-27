@@ -1,4 +1,5 @@
 const { User } = require("../db.js");
+const { Op } = require("sequelize");
 
 async function postUser(req, res) {
   /*
@@ -26,7 +27,7 @@ async function postUser(req, res) {
       image,
       seller,
       birthdate,
-      password
+      password,
     };
 
     try {
@@ -42,73 +43,71 @@ async function postUser(req, res) {
 }
 
 async function putUser(req, res) {
-  const { id, 
-    name,
-    lastname,
-    mail,
-    address,
-    image,
-    seller,
-    birthdate
-  } = req.body;
+  const { id, name, lastname, mail, address, image, seller, birthdate } =
+    req.body;
 
-      try
-      {
-          const infoUpdateUser = {
-              name, 
-              lastname,
-              mail,
-              address,
-              image,
-              seller,
-              birthdate
-            }
+  try {
+    const infoUpdateUser = {
+      name,
+      lastname,
+      mail,
+      address,
+      image,
+      seller,
+      birthdate,
+    };
 
-          const userById = await User.findByPk(id);
-          
-          userById ? res.send(await userById.update(infoUpdateUser)) : res.send('No se ha podido actualizar el usuario')
-          
-      }catch(error) {
-          console.log(error)
-  }  
+    const userById = await User.findByPk(id);
+
+    userById
+      ? res.send(await userById.update(infoUpdateUser))
+      : res.send("No se ha podido actualizar el usuario");
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function deleteUser(req, res) {
   const { id } = req.query;
-  console.log('soy el id de deleteUser(controller): ', id)
+  console.log("soy el id de deleteUser(controller): ", id);
 
-  try{
-      
-      const deleteUser = await User.findByPk(id)
+  try {
+    const deleteUser = await User.findByPk(id);
 
-      deleteUser  ? res.send(await deleteUser.destroy()) : res.json('No se ha podido eliminar el usuario')
-
+    deleteUser
+      ? res.send(await deleteUser.destroy())
+      : res.json("No se ha podido eliminar el usuario");
+  } catch (error) {
+    console.log(error);
   }
-  catch (error){
-      console.log(error)
-  }
-
 }
 
 async function allUsers(req, res) {
-  const { name } = req.query;
+  const { name, id } = req.query;
+  const allDbUsers = await User.findAll();
 
-  try{
-
-    const allDbUsers = await User.findAll()
-
-    if(name) {
-
-        const userByName = await User.findAll({where: { name: {[Op.iLike] : `%${name}%`}}})
-
-        userByName ? res.send(userByName) : res.send('No se ha encontrado un usuario con ese nombre')
+  if (name) {
+    try {
+      const userByName = await User.findAll({
+        where: { name: { [Op.iLike]: `%${name}%` } },
+      });
+      userByName.length !== 0
+        ? res.json(userByName)
+        : res.send("No se ha encontrado un usuario con ese nombre");
+    } catch (error) {
+      console.log(error);
     }
-    else{
-        res.send(allDbUsers)
+  } else if (id) {
+    try {
+      const userId = await User.findByPk(id);
+      userId
+        ? res.json(userId)
+        : res.send("No se ha encontrado un usuario con ese ID");
+    } catch (error) {
+      console.log(error);
     }
-  }
-  catch(error) {
-      console.log(error)
+  } else {
+    res.json(allDbUsers);
   }
 }
 

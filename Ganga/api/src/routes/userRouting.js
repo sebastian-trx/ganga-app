@@ -4,7 +4,7 @@ const {
   postUser,
   putUser,
   deleteUser,
-  allUsers
+  allUsers,
  } = require("../controllers/userController.js");
 
 router.post("/", postUser);

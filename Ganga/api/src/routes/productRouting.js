@@ -4,7 +4,7 @@ const {
     postProduct,
     putProduct,
     deleteProduct,
-    allProducts
+    allProducts,
  } = require("../controllers/productController.js");
 
 router.post("/", postProduct);
