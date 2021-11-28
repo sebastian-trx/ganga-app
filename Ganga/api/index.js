@@ -33,6 +33,7 @@ axios.defaults.baseURL = process.env.REACT_APP_CLIENT || "http://localhost:3000"
 
 conn.sync({ force: true }).then(() => {
   server.listen(process.env.PORT, () => {
+    preloader();
     console.log("%s listening at 3000"); // eslint-disable-line no-console
   });
 });
