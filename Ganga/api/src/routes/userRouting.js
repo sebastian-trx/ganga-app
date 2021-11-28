@@ -4,7 +4,7 @@ const {
   postUser,
   putUser,
   deleteUser,
-  allUsers
+  allUsers,
   userInfo
  } = require("../controllers/userController.js");
 
