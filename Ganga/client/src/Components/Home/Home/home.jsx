@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../Redux/Actions/actions";
 import Nav from "../../Nav/NavBar/nav";
-import headphones from "../../Resources/headphones.jpg";
+import Carousel from "./Carousel/carousel";
 import s from "./home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allProduct = useSelector((state) => state.allProduct);
-  console.log(allProduct)
-  const [nav, setNav] = useState(false)
+  console.log(allProduct);
+  const [nav, setNav] = useState(false);
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
@@ -20,7 +20,7 @@ export default function Home() {
     } else {
       setNav(false);
     }
-  }
+  };
 
   window.addEventListener("scroll", navOpacity);
 
@@ -29,14 +29,11 @@ export default function Home() {
       <div className={nav ? s.Nav : s.nav}>
         <Nav />
       </div>
-      <div className={s.home}>
-        <div className={s.imgsProducts}>
-          <div>
-            <img className={s.hp} src={headphones} alt="headphones" />
-          </div>
+      <div className={s.bgHome}>
+        <div>
+          <Carousel />
         </div>
       </div>
     </div>
   );
 }
-
