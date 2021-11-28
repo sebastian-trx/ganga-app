@@ -20,8 +20,6 @@ export default function Nav() {
     dispatch(getUser())
   }, [dispatch])
 
-  console.log("user", user);
-
   const categorias = [
 
     { Nombre: 'Tecnologia', Id: 1 },
@@ -62,7 +60,7 @@ export default function Nav() {
         <div className="pr-10">
           <span>
             <select className="w-24" onChange={handleCat}>
-              <option> categorias </option>
+              <option> Categorias </option>
               <Link to={"/categorias" + 1}>
                 {
                   categorias.map(el =>
@@ -77,7 +75,7 @@ export default function Nav() {
           </span>
 
           <Link to="/catalogo" className="px-6">
-            <span>catalogo</span>
+            <span>Catalogo</span>
           </Link>
 
           <Link to="/" className="px-6">

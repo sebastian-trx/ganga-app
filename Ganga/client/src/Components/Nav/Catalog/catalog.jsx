@@ -66,7 +66,7 @@ export default function Catalogo() {
                             return (
                                 <>
                                     <div>
-                                        <Card key={"card" + i} name={el.name} image={el.image} price={el.price} />
+                                        <Card key={"card" + i} name={el.name} image={el.image} price={el.price} id={el.id} />
                                     </div>
                                 </>
                             )

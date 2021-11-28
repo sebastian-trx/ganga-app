@@ -8,7 +8,6 @@ import s from "./home.module.css";
 export default function Home() {
   const dispatch = useDispatch();
   const allProduct = useSelector((state) => state.allProduct);
-  console.log(allProduct)
   const [nav, setNav] = useState(false)
   useEffect(() => {
     dispatch(getProduct());
