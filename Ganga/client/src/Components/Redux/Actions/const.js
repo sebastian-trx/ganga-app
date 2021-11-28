@@ -6,3 +6,4 @@ export const GET_INFO_GOOGLE = "GET_INFO_GOOGLE";
 export const LOCAL_LOGIN = "LOCAL_LOGIN";
 export const URL = "http://localhost:3001/";
 export const SIGNUP = "SIGNUP";
+export const GET_USER = "GET_USER";
