@@ -28,6 +28,8 @@ const { preloader } = require("./src/utils/Preloader.js");
 //     console.log("%s listening at 3001"); // eslint-disable-line no-console
 //   });
 // });
+dotenv.config();
+axios.defaults.baseURL = process.env.REACT_APP_CLIENT || "http://localhost:3000";
 
 conn.sync({ force: true }).then(() => {
   server.listen(process.env.PORT, () => {

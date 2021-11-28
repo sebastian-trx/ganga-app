@@ -4,7 +4,8 @@ async function loginGoogle (req,res) {}
 
 async function callback(req, res) {
   // console.log(req.user);
-  res.redirect("http://localhost:3000/login/success")
+  // res.redirect("http://localhost:3000/login/success")
+  res.redirect(`/login/success`)
 }
 
 
