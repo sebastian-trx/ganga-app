@@ -29,24 +29,10 @@ export default function User() {
                         {({ active }) => (
                           <div>
                             <a
-                                href="/registrarme"
+                                href="/"
                                 className={`${active ? "opacity-100 " : "opacity-60"}`}
                             >
-                                Crear cuenta
-                            </a>
-                          </div>
-                        )}
-                    </Menu.Item>
-                </div>
-                <div>
-                    <Menu.Item className="py-2">
-                        {({ active }) => (
-                          <div>
-                            <a
-                                href="/ingresar"
-                                className={`${active ? "opacity-100 " : "opacity-60"}`}
-                            >
-                                Iniciar sesión
+                                Mis Datos
                             </a>
                           </div>
                         )}
