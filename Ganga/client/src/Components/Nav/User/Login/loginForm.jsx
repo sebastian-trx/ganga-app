@@ -1,27 +1,25 @@
 import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { LoginG2 } from "../../User/LoginGoogle/loginG2";
+import { localLogin, getUserInfoGoogle } from "../../../Redux/Actions/actions";
 
-<<<<<<< HEAD
-=======
-// import s from "./login.module.css";
-
->>>>>>> 3aae4c7f9f8046097882bddbb81cada63d6319f6
 export default function LoginForm() {
+  const dispatch = useDispatch();
   const [input, setInput] = useState({
-    correo: "",
-    contraseña: "",
+    mail: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({});
 
   function validate(input) {
     let errors = {};
-    if (!input.correo) {
-      errors.correo = "Ingrese el correo con el que se ha registrado";
-    } else if (!input.contraseña) {
-      errors.contraseña = "Ingrese su contraseña.";
+    if (!input.mail) {
+      errors.mail = "Ingrese el correo con el que se ha registrado";
+    } else if (!input.password) {
+      errors.password = "Ingrese su contraseña.";
     }
     return errors;
   }
@@ -42,10 +40,14 @@ export default function LoginForm() {
   function handleSubmit(e) {
     e.preventDefault();
     // dispatch(inserteAccionAqui(input))
-    setInput({
-      correo: "",
-      contraseña: "",
-    });
+    dispatch(localLogin(input));
+    // setInput({
+    //   mail: "",
+    //   password: "",
+    // });
+    setTimeout(() => {
+      dispatch(getUserInfoGoogle());
+    }, 1000);
   }
 
   return (
@@ -59,27 +61,29 @@ export default function LoginForm() {
             name="correo"
             type="email"
             placeholder="Correo electrónico"
-            value={input.correo}
+            value={input.mail}
             onChange={handleChange}
           ></input>
-          {errors.correo && <p>{errors.correo}</p>}
+          {errors.mail && <p>{errors.mail}</p>}
         </div>
 
         <div className="py-14">
-          <input className="w-96 border-gray-400 border-2 rounded pl-2"
-            name="contraseña"
+          <input
+            className="w-96 border-gray-400 border-2 rounded pl-2"
+            name="password"
             type="password"
             placeholder="Contraseña"
-            value={input.contraseña}
+            value={input.password}
             onChange={handleChange}
           ></input>
-          {errors.contraseña && <p>{errors.contraseña}</p>}
+          {errors.password && <p>{errors.password}</p>}
         </div>
 
-        <button className="border-gray-400 border-2 rounded px-3 py-1 text-xl"
+        <button
+          className="border-gray-400 border-2 rounded px-3 py-1 text-xl"
           type="submit"
           value="submit"
-          disabled={!(input.contraseña && input.correo)}
+          disabled={!(input.password && input.mail)}
         >
           Iniciar Sesión
         </button>
@@ -92,11 +96,12 @@ export default function LoginForm() {
 
       <h5 className=" text-lg pb-12"> O entra con Google</h5>
       <div>
-          <button className="border-2 border-black px-2 text-xl"//onClick= {}
+        {/* <button className="border-2 border-black px-2 text-xl"//onClick= {}
           >
             <FcGoogle className="inline-block px-1 w-10 h-10" /> Inicia sesión con Google
-          </button>
-        </div>
+          </button> */}
+        <LoginG2 />
+      </div>
     </div>
   );
 }

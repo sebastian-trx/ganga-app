@@ -7,6 +7,7 @@ export default function BuscarProducto() {
   const dispatch = useDispatch()
   const [name, setName] = useState(" ")
 
+
   function handleSumit(e) {
     dispatch(getProductByName(name))
     setName("")

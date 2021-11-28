@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch /*useSelector*/ } from "react-redux";
 import { getUserInfoGoogle } from "../../../Redux/Actions/actions";
-// import { FaGoogle } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
-export function LoginG(params) {
+export function LoginG2(params) {
   const dispatch = useDispatch();
   // const { getInfoGoogle } = useSelector((state) => state);
 
@@ -34,14 +33,12 @@ export function LoginG(params) {
 
   return (
     <>
-      {/* <button onClick={redirectToGoogleLogin}>
-        <FcGoogle /> 
-      </button> */}
       <button
         onClick={redirectToGoogleLogin}
         className="border-2 border-black px-2 text-xl" //onClick= {}
       >
-        <FcGoogle className="inline-block px-1 w-10 h-10" /> Crear cuenta
+        <FcGoogle className="inline-block px-1 w-10 h-10" /> Inicia sesión con
+        Google
       </button>
     </>
   );
