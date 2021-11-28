@@ -3,6 +3,7 @@ const { Product } = require("../db");
 const infoProduct = [
   {
     name: "Pelota Fútbol Playa",
+    mark: "Nike",
     description: "Pelota de Futbol Playa, Usada como nueva. modelo Tsubasa Pro Beach Nº5",
     price: "1",
     stock: 2,
@@ -11,6 +12,7 @@ const infoProduct = [
   },
   {
     name: "Pelota Fútbol 11",
+    mark: "Nike",
     description: "Pelota de Futbol 11, Excelente condiciones. Sirve para entrenamientos y partidos amistosos",
     price: "20",
     stock: 4,
@@ -19,6 +21,7 @@ const infoProduct = [
   },
   {
     name: "Zapatillas Hoops 2.0",
+    mark: "Nike",
     description: "Zapatillas para todo uso, marca Adidas 100% originales",
     price: "35",
     stock: 4,
@@ -26,8 +29,9 @@ const infoProduct = [
       "https://http2.mlstatic.com/D_NQ_NP_763666-MLA47081340430_082021-O.webp",
   },
   {
-    name: "Zapatillas Nike Air Max Excee",
-    description: "Zapatillas Nike, excelente calidad talla 10.5 US. ",
+    name: "Zapatillas Air Max Excee",
+    mark: "Nike",
+    description: "Zapatillas en excelente calidad talla 10.5 US. ",
     price: "38",
     stock: 4,
     image:
@@ -35,6 +39,7 @@ const infoProduct = [
   },
   {
     name: "Camiseta De Argentina",
+    mark: "Adidas",
     description: "CAMISETA DE ARGENTINA TITULAR MUNDIAL MEXICO 1986",
     price: "20",
     stock: 1,
@@ -43,6 +48,7 @@ const infoProduct = [
   },
   {
     name: "Camiseta Holanda Titular",
+    mark: "Adidas",
     description: "Johan Cruyff, Camiseta Holanda Mundial 1974",
     price: "20",
     stock: 1,
@@ -50,7 +56,8 @@ const infoProduct = [
       "https://http2.mlstatic.com/D_NQ_NP_728352-MLA47148620656_082021-O.webp",
   },
   {
-    name: "Bicicleta Sunny",
+    name: "Bicicleta",
+    mark: "Sunny",
     description: "Bicicleta Sunny Modelo Mts 290 Rodado 29 Negro Amarillo,Asiento acolchado regulabe Incluye manual de instrucciones para su correcto armado",
     price: "60",
     stock: 2,
@@ -59,15 +66,17 @@ const infoProduct = [
   },
   {
     name: "Celular Galaxy Note20",
-    description: "Especificaciones: Marca Samsung, 256 GB gris místico 8 GB RAM, Cámara trasera principal: 64 Mpx ",
+    mark: "Samsung",
+    description: "Especificaciones: 256 GB gris místico 8 GB RAM, Cámara trasera principal: 64 Mpx ",
     price: "120",
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_947785-MLA44210097170_112020-O.webp",
   },
   {
-    name: " Celular LG K52",
-    description: "Marca LG, 64 Gb + 4 Gb Ram Azul Cámara trasera principal: 48 Mpx",
+    name: " Celular K52",
+    mark: "LG",
+    description: "64 Gb + 4 Gb Ram Azul Cámara trasera principal: 48 Mpx",
     price: "70",
     stock: 1,
     image:
@@ -75,6 +84,7 @@ const infoProduct = [
   },
   {
     name: "Smart TV",
+    mark: "Samsung",
     description: "Samsung Series 7 UN50TU7000GCZB LED 4K 50. Aplicaciones integradas: Samsung Promotion, YouTube, Netflix, Google Play, Apple TV, SmartThings, Web browser, Prime Video, Gallery, Google Play Movies & TV ",
     price: "150",
     stock: 1,
@@ -83,6 +93,7 @@ const infoProduct = [
   },
   {
     name: "Monitor Gamer",
+    mark: "LG",
     description: "LG 27GL650F led 27 negro, Full HD, tiene una resolución de 1920px-1080px. ",
     price: "90",
     stock: 2,
@@ -90,14 +101,23 @@ const infoProduct = [
       "https://http2.mlstatic.com/D_NQ_NP_624926-MLA44490109901_012021-O.webp",
   },
   {
-    name: "Notebook Hp 14-dq2024la",
+    name: "Notebook 14-dq2024la",
+    mark: "Hp",
     description: "Core I3 1115g4 8gb 256gb M2 Ssd W10,  pantalla de 14'', Duración de la batería 9 h  ",
     price: "20",
     stock: 4,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_962681-MLA47729250270_102021-O.webp",
   },
-];
+  {
+    name: "Miles Morales Standard Edition Sony PS4 Físico",
+    description: "Hombre Araña Marvel's Spider-Man: Miles Morales Standard Edition, plataforma PS4, Formato fisico",
+    price: "60",
+    stock: 1,
+    image:
+      "https://http2.mlstatic.com/D_NQ_NP_984177-MLA44963321666_022021-O.webp",
+  },
+]
 
 async function preLoadProduct() {
   try {
