@@ -1,10 +1,15 @@
-import axios from 'axios';
+import axios from "axios";
 
-import {GET_PRODUCT, GET_PRODUCT_BY_NAME, FILTER_PRICE_BY_RANGE, ORDER_BY_PRICE} from './const'
-
-
-
-
+import {
+  GET_PRODUCT,
+  GET_INFO_GOOGLE,
+  LOCAL_LOGIN,
+  GET_PRODUCT_BY_NAME,
+  FILTER_PRICE_BY_RANGE,
+  ORDER_BY_PRICE,
+  URL,
+  SIGNUP,
+} from "./const";
 
 export function getProduct() {
     return async function (dispatch) {
@@ -48,4 +53,47 @@ export function orderByPrice (payload){
         payload
     }
 
+}
+
+// action para obtener la sesion activa
+export function getUserInfoGoogle(payload) {
+  return async function (dispatch) {
+    const arr = await axios.get(URL + "sessionActive/", {
+      withCredentials: true,
+    });
+    return dispatch({
+      type: GET_INFO_GOOGLE,
+      payload: arr.data,
+    });
+  };
+}
+
+// action para hacer el local login
+export function localLogin(payload) {
+  return async function (dispatch) {
+    await axios
+      .post(`${URL}localLogin/`, payload, { withCredentials: true })
+      .then((response) => {
+        dispatch({
+          type: LOCAL_LOGIN,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+}
+
+// action para crear un usuario
+export function signUp(payload) {
+  return async function (dispatch) {
+    await axios
+      .post(`${URL}user/`, payload)
+      .then((response) => {
+        dispatch({
+          type: SIGNUP,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
 }
