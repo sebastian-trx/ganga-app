@@ -14,7 +14,7 @@ export default function Catalogo() {
 
     const dispatch = useDispatch()
     const allProduct = useSelector((state) => state.product)
-    const [orden, setOrden] = useState('')
+    const [/*orden*/, setOrden] = useState('')
 
     useEffect(() => {
         dispatch(getProduct())
@@ -26,7 +26,7 @@ export default function Catalogo() {
         dispatch(getProduct());
     }
 
-   
+
 
     function handleOrder(e) {
         e.preventDefault();
@@ -38,22 +38,22 @@ export default function Catalogo() {
         <div className={s.nav}>
             <div>
 
-              <Link to='/' >  <Logo/> </Link>
-            <div>
-                <button onClick={handleClick}>    
-                <VscDebugRestart/></button>
-            </div>
-            <div>
-                < BuscarProducto />
-            </div>
-            <div><FilterPrice/></div>
-            <div>  <div>
-        <select onChange={(e) => handleOrder(e)} >
-            <option value='All'> Orden por Precio: </option>
-            <option value='Menor-Mayor'> Mayor a Menor </option>
-            <option value='Mayor-Menor'> Menor a Mayor </option>
-        </select>
-    </div></div>
+                <Link to='/' >  <Logo /> </Link>
+                <div>
+                    <button onClick={handleClick}>
+                        <VscDebugRestart /></button>
+                </div>
+                <div>
+                    < BuscarProducto />
+                </div>
+                <div><FilterPrice /></div>
+                <div>  <div>
+                    <select onChange={(e) => handleOrder(e)} >
+                        <option value='All'> Orden por Precio: </option>
+                        <option value='Menor-Mayor'> Mayor a Menor </option>
+                        <option value='Mayor-Menor'> Menor a Mayor </option>
+                    </select>
+                </div></div>
             </div>
             <div className={s.cards} >
                 {

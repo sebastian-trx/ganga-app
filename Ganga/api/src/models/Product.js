@@ -17,6 +17,12 @@ module.exports = (sequelize) => {
                 allowNull: false,
             },
 
+            mark: {
+                type: DataTypes.STRING,
+                allowNull: true,
+                //Se lo pasa a true para que no rompa, cuando se hagan las precargas se lo pasa a false
+            },
+
             description: {
                 type: DataTypes.TEXT,
                 allowNull: false,
