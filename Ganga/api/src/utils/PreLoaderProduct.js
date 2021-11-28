@@ -111,6 +111,7 @@ const infoProduct = [
   },
   {
     name: "Miles Morales Standard Edition Sony PS4 Físico",
+    mark: "Sony",
     description: "Hombre Araña Marvel's Spider-Man: Miles Morales Standard Edition, plataforma PS4, Formato fisico",
     price: "60",
     stock: 1,
