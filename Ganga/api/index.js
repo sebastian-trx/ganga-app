@@ -20,7 +20,6 @@
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const { preloader } = require("./src/utils/Preloader.js");
-const { dotenv } = require("dotenv");
 // Syncing all the models at once.
 
 // conn.sync({ force: true }).then(() => {
@@ -29,8 +28,8 @@ const { dotenv } = require("dotenv");
 //     console.log("%s listening at 3001"); // eslint-disable-line no-console
 //   });
 // });
-dotenv.config();
-axios.defaults.baseURL = process.env.REACT_APP_CLIENT || "http://localhost:3000";
+// dotenv.config();
+// axios.defaults.baseURL = process.env.REACT_APP_CLIENT || "http://localhost:3000";
 
 conn.sync({ force: true }).then(() => {
   server.listen(process.env.PORT, () => {
