@@ -34,11 +34,11 @@ export default function Nav() {
           </Link>
 
           <Link to="/" className="px-6">
-            <span>nosotros</span>
+            <span>Nosotros</span>
           </Link>
 
           <Link to="/" className="pl-6 pr-8">
-            <span>contacto</span>
+            <span>Contacto</span>
           </Link>
 
           <input
