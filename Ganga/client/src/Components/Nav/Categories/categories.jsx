@@ -26,7 +26,7 @@ function handelFilterCat(){
   return (
    
      <select className="w-24" onChange={handelFilterCat}>
-       <option> categorias </option>
+       <option> Categorias </option>
           {
               categorias.map((el, i) => {
                   return (

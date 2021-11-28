@@ -1,11 +1,11 @@
-import React  from "react";
-import logo from '../../Resources/logo1.png'
+import React from "react";
+import logo from "../../Resources/logo.jpeg";
+import l from "../Logo/logo.module.css"
 
-export default function Logo (){
-
-    return (
-        <div>
-        <img src={logo} alt="img" height="150px"/>
-        </div>
-    )
+export default function Logo() {
+  return (
+    <div >
+      <img className={l.logo} src={logo} alt="img" height="150px" />
+    </div>
+  );
 }
