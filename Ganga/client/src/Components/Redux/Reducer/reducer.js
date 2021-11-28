@@ -5,13 +5,15 @@ import {
   GET_PRODUCT_BY_NAME,
   SIGNUP,
   FILTER_PRICE_BY_RANGE,
-  ORDER_BY_PRICE
+  ORDER_BY_PRICE,
+  GET_USER
 } from "../Actions/const";
 
 const initialState = {
   product: [],
   allProducts2: [],
   getInfoGoogle: [],
+  user:[],
 };
 
 function rootReducer(state = initialState, { type, payload, price1 , price2 }) {
@@ -28,6 +30,12 @@ function rootReducer(state = initialState, { type, payload, price1 , price2 }) {
         ...state,
         product: payload,
       };
+    }
+    case GET_USER:{
+      return {
+        ...state,
+        user: payload.data
+      }        
     }
     case GET_INFO_GOOGLE:
       return {

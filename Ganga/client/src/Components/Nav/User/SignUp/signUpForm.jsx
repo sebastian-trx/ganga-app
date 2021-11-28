@@ -179,9 +179,9 @@ export default function SignUpForm() {
         <LoginG />
       </div>
 
-      <h5 className="pt-6 pb-4 text-lg"> ¿Ya tienes una cuenta?</h5>
+      <h5 className="pt-4 pb-4 text-lg"> ¿Ya tienes una cuenta?</h5>
       <Link to="/ingresar">
-        <button className="text-red-400 pb-5  text-lg"> Entra aquí</button>
+        <button className="text-red-400 pb-3  text-lg"> Entra aquí</button>
       </Link>
     </div>
   );

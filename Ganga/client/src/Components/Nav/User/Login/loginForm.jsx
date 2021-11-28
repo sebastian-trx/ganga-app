@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import /*FcGoogle*/ "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { LoginG2 } from "../../User/LoginGoogle/loginG2";
 import { localLogin, getUserInfoGoogle } from "../../../Redux/Actions/actions";
-// import s from "./login.module.css";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -54,13 +53,12 @@ export default function LoginForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h4 className="text-left pl-10 pb-6 pt-10 text-2xl">Inicia Sesión</h4>
-        <hr className=" border-black mx-10" />
+        <h4 className="text-left pl-10 pb-3 pt-6 text-2xl">Inicia Sesión</h4>
+        <hr className=" border-black mx-10"/>
 
-        <div className="pt-14">
-          <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
-            name="mail"
+        <div className="pt-10">
+          <input className="w-96 border-gray-400 border-2 rounded pl-2"
+            name="correo"
             type="email"
             placeholder="Correo electrónico"
             value={input.mail}

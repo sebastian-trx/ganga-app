@@ -8,17 +8,20 @@
   
 .left {
   position: absolute;
-  height: 688px;
-  width: 698px;
-  background-image: url("");
+  height: 608px;
+  width: 658px;
+  top: 40px;
+  left: 40px;
+  /* background-image: url(""); */
   background-color: thistle;
 }
 
 .right {
     position: absolute;
-    height: 688px;
-    width: 698px;
-    right: 0px;
+    height: 608px;
+    width: 658px;
+    top:40px;
+    right: 40px;
     text-align: center;
   }
   

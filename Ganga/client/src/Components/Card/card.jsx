@@ -8,7 +8,7 @@ export default function Card({ image, name, price, id }) {
         < div className={s.container}>
             <Link to={`/${id}`}>
                 <div className={s.div1}>
-                    <img className={s.img} src={image} alt="image" />
+                    <img className={s.img} src={image} alt={`imagen de ${name}`} />
                 </div>
 
                 <div className={s.name}>
