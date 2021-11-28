@@ -15,6 +15,7 @@ import {
 export function getProduct() {
     return async function (dispatch) {
         let product = await axios.get('http://localhost:3001/product')
+        console.log('soy el product de getProduct: ', product)
         dispatch({
             type: GET_PRODUCT,
             payload: product.data
