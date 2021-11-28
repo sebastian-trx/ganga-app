@@ -7,7 +7,7 @@ import {
   GET_PRODUCT_BY_NAME,
   FILTER_PRICE_BY_RANGE,
   ORDER_BY_PRICE,
-  URL,
+  // URL,
   SIGNUP,
   GET_USER
 } from "./const";
