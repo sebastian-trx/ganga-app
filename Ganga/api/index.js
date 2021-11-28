@@ -20,6 +20,7 @@
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const { preloader } = require("./src/utils/Preloader.js");
+const { dotenv } = require("dotenv");
 // Syncing all the models at once.
 
 // conn.sync({ force: true }).then(() => {
