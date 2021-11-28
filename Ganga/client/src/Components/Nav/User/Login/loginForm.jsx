@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { LoginG2 } from "../../User/LoginGoogle/loginG2";
 import { localLogin, getUserInfoGoogle } from "../../../Redux/Actions/actions";
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { IoIosCart } from "react-icons/io";
@@ -7,7 +7,7 @@ import { ImSearch } from "react-icons/im";
 import { getUser } from "../../Redux/Actions/actions";
 import Logo from "../Logo/logo";
 
-import Categoria from "../Categories/categories";
+// import Categoria from "../Categories/categories";
 // import Catalog from "../Catalog/catalog";
 import User from "../User/user";
 
@@ -17,33 +17,33 @@ export default function Nav() {
   const user = useSelector((state) => state.user)
 
   useEffect(() => {
-      dispatch(getUser())
+    dispatch(getUser())
   }, [dispatch])
 
   console.log("user", user);
 
   const categorias = [
-    
-    {Nombre: 'Tecnologia', Id: 1}, 
-    {Nombre: 'Electrodomesticos', Id:2}, 
-    {Nombre: "Deportes",Id:3}, 
-    {Nombre: 'Informatica', Id:4}, 
-    {Nombre: 'Moda', Id:5}, 
-    {Nombre: "Juegos",Id:6}, 
-    {Nombre: 'Bebes', Id:7}, 
-    {Nombre: 'Repuestos', Id:8}, 
-    {Nombre: "Accesorios",Id:9}, 
-    {Nombre: 'Decoración', Id:10}, 
-    {Nombre: 'Educación', Id:11}, 
-    {Nombre: "Niños",Id:12}, 
-   
-]
+
+    { Nombre: 'Tecnologia', Id: 1 },
+    { Nombre: 'Electrodomesticos', Id: 2 },
+    { Nombre: "Deportes", Id: 3 },
+    { Nombre: 'Informatica', Id: 4 },
+    { Nombre: 'Moda', Id: 5 },
+    { Nombre: "Juegos", Id: 6 },
+    { Nombre: 'Bebes', Id: 7 },
+    { Nombre: 'Repuestos', Id: 8 },
+    { Nombre: "Accesorios", Id: 9 },
+    { Nombre: 'Decoración', Id: 10 },
+    { Nombre: 'Educación', Id: 11 },
+    { Nombre: "Niños", Id: 12 },
+
+  ]
 
 
-function handleCat(e){
+  function handleCat(e) {
 
-   
-}
+
+  }
 
 
   function handleSubmit() { }
@@ -60,21 +60,21 @@ function handleCat(e){
         </Link>
 
         <div className="pr-10">
-            <span>
+          <span>
             <select className="w-24" onChange={handleCat}>
-       <option> categorias </option>
-                  <Link to={"/categorias" + 1}> 
-          {
-              categorias.map(el => 
-                   (
-                  <option  key={ el.Id} >
-                  {el.Nombre}
-                  </option>
-                  ) )
-          }
-                 </Link> 
-      </select>
-            </span>
+              <option> categorias </option>
+              <Link to={"/categorias" + 1}>
+                {
+                  categorias.map(el =>
+                  (
+                    <option key={el.Id} >
+                      {el.Nombre}
+                    </option>
+                  ))
+                }
+              </Link>
+            </select>
+          </span>
 
           <Link to="/catalogo" className="px-6">
             <span>catalogo</span>
@@ -106,19 +106,19 @@ function handleCat(e){
               <IoIosCart />
             </button>
           </Link>
-        {
-          user && user.login ? 
-          <User/> :
-          <>
-          <Link to="/registrarme" className="pl-4">
-          <span>Crear cuenta</span>
-          </Link>
+          {
+            user && user.login ?
+              <User /> :
+              <>
+                <Link to="/registrarme" className="pl-4">
+                  <span>Crear cuenta</span>
+                </Link>
 
-          <Link to="/ingresar" className="pl-4">
-          <span>Iniciar Sesión</span>
-          </Link>
-          </>
-        }
+                <Link to="/ingresar" className="pl-4">
+                  <span>Iniciar Sesión</span>
+                </Link>
+              </>
+          }
 
           <User />
         </div>

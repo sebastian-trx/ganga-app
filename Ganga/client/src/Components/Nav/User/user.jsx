@@ -9,6 +9,7 @@ import Avatar from "@mui/material/Avatar";
 export default function User() {
 
   const dispatch = useDispatch();
+  console.log(dispatch);
  
 
   function handleLogout(e) {
