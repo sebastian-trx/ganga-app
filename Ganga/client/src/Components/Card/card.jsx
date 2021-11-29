@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import s from './card.module.css'
 
 export default function Card({ image, name, price, id }) {
-
     return (
         < div className={s.container}>
             <Link to={`/${id}`}>
