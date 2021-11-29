@@ -20,7 +20,7 @@ export default function ProductId() {
     return () => {
       setState([]);
     };
-  }, );
+  },[]);
 
   useEffect(() => {
     setState(info);
