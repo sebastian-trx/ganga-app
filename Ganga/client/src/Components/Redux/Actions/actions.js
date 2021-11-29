@@ -57,7 +57,7 @@ export function orderByPrice (payload){
 export function getUserInfoGoogle(payload) {
   return async function (dispatch) {
     const arr = await axios.get(`/sessionActive/`, {
-      withCredentials: true,
+      withCredentials: false,
     });
     return dispatch({
       type: GET_INFO_GOOGLE,
@@ -70,7 +70,7 @@ export function getUserInfoGoogle(payload) {
 export function localLogin(payload) {
   return async function (dispatch) {
     await axios
-      .post(`/localLogin/`, payload, { withCredentials: true })
+      .post(`/localLogin/`, payload, { withCredentials: false })
       .then((response) => {
         dispatch({
           type: LOCAL_LOGIN,
