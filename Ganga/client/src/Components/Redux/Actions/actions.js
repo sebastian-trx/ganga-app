@@ -59,6 +59,7 @@ export function getUserInfoGoogle(payload) {
     const arr = await axios.get(`/sessionActive/`, {
       withCredentials: false,
     });
+    console.log("soy el arr ", arr)
     return dispatch({
       type: GET_INFO_GOOGLE,
       payload: arr.data,
