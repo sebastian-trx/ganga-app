@@ -11,6 +11,7 @@ import {
   URL,
   SIGNUP,
   GET_USER,
+  GET_CATEGORIES,
   GET_DETAIL_PRODUCT
 } from "./const";
 
@@ -105,6 +106,15 @@ export function signUp(payload) {
       })
       .catch((error) => console.log(error));
   };
+}
+
+export function getCategories() {
+  return async function (dispatch) {
+    const info = await axios.get("http://localhost:3001/category")
+    return dispatch({
+        type: GET_CATEGORIES,
+        payload: info.data
+    })
 }
 
 export function getDetailsProduct(id){
