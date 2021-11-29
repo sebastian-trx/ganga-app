@@ -13,51 +13,50 @@ import {
 } from "./const";
 
 export function getProduct() {
-    return async function (dispatch) {
-        let product = await axios.get(`https://ganga-app.herokuapp.com/product`)
-        console.log('soy el product de getProduct: ', product)
-        dispatch({
-            type: GET_PRODUCT,
-            payload: product.data
-        })
-    }
+  return async function (dispatch) {
+    let product = await axios.get(`/product`)
+    dispatch({
+      type: GET_PRODUCT,
+      payload: product.data
+    })
+  }
 }
 
 
-export function getProductByName(name){
-    return async function (dispatch) {
-        try{
-            let product = await axios.get(`https://ganga-app.herokuapp.com/product?name=` + name)
-            return dispatch({
-                type: GET_PRODUCT_BY_NAME,
-                payload: product.data
-            })
-        } catch (err) {
-            console.log(err)
-        }
+export function getProductByName(name) {
+  return async function (dispatch) {
+    try {
+      let product = await axios.get(`/product?name=` + name)
+      return dispatch({
+        type: GET_PRODUCT_BY_NAME,
+        payload: product.data
+      })
+    } catch (err) {
+      console.log(err)
     }
+  }
 }
 
-export function filterPriceByRange(price1, price2){
-    return{
-        type: FILTER_PRICE_BY_RANGE,
-        price1, price2 
-    }
+export function filterPriceByRange(price1, price2) {
+  return {
+    type: FILTER_PRICE_BY_RANGE,
+    price1, price2
+  }
 }
 
-export function orderByPrice (payload){
-    console.log(payload)
-    return {
-        type:ORDER_BY_PRICE,
-        payload
-    }
+export function orderByPrice(payload) {
+  console.log(payload)
+  return {
+    type: ORDER_BY_PRICE,
+    payload
+  }
 }
 
 // action para obtener la sesion activa
 export function getUserInfoGoogle(payload) {
   return async function (dispatch) {
-    const arr = await axios.get(`https://ganga-app.herokuapp.com/sessionActive/`, {
-      withCredentials: true,
+    const arr = await axios.get(`/sessionActive/`, {
+      withCredentials: false,
     });
     console.log("soy el arr ", arr)
     return dispatch({
@@ -71,7 +70,7 @@ export function getUserInfoGoogle(payload) {
 export function localLogin(payload) {
   return async function (dispatch) {
     await axios
-      .post(`https://ganga-app.herokuapp.com/localLogin/`, payload, { withCredentials: true })
+      .post(`/localLogin/`, payload, { withCredentials: false })
       .then((response) => {
         dispatch({
           type: LOCAL_LOGIN,
@@ -82,21 +81,21 @@ export function localLogin(payload) {
   };
 }
 
-export function getUser(){
-    return async function (dispatch) {
-        const info = await axios.get(`https://ganga-app.herokuapp.com/sessionActive`)
-        return dispatch({
-            type: GET_USER,
-            payload: info
-        })
-    }
+export function getUser() {
+  return async function (dispatch) {
+    const info = await axios.get(`/sessionActive`)
+    return dispatch({
+      type: GET_USER,
+      payload: info
+    })
+  }
 }
 
 // action para crear un usuario
 export function signUp(payload) {
   return async function (dispatch) {
     await axios
-      .post(`https://ganga-app.herokuapp.com/user/`, payload)
+      .post(`/user/`, payload)
       .then((response) => {
         dispatch({
           type: SIGNUP,
