@@ -17,6 +17,10 @@ module.exports = (sequelize) => {
                 defaultValue: false,
             },
 
+            subcategories: {
+                type: DataTypes.ARRAY(DataTypes.STRING),
+            },
+
 
         },
         { timestamps: false, paranoid: true }
