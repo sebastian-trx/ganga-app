@@ -3,27 +3,46 @@ margin: 0;
 }
 
 .img{
-height: 150px;
-width: 150px;
-border-radius: 10px;
-margin:5px;
+height: 350px;
+width: 300x;
+border-radius: 20px;
+display: flex;
+justify-content:center;
+align-items: center;
+margin-top: -32px;
 }
 
 .container{
-    height: 350px;
-    background-color: rgb(247, 247, 247);
+    height: 550px;
+    width: 360px;
+    background-color: white;
     border-radius: 20px;
     margin: 20px;
     border: 2px solid rgba(0, 0, 0, 0.466); ;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    box-shadow: 0px 10px 10px 0px rgba(9, 5, 29, 0.171) !important;
 }
 .div2{
     font-size: 15px;
     justify-content: center;
-    margin-top: 10px;
+    align-items: center;
+    display:flex;
+    margin-top: 25px;
+    font-family: "Mulish";
+    font-weight: Regular;
+    font-size: 25px;
 }
 .name{
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 10px;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+    font-size: 20px;
+    font-family: "Mulish";
+    font-weight: ExtraBold;
 }
 
 .container{
@@ -33,14 +52,18 @@ margin:5px;
 }
 
 .star{
-    margin-top: 10px;
-font-size: 20px;
+    margin-top: 20px;
+  font-size: 20px;
+  justify-content: center;
+    align-items: center;
+    display:flex;
 }
 
 .div3{
     margin-top: 15px;
     font-size: 20px;
     border-radius: 5px;
+    padding-bottom: 100px ;
 }
 .div3 {
     border-color: #f1c40f;
