@@ -17,7 +17,7 @@ function App() {
          <Route path ='/catalogo' element={<Catalogo/>}/>
          <Route path ='/ingresar' element={<Login/>}/>
          <Route path ='/registrarme' element={<SignUp/>}/>
-         <Route path ='/categorias/:id' element={<Categorias/>}/>
+         <Route path ='/categorias/:nombre' element={<Categorias/>}/>
          <Route exact path="/login/success" element={<LoginSuccess />} />
         </Routes>
     </BrowserRouter>

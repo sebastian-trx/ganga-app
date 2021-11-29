@@ -66,17 +66,14 @@ export default function Catalogo() {
         ) : (
           allProduct.map((el, i) => {
             return (
-              <>
-                <div>
+                <div key={"card" + i}>
                   <Card
-                    key={"card" + i}
                     name={el.name}
                     image={el.image}
                     price={el.price}
                     id={el.id}
                   />
                 </div>
-              </>
             );
           })
         )}
