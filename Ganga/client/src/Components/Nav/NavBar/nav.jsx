@@ -14,6 +14,7 @@ export default function Nav() {
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.user);
+  const userGoogle = useSelector((state) => state.getInfoGoogle);
   const categories = useSelector((state) => state.categories);
 
   useEffect(() => {
@@ -25,18 +26,11 @@ export default function Nav() {
   }, [dispatch])
 
   function handleCat(e) {
-      e.preventDefault();
-   let nombre = e.target.value 
+    e.preventDefault();
+    let nombre = e.target.value
     navigate("/categorias/" + nombre);
- 
+
   }
-
-  function handleSubCat(e){
-let category= categories.filter(c=> c.name === e.target.value)
-
-         
-  }
-
 
   function handleSubmit() { }
 
@@ -53,19 +47,19 @@ let category= categories.filter(c=> c.name === e.target.value)
 
         <div className="pr-10">
           <span>
-            <select className="w-24" onChange={handleCat}>
+            <select className="w-28" onChange={handleCat}>
               <option> categorias </option>
-                {
-                  categories.map((el, i) =>
-                  (
-                    
-                    <option key={el.name + i}>
-                      {el.name}
-                    </option>
-                    
-                  )
-                 )
-                }
+              {
+                categories.map((el, i) =>
+                (
+
+                  <option key={el.name + i}>
+                    {el.name}
+                  </option>
+
+                )
+                )
+              }
             </select>
           </span>
 
@@ -84,12 +78,12 @@ let category= categories.filter(c=> c.name === e.target.value)
           <input
             type="text"
             onChange={handleInput}
-            className="bg-gray-300 pt-1 ml-10 h-8 border-gray-500 border-l-2 border-t-2 border-b-2"
+            className="bg-gray-300 pt-2 pb-1 ml-10 h-8 border-gray-500 border-l-2 border-t-2 border-b-2"
           />
           <button
             type="submit"
             onClick={handleSubmit}
-            className=" px-1  h-8 bg-gray-300 mr-4 mb-1 border-gray-500 border-r-2 border-t-1 border-b-2"
+            className=" px-1  h-8 bg-gray-300 mr-4 mb-2 border-gray-500 border-r-2 border-t-2 border-b-2"
           >
             <ImSearch />
           </button>
@@ -100,7 +94,7 @@ let category= categories.filter(c=> c.name === e.target.value)
             </button>
           </Link>
           {
-            user && user.login ?
+            userGoogle && userGoogle.login ?
               <User /> :
               <>
                 <Link to="/registrarme" className="pl-4">
@@ -113,7 +107,7 @@ let category= categories.filter(c=> c.name === e.target.value)
               </>
           }
 
-        
+
         </div>
       </nav>
     </div>

@@ -17,6 +17,7 @@ const Slideshow = ({
     // Compruebo que el slideshow tenga elementos
     if (slideshow?.current?.children?.length > 0) {
 
+
       // Obtengo el primer elemento del slideshow.
       const primerElemento = slideshow.current.children[0];
 
