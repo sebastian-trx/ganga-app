@@ -25,18 +25,11 @@ export default function Nav() {
   }, [dispatch])
 
   function handleCat(e) {
-      e.preventDefault();
-   let nombre = e.target.value 
+    e.preventDefault();
+    let nombre = e.target.value
     navigate("/categorias/" + nombre);
- 
+
   }
-
-  function handleSubCat(e){
-let category= categories.filter(c=> c.name === e.target.value)
-
-         
-  }
-
 
   function handleSubmit() { }
 
@@ -55,17 +48,17 @@ let category= categories.filter(c=> c.name === e.target.value)
           <span>
             <select className="w-24" onChange={handleCat}>
               <option> categorias </option>
-                {
-                  categories.map((el, i) =>
-                  (
-                    
-                    <option key={el.name + i}>
-                      {el.name}
-                    </option>
-                    
-                  )
-                 )
-                }
+              {
+                categories.map((el, i) =>
+                (
+
+                  <option key={el.name + i}>
+                    {el.name}
+                  </option>
+
+                )
+                )
+              }
             </select>
           </span>
 
@@ -113,7 +106,7 @@ let category= categories.filter(c=> c.name === e.target.value)
               </>
           }
 
-        
+
         </div>
       </nav>
     </div>

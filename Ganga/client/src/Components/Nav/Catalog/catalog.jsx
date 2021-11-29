@@ -66,7 +66,6 @@ export default function Catalogo() {
         ) : (
           allProduct.map((el, i) => {
             return (
-              <>
                 <div key={"card" + i}>
                   <Card
                     name={el.name}
@@ -75,7 +74,6 @@ export default function Catalogo() {
                     id={el.id}
                   />
                 </div>
-              </>
             );
           })
         )}

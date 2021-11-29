@@ -10,8 +10,8 @@ const infoProduct = [
     stock: 2,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_844835-MLA44803313304_022021-O.webp",
-      category: "Deportes y fitness",
-      subcategories: ["Fútbol"],
+    categories: "Deportes y fitness",
+    subcategories: ["Fútbol"],
   },
   {
     name: "Pelota Nike Fútbol 11",
@@ -22,8 +22,8 @@ const infoProduct = [
     stock: 4,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_609347-MLA47330116405_092021-O.webp",
-      category: "Deportes y fitness",
-      subcategories: ["Fútbol"],
+    categories: "Deportes y fitness",
+    subcategories: ["Fútbol"],
   },
   {
     name: "Zapatillas Nike Hoops 2.0",
@@ -33,7 +33,7 @@ const infoProduct = [
     stock: 4,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_763666-MLA47081340430_082021-O.webp",
-    category: "Indumentaria",
+    categories: "Indumentaria",
     subcategories: ["Zapatillas"],
   },
   {
@@ -44,8 +44,8 @@ const infoProduct = [
     stock: 4,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_886359-MLA47582509221_092021-O.webp",
-      category: "Indumentaria",
-      subcategories: ["Zapatillas"],
+    categories: "Indumentaria",
+    subcategories: ["Zapatillas"],
   },
   {
     name: "Camiseta De Argentina Adidas",
@@ -55,8 +55,8 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_836338-MLA41873746734_052020-O.webp",
-      category: "Indumentaria",
-      subcategories: ["Remeras"],
+    categories: "Indumentaria",
+    subcategories: ["Remeras"],
   },
   {
     name: "Camiseta Holanda Titular Adidas",
@@ -66,8 +66,8 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_728352-MLA47148620656_082021-O.webp",
-      category: "Indumentaria",
-      subcategories: ["Remeras"],
+    categories: "Indumentaria",
+    subcategories: ["Remeras"],
   },
   {
     name: "Bicicleta Sunny",
@@ -78,8 +78,8 @@ const infoProduct = [
     stock: 2,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_743278-MLA45980583709_052021-O.webp",
-      category: "Deportes y fitness",
-      subcategories: ["Ciclismo"],
+    categories: "Deportes y fitness",
+    subcategories: ["Ciclismo"],
   },
   {
     name: "Samsung Galaxy Note20",
@@ -90,8 +90,8 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_947785-MLA44210097170_112020-O.webp",
-      category: "Tecnologia",
-      subcategories: ["Celulares y telefonos"],
+    categories: "Tecnologia",
+    subcategories: ["Celulares y telefonos"],
   },
   {
     name: "LG K52",
@@ -101,8 +101,8 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_906599-MLA47575297130_092021-O.webp",
-      category: "Tecnología",
-      subcategories: ["Celulares y telefonos"],
+    categories: "Tecnología",
+    subcategories: ["Celulares y telefonos"],
   },
   {
     name: "Samsung Smart TV",
@@ -113,8 +113,8 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_878604-MLA44160072739_112020-O.webp",
-      category: "Tecnología",
-      subcategories: ["Televisores"],
+    categories: "Tecnología",
+    subcategories: ["Televisores"],
   },
   {
     name: "Monitor Gamer LG",
@@ -125,8 +125,8 @@ const infoProduct = [
     stock: 2,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_624926-MLA44490109901_012021-O.webp",
-      category: "Tecnología",
-      subcategories: ["Computacion"],
+    categories: "Tecnología",
+    subcategories: ["Computacion"],
   },
   {
     name: "Notebook HP 14-dq2024la",
@@ -137,8 +137,8 @@ const infoProduct = [
     stock: 4,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_962681-MLA47729250270_102021-O.webp",
-      category: "Tecnología",
-      subcategories: ["Computacion"],
+    categories: "Tecnología",
+    subcategories: ["Computacion"],
   },
   {
     name: "Miles Morales Standard Edition Sony PS4 Físico",
@@ -149,8 +149,8 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_984177-MLA44963321666_022021-O.webp",
-      category: "Tecnología",
-      subcategories: ["Consolas y videojuegos"],
+    categories: "Tecnología",
+    subcategories: ["Consolas y videojuegos"],
   },
   {
     name: "Silla Plastica Ideal",
@@ -161,8 +161,8 @@ const infoProduct = [
     stock: 5,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_830905-MLA45643896168_042021-O.webp",
-      category: "Hogar y Muebles",
-      subcategories: ["Jardin y Aire Libre"],
+    categories: "Hogar y Muebles",
+    subcategories: ["Jardin y Aire Libre"],
   },
   {
     name: "Manguera Pvc",
@@ -173,8 +173,8 @@ const infoProduct = [
     stock: 3,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_698725-MLA43704259794_102020-O.webp",
-      category: "Herramientas",
-      subcategories: ["Herramientas para Jardin"],
+    categories: "Herramientas",
+    subcategories: ["Herramientas para Jardin"],
   },
   {
     name: "Aire Acondicionado Bgh",
@@ -185,8 +185,8 @@ const infoProduct = [
     stock: 2,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_984177-MLA44963321666_022021-O.webp",
-      category: "Electrodomesticos",
-      subcategories: ["Climatizacion"],
+    categories: "Electrodomesticos",
+    subcategories: ["Climatizacion"],
   },
   {
     name: "Taladro Atornillador Klatter",
@@ -197,8 +197,8 @@ const infoProduct = [
     stock: 3,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_935558-MLA45017514805_022021-O.webp",
-      category: "Herramientas",
-      subcategories: ["Herramientas Electricas"],
+    categories: "Herramientas",
+    subcategories: ["Herramientas Electricas"],
   },
   {
     name: "Hidrolavadora Kärcher",
@@ -209,8 +209,8 @@ const infoProduct = [
     stock: 2,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_804890-MLA40506772405_012020-O.webp",
-      category: "Herramientas",
-      subcategories: ["Herramientas Electricas", "Herramientas para Jardin"],
+    categories: "Herramientas",
+    subcategories: ["Herramientas Electricas", "Herramientas para Jardin"],
   },
   {
     name: "Kit De Herramientas Manuales",
@@ -221,8 +221,8 @@ const infoProduct = [
     stock: 6,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_983972-MLA44508169524_012021-O.webp",
-      category: "Herramientas",
-      subcategories: ["Herramientas Manuales"],
+    categories: "Herramientas",
+    subcategories: ["Herramientas Manuales"],
   },
   {
     name: "Juego Llave Combinada",
@@ -233,8 +233,8 @@ const infoProduct = [
     stock: 5,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_779077-MLA47229455553_082021-O.webp",
-      category: "Herramientas",
-      subcategories: ["Herramientas Manuales"],
+    categories: "Herramientas",
+    subcategories: ["Herramientas Manuales"],
   },
   {
     name: "Volkswagen Gol 1.0 De Baja",
@@ -245,8 +245,8 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_991793-MLA44515257451_012021-O.webp",
-      category: "Vehiculos",
-      subcategories: ["Autos chocados y averiados"],
+    categories: "Vehiculos",
+    subcategories: ["Autos chocados y averiados"],
   },
   {
     name: "Honda Cb250 Twister Inyeccion",
@@ -257,8 +257,8 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_931639-MLA48097466379_112021-O.webp",
-      category: "Vehiculos",
-      subcategories: ["Motos"],
+    categories: "Vehiculos",
+    subcategories: ["Motos"],
   },
   {
     name: "Honda Elite 125",
@@ -269,8 +269,8 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_717832-MLA48232349747_112021-O.webp",
-      category: "Vehiculos",
-      subcategories: ["Motos"],
+    categories: "Vehiculos",
+    subcategories: ["Motos"],
   },
 ];
 
