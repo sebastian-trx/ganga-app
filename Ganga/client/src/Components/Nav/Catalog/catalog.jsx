@@ -37,9 +37,14 @@ export default function Catalogo() {
     return (
         <div className={s.nav}>
             <div>
+           
 
-                <Link to='/' >  <Logo /> </Link>
-                <div>
+                <Link to='/' >
+                <div >
+                      <Logo /> 
+                      </div>
+                      </Link>
+                <div >
                     <button onClick={handleClick}>
                         <VscDebugRestart /></button>
                 </div>
@@ -54,6 +59,7 @@ export default function Catalogo() {
                         <option value='Mayor-Menor'> Menor a Mayor </option>
                     </select>
                 </div></div>
+            
             </div>
             <div className={s.cards} >
                 {
@@ -65,8 +71,8 @@ export default function Catalogo() {
                         allProduct.map((el, i) => {
                             return (
                                 <>
-                                    <div>
-                                        <Card key={"card" + i} name={el.name} image={el.image} price={el.price} id={el.id} />
+                                    <div key={"card" + i} >
+                                        <Card  name={el.name} image={el.image} price={el.price} id={el.id} />
                                     </div>
                                 </>
                             )

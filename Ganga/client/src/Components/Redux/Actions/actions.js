@@ -113,7 +113,6 @@ export function getDetailsProduct(id){
          let urlId = await axios.get(URL +'product/',{
              params: { id: id } 
             })
-            console.log("DATA", urlId.data)
          dispatch({
              type:GET_DETAIL_PRODUCT,
              payload: urlId.data        
