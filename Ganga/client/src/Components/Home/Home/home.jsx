@@ -7,7 +7,7 @@ import s from "./home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allProduct = useSelector((state) => state.allProduct);
+  const allProduct = useSelector((state) => state.product);
   console.log(allProduct);
   const [nav, setNav] = useState(false);
   useEffect(() => {

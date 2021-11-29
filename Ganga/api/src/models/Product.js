@@ -39,7 +39,15 @@ module.exports = (sequelize) => {
             image: {
                 type: DataTypes.STRING,
             },
-                        
+
+            categories: {
+                type: DataTypes.STRING,
+            },
+
+            subcategories: {
+                type: DataTypes.ARRAY(DataTypes.STRING),
+            },
+
         },
         { timestamps: false, paranoid: true }
     );
