@@ -16,7 +16,7 @@ const Slideshow = ({
   const siguiente = useCallback(() => {
     // Compruebo que el slideshow tenga elementos
     if (slideshow.current.children.length > 0) {
-      console.log("Siguiente");
+      // console.log("Siguiente");
 
       // Obtengo el primer elemento del slideshow.
       const primerElemento = slideshow.current.children[0];
@@ -46,7 +46,7 @@ const Slideshow = ({
   }, [velocidad]);
 
   const anterior = () => {
-    console.log("Anterior");
+    // console.log("Anterior");
     if (slideshow.current.children.length > 0) {
       // Obtengo el ultimo elemento del slideshow.
       const index = slideshow.current.children.length - 1;

@@ -14,7 +14,7 @@ import {
 
 export function getProduct() {
     return async function (dispatch) {
-        let product = await axios.get(`/product`)
+        let product = await axios.get(`https://ganga-app.herokuapp.com/product`)
         console.log('soy el product de getProduct: ', product)
         dispatch({
             type: GET_PRODUCT,
@@ -27,7 +27,7 @@ export function getProduct() {
 export function getProductByName(name){
     return async function (dispatch) {
         try{
-            let product = await axios.get(`/product?name=` + name)
+            let product = await axios.get(`https://ganga-app.herokuapp.com/product?name=` + name)
             return dispatch({
                 type: GET_PRODUCT_BY_NAME,
                 payload: product.data
@@ -56,8 +56,8 @@ export function orderByPrice (payload){
 // action para obtener la sesion activa
 export function getUserInfoGoogle(payload) {
   return async function (dispatch) {
-    const arr = await axios.get(`/sessionActive/`, {
-      withCredentials: false,
+    const arr = await axios.get(`https://ganga-app.herokuapp.com/sessionActive/`, {
+      withCredentials: true,
     });
     console.log("soy el arr ", arr)
     return dispatch({
@@ -71,7 +71,7 @@ export function getUserInfoGoogle(payload) {
 export function localLogin(payload) {
   return async function (dispatch) {
     await axios
-      .post(`/localLogin/`, payload, { withCredentials: false })
+      .post(`https://ganga-app.herokuapp.com/localLogin/`, payload, { withCredentials: true })
       .then((response) => {
         dispatch({
           type: LOCAL_LOGIN,
@@ -84,7 +84,7 @@ export function localLogin(payload) {
 
 export function getUser(){
     return async function (dispatch) {
-        const info = await axios.get(`/sessionActive`)
+        const info = await axios.get(`https://ganga-app.herokuapp.com/sessionActive`)
         return dispatch({
             type: GET_USER,
             payload: info
@@ -96,7 +96,7 @@ export function getUser(){
 export function signUp(payload) {
   return async function (dispatch) {
     await axios
-      .post(`/user/`, payload)
+      .post(`https://ganga-app.herokuapp.com/user/`, payload)
       .then((response) => {
         dispatch({
           type: SIGNUP,
