@@ -6,7 +6,7 @@
 
 body {
   background: #ede9e7;
-  font-family: "Mulish", extra-bold;
+  /* font-family: "Mulish", extra-bold; */
 }
 
 main {
@@ -16,4 +16,4 @@ main {
   margin-top: -120px;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&family=Open+Sans:wght@300&family=Quicksand:wght@300&family=Work+Sans:wght@700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&family=Open+Sans:wght@300&family=Quicksand:wght@300&family=Work+Sans:wght@700&display=swap"); */
