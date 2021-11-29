@@ -15,7 +15,7 @@ const Slideshow = ({
 
   const siguiente = useCallback(() => {
     // Compruebo que el slideshow tenga elementos
-    if (slideshow.current.children.length > 0) {
+    if (slideshow?.current?.children?.length > 0) {
       console.log("Siguiente");
 
       // Obtengo el primer elemento del slideshow.

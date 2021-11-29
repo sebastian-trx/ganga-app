@@ -1,43 +1,37 @@
-import React from "react";
+import React, { useEffect }  from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from "react-router-dom";
+
+import { getCategories } from "../../Redux/Actions/actions";
 
 export default function Categorias() {
 
-const categorias = [
-    
-    {Nombre: 'Tecnologia', Id:'1'}, 
-    {Nombre: 'Electrodomesticos', Id:'2'}, 
-    {Nombre: "Deportes",id:'3'}, 
-    {Nombre: 'Informatica', Id:'4'}, 
-    {Nombre: 'Moda', Id:'5'}, 
-    {Nombre: "Juegos",id:'6'}, 
-    {Nombre: 'Bebes', Id:'7'}, 
-    {Nombre: 'Repuestos', Id:'8'}, 
-    {Nombre: "Accesorios",id:'9'}, 
-    {Nombre: 'Decoración', Id:'10'}, 
-    {Nombre: 'Educación', Id:'11'}, 
-    {Nombre: "Niños",id:'12'}, 
-   
-]
+const dispatch = useDispatch();
+const categories = useSelector((state) => state.categories);
+const {nombre} = useParams();
+let category = categories.filter(c=> c.name === nombre)
+useEffect(() => {
+dispatch(getCategories())
+}, [dispatch])
 
-function handelFilterCat(){
 
+function handelSubCat(){
 }
 
   return (
-   
-     <select className="w-24" onChange={handelFilterCat}>
-       <option> Categorias </option>
+   <div>
+     <select className="w-40" onChange={handelSubCat}>
+       <option> SubCategorias </option>
           {
-              categorias.map((el, i) => {
-                  return (
-                  <>
-                  
-                  <option  key={"Cate" + i} value ={el.Id}>{el.Nombre}</option>
-                  </>
+              category[0].subcategories?.map((el, i) => 
+                   (
+                  <option  key={i} value={el}>
+                  {el}
+                  </option>
                   )
-              })
+              )
           }
       </select>
-
+</div>
   );
 }

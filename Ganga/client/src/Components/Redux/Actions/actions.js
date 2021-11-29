@@ -9,7 +9,8 @@ import {
   ORDER_BY_PRICE,
   URL,
   SIGNUP,
-  GET_USER
+  GET_USER,
+  GET_CATEGORIES,
 } from "./const";
 
 export function getProduct() {
@@ -104,4 +105,14 @@ export function signUp(payload) {
       })
       .catch((error) => console.log(error));
   };
+}
+
+export function getCategories() {
+  return async function (dispatch) {
+    const info = await axios.get("http://localhost:3001/category")
+    return dispatch({
+        type: GET_CATEGORIES,
+        payload: info.data
+    })
+}
 }
