@@ -77,7 +77,7 @@ function rootReducer(state = initialState, { type, payload, price1 , price2 }) {
          })
          return{
            ...state,
-           product: payload === "All"? state.products : sortedProducts
+           product: payload === "All"? state.product : sortedProducts
          }
      }
     default: {
