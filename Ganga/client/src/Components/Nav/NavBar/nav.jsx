@@ -24,9 +24,6 @@ export default function Nav() {
     dispatch(getCategories())
   }, [dispatch])
 
-
-  
-
   function handleCat(e) {
       e.preventDefault();
    let nombre = e.target.value 
@@ -73,7 +70,7 @@ let category= categories.filter(c=> c.name === e.target.value)
           </span>
 
           <Link to="/catalogo" className="px-6">
-            <span>catalogo</span>
+            <span>Catalogo</span>
           </Link>
 
           <Link to="/" className="px-6">

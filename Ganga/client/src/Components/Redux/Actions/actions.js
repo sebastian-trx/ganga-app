@@ -1,3 +1,4 @@
+// import { unstable_useId } from "@mui/utils";
 import axios from "axios";
 
 import {
@@ -11,12 +12,12 @@ import {
   SIGNUP,
   GET_USER,
   GET_CATEGORIES,
+  GET_DETAIL_PRODUCT
 } from "./const";
 
 export function getProduct() {
     return async function (dispatch) {
         let product = await axios.get('http://localhost:3001/product')
-        console.log('soy el product de getProduct: ', product)
         dispatch({
             type: GET_PRODUCT,
             payload: product.data
@@ -28,7 +29,7 @@ export function getProduct() {
 export function getProductByName(name){
     return async function (dispatch) {
         try{
-            let product = await axios.get('http://localhost:3001/product?name=' + name)
+            let product = await axios.get(URL +'product?name=' + name)
             return dispatch({
                 type: GET_PRODUCT_BY_NAME,
                 payload: product.data
@@ -115,4 +116,19 @@ export function getCategories() {
         payload: info.data
     })
 }
+
+export function getDetailsProduct(id){
+ return async (dispatch) => {
+     try{
+         let urlId = await axios.get(URL +'product/',{
+             params: { id: id } 
+            })
+         dispatch({
+             type:GET_DETAIL_PRODUCT,
+             payload: urlId.data        
+         })
+     } catch (err){
+         console.log(err)
+     }
+ }
 }
