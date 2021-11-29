@@ -57,7 +57,7 @@ export function orderByPrice (payload){
 export function getUserInfoGoogle(payload) {
   return async function (dispatch) {
     const arr = await axios.get(`/sessionActive/`, {
-      withCredentials: false,
+      withCredentials: true,
     });
     console.log("soy el arr ", arr)
     return dispatch({
