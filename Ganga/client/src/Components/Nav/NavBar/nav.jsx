@@ -17,6 +17,8 @@ export default function Nav() {
   const userGoogle = useSelector((state) => state.getInfoGoogle);
   const categories = useSelector((state) => state.categories);
 
+  console.log(user);
+
   useEffect(() => {
     dispatch(getUser())
   }, [dispatch])
