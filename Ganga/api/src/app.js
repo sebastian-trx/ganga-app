@@ -20,7 +20,7 @@ server.name = 'API';
 server.use(cors());
 server.use(
   cors({
-    origin: "https://ganga-app.vercel.app",             //se habilitan las credenciales de cors para los pedidos que vengan del front
+    origin: true,             //se habilitan las credenciales de cors para los pedidos que vengan del front
     credentials: true,
   })
 )
@@ -35,12 +35,7 @@ server.use(morgan('dev'));
 //   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
 //   next();
 // });
-// server.use(
-//   cors({
-//     origin: "https://ganga-app.vercel.app/",             //se habilitan las credenciales de cors para los pedidos que vengan del front
-//     credentials: true,
-//   })
-// )
+
 server.use(                                             //se habilita el manejo de sesiones para el server
   session({
     secret: "secretcode",
