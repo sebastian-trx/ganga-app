@@ -41,6 +41,11 @@ server.use(                                             //se habilita el manejo 
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    }
   })
 );
 
