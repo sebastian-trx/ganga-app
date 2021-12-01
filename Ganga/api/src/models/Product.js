@@ -19,8 +19,7 @@ module.exports = (sequelize) => {
 
             mark: {
                 type: DataTypes.STRING,
-                allowNull: true,
-                //Se lo pasa a true para que no rompa, cuando se hagan las precargas se lo pasa a false
+                allowNull: false,
             },
 
             description: {
@@ -40,7 +39,15 @@ module.exports = (sequelize) => {
             image: {
                 type: DataTypes.STRING,
             },
-                        
+
+            categories: {
+                type: DataTypes.STRING,
+            },
+
+            subcategories: {
+                type: DataTypes.ARRAY(DataTypes.STRING),
+            },
+
         },
         { timestamps: false, paranoid: true }
     );
