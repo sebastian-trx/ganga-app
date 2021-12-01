@@ -56,7 +56,7 @@ let category= categories.filter(c=> c.name === e.target.value)
 
         <div className="pr-10">
           <span>
-            <select className="w-24" onChange={handleCat}>
+            <select className="w-28" onChange={handleCat}>
               <option> categorias </option>
                 {
                   categories.map((el, i) =>
