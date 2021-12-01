@@ -12,7 +12,8 @@ import {
   SIGNUP,
   GET_USER,
   GET_CATEGORIES,
-  GET_DETAIL_PRODUCT
+  GET_DETAIL_PRODUCT,
+  FILTER_BY_SEARCH
 } from "./const";
 
 export function getProduct() {
@@ -48,7 +49,6 @@ export function filterPriceByRange(price1, price2) {
 }
 
 export function orderByPrice(payload) {
-  console.log(payload)
   return {
     type: ORDER_BY_PRICE,
     payload
@@ -131,5 +131,13 @@ export function getDetailsProduct(id) {
     } catch (err) {
       console.log(err)
     }
+  }
+}
+
+export function filterBySearch (payload){
+  console.log(payload)
+  return {
+    type: FILTER_BY_SEARCH,
+    payload
   }
 }

@@ -9,3 +9,4 @@ export const SIGNUP = "SIGNUP";
 export const GET_USER = "GET_USER";
 export const GET_CATEGORIES="GET_CATEGORIES";
 export const GET_DETAIL_PRODUCT = "GET_DETAIL_PRODUCT";
+export const FILTER_BY_SEARCH = "FILTER_BY_SEARCH";

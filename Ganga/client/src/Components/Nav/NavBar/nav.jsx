@@ -29,7 +29,6 @@ export default function Nav() {
     e.preventDefault();
     let nombre = e.target.value
     navigate("/categorias/" + nombre);
-
   }
 
   function handleSubmit() { }
