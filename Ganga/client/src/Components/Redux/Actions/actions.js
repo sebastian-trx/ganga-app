@@ -111,7 +111,7 @@ export function signUp(payload) {
 
 export function getCategories() {
   return async function (dispatch) {
-    const info = await axios.get("http://localhost:3001/category")
+    const info = await axios.get(`/category`)
     return dispatch({
       type: GET_CATEGORIES,
       payload: info.data
@@ -122,7 +122,7 @@ export function getCategories() {
 export function getDetailsProduct(id) {
   return async (dispatch) => {
     try {
-      let urlId = await axios.get(URL + 'product/', {
+      let urlId = await axios.get(`/product`, {
         params: { id: id }
       })
       dispatch({
