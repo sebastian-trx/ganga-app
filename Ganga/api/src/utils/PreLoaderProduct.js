@@ -184,7 +184,7 @@ const infoProduct = [
     price: "200",
     stock: 2,
     image:
-      "https://http2.mlstatic.com/D_NQ_NP_984177-MLA44963321666_022021-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_812431-MLA44292716761_122020-O.webp",
     categories: "Electrodomesticos",
     subcategories: ["Climatizacion"],
   },
