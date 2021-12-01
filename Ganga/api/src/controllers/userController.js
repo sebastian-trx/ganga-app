@@ -7,7 +7,7 @@ async function postUser(req, res) {
       y se crea en caso de no haber
     */
 
-  const { name, lastname, mail, address, image, seller, birthdate,  } =
+  const { name, lastname, mail, address, image, seller, birthdate, password } =
     req.body;
   // Formato para enviar cumpleaños: 1991-11-28
 
@@ -43,7 +43,7 @@ async function postUser(req, res) {
 }
 
 async function putUser(req, res) {
-  const { id, name, lastname, mail, address, image, seller, birthdate } =
+  const { id, name, lastname, mail, address, image, seller, birthdate, password } =
     req.body;
 
   try {
@@ -55,6 +55,7 @@ async function putUser(req, res) {
       image,
       seller,
       birthdate,
+      password
     };
 
     const userById = await User.findByPk(id);
