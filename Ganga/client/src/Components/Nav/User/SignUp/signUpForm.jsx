@@ -74,10 +74,10 @@ export default function SignUpForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2 className="text-left pl-10 pb-3 pt-5 text-2xl">Registrate</h2>
-        <hr className="border-black mx-10" />
+        <h2 className="text-left pl-20 pb-3 pt-5 text-2xl">Registrate</h2>
+        <hr className="border-black mr-10 ml-20 " />
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="name"
@@ -89,7 +89,7 @@ export default function SignUpForm() {
           {errors.name && <p>{errors.name}</p>}
         </div>
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="lastname"
@@ -101,7 +101,7 @@ export default function SignUpForm() {
           {errors.lastname && <p>{errors.lastname}</p>}
         </div>
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="mail"
@@ -113,7 +113,7 @@ export default function SignUpForm() {
           {errors.mail && <p>{errors.mail}</p>}
         </div>
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="password"
@@ -125,7 +125,7 @@ export default function SignUpForm() {
           {errors.password && <p>{errors.password}</p>}
         </div>
 
-        <div className="pt-6">
+        <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="numero"
@@ -137,7 +137,7 @@ export default function SignUpForm() {
           {errors.numero && <p>{errors.numero}</p>}
         </div>
 
-        <div className="py-6">
+        <div className="py-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="address"
@@ -150,7 +150,7 @@ export default function SignUpForm() {
         </div>
 
         <button
-          className="border-gray-400 border-2 rounded px-3 py-1 text-xl"
+          className="border-gray-400 border-2 rounded px-2 py-1 text-xl"
           type="submit"
           value="submit"
           disabled={
@@ -169,17 +169,13 @@ export default function SignUpForm() {
       </form>
 
       <div>
-        <h5 className=" text-lg py-6">
+        <h5 className=" text-lg py-4">
           O puedes registrarte usando tu cuenta de Google
         </h5>
-        {/* <button className="border-2 border-black px-2 text-xl"//onClick= {}
-          >
-            <FcGoogle  className="inline-block px-1 w-10 h-10"/> Crear cuenta \o/
-          </button> */}
         <LoginG />
       </div>
 
-      <h5 className="pt-4 pb-4 text-lg"> ¿Ya tienes una cuenta?</h5>
+      <h5 className="py-4 text-lg"> ¿Ya tienes una cuenta?</h5>
       <Link to="/ingresar">
         <button className="text-red-400 pb-3  text-lg"> Entra aquí</button>
       </Link>
