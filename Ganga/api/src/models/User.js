@@ -44,11 +44,11 @@ module.exports = (sequelize) => {
             address: {
                 type: DataTypes.STRING,
             },
-            
+
             image: {
                 type: DataTypes.STRING,
             },
-            
+
             seller: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false,

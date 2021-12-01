@@ -8,7 +8,7 @@ import {
   GET_PRODUCT_BY_NAME,
   FILTER_PRICE_BY_RANGE,
   ORDER_BY_PRICE,
-  URL,
+  // URL,
   SIGNUP,
   GET_USER,
   GET_CATEGORIES,
@@ -17,7 +17,7 @@ import {
 
 export function getProduct() {
   return async function (dispatch) {
-    let product = await axios.get('http://localhost:3001/product')
+    let product = await axios.get(`/product`)
     dispatch({
       type: GET_PRODUCT,
       payload: product.data
@@ -29,7 +29,7 @@ export function getProduct() {
 export function getProductByName(name) {
   return async function (dispatch) {
     try {
-      let product = await axios.get(URL + 'product?name=' + name)
+      let product = await axios.get(`/product?name=` + name)
       return dispatch({
         type: GET_PRODUCT_BY_NAME,
         payload: product.data
@@ -58,9 +58,10 @@ export function orderByPrice(payload) {
 // action para obtener la sesion activa
 export function getUserInfoGoogle(payload) {
   return async function (dispatch) {
-    const arr = await axios.get(URL + "sessionActive/", {
+    const arr = await axios.get(`/sessionActive/`, {
       withCredentials: true,
     });
+    console.log("soy el arr ", arr)
     return dispatch({
       type: GET_INFO_GOOGLE,
       payload: arr.data,
@@ -72,7 +73,7 @@ export function getUserInfoGoogle(payload) {
 export function localLogin(payload) {
   return async function (dispatch) {
     await axios
-      .post(`${URL}localLogin/`, payload, { withCredentials: true })
+      .post(`/localLogin/`, payload, { withCredentials: true })
       .then((response) => {
         dispatch({
           type: LOCAL_LOGIN,
@@ -85,7 +86,7 @@ export function localLogin(payload) {
 
 export function getUser() {
   return async function (dispatch) {
-    const info = await axios.get("http://localhost:3001/sessionActive")
+    const info = await axios.get(`/sessionActive`)
     return dispatch({
       type: GET_USER,
       payload: info
@@ -97,7 +98,7 @@ export function getUser() {
 export function signUp(payload) {
   return async function (dispatch) {
     await axios
-      .post(`${URL}user/`, payload)
+      .post(`/user/`, payload)
       .then((response) => {
         dispatch({
           type: SIGNUP,
