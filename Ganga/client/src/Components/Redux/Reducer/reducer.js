@@ -7,7 +7,8 @@ import {
   FILTER_PRICE_BY_RANGE,
   ORDER_BY_PRICE,
   GET_USER,
-  GET_CATEGORIES
+  GET_CATEGORIES,
+  GET_DETAIL_PRODUCT
 } from "../Actions/const";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   getInfoGoogle: [],
   user:[],
   categories:[],
+  detailProduct:[],
 };
 
 function rootReducer(state = initialState, { type, payload, price1 , price2 }) {
@@ -88,6 +90,11 @@ function rootReducer(state = initialState, { type, payload, price1 , price2 }) {
         categories: payload
       }        
     }
+     case GET_DETAIL_PRODUCT:
+         return{
+             ...state,
+             detailProduct:payload
+         }
     default: {
       return state;
     }
