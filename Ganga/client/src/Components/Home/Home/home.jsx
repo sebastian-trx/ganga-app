@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../Redux/Actions/actions";
 import Nav from "../../Nav/NavBar/nav";
 import Carousel from "./Carousel/carousel";
+import FooterPage from "../Footer/footer";
 import s from "./home.module.css";
 
 export default function Home() {
@@ -32,6 +33,9 @@ export default function Home() {
       <div className={s.bgHome}>
         <div>
           <Carousel />
+        </div>
+        <div>
+          <FooterPage />
         </div>
       </div>
     </div>
