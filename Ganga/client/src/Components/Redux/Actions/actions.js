@@ -13,7 +13,8 @@ import {
   GET_USER,
   GET_CATEGORIES,
   GET_DETAIL_PRODUCT,
-  FILTER_BY_SEARCH
+  FILTER_BY_SEARCH,
+  GET_SUBCATEGORIES
 } from "./const";
 
 export function getProduct() {
@@ -134,10 +135,25 @@ export function getDetailsProduct(id) {
   }
 }
 
-export function filterBySearch (payload){
-  console.log(payload)
+export function filterBySearch(payload) {
   return {
     type: FILTER_BY_SEARCH,
+    payload
+  }
+}
+
+export function postProducts(payload) {
+  return async function (dispatch) {
+    let response = await axios.post(URL + 'product/', payload)
+    console.log("Soy respuesta de la actions", response.data)
+    return response
+  }
+}
+
+export function getSubcategory(payload) {
+  console.log(payload)
+  return {
+    type: GET_SUBCATEGORIES,
     payload
   }
 }
