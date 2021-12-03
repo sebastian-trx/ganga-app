@@ -9,7 +9,8 @@ import {
   GET_USER,
   GET_CATEGORIES,
   GET_DETAIL_PRODUCT,
-  FILTER_BY_SEARCH
+  FILTER_BY_SEARCH,
+  USER_MESSAGE,
 } from "../Actions/const";
 
 const initialState = {
@@ -39,8 +40,8 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case GET_USER: {
       return {
         ...state,
-        user: payload.data
-      }
+        user: payload.data,
+      };
     }
     case GET_INFO_GOOGLE:
       return {
@@ -56,54 +57,65 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
       };
     case FILTER_PRICE_BY_RANGE: {
-      const products = state.product
-      let filterPrice = products.filter(el => (el.price) >= price1 && el.price <= price2)
+      const products = state.product;
+      let filterPrice = products.filter(
+        (el) => el.price >= price1 && el.price <= price2
+      );
       return {
         ...state,
-        product: filterPrice
-      }
+        product: filterPrice,
+      };
     }
     case ORDER_BY_PRICE: {
-      let sortedProducts = payload === 'Mayor-Menor' ?
-        state.product.sort(function (a, b) {
-          if (a.price > b.price) {
-            return 1
-          } else if (b.price > a.price) {
-            return -1
-          }
-          return 0
-        }) : state.product.sort(function (a, b) {
-          if (a.price > b.price) {
-            return -1
-          } else if (a.price > b.price) {
-            return 1
-          }
-          return 0
-        })
+      let sortedProducts =
+        payload === "Mayor-Menor"
+          ? state.product.sort(function (a, b) {
+              if (a.price > b.price) {
+                return 1;
+              } else if (b.price > a.price) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.product.sort(function (a, b) {
+              if (a.price > b.price) {
+                return -1;
+              } else if (a.price > b.price) {
+                return 1;
+              }
+              return 0;
+            });
       return {
         ...state,
-        product: payload === "All" ? state.products : sortedProducts
-      }
+        product: payload === "All" ? state.products : sortedProducts,
+      };
     }
     case GET_CATEGORIES: {
       return {
         ...state,
-        categories: payload
-      }
+        categories: payload,
+      };
     }
     case GET_DETAIL_PRODUCT:
       return {
         ...state,
-        detailProduct: payload
-      }
+        detailProduct: payload,
+      };
     case FILTER_BY_SEARCH:
-      let resultado = state.product.filter((el) => (el.name.toLowerCase().includes(payload.toLowerCase())) ||(el.categories.toLowerCase().includes(payload.toLowerCase())) )
-
+      let resultado = state.product.filter(
+        (el) =>
+          el.name.toLowerCase().includes(payload.toLowerCase()) ||
+          el.categories.toLowerCase().includes(payload.toLowerCase())
+      );
 
       return {
         ...state,
-        product: resultado
-      }
+        product: resultado,
+      };
+    case USER_MESSAGE:
+      return {
+        ...state,
+      };
     default: {
       return state;
     }

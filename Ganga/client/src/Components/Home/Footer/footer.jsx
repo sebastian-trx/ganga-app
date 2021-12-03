@@ -12,9 +12,9 @@ export default function FooterPage() {
           </div>
           <div>
             <ul>
-              <h1 className={j.reservaTuCancha}>Tú eres importante</h1>
+              <h1 className={j.tuEres}>Tú eres importante</h1>
             </ul>
-            <li className={j.textReserva}>
+            <li className={j.texTuEres}>
               <h3>Para nosotros es muy grato que estés aquí</h3>
               <h3>Navega y encuentra lo que quieras</h3>
               <h3>De buena calidad y al mejor precio.</h3>
@@ -22,9 +22,9 @@ export default function FooterPage() {
           </div>
           <div>
             <ul>
-              <h1 className={j.clubes}>Puedes vender tus productos</h1>
+              <h1 className={j.vender}>Puedes vender tus productos</h1>
             </ul>
-            <li className={j.textClubes}>
+            <li className={j.textVender}>
               <h3>De una forma sencilla puedes convertirte en vendedor</h3>
               <h3>en una plataforma que te garantiza un buen soporte</h3>
               <h3>además de que tendrás asesoria en caso de requerirla.</h3>
