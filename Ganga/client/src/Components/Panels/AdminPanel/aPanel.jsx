@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {Link} from "react-router-dom";
 
 import Nav from "../../Nav/NavBar/nav";
@@ -10,12 +11,22 @@ import BrandNewUsers from "./NewInfo/brandNewUsers";
 import NewSales from "./NewInfo/newSales";
 import ProductList from "./productList";
 import VendorList from "./vendorList";
+import { getAllUsers } from "../../Redux/Actions/actions";
 import s from "./admin.module.css";
 
 export default function AdminPanel() {
+  const dispatch = useDispatch();
+  const Users = useSelector((state) => state.allUsers);
   const [usuarios, verUsuarios] = useState(false);
   const [productos, verProductos] = useState(false);
   const [vendedores, verVendedores] = useState(false);
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
+  const vendors = Users.filter(u => u.seller === true);
+  const users = Users.filter(u => u.seller === false);
 
   return (
     <div className="bg-gray-100">
@@ -49,7 +60,7 @@ export default function AdminPanel() {
             verProductos={verProductos} vendedores={vendedores} verVendedores={verVendedores} />
           </div>
           <div className={s.usuariosBody}>
-            <UserList />
+            <UserList users={users} />
           </div>
         </div>
       )} 
@@ -73,7 +84,7 @@ export default function AdminPanel() {
             verProductos={verProductos} vendedores={vendedores} verVendedores={verVendedores} />
           </div>
       <div className={s.vendedoresBody}>
-        <VendorList/>
+        <VendorList vendors={vendors}/>
       </div>
       </div>}
     </div>

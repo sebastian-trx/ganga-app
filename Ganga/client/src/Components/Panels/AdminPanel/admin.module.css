@@ -132,3 +132,33 @@
 .listaVendedores {
     height: 600px;
 }
+
+.delete {
+    color:rgb(199, 2, 2);
+    width: 60px;
+    font-size: 30px;
+}
+
+.editar {
+    background-color: rgb(131, 245, 131);
+    width: 54px;
+    height: 15px;
+    color: honeydew;
+    border-radius: 23%;
+    border-width: 1px;
+    border-color: rgb(149, 207, 149);
+    padding-bottom: 30px;
+    vertical-align: text-top;
+}
+
+.editar:hover {
+    background-color: rgb(219, 248, 219);
+    width: 54px;
+    height: 15px;
+    color: rgb(4, 245, 4);
+    border-radius: 13%;
+    border-width: 2px;
+    border-color: rgb(0, 255, 0);
+    padding-bottom: 30px;
+    vertical-align: text-top;
+}

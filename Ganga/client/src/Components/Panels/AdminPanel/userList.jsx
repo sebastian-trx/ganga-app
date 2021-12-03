@@ -1,21 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
+import { TiDeleteOutline } from "react-icons/ti";
+
 import  NewUsersChart from "./aCharts/NewUsers";
 import s from "./admin.module.css";
 
-export default function UserList() {
+export default function UserList({users}) {
   const columns = [
     { field: "id", headerName: "ID", width: 140 },
     { field: "Nombre", headerName: "Nombre", width: 130 },
     { field: "Apellido", headerName: "Apellido", width: 160 },
     { field: "Correo", headerName: "Correo", width: 150 },
-    {
-      field: "Compras",
-      headerName: "Compras hechas",
-      type: "number",
-      width: 150,
-    },
+    { field: "Fecha", headerName: "Fecha de Nacimiento", type: "number", width: 150},
+    { field: "Dirección", headerName: "Zona", width: 150 },
     {
       field: "action",
       headerName: "Acción",
@@ -24,80 +22,25 @@ export default function UserList() {
         return (
           <>
             <Link to={"/user/" + params.row.id}>
-              <button> modificar /</button>
+            <button className={s.editar}> edit </button>
             </Link>
-            <button onClick> / eliminar </button>
+            <button onClick> <TiDeleteOutline className={s.delete}/></button>
           </>
         );
       },
     },
   ];
 
-  const rows = [
-    {
-      id: 1,
-      Apellido: "Snow",
-      Nombre: "Jon",
-      Correo: "gameOfThron@gmail.com",
-      Compras: 2,
-    },
-    {
-      id: 2,
-      Apellido: "Lannister",
-      Nombre: "Cersei",
-      Correo: "gameOfThron@gmail.com",
-      Compras: 3,
-    },
-    {
-      id: 3,
-      Apellido: "Lannister",
-      Nombre: "Jaime",
-      Correo: "gameOfThron@gmail.com",
-      Compras: 1,
-    },
-    {
-      id: 4,
-      Apellido: "Stark",
-      Nombre: "Arya",
-      Correo: "gameOfThron@gmail.com",
-      Compras: 0,
-    },
-    {
-      id: 5,
-      Apellido: "Targaryen",
-      Nombre: "Daenerys",
-      Correo: "gameOfThron@gmail.com",
-      Compras: 0,
-    },
-    {
-      id: 6,
-      Apellido: "Melisandre",
-      Nombre: "Gomez",
-      Correo: "gameOfThron@gmail.com",
-      Compras: 1,
-    },
-    {
-      id: 7,
-      Apellido: "Clifford",
-      Nombre: "Ferrara",
-      Correo: "gameOfThron@gmail.com",
-      Compras: 3,
-    },
-    {
-      id: 8,
-      Apellido: "Frances",
-      Nombre: "Rossini",
-      Correo: "gameOfThron@gmail.com",
-      Compras: 2,
-    },
-    {
-      id: 9,
-      Apellido: "Roxie",
-      Nombre: "Harvey",
-      Correo: "gameOfThron@gmail.com",
-      Compras: 5,
-    },
-  ];
+  const rows = users.map((u) => {
+    return {
+      id: u.id,
+      Nombre:u.name,
+      Apellido: u.lastname,
+      Correo: u.mail,
+      Fecha: u.birthdate,
+      Dirección: u.address
+    }
+  })
 
   return (
     <div >
