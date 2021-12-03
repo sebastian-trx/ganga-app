@@ -13,6 +13,8 @@ import {
   GET_USER,
   GET_CATEGORIES,
   GET_DETAIL_PRODUCT,
+  USER_MESSAGE,
+  FILTER_BY_SEARCH,
   FILTER_BY_SEARCH,
   GET_SUBCATEGORIES,
   GET_ALL_USERS
@@ -20,41 +22,41 @@ import {
 
 export function getProduct() {
   return async function (dispatch) {
-    let product = await axios.get('http://localhost:3001/product')
+    let product = await axios.get("http://localhost:3001/product");
     dispatch({
       type: GET_PRODUCT,
-      payload: product.data
-    })
-  }
+      payload: product.data,
+    });
+  };
 }
-
 
 export function getProductByName(name) {
   return async function (dispatch) {
     try {
-      let product = await axios.get(URL + 'product?name=' + name)
+      let product = await axios.get(URL + "product?name=" + name);
       return dispatch({
         type: GET_PRODUCT_BY_NAME,
-        payload: product.data
-      })
+        payload: product.data,
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 }
 
 export function filterPriceByRange(price1, price2) {
   return {
     type: FILTER_PRICE_BY_RANGE,
-    price1, price2
-  }
+    price1,
+    price2,
+  };
 }
 
 export function orderByPrice(payload) {
   return {
     type: ORDER_BY_PRICE,
-    payload
-  }
+    payload,
+  };
 }
 
 // action para obtener la sesion activa
@@ -87,12 +89,12 @@ export function localLogin(payload) {
 
 export function getUser() {
   return async function (dispatch) {
-    const info = await axios.get("http://localhost:3001/sessionActive")
+    const info = await axios.get("http://localhost:3001/sessionActive");
     return dispatch({
       type: GET_USER,
-      payload: info
-    })
-  }
+      payload: info,
+    });
+  };
 }
 
 // action para crear un usuario
@@ -112,35 +114,49 @@ export function signUp(payload) {
 
 export function getCategories() {
   return async function (dispatch) {
-    const info = await axios.get("http://localhost:3001/category")
+    const info = await axios.get("http://localhost:3001/category");
     return dispatch({
       type: GET_CATEGORIES,
-      payload: info.data
-    })
-  }
+      payload: info.data,
+    });
+  };
 }
 
 export function getDetailsProduct(id) {
   return async (dispatch) => {
     try {
-      let urlId = await axios.get(URL + 'product/', {
-        params: { id: id }
-      })
+      let urlId = await axios.get(URL + "product/", {
+        params: { id: id },
+      });
       dispatch({
         type: GET_DETAIL_PRODUCT,
-        payload: urlId.data
-      })
+        payload: urlId.data,
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 }
 
 export function filterBySearch(payload) {
   return {
     type: FILTER_BY_SEARCH,
-    payload
-  }
+    payload,
+  };
+}
+
+export function userMessage(payload) {
+  return async function (dispatch) {
+    await axios
+      .post(`${URL}userMessage/`, payload)
+      .then((response) => {
+        dispatch({
+          type: USER_MESSAGE,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
 }
 
 export function postProducts(payload) {
