@@ -1,14 +1,14 @@
-const {  
-     preLoadSubCategory } = require('./PreLoadSubCategory.js');
+const {
+    preLoadSubCategory } = require('./PreLoadSubCategory.js');
 
-const {  
-     preLoadCategory } = require('./preLoaderCategory.js');
+const {
+    preLoadCategory } = require('./PreLoaderCategory.js');
 
-const {  
-    preLoadProduct } = require('./preLoaderProduct.js');
+const {
+    preLoadProduct } = require('./PreLoaderProduct.js');
 
-const {  
-    preLoadUser } = require('./preLoaderUser.js');
+const {
+    preLoadUser } = require('./PreLoaderUser.js');
 
 async function preloader() {
     await preLoadSubCategory()

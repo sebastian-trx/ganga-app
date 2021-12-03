@@ -45,6 +45,7 @@ export default function LoginForm() {
     //   mail: "",
     //   password: "",
     // });
+    console.log(localLogin)
     setTimeout(() => {
       dispatch(getUserInfoGoogle());
     }, 1000);
@@ -58,7 +59,7 @@ export default function LoginForm() {
 
         <div className="pt-10">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"
-            name="correo"
+            name="mail"
             type="email"
             placeholder="Correo electrónico"
             value={input.mail}

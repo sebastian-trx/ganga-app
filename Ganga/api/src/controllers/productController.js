@@ -9,16 +9,17 @@ async function postProduct(req, res) {
 
   const {
     name,
-    mark,
+    brand,
     description,
     price,
     stock,
     image,
+    owner,
     idUser,
     idCategory,
     idReview,
   } = req.body;
-  // Formato para enviar cumpleaños: 1991-11-28
+  // Formato para enviar cumpleaños: 1991-11-28       // modificar en postman brand por mark y agregar owner
 
   const check = await Product.findOne({
     where: {
@@ -30,11 +31,12 @@ async function postProduct(req, res) {
   else {
     const product = {
       name,
-      mark,
+      brand,
       description,
       price,
       stock,
       image,
+      owner
     };
 
     try {
@@ -67,17 +69,27 @@ async function postProduct(req, res) {
 }
 
 async function putProduct(req, res) {
-  const { id, name, mark, description, price, stock, image, idCategory } =
-    req.body;
+  const { 
+    id, 
+    name,
+    brand,
+    description,
+    price,
+    stock,
+    image,
+    owner,
+     idCategory } =
+    req.body; // modificar en postman brand por mark y agregar owner
 
   try {
     const infoUpdateProduct = {
       name,
-      mark,
-      description,
-      price,
-      stock,
-      image,
+    brand,
+    description,
+    price,
+    stock,
+    image,
+    owner
     };
 
     const productById = await Product.findByPk(id);

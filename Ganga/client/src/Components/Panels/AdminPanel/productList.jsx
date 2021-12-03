@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getProduct } from "../../Redux/Actions/actions";
 import { DataGrid } from "@mui/x-data-grid";
-import s from "./admin.module.css";
+import { TiDeleteOutline } from "react-icons/ti";
+
+import { getProduct } from "../../Redux/Actions/actions";
 import ProductsChart from "./aCharts/Products";
+import s from "./admin.module.css";
 
 export default function ProductList() {
   const dispatch = useDispatch();
@@ -28,9 +30,9 @@ export default function ProductList() {
         return (
           <>
             <Link to={"/product/" + params.row.id}>
-              <button> modificar /</button>
+              <button className={s.editar}> edit </button>
             </Link>
-            <button onClick> / eliminar </button>
+            <button onClick> <TiDeleteOutline className={s.delete}/> </button>
           </>
         );
       },

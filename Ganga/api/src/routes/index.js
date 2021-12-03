@@ -12,6 +12,7 @@ const loginGoogle = require("./loginGoogleRouting")
 const localLogin = require("./localLoginRouting")
 const sessionActive  = require('./sessionActiveRouting');
 const cart  = require('./cartRouting.js');
+const userMessage = require("./userMessageRouting");
 
 const router = Router();
 
@@ -29,5 +30,6 @@ router.use("/loginGoogle",loginGoogle)
 router.use("/sessionActive",sessionActive)
 router.use("/localLogin",localLogin)
 router.use("/cart", cart)
+router.use("/userMessage", userMessage)
 
 module.exports = router;
