@@ -7,20 +7,24 @@ import a from "./productoId.module.css";
 
 export default function ProductId() {
   const dispatch = useDispatch();
-  const [state, setState] = useState([]);
+  const [/*state*/, setState] = useState([]);
   const info = useSelector((state) => state.detailProduct);
   const { id } = useParams();
 
-  const getDetails = () => {
-    if (Object.keys(state).length === 0) dispatch(getDetailsProduct(id));
-  };
+  // const getDetails = () => {
+  //   if (Object.keys(state).length === 0) dispatch(getDetailsProduct(id));
+  // };
+
+  // useEffect(() => {
+  //   getDetails();
+  //   return () => {
+  //     setState([]);
+  //   };
+  // },[]);
 
   useEffect(() => {
-    getDetails();
-    return () => {
-      setState([]);
-    };
-  },[]);
+    dispatch(getDetailsProduct(id))
+  }, [dispatch, id])
 
   useEffect(() => {
     setState(info);

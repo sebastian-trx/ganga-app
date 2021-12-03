@@ -63,6 +63,9 @@ export default function Nav() {
             </div>
           </Link>
 
+          <Link to="/panel" className="pr-10">
+            <button>panel </button>  </Link>
+
           <div
             onClick={() => {
               updateExpanded(expand ? false : "expanded");
@@ -86,7 +89,8 @@ export default function Nav() {
               <span>Nosotros</span>
             </Link>
 
-            <input
+            <input 
+            // className="px-4"
               type="text"
               placeholder="Busca tu producto"
               onChange={handleInput}
@@ -100,7 +104,7 @@ export default function Nav() {
               <ImSearch />
             </button>
 
-            <Link to="/carrito" className="pl-10 pr-10">
+            <Link to="/shopCart" className="pl-10 pr-10">
               <button>
                 <IoIosCart />
               </button>

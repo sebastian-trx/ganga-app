@@ -13,8 +13,17 @@ require('./db.js');
 
 const server = express();
 
+const cors = require('cors');
+
 server.name = 'API';
 
+server.use(cors());
+server.use(
+  cors({
+    origin: true,             //se habilitan las credenciales de cors para los pedidos que vengan del front
+    credentials: true,
+  })
+)
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
@@ -32,6 +41,11 @@ server.use(                                             //se habilita el manejo 
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    }
   })
 );
 

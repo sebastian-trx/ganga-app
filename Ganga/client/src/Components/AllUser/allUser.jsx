@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { /*useState,*/ useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllUsers } from '../Redux/Actions/actions'
 import CardUser from "./cardUser"

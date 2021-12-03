@@ -15,7 +15,6 @@ import {
   GET_DETAIL_PRODUCT,
   USER_MESSAGE,
   FILTER_BY_SEARCH,
-  FILTER_BY_SEARCH,
   GET_SUBCATEGORIES,
   GET_ALL_USERS
 } from "./const";
@@ -62,9 +61,10 @@ export function orderByPrice(payload) {
 // action para obtener la sesion activa
 export function getUserInfoGoogle(payload) {
   return async function (dispatch) {
-    const arr = await axios.get(URL + "sessionActive/", {
+    const arr = await axios.get(`${URL}sessionActive/`, {
       withCredentials: true,
     });
+    console.log("soy el arr ", arr)
     return dispatch({
       type: GET_INFO_GOOGLE,
       payload: arr.data,
@@ -176,7 +176,7 @@ export function getSubcategory(payload) {
 }
 export function getAllUsers(){
   return async function (dispatch) {
-    let user = await axios.get(URL + 'User')
+    let user = await axios.get(URL + 'user')
     dispatch({
       type: GET_ALL_USERS,
       payload: user.data
