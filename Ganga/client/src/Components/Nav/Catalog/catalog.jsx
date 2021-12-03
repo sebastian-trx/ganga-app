@@ -21,10 +21,10 @@ export default function Catalogo() {
   const [wordEntered, setWordEntered] = useState("");
   const [name, setName] = useState(" ")
  
-
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
+
   useEffect(() => {
     dispatch(getUser())
   }, [dispatch])
@@ -77,11 +77,15 @@ export default function Catalogo() {
   return (
     <div>
       <nav className="flex justify-between items-center h-20  text-black">
-        <Link to="/create" className="pl-10">
+      <Link to="/" className="pl-10">
           <div className=" w-30">
             <Logo />
           </div>
-        </Link>
+          </Link>
+
+        <div>
+        <Link to="/create" className="pl-10"><button>Tu Producto</button> </Link>
+        </div>
 
 
         <div className=" w-30">

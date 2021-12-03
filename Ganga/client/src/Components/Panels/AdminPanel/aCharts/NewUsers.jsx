@@ -2,7 +2,7 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 
-export default function ActiveUsers() {
+export default function NewUsersChart() {
 
     const info = [
         {
@@ -11,53 +11,53 @@ export default function ActiveUsers() {
         },
         {
           name: 'Feb',
-          users: 305,
+          users: 205,
         },
         {
           name: '',
-          users: 437,
+          users: 237,
         },
         {
           name: '',
-          users: 481,
+          users: 281,
         },
         {
           name: '',
-          users: 577,
+          users: 377,
         },
         {
           name: 'Jun',
-          users: 554,
+          users: 354,
         },
         {
           name: '',
-          users: 593,
+          users: 393,
         },
         {
             name: '',
-            users: 642,
+            users: 442,
         },
         {
             name: '',
-            users: 622,
+            users: 422,
           },
           {
             name: '',
-            users: 709,
+            users: 509,
           },
           {
             name: 'Nov',
-            users: 819,
+            users: 519,
           },
           {
             name: '',
-            users: 1001,
+            users: 555,
           },
       ];
       
     return (
         <div className="bg-white pb-5 mt-10 border-gray-300 border-4">
-            <h4 className="font-bold text-2xl p-5 pb-10">Usuarios Activos</h4>
+            <h4 className="font-bold text-2xl p-5 pb-10">Usuarios Nuevos</h4>
             <ResponsiveContainer width="99%" aspect={3 / 1}>
                 <LineChart data={info}>
                     <XAxis dataKey="name"/>
