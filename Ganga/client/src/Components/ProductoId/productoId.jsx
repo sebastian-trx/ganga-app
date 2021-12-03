@@ -22,7 +22,7 @@ export default function ProductId() {
   //   };
   // },[]);
 
-  useEffect (() => {
+  useEffect(() => {
     dispatch(getDetailsProduct(id))
   }, [dispatch, id])
 

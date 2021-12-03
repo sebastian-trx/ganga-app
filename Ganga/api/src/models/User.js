@@ -12,28 +12,24 @@ module.exports = (sequelize) => {
                 defaultValue: DataTypes.UUIDV4,
             },
 
-            admin: {
-                type: DataTypes.BOOLEAN,
-                defaultValue: false,
-            },
-
             name: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
 
-            birthdate: {
-                type: DataTypes.DATEONLY,
-            },
-
-            lastname: {
+            surname: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
 
             mail: {
                 type: DataTypes.STRING,
-                allowNull: false,
+            },
+
+            password: {
+                type: DataTypes.STRING,
+            },
+
+            cellphone: {
+                type: DataTypes.INTEGER,
             },
 
             password: {
@@ -42,7 +38,27 @@ module.exports = (sequelize) => {
             },
 
             address: {
+                type: DataTypes.STRING
+            },
+
+            country: {
                 type: DataTypes.STRING,
+            },
+
+            province: {
+                type: DataTypes.STRING,
+            },
+
+            cp: {
+                type: DataTypes.STRING,
+            },
+
+            admin: {
+                type: DataTypes.BOOLEAN,
+            },
+
+            birthdate: {
+                type: DataTypes.DATEONLY,
             },
 
             image: {
@@ -51,7 +67,6 @@ module.exports = (sequelize) => {
 
             seller: {
                 type: DataTypes.BOOLEAN,
-                defaultValue: false,
             },
 
         },
