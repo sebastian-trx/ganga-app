@@ -7,9 +7,8 @@ async function postUser(req, res) {
       y se crea en caso de no haber
     */
 
-  const { name, lastname, mail, address, image, seller, birthdate, password } =
-    req.body;
-  // Formato para enviar cumpleaños: 1991-11-28
+  const { name, surname, mail, address, image, seller, birthdate, password, cellphone, country, province, cp } = req.body;
+  // Formato para enviar cumpleaños: 1991-11-28     // modificar en postman surname por lastname y agregar cellphone, country, province, cp
 
   const check = await User.findOne({
     where: {
@@ -21,13 +20,17 @@ async function postUser(req, res) {
   else {
     const user = {
       name,
-      lastname,
+      surname,
       mail,
       address,
       image,
       seller,
       birthdate,
       password,
+      cellphone,
+      country,
+      province,
+      cp
     };
 
     try {
@@ -43,19 +46,12 @@ async function postUser(req, res) {
 }
 
 async function putUser(req, res) {
-  const { id, name, lastname, mail, address, image, seller, birthdate, password } =
-    req.body;
+  const { id, name, surname, mail, address, image, seller, birthdate, password, cellphone, country, province, cp } = req.body;
 
   try {
     const infoUpdateUser = {
-      name,
-      lastname,
-      mail,
-      address,
-      image,
-      seller,
-      birthdate,
-      password
+      name, surname, mail, address, image, seller, birthdate, password, cellphone,
+      country, province, cp
     };
 
     const userById = await User.findByPk(id);
@@ -111,19 +107,21 @@ async function allUsers(req, res) {
   }
 }
 
-const userInfo = async(req, res) => {
+const userInfo = async (req, res) => {
   const { id } = req.query;
 
-  try{
+  try {
     const dbUser = await User.findByPk(id);
     console.log('soy el dbUser: ', dbUser)
     const userReview = await Review.findAll({  // seria algo parecido para el review del usuario
-      where:{userId: id}
+      where: { userId: id }
     })
-    dbUser ? res.send({user: dbUser,
-    review: userReview}) : res.send(`No se ha encontrado el producto con el id: ${id}`)
+    dbUser ? res.send({
+      user: dbUser,
+      review: userReview
+    }) : res.send(`No se ha encontrado el producto con el id: ${id}`)
   }
-  catch(error) {
+  catch (error) {
     console.log(error)
   }
 }

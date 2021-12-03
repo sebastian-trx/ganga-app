@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 
 import Nav from "../../Nav/NavBar/nav";
 import AdminSidebar from "./aSidebar";
@@ -16,7 +16,7 @@ import s from "./admin.module.css";
 
 export default function AdminPanel() {
   const dispatch = useDispatch();
-  const Users = useSelector((state) => state.allUsers);
+  const allUsers = useSelector((state) => state.allUsers);
   const [usuarios, verUsuarios] = useState(false);
   const [productos, verProductos] = useState(false);
   const [vendedores, verVendedores] = useState(false);
@@ -25,8 +25,14 @@ export default function AdminPanel() {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  const vendors = Users.filter(u => u.seller === true);
-  const users = Users.filter(u => u.seller === false);
+  const vendors = allUsers.filter(u => u.seller === true);
+  const users = allUsers.filter(u => u.seller === false);
+
+  console.log("allUsers",allUsers);
+  console.log("users", users);
+  console.log("vendors", vendors);
+
+
 
   return (
     <div className="bg-gray-100">

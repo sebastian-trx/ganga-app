@@ -9,7 +9,7 @@ passport.use(
     {
       clientID: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
-      callbackURL: "http://localhost:3001/loginGoogle/callback",
+      callbackURL: `/loginGoogle/callback`,
     },
     async function (accessToken, refreshToken, profile, cb) {
       const defaultUser = {

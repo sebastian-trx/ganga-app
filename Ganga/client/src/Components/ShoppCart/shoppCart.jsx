@@ -1,4 +1,5 @@
 import React from "react";
+import CountInput from "./counterInput.jsx";
 
 export default function shoppCart() {
   return (
@@ -9,46 +10,48 @@ export default function shoppCart() {
             <thead>
               <tr class="h-12 uppercase">
                 <th class="hidden md:table-cell"></th>
-                <th class="text-left">Product</th>
+                <th class="text-left">Producto</th>
                 <th class="lg:text-right text-left pl-5 lg:pl-0">
                   <span class="lg:hidden" title="Quantity">
-                    Qtd
+                    Cant
                   </span>
-                  <span class="hidden lg:inline">Quantity</span>
+                  <span class="hidden lg:inline">Cantidad</span>
                 </th>
-                <th class="hidden text-right md:table-cell">Unit price</th>
-                <th class="text-right">Total price</th>
+                <th class="hidden text-right md:table-cell">Precio U.</th>
+                <th class="text-right">Total</th>
               </tr>
             </thead>
             <tbody>
+              {/* LA ETIQUETA DE AQUI ABAJO DEBERIAMOS MAPEAR PARA MOSTRAR LOS ITEMS DEL CARRITO */}
               <tr>
                 <td class="hidden pb-4 md:table-cell">
-                  <a href="#">
+                  {/* <a href="#"> */}
                     <img
                       src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg"
                       class="w-20 rounded"
                       alt="Thumbnail"
                     />
-                  </a>
+                  {/* </a> */}
                 </td>
                 <td>
-                  <a href="#">
+                  {/* <a href="#"> */}
                     <p class="mb-2 md:ml-4">Earphone</p>
                     <form action="" method="POST">
                       <button type="submit" class="text-gray-700 md:ml-4">
-                        <small>(Remove item)</small>
+                        <small>(Borrar item)</small>
                       </button>
                     </form>
-                  </a>
+                  {/* </a> */}
                 </td>
                 <td class="justify-center md:justify-end md:flex mt-6">
                   <div class="w-20 h-10">
                     <div class="relative flex flex-row w-full h-8">
-                      <input
+                      <CountInput/>
+                      {/* <input
                         type="number"
                         value="2"
                         class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
-                      />
+                      /> */}
                     </div>
                   </div>
                 </td>
@@ -59,93 +62,19 @@ export default function shoppCart() {
                   <span class="text-sm lg:text-base font-medium">20.00€</span>
                 </td>
               </tr>
-              <tr>
-                <td class="hidden pb-4 md:table-cell">
-                  <a href="#">
-                    <img
-                      src="https://limg.app/i/Cute-Constrictor-Super-Sexy-Military-Enforcer-W7mvBp.png"
-                      class="w-20 rounded"
-                      alt="Thumbnail"
-                    />
-                  </a>
-                </td>
-                <td>
-                  <p class="mb-2 md:ml-4">Tesla Model 3</p>
-                  <form action="" method="POST">
-                    <button type="submit" class="text-gray-700 md:ml-4">
-                      <small>(Remove item)</small>
-                    </button>
-                  </form>
-                </td>
-                <td class="justify-center md:justify-end md:flex md:mt-4">
-                  <div class="w-20 h-10">
-                    <div class="relative flex flex-row w-full h-8">
-                      <input
-                        type="number"
-                        value="3"
-                        class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
-                      />
-                    </div>
-                  </div>
-                </td>
-                <td class="hidden text-right md:table-cell">
-                  <span class="text-sm lg:text-base font-medium">
-                    49,600.01€
-                  </span>
-                </td>
-                <td class="text-right">
-                  <span class="text-sm lg:text-base font-medium">
-                    148,800.03€
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td class="hidden pb-4 md:table-cell">
-                  <a href="#">
-                    <img
-                      src="https://limg.app/i/Successful-Spider-Biblical-Mutant---Total-War-lKoE7D.jpeg"
-                      class="w-20 rounded"
-                      alt="Thumbnail"
-                    />
-                  </a>
-                </td>
-                <td>
-                  <p class="mb-2 md:ml-4">Bic 4 colour pen</p>
-                  <form action="" method="POST">
-                    <button type="submit" class="text-gray-700 md:ml-4">
-                      <small>(Remove item)</small>
-                    </button>
-                  </form>
-                </td>
-                <td class="justify-center md:justify-end md:flex md:mt-8">
-                  <div class="w-20 h-10">
-                    <div class="relative flex flex-row w-full h-8">
-                      <input
-                        type="number"
-                        value="5"
-                        class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
-                      />
-                    </div>
-                  </div>
-                </td>
-                <td class="hidden text-right md:table-cell">
-                  <span class="text-sm lg:text-base font-medium">1.50€</span>
-                </td>
-                <td class="text-right">
-                  <span class="text-sm lg:text-base font-medium">7.50€</span>
-                </td>
-              </tr>
             </tbody>
+
+
           </table>
           {/* <hr class="pb-6 mt-6"> */}
           <div class="my-4 mt-6 -mx-2 lg:flex">
             <div class="lg:px-2 lg:w-1/2">
               <div class="p-4 bg-gray-100 rounded-full">
-                <h1 class="ml-2 font-bold uppercase">Coupon Code</h1>
+                <h1 class="ml-2 font-bold uppercase">DESCUENTO POR CUPON</h1>
               </div>
               <div class="p-4">
                 <p class="mb-4 italic">
-                  If you have a coupon code, please enter it in the box below
+                  Si tenes un cupon para descuento, agregalo aqui abajo!
                 </p>
                 <div class="justify-center md:flex">
                   <form action="" method="POST">
@@ -154,7 +83,7 @@ export default function shoppCart() {
                         type="coupon"
                         name="code"
                         id="coupon"
-                        placeholder="Apply coupon"
+                        placeholder="Aplicar Cupon"
                         value="90off"
                         class="w-full bg-gray-100 outline-none appearance-none focus:outline-none active:outline-none"
                       />
@@ -175,32 +104,31 @@ export default function shoppCart() {
                             d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z"
                           />
                         </svg>
-                        <span class="font-medium">Apply coupon</span>
+                        <span class="font-medium">Aplicar cupon</span>
                       </button>
                     </div>
                   </form>
                 </div>
               </div>
               <div class="p-4 mt-6 bg-gray-100 rounded-full">
-                <h1 class="ml-2 font-bold uppercase">Instruction for seller</h1>
+                <h1 class="ml-2 font-bold uppercase">Instrucciones para el vendedor</h1>
               </div>
               <div class="p-4">
                 <p class="mb-4 italic">
-                  If you have some information for the seller you can leave them
-                  in the box below
+                  Si necesitas informarle algo al vendedor, puedes hacerlo en la caja de abajo
                 </p>
                 <textarea class="w-full h-24 p-2 bg-gray-100 rounded"></textarea>
               </div>
             </div>
             <div class="lg:px-2 lg:w-1/2">
               <div class="p-4 bg-gray-100 rounded-full">
-                <h1 class="ml-2 font-bold uppercase">Order Details</h1>
+                <h1 class="ml-2 font-bold uppercase">Detalle de la Orden</h1>
               </div>
               <div class="p-4">
-                <p class="mb-6 italic">
+                {/* <p class="mb-6 italic">
                   Shipping and additionnal costs are calculated based on values
                   you have entered
-                </p>
+                </p> */}
                 <div class="flex justify-between border-b">
                   <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                     Subtotal
@@ -228,7 +156,7 @@ export default function shoppCart() {
                         </svg>
                       </button>
                     </form>
-                    Coupon "90off"
+                    Cupon "90off"
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-green-700">
                     -133,944.77€
@@ -236,7 +164,7 @@ export default function shoppCart() {
                 </div>
                 <div class="flex justify-between pt-4 border-b">
                   <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                    New Subtotal
+                    Nuevo Subtotal
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                     14,882.75€
@@ -244,7 +172,7 @@ export default function shoppCart() {
                 </div>
                 <div class="flex justify-between pt-4 border-b">
                   <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                    Tax
+                    Envio
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                     2,976.55€
@@ -258,7 +186,7 @@ export default function shoppCart() {
                     17,859.3€
                   </div>
                 </div>
-                <a href="#">
+                {/* <a href="#"> */}
                   <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
                     <svg
                       aria-hidden="true"
@@ -273,9 +201,9 @@ export default function shoppCart() {
                         d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"
                       />
                     </svg>
-                    <span class="ml-2 mt-5px">Procceed to checkout</span>
+                    <span class="ml-2 mt-5px">Comprar</span>
                   </button>
-                </a>
+                {/* </a> */}
               </div>
             </div>
           </div>
@@ -286,6 +214,3 @@ export default function shoppCart() {
   );
 }
 
-{
-  /* export default shoppCart; */
-}

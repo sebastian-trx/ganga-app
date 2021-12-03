@@ -35,7 +35,7 @@ export default function VendorList({vendors}) {
     return {
       id: u.id,
       Nombre:u.name,
-      Apellido: u.lastname,
+      Apellido: u.surname,
       Correo: u.mail,
       Fecha: u.birthdate,
       Dirección: u.address
