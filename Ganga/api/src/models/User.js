@@ -12,46 +12,61 @@ module.exports = (sequelize) => {
                 defaultValue: DataTypes.UUIDV4,
             },
 
-            admin: {
-                type: DataTypes.BOOLEAN,
-                defaultValue: false,
-            },
-
             name: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
 
-            birthdate: {
-                type: DataTypes.DATEONLY,
-            },
-
-            lastname: {
+            surname: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
 
             mail: {
                 type: DataTypes.STRING,
-                allowNull: false,
-            },
+            },        
 
             password: {
                 type: DataTypes.STRING,
-                // allowNull: false,
-            },
+            },    
+
+            cellphone: {
+                type: DataTypes.INTEGER,
+            },    
 
             address: {
                 type: DataTypes.STRING,
+<<<<<<< Updated upstream
             },
             
+=======
+            },    
+
+            country: {
+                type: DataTypes.STRING,
+            },    
+
+            province: {
+                type: DataTypes.STRING,
+            },    
+
+            cp: {
+                type: DataTypes.STRING,
+            },    
+
+            admin: {
+                type: DataTypes.BOOLEAN,
+            },            
+
+            birthdate: {
+                type: DataTypes.DATEONLY,
+            },            
+
+>>>>>>> Stashed changes
             image: {
                 type: DataTypes.STRING,
             },
             
             seller: {
                 type: DataTypes.BOOLEAN,
-                defaultValue: false,
             },
 
         },

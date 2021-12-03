@@ -7,9 +7,11 @@ async function postUser(req, res) {
       y se crea en caso de no haber
     */
 
-  const { name, lastname, mail, address, image, seller, birthdate, password } =
-    req.body;
-  // Formato para enviar cumpleaños: 1991-11-28
+  const { name, surname, mail, address, image, seller, birthdate, password, cellphone,
+    country, province, cp
+} = req.body;
+  // Formato para enviar cumpleaños: 1991-11-28     // modificar en postman surname por lastname y agregar cellphone, country, province, cp
+    
 
   const check = await User.findOne({
     where: {
@@ -21,13 +23,17 @@ async function postUser(req, res) {
   else {
     const user = {
       name,
-      lastname,
+      surname,
       mail,
       address,
       image,
       seller,
       birthdate,
       password,
+      cellphone,
+      country,
+      province,
+      cp
     };
 
     try {
@@ -43,19 +49,14 @@ async function postUser(req, res) {
 }
 
 async function putUser(req, res) {
-  const { id, name, lastname, mail, address, image, seller, birthdate, password } =
+  const { id, name, surname, mail, address, image, seller, birthdate, password, cellphone,
+    country, province, cp } =
     req.body;
 
   try {
     const infoUpdateUser = {
-      name,
-      lastname,
-      mail,
-      address,
-      image,
-      seller,
-      birthdate,
-      password
+      name, surname, mail, address, image, seller, birthdate, password, cellphone,
+    country, province, cp
     };
 
     const userById = await User.findByPk(id);

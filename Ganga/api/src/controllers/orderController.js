@@ -2,12 +2,11 @@ const { Order, User } = require("../db.js");
 
 const postOrder = async (req, res) => {
   //Atributos del body para pasar en postman
-  const { state, idUser } = req.body;
+  const { idUser, state, amount, info, cellphone, mail, price, address } = req.body; // agregar a postman amount, info, cellphone, mail, price, address
 
   try {
-    const newOrder = await Order.create({
-      state,
-    });
+    const order = {state, amount, info, cellphone, mail, price, address}
+    const newOrder = await Order.create(order);
 
     newOrder ? res.send(await newOrder.setUser(idUser)) : console.log('No se ha podido relacionar la orden con el usuario')
 
@@ -43,13 +42,12 @@ const allOrders = async (req, res) => {
 };
 
 const putOrder = async (req, res) => {
-    const {id, state} = req.body;
+    const {id, state, amount, info, cellphone, mail, price, address} = req.body; // agregar a postman amount, info, cellphone, mail, price, address
 
     try {
-
-        const orderUpdate = {state}
+        const infoUpdateOrder = {state, amount, info, cellphone, mail, price, address}
         const orderById = await Order.findByPk(id)
-        orderById ? res.send(await orderById.update(orderUpdate)) : res.json('No se ha podido modificar su orden')
+        orderById ? res.send(await orderById.update(infoUpdateOrder)) : res.json('No se ha podido modificar su orden')
 
     } catch (error) {
         const search = error.message;
