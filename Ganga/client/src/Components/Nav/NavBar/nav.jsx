@@ -89,7 +89,8 @@ export default function Nav() {
               <span>Nosotros</span>
             </Link>
 
-            <input className="px-4"
+            <input 
+            // className="px-4"
               type="text"
               placeholder="Busca tu producto"
               onChange={handleInput}
