@@ -70,3 +70,6 @@ export default function ProductList() {
     </div>
   );
 }
+
+
+//DELETE: http://localhost:3001/product?id=
