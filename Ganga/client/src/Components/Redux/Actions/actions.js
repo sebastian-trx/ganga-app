@@ -8,57 +8,60 @@ import {
   GET_PRODUCT_BY_NAME,
   FILTER_PRICE_BY_RANGE,
   ORDER_BY_PRICE,
-  // URL,
+  URL,
   SIGNUP,
   GET_USER,
   GET_CATEGORIES,
-  GET_DETAIL_PRODUCT
+  GET_DETAIL_PRODUCT,
+  USER_MESSAGE,
+  FILTER_BY_SEARCH,
+  GET_SUBCATEGORIES,
+  GET_ALL_USERS
 } from "./const";
 
 export function getProduct() {
   return async function (dispatch) {
-    let product = await axios.get(`/product`)
+    let product = await axios.get("http://localhost:3001/product");
     dispatch({
       type: GET_PRODUCT,
-      payload: product.data
-    })
-  }
+      payload: product.data,
+    });
+  };
 }
-
 
 export function getProductByName(name) {
   return async function (dispatch) {
     try {
-      let product = await axios.get(`/product?name=` + name)
+      let product = await axios.get(URL + "product?name=" + name);
       return dispatch({
         type: GET_PRODUCT_BY_NAME,
-        payload: product.data
-      })
+        payload: product.data,
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 }
 
 export function filterPriceByRange(price1, price2) {
   return {
     type: FILTER_PRICE_BY_RANGE,
-    price1, price2
-  }
+    price1,
+    price2,
+  };
 }
 
 export function orderByPrice(payload) {
-  console.log(payload)
   return {
     type: ORDER_BY_PRICE,
-    payload
-  }
+    payload,
+  };
 }
 
 // action para obtener la sesion activa
 export function getUserInfoGoogle(payload) {
   return async function (dispatch) {
-    const arr = await axios.get(`/sessionActive/`, {
+    const arr = await axios.get(`${URL}sessionActive/`, {
       withCredentials: true,
     });
     console.log("soy el arr ", arr)
@@ -73,7 +76,7 @@ export function getUserInfoGoogle(payload) {
 export function localLogin(payload) {
   return async function (dispatch) {
     await axios
-      .post(`/localLogin/`, payload, { withCredentials: true })
+      .post(`${URL}localLogin/`, payload, { withCredentials: true })
       .then((response) => {
         dispatch({
           type: LOCAL_LOGIN,
@@ -86,19 +89,19 @@ export function localLogin(payload) {
 
 export function getUser() {
   return async function (dispatch) {
-    const info = await axios.get(`/sessionActive`)
+    const info = await axios.get("http://localhost:3001/sessionActive");
     return dispatch({
       type: GET_USER,
-      payload: info
-    })
-  }
+      payload: info,
+    });
+  };
 }
 
 // action para crear un usuario
 export function signUp(payload) {
   return async function (dispatch) {
     await axios
-      .post(`/user/`, payload)
+      .post(`${URL}user/`, payload)
       .then((response) => {
         dispatch({
           type: SIGNUP,
@@ -111,26 +114,88 @@ export function signUp(payload) {
 
 export function getCategories() {
   return async function (dispatch) {
-    const info = await axios.get(`/category`)
+    const info = await axios.get("http://localhost:3001/category");
     return dispatch({
       type: GET_CATEGORIES,
-      payload: info.data
-    })
-  }
+      payload: info.data,
+    });
+  };
 }
 
 export function getDetailsProduct(id) {
   return async (dispatch) => {
     try {
-      let urlId = await axios.get(`/product`, {
-        params: { id: id }
-      })
+      let urlId = await axios.get(URL + "product/", {
+        params: { id: id },
+      });
       dispatch({
         type: GET_DETAIL_PRODUCT,
-        payload: urlId.data
-      })
+        payload: urlId.data,
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
+  };
+}
+
+export function filterBySearch(payload) {
+  return {
+    type: FILTER_BY_SEARCH,
+    payload,
+  };
+}
+
+export function userMessage(payload) {
+  return async function (dispatch) {
+    await axios
+      .post(`${URL}userMessage/`, payload)
+      .then((response) => {
+        dispatch({
+          type: USER_MESSAGE,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+}
+
+export function postProducts(payload) {
+  return async function (dispatch) {
+    let response = await axios.post(URL + 'product/', payload)
+    console.log("Soy respuesta de la actions", response.data)
+    return response
   }
 }
+
+export function getSubcategory(payload) {
+  console.log(payload)
+  return {
+    type: GET_SUBCATEGORIES,
+    payload
+  }
+}
+export function getAllUsers(){
+  return async function (dispatch) {
+    let user = await axios.get(URL + 'user')
+    dispatch({
+      type: GET_ALL_USERS,
+      payload: user.data
+    })
+  }
+}
+
+// export function geUserInfo(id){
+//   return async (dispatch) => {
+//     try {
+//       let urlId = await axios.get(URL + 'User/info', {
+//         params: { id: id }
+//       })
+//       dispatch({
+//         type: GET_DETAIL_PRODUCT,
+//         payload: urlId.data
+//       })
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   }
+// }

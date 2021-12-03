@@ -12,29 +12,25 @@ module.exports = (sequelize) => {
                 defaultValue: DataTypes.UUIDV4,
             },
 
+            brand: {
+                type: DataTypes.STRING,
+            },
+            
+            stock: {
+                type: DataTypes.INTEGER,
+            },
+            
             name: {
                 type: DataTypes.STRING,
-                allowNull: false,
-            },
-
-            mark: {
-                type: DataTypes.STRING,
-                allowNull: false,
             },
 
             description: {
                 type: DataTypes.TEXT,
-                allowNull: false,
-            },
+            },    
 
             price: {
                 type: DataTypes.FLOAT,
-                allowNull: false,
-            },
-
-            stock: {
-                type: DataTypes.INTEGER,
-            },
+            },    
 
             image: {
                 type: DataTypes.STRING,
@@ -47,6 +43,10 @@ module.exports = (sequelize) => {
             subcategories: {
                 type: DataTypes.ARRAY(DataTypes.STRING),
             },
+
+            owner: {
+                type: DataTypes.STRING,
+            }
 
         },
         { timestamps: false, paranoid: true }

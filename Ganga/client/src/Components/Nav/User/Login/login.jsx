@@ -2,10 +2,13 @@ import React from "react";
 import LoginForm from "./loginForm";
 import s from "./login.module.css";
 
-import { /*useState,*/ useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getUserInfoGoogle } from "../../../Redux/Actions/actions";
+import foto from "../../../Resources/zapatilla.jpeg";
+import fondo from "../../../Resources/fondo forms.jpeg";
+
 
 export default function Login() {
   ///////
@@ -27,9 +30,10 @@ export default function Login() {
   //////////////////////////////////////////////
 
   return (
-    <div className={s.body}>
+    <div>
+     <img className={s.fondo} src={fondo} alt="" />
       <div className={s.left}>
-        <h1 className="pl-80 pt-80">FOTO ACA</h1>
+       <img className={s.foto} src={foto} alt="" />
       </div>
       <div className={s.right}>
         <LoginForm />

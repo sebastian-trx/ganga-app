@@ -1,27 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProduct, orderByPrice } from "../../Redux/Actions/actions";
+import { Link } from "react-router-dom";
+import { getProduct, orderByPrice, getUser, getCategories, getProductByName } from "../../Redux/Actions/actions";
 import Card from "../../Card/card";
 import s from "./catalog.module.css";
-import BuscarProducto from "../Search/search";
 import Logo from "../Logo/logo";
 import { VscDebugRestart } from "react-icons/vsc";
-import { Link } from "react-router-dom";
 import FilterPrice from "../Filter/filterPrice";
+import { ImSearch } from "react-icons/im";
+import { IoIosCart } from "react-icons/io";
+import { GrClose } from "react-icons/gr";
+import User from '../User/user'
 
 export default function Catalogo() {
   const dispatch = useDispatch();
   const allProduct = useSelector((state) => state.product);
+  const userGoogle = useSelector((state) => state.getInfoGoogle);
   const [, setOrden] = useState("");
-
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+  const [name, setName] = useState(" ")
+ 
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getUser())
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [dispatch])
 
   function handleClick(e) {
     e.preventDefault();
     dispatch(getProduct());
   }
+ 
 
   function handleOrder(e) {
     e.preventDefault();
@@ -29,43 +45,121 @@ export default function Catalogo() {
     setOrden(`Ordenado ${e.target.value}`);
   }
 
+  function handleFilter(e) {
+    const search = e.target.value;
+    setWordEntered(search)
+    const newFilter = allProduct.filter((el) => {
+      return el.name.toLowerCase().includes(search.toLowerCase())
+    });
+    if (search === "") {
+      setFilteredData([])
+    } else {
+      setFilteredData(newFilter)
+    }
+  }
+
+  function clearInput() {
+    setFilteredData([]);
+    setWordEntered("")
+  }
+  function handleInput(e) {
+    setName(e.target.value);
+    setWordEntered(e.target.value);
+    setFilteredData([])
+  }
+
+
+  function handleSumit(e) {
+    dispatch(getProductByName(name))
+    setName("")
+    setWordEntered("")
+  }
   return (
-    <div className={s.nav}>
-      <div>
-        <Link to="/">
-          {" "}
-          <Logo />{" "}
-        </Link>
+    <div>
+      <nav className="flex justify-between items-center h-20  text-black">
+      <Link to="/" className="pl-10">
+          <div className=" w-30">
+            <Logo />
+          </div>
+          </Link>
+
         <div>
+        <Link to="/create" className="pl-10"><button>Tu Producto</button> </Link>
+        </div>
+
+
+        <div className=" w-30">
           <button onClick={handleClick}>
             <VscDebugRestart />
           </button>
         </div>
-        <div>
-          <BuscarProducto />
-        </div>
-        <div>
+
+
+
+        <div className="px-6">
           <FilterPrice />
         </div>
-        <div>
-          {" "}
-          <div>
-            <select onChange={(e) => handleOrder(e)}>
-              <option value="All"> Orden por Precio: </option>
-              <option value="Menor-Mayor"> Mayor a Menor </option>
-              <option value="Mayor-Menor"> Menor a Mayor </option>
-            </select>
-          </div>
+
+
+
+        <div className="pr-10">
+          <select className="w-38" onChange={(e) => handleOrder(e)}>
+            <option value="All"> Orden por Precio: </option>
+            <option value="Menor-Mayor"> Mayor a Menor </option>
+            <option value="Mayor-Menor"> Menor a Mayor </option>
+          </select>
         </div>
-      </div>
-      <div className={s.cards}>
-        {allProduct?.length === 0 ? (
-          <div className={s.Cargando}>
-            <h1>Cargando</h1>
+
+
+        <input
+          type="text"
+          value={wordEntered}
+          onChange={handleFilter}
+        />
+        <div>
+          {filteredData.length === 0 ? (<ImSearch onClick={handleSumit} />) :
+            <div><ImSearch onClick={handleSumit} /> <GrClose onClick={clearInput} /></div>}
+        </div>
+        {filteredData.length !== 0 && (
+          <div>
+            {
+              filteredData.map((el, key) => {
+                return <option onClick={handleInput} value={el.name} key={key}>{el.name}</option>
+              })
+            }
+
           </div>
-        ) : (
-          allProduct.map((el, i) => {
-            return (
+        )}
+        <Link to="/carrito" className="pl-6 pr-10">
+          <button>
+            <IoIosCart />
+          </button>
+        </Link>
+        {
+          userGoogle && userGoogle.login ?
+            <User /> :
+            <>
+              <Link to="/registrarme" className="pl-4">
+                <span>Crear cuenta</span>
+              </Link>
+
+              <Link to="/ingresar" className="pl-4">
+                <span>Iniciar Sesión</span>
+              </Link>
+            </>
+        }
+      </nav>
+
+      <div className={s.nav}>
+
+        <div className={s.cards}>
+          {allProduct?.length === 0 ? (
+            <div className={s.Cargando}>
+              <h1>Cargando</h1>
+            </div>
+          ) : (
+            allProduct.map((el, i) => {
+              return (
                 <div key={"card" + i}>
                   <Card
                     name={el.name}
@@ -74,9 +168,10 @@ export default function Catalogo() {
                     id={el.id}
                   />
                 </div>
-            );
-          })
-        )}
+              );
+            })
+          )}
+        </div>
       </div>
     </div>
   );

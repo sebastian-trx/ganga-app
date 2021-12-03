@@ -26,7 +26,7 @@ export default function Categorias() {
 
   function handleSubCat(e) {
     let sub = products.filter(p => p.subcategories === e.target.value)
-    console.log(sub);
+    console.log(sub)
     navigate("/categorias/" + nombre);
   }
 

@@ -119,5 +119,29 @@
 }
 .div3{
     margin:35px; 
-    padding-left: 140px;
+
+}
+.div4{
+padding-bottom: 50px;
+display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div5{
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart{
+    font-family: "Mulish";
+    font-weight: ExtraBold;
+    padding: 8px;
+    border: 4px solid #D0D0D0;
+    background-color: #ADD8FF;
+    width: 70px;
+    border-radius: 7px;
+    font-size:40px;
+    height: auto;
 }

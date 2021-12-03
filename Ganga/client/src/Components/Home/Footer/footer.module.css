@@ -1,0 +1,91 @@
+.body {
+  background-color: rgb(0, 56, 82);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 35vh;
+  padding-top: 0px;
+}
+
+.titulo {
+  font-family: Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  padding-right: 1150px;
+  padding-top: 30px;
+}
+
+.eslogan {
+  font-family: Tahoma, sans-serif;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  font-weight: normal;
+  padding-right: 1085px;
+  margin-top: -4px;
+}
+
+.tuEres {
+  font-family: Tahoma, sans-serif;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  font-weight: normal;
+  padding-right: 500px;
+  margin-top: -50px;
+}
+
+.texTuEres {
+  font-family: Tahoma, sans-serif;
+  font-size: 14px;
+  color: rgb(213, 255, 145);
+  font-weight: normal;
+  padding-right: 500px;
+  margin-top: -4px;
+}
+
+.vender {
+  font-family: Tahoma, sans-serif;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  font-weight: normal;
+  padding-left: 870px;
+  margin-top: -110px;
+}
+
+.textVender {
+  font-family: Tahoma, sans-serif;
+  font-size: 14px;
+  color: rgb(213, 255, 145);
+  font-weight: normal;
+  padding-left: 870px;
+  margin-top: -4px;
+}
+
+.ubicacion {
+  font-family: Tahoma, sans-serif;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  font-weight: normal;
+  padding-left: 150px;
+  margin-top: -110px;
+}
+
+.textUbicacion {
+  font-family: Tahoma, sans-serif;
+  font-size: 14px;
+  color: rgb(213, 255, 145);
+  font-weight: normal;
+  padding-left: 150px;
+  margin-top: -4px;
+}
+
+.copyright {
+  background-color: rgb(204, 217, 241);
+  width: 100%;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  font-weight: normal;
+  padding-left: 600px;
+  margin-top: 70px;
+}
