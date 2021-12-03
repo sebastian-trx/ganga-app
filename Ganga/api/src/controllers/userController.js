@@ -10,7 +10,6 @@ async function postUser(req, res) {
   const { name, surname, mail, address, image, seller, birthdate, password, cellphone, country, province, cp } = req.body;
   // Formato para enviar cumpleaños: 1991-11-28     // modificar en postman surname por lastname y agregar cellphone, country, province, cp
 
-
   const check = await User.findOne({
     where: {
       mail: mail,

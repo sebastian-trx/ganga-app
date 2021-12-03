@@ -32,6 +32,11 @@ module.exports = (sequelize) => {
                 type: DataTypes.INTEGER,
             },
 
+            password: {
+                type: DataTypes.STRING,
+                // allowNull: false,
+            },
+
             address: {
                 type: DataTypes.STRING
             },

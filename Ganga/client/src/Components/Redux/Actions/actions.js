@@ -61,9 +61,10 @@ export function orderByPrice(payload) {
 // action para obtener la sesion activa
 export function getUserInfoGoogle(payload) {
   return async function (dispatch) {
-    const arr = await axios.get(URL + "sessionActive/", {
+    const arr = await axios.get(`${URL}sessionActive/`, {
       withCredentials: true,
     });
+    console.log("soy el arr ", arr)
     return dispatch({
       type: GET_INFO_GOOGLE,
       payload: arr.data,
