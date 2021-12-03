@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { getCategories, getSubcategory } from '../Redux/Actions/actions'
+import { getCategories, getSubcategory, postProducts } from '../Redux/Actions/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import s from './createProducts.module.css'
-import { postProducts } from '../Redux/Actions/actions'
+import AllUser from "../AllUser/allUser"
 
 
 function validate(input) {
@@ -38,7 +38,8 @@ function validate(input) {
 export default function CreateProducts() {
     const dispatch = useDispatch()
     const categories = useSelector((state) => state.categories)
-    const allProduct = useSelector((state) => state.product)
+    const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
+    console.log(getInfoGoogle.id)
     const subcategories = useSelector((state) => state.subcategories)
     console.log("SOY LASOMDPOIWNDPOIN", subcategories)
     const [error, setError] = useState({})
@@ -55,7 +56,7 @@ export default function CreateProducts() {
         status: " ",
         stock: " ",
         image: " ",
-        idUser: " ",
+        idUser: getInfoGoogle.id,
         idCategory: " ",
         subcategories: " ",
     });
@@ -86,10 +87,10 @@ export default function CreateProducts() {
         e.preventDefault();
         dispatch(getSubcategory(e.target.value))
     }
-    function handleSelect2(e){
+    function handleSelect2(e) {
         setInput({
             ...input,
-           [ subcategories]: e.target.value,
+            [subcategories]: e.target.value,
         })
     }
     const uploadImage = async (e) => {
@@ -98,18 +99,18 @@ export default function CreateProducts() {
         data.append("file", files[0]);
         data.append("upload_preset", "htnah6yo");
         setLoading(true);
-    
+
         const res = await fetch(
-          "https://api.cloudinary.com/v1_1/djrddcab5/image/upload",
-          {
-            method: "POST",
-            body: data,
-          }
+            "https://api.cloudinary.com/v1_1/djrddcab5/image/upload",
+            {
+                method: "POST",
+                body: data,
+            }
         );
-    
+
         const file = await res.json();
         setImage(file.secure_url);
-      };
+    };
 
 
     useEffect(() => {
@@ -188,45 +189,37 @@ export default function CreateProducts() {
                             <option value="false">Usado </option>
                         </select>
                     </div>
-                   
-                    {(input.status === "true") ? 
-                    (<div><label><span>Stock: </span></label> 
-                    <input onChange={handleChange} type="number" name="stock" autoComplete="off" />
-                    </div>) : <p>No requiere cantidad de stock</p>
+
+                    {(input.status === "true") ?
+                        (<div><label><span>Stock: </span></label>
+                            <input onChange={handleChange} type="number" name="stock" autoComplete="off" />
+                        </div>) : <p></p>
 
                     }
-                      <div>
-              <div className="pt-0 pb-2">
-                <label>Imagen</label>
-              </div>
-              <div>
-                <input
-                  className={s.inputs}
-                  onChange={uploadImage}
-                  type="file"
-                  name="images"
-                  required="required"
-                  accept="image/png,image/jpeg"
-                />
-                {error.images ? <p>{error.images}</p> : null}
-              </div>
-              <div>{(input.images = image)}</div>
-              <label>
-                {loading ? (
-                  <img className={s.imagenSubida} src={image} alt="No hay imagen" />
-                ) : (
-                  <p>Aun no has subido una imagen</p>
-                )}
-              </label>
-            </div>   
-
                     <div>
-                        <label><span >Id User</span ></label>
-                        <div>
-                            <input onChange={handleChange} type='text' name="idUser" autoComplete="off" required />
+                        <div className="pt-0 pb-2">
+                            <label>Imagen</label>
                         </div>
+                        <div>
+                            <input
+                                className={s.inputs}
+                                onChange={uploadImage}
+                                type="file"
+                                name="image"
+                                required="required"
+                                accept="image/png,image/jpeg"
+                            />
+                            {error.image ? <p>{error.image}</p> : null}
+                        </div>
+                        <div>{(input.image = image)}</div>
+                        <label>
+                            {loading ? (
+                                <img className={s.imagenSubida} src={image} alt="No hay imagen" />
+                            ) : (
+                                <p>Aun no has subido una imagen</p>
+                            )}
+                        </label>
                     </div>
-
 
                     <div>
                         <label > Categoria: </label>
@@ -246,7 +239,7 @@ export default function CreateProducts() {
                                 (<h1>Debes Seleccionar una Categoria</h1>) :
                                 (
                                     <div>
-                                         <label > SubCategoria: </label>
+                                        <label > SubCategoria: </label>
                                         <select name="subcategories" onChange={handleSelect2} >
                                             {(
                                                 subcategories[0].subcategories.map((p, i) => (
@@ -266,8 +259,19 @@ export default function CreateProducts() {
 
                 </form>
             </div >
+
+            <div>
+
+
+
+            </div>
+            <AllUser/>
         </div >
+
+
+
     )
+    
 }
 
 

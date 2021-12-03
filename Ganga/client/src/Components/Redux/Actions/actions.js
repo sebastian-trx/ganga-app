@@ -14,7 +14,8 @@ import {
   GET_CATEGORIES,
   GET_DETAIL_PRODUCT,
   FILTER_BY_SEARCH,
-  GET_SUBCATEGORIES
+  GET_SUBCATEGORIES,
+  GET_ALL_USERS
 } from "./const";
 
 export function getProduct() {
@@ -157,3 +158,28 @@ export function getSubcategory(payload) {
     payload
   }
 }
+export function getAllUsers(){
+  return async function (dispatch) {
+    let user = await axios.get(URL + 'User')
+    dispatch({
+      type: GET_ALL_USERS,
+      payload: user.data
+    })
+  }
+}
+
+// export function geUserInfo(id){
+//   return async (dispatch) => {
+//     try {
+//       let urlId = await axios.get(URL + 'User/info', {
+//         params: { id: id }
+//       })
+//       dispatch({
+//         type: GET_DETAIL_PRODUCT,
+//         payload: urlId.data
+//       })
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   }
+// }

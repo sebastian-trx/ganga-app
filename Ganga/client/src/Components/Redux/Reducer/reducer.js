@@ -10,7 +10,8 @@ import {
   GET_CATEGORIES,
   GET_DETAIL_PRODUCT,
   FILTER_BY_SEARCH,
-  GET_SUBCATEGORIES
+  GET_SUBCATEGORIES,
+  GET_ALL_USERS
 } from "../Actions/const";
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   allProducts2: [],
   getInfoGoogle: [],
   user: [],
+  allUsers: [],
   categories: [],
   detailProduct: [],
   subcategories: [],
@@ -99,19 +101,24 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         detailProduct: payload
       }
     case FILTER_BY_SEARCH:
-      let resultado = state.product.filter((el) => (el.name.toLowerCase().includes(payload.toLowerCase())) ||(el.categories.toLowerCase().includes(payload.toLowerCase())) )
+      let resultado = state.product.filter((el) => (el.name.toLowerCase().includes(payload.toLowerCase())) || (el.categories.toLowerCase().includes(payload.toLowerCase())))
 
       return {
         ...state,
         product: resultado
       }
 
-      case GET_SUBCATEGORIES:
-        let subcatego= state.categories.filter((el) => el.id === payload)
-        return{
-          ...state,
-          subcategories: subcatego
-        }
+    case GET_SUBCATEGORIES:
+      let subcatego = state.categories.filter((el) => el.id === payload)
+      return {
+        ...state,
+        subcategories: subcatego
+      }
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        allUsers: payload
+      }
     default: {
       return state;
     }

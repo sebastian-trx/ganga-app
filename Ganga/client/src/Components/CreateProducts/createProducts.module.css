@@ -12,11 +12,11 @@
     padding:0;
 }
 .form{
+    padding-top: 20px;
     background-color: #D0D0D0;
-    height: 800px;
-    width: 1000px;
+    height: 500px;
+    width: 600px;
     display:flex;
-    align-items:center;
     justify-content:center;
     border-radius: 10px;
     border: 2px solid rgb(48, 48, 48);
