@@ -22,49 +22,44 @@ module.exports = (sequelize) => {
 
             mail: {
                 type: DataTypes.STRING,
-            },        
+            },
 
             password: {
                 type: DataTypes.STRING,
-            },    
+            },
 
             cellphone: {
                 type: DataTypes.INTEGER,
-            },    
+            },
 
             address: {
-                type: DataTypes.STRING,
-<<<<<<< Updated upstream
+                type: DataTypes.STRING
             },
-            
-=======
-            },    
 
             country: {
                 type: DataTypes.STRING,
-            },    
+            },
 
             province: {
                 type: DataTypes.STRING,
-            },    
+            },
 
             cp: {
                 type: DataTypes.STRING,
-            },    
+            },
 
             admin: {
                 type: DataTypes.BOOLEAN,
-            },            
+            },
 
             birthdate: {
                 type: DataTypes.DATEONLY,
-            },            
+            },
 
->>>>>>> Stashed changes
             image: {
                 type: DataTypes.STRING,
             },
-            
+
             seller: {
                 type: DataTypes.BOOLEAN,
             },

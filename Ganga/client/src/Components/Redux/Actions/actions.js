@@ -15,7 +15,6 @@ import {
   GET_DETAIL_PRODUCT,
   USER_MESSAGE,
   FILTER_BY_SEARCH,
-  FILTER_BY_SEARCH,
   GET_SUBCATEGORIES,
   GET_ALL_USERS
 } from "./const";
@@ -176,7 +175,7 @@ export function getSubcategory(payload) {
 }
 export function getAllUsers(){
   return async function (dispatch) {
-    let user = await axios.get(URL + 'User')
+    let user = await axios.get(URL + 'user')
     dispatch({
       type: GET_ALL_USERS,
       payload: user.data

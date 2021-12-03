@@ -25,23 +25,23 @@ export default function shoppCart() {
               {/* LA ETIQUETA DE AQUI ABAJO DEBERIAMOS MAPEAR PARA MOSTRAR LOS ITEMS DEL CARRITO */}
               <tr>
                 <td class="hidden pb-4 md:table-cell">
-                  <a href="#">
+                  {/* <a href="#"> */}
                     <img
                       src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg"
                       class="w-20 rounded"
                       alt="Thumbnail"
                     />
-                  </a>
+                  {/* </a> */}
                 </td>
                 <td>
-                  <a href="#">
+                  {/* <a href="#"> */}
                     <p class="mb-2 md:ml-4">Earphone</p>
                     <form action="" method="POST">
                       <button type="submit" class="text-gray-700 md:ml-4">
                         <small>(Borrar item)</small>
                       </button>
                     </form>
-                  </a>
+                  {/* </a> */}
                 </td>
                 <td class="justify-center md:justify-end md:flex mt-6">
                   <div class="w-20 h-10">
@@ -186,7 +186,7 @@ export default function shoppCart() {
                     17,859.3€
                   </div>
                 </div>
-                <a href="#">
+                {/* <a href="#"> */}
                   <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
                     <svg
                       aria-hidden="true"
@@ -203,7 +203,7 @@ export default function shoppCart() {
                     </svg>
                     <span class="ml-2 mt-5px">Comprar</span>
                   </button>
-                </a>
+                {/* </a> */}
               </div>
             </div>
           </div>
@@ -214,6 +214,3 @@ export default function shoppCart() {
   );
 }
 
-{
-  /* export default shoppCart; */
-}
