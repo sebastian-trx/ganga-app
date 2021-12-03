@@ -7,8 +7,9 @@ import SignUp from "./Components/Nav/User/SignUp/singUp";
 import Categorias from "./Components/Nav/Categories/categories";
 import ProductId from './Components/ProductoId/productoId'
 import LoginSuccess from "./Components/Nav/User/LoginGoogle/loginSuccess";
-import CreateProduct from "./Components/CreateProducts/createProducts";
+// import CreateProduct from "./Components/CreateProducts/createProducts";
 import ShopCart from "./Components/ShoppCart/shoppCart.jsx";
+import AdminPanel from "./Components/Panels/AdminPanel/aPanel";
 
 function App() {
   return (
@@ -19,11 +20,12 @@ function App() {
          <Route path ='/catalogo' element={<Catalogo/>}/>
          <Route path ='/ingresar' element={<Login/>}/>
          <Route path ='/registrarme' element={<SignUp/>}/>
-         <Route path = '/create' element={<CreateProduct/>}/>
+         {/* <Route path = '/create' element={<CreateProduct/>}/> */}
          <Route path ='/categorias/:nombre' element={<Categorias/>}/>
          <Route exact path="/login/success" element={<LoginSuccess />}/>
          <Route exact path="/login/success" element={<LoginSuccess />} />
          <Route path ='/shopCart' element={<ShopCart/>}/>
+         <Route path ='/panel' element={<AdminPanel/>}/>
         </Routes>
     </BrowserRouter>
   );

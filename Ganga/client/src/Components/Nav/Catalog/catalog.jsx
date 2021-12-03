@@ -21,10 +21,10 @@ export default function Catalogo() {
   const [wordEntered, setWordEntered] = useState("");
   const [name, setName] = useState(" ")
  
-
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
+
   useEffect(() => {
     dispatch(getUser())
   }, [dispatch])
