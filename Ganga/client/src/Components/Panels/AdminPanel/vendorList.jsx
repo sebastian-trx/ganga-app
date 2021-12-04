@@ -45,11 +45,11 @@ export default function VendorList({vendors}) {
   return (
     <div >
       <h4 className="text-5xl text-center font-light pt-10 pb-12">Vendedores</h4>
-      <Link to="/registrarme">
+      {/* <Link to="/registrarme">
         <button className="absolute top-40 right-10 rounded-3xl bg-gray-300 hover:bg-gray-400 p-3">
           Crear
         </button>
-      </Link>
+      </Link> */}
       <div className={s.listaVendedores}>
         <DataGrid
           rows={rows}

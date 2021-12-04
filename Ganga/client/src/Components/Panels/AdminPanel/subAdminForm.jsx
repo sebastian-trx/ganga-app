@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { LoginG } from "../../User/LoginGoogle/loginG";
-import { signUp, localLogin } from "../../../Redux/Actions/actions";
+import { signUp, localLogin } from "../../Redux/Actions/actions";
 
-export default function SignUpForm() {
+// import s from "./signup.module.css";
+
+export default function SubAdminForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -53,7 +54,6 @@ export default function SignUpForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // dispatch(inserteAccionAqui(input))
     dispatch(signUp(input));
     setTimeout(() => {
       dispatch(localLogin(input));
@@ -66,13 +66,13 @@ export default function SignUpForm() {
       numero: "",
       address: "",
     });
-    navigate("/");
+    navigate("/panel");
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2 className="text-left pl-20 pb-3 pt-5 text-2xl">Registrate</h2>
+        <h2 className="text-left pl-20 pb-3 pt-5 text-2xl">Registra un nuevo admin</h2>
         <hr className="border-black mr-10 ml-20 " />
 
         <div className="pt-5">
@@ -165,18 +165,6 @@ export default function SignUpForm() {
           Crear cuenta
         </button>
       </form>
-
-      <div>
-        <h5 className=" text-lg py-4">
-          O puedes registrarte usando tu cuenta de Google
-        </h5>
-        <LoginG />
-      </div>
-
-      <h5 className="py-4 text-lg"> ¿Ya tienes una cuenta?</h5>
-      <Link to="/ingresar">
-        <button className="text-red-400 pb-3  text-lg"> Entra aquí</button>
-      </Link>
     </div>
   );
 }

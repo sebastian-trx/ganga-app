@@ -45,11 +45,12 @@ export default function UserList({users}) {
   return (
     <div >
       <h4 className="text-5xl text-center font-light pt-10 pb-12">Usuarios</h4>
-      <Link to="/registrarme">
+      <Link to="/registrar">
         <button className="absolute top-40 right-10 rounded-3xl bg-gray-300 hover:bg-gray-400 p-3">
           Crear
         </button>
       </Link>
+      <NewUsersChart/>
       <div className={s.listaUsuarios}>
         <DataGrid
           rows={rows}
@@ -59,7 +60,10 @@ export default function UserList({users}) {
           checkboxSelection
         />
       </div>
-     <NewUsersChart/>
+    
     </div>
   );
 }
+
+
+// DELETE: http://localhost:3001/user?id= NO BORRAR
