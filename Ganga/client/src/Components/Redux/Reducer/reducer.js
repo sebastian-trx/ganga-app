@@ -12,7 +12,11 @@ import {
   FILTER_BY_SEARCH,
   USER_MESSAGE,
   GET_SUBCATEGORIES,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  ADD_PRODUCT,
+  DECRESE_PRODUCT,
+  SUM_PRODUCT,
+  CLEAR_CART
 } from "../Actions/const";
 
 const initialState = {
@@ -24,6 +28,11 @@ const initialState = {
   categories: [],
   detailProduct: [],
   subcategories: [],
+  // cart
+  addProduct:[],
+  decreseProduct:[],
+  clearCart:[]
+
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -131,6 +140,23 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
         allUsers: payload
       }
+      case ADD_PRODUCT:
+        return{
+          ...state,
+          addProduct: payload
+        }
+       case DECRESE_PRODUCT:
+         return{
+           ...state,
+           decreseProduct: payload
+         }
+
+         case CLEAR_CART:
+           return{
+             ...state,
+             clearCart: payload
+           }
+
     default: {
       return state;
     }

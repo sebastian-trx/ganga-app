@@ -16,7 +16,11 @@ import {
   USER_MESSAGE,
   FILTER_BY_SEARCH,
   GET_SUBCATEGORIES,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  ADD_PRODUCT,
+  DECRESE_PRODUCT,
+  SUM_PRODUCT,
+  CLEAR_CART,
 } from "./const";
 
 export function getProduct() {
@@ -25,6 +29,50 @@ export function getProduct() {
     dispatch({
       type: GET_PRODUCT,
       payload: product.data,
+    });
+  };
+}
+
+export function addProduct(payload) {
+  // --------> payload {id:"id usario", item: {id:"id producto"}, que: >=1}({id:input, item:{id: input2}, que: input3})
+  console.log("soy el payload de manipulateCart: ", payload); // payload para toda la accion (podes añadir el producto por primera vez, sumar o restar(modificar que o cant)) ---> {id:"id del usuario", item: {id:"id del producto"}, cant:"1"(SIEMPRE QUE QUERRAMOS AÑADIR AL CARRITO), que:"+ o -"(SI LO MANDO VACIO ME BORRA EL PRODUCTO)}
+  return async function (dispatch) {
+    const response = await axios.post(
+      "http://localhost:3001/user/addCart",
+      payload
+    );
+    dispatch({
+      type: ADD_PRODUCT,
+      payload: response.data,
+    });
+  };
+}
+
+export function decreseProduct(payload) {
+  // --------> payload {id:"id usario", item: {id:"id producto"}, que: >=1}({id:input, item:{id: input2}, que: input3})
+  console.log("soy el payload de manipulateCart: ", payload); // payload para toda la accion (podes añadir el producto por primera vez, sumar o restar(modificar que o cant)) ---> {id:"id del usuario", item: {id:"id del producto"}, cant:"1"(SIEMPRE QUE QUERRAMOS AÑADIR AL CARRITO), que:"+ o -"(SI LO MANDO VACIO ME BORRA EL PRODUCTO)}
+  return async function (dispatch) {
+    const response = await axios.post(
+      "http://localhost:3001/user/addCart",
+      payload
+    );
+    dispatch({
+      type: DECRESE_PRODUCT,
+      payload: response.data,
+    });
+  };
+}
+
+export function clearCart(payload) {
+  console.log("soy el payload de clearCart: ", payload);
+  return async function (dispatch) {
+    const response = axios.put(
+      `http://localhost:3001/user/clearCart?id=${payload}`
+    );
+    console.log("soy el response de clearCart: ", response);
+    dispatch({
+      type: CLEAR_CART,
+      payload: response.data,
     });
   };
 }
@@ -64,7 +112,7 @@ export function getUserInfoGoogle(payload) {
     const arr = await axios.get(`${URL}sessionActive/`, {
       withCredentials: true,
     });
-    console.log("soy el arr ", arr)
+    console.log("soy el arr ", arr);
     return dispatch({
       type: GET_INFO_GOOGLE,
       payload: arr.data,
@@ -161,27 +209,27 @@ export function userMessage(payload) {
 
 export function postProducts(payload) {
   return async function (dispatch) {
-    let response = await axios.post(URL + 'product/', payload)
-    console.log("Soy respuesta de la actions", response.data)
-    return response
-  }
+    let response = await axios.post(URL + "product/", payload);
+    console.log("Soy respuesta de la actions", response.data);
+    return response;
+  };
 }
 
 export function getSubcategory(payload) {
-  console.log(payload)
+  console.log(payload);
   return {
     type: GET_SUBCATEGORIES,
-    payload
-  }
+    payload,
+  };
 }
-export function getAllUsers(){
+export function getAllUsers() {
   return async function (dispatch) {
-    let user = await axios.get(URL + 'user')
+    let user = await axios.get(URL + "user");
     dispatch({
       type: GET_ALL_USERS,
-      payload: user.data
-    })
-  }
+      payload: user.data,
+    });
+  };
 }
 
 // export function geUserInfo(id){

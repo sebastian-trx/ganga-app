@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import CountInput from "./counterInput.jsx";
+import {getUserInfoGoogle} from "../Redux/Actions/actions"
 
-export default function shoppCart() {
+export default function ShoppCart() {
+  const dispatch = useDispatch();
+  const User = useSelector((state) => state.getInfoGoogle)
+  const cart = User.Cart;
+  let flag = false;
+  console.log("carrito",cart)
+
+  
+  // useEffect(() => {
+    //   dispatch(getUserInfoGoogle());
+    //   console.log('holi')
+    // });
+    
+    useEffect(() => {
+      dispatch(getUserInfoGoogle());
+    },[]);
+
+    // if(cart?.length !== 0 && !flag) {
+    //      flag = true
+    //      window.location.reload()
+    //  } 
+    
   return (
     <div class="flex justify-center my-6">
       <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -23,45 +47,46 @@ export default function shoppCart() {
             </thead>
             <tbody>
               {/* LA ETIQUETA DE AQUI ABAJO DEBERIAMOS MAPEAR PARA MOSTRAR LOS ITEMS DEL CARRITO */}
-              <tr>
+              { cart?.length !== 0 ?
+                cart?.map((el) =>
+                <tr key={el.id}>
                 <td class="hidden pb-4 md:table-cell">
-                  {/* <a href="#"> */}
+                  <Link to={`/${el.id}`}>
                     <img
-                      src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg"
+                      src={el.image}
                       class="w-20 rounded"
                       alt="Thumbnail"
-                    />
-                  {/* </a> */}
+                      />
+                  </Link>
                 </td>
                 <td>
-                  {/* <a href="#"> */}
-                    <p class="mb-2 md:ml-4">Earphone</p>
+                  <Link to={`/${el.id}`}>
+                    <p class="mb-2 md:ml-4">{el.name}</p>
                     <form action="" method="POST">
                       <button type="submit" class="text-gray-700 md:ml-4">
                         <small>(Borrar item)</small>
                       </button>
                     </form>
-                  {/* </a> */}
+                  </Link>
                 </td>
                 <td class="justify-center md:justify-end md:flex mt-6">
                   <div class="w-20 h-10">
                     <div class="relative flex flex-row w-full h-8">
-                      <CountInput/>
-                      {/* <input
-                        type="number"
-                        value="2"
-                        class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
-                      /> */}
+                      <CountInput idUser={User.id} idProd={el.id} quantP= {el.quantity}/>
                     </div>
                   </div>
                 </td>
                 <td class="hidden text-right md:table-cell">
-                  <span class="text-sm lg:text-base font-medium">10.00€</span>
+                  <span class="text-sm lg:text-base font-medium">$ {el.price}</span>
                 </td>
                 <td class="text-right">
-                  <span class="text-sm lg:text-base font-medium">20.00€</span>
+                  <span class="text-sm lg:text-base font-medium">$ {el.price * el.quantity}</span>
                 </td>
               </tr>
+              )
+              :
+              alert("EL CARRITO SE ENCUENTRA VACIO")
+              }
             </tbody>
 
 
