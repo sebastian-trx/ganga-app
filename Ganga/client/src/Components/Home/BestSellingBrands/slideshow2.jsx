@@ -7,7 +7,7 @@ const Slideshow2 = ({
   children,
   controles = false,
   autoplay = false,
-  velocidad = "3000",
+  velocidad = "500",
   intervalo = "2000",
 }) => {
   const slideshow = useRef(null);
@@ -103,6 +103,7 @@ const Slideshow2 = ({
 
 const ContenedorPrincipal = styled.div`
   position: relative;
+  padding-left: 50px;
 `;
 
 const ContenedorSlideshow = styled.div`
@@ -144,7 +145,7 @@ const TextoSlide = styled.div`
 
 const Controles = styled.div`
   position: absolute;
-  left: 300px;
+  left: 332px;
   top: 0;
   z-index: 5;
   width: 13%;

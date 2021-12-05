@@ -1,3 +1,13 @@
+.bg {
+  background-image: url("https://st3.depositphotos.com/30440304/34113/i/450/depositphotos_341136250-stock-photo-geometric-multicolored-intersecting-lines-graphic.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 98.7vw;
+  padding: 10px;
+}
+
 .image {
   width: 100%;
   height: 80%;
