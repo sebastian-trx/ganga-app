@@ -22,7 +22,6 @@ export default function Categorias() {
 
 
   let products = allProduct.filter(p => p.categories === nombre);
-  console.log("products", products)
 
   function handleSubCat(e) {
     let sub = products.filter(p => p.subcategories === e.target.value)
@@ -46,7 +45,7 @@ export default function Categorias() {
           }
         </select>
       </div>
-      <div1>
+      <div>
         {products?.length === 0 ? (
           <div>
             <h1>Cargando</h1>
@@ -65,7 +64,7 @@ export default function Categorias() {
             );
           })
         )}
-      </div1>
+      </div>
     </div>
   );
 }

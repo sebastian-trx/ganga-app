@@ -12,7 +12,8 @@ import {
   FILTER_BY_SEARCH,
   USER_MESSAGE,
   GET_SUBCATEGORIES,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  PUT_USER
 } from "../Actions/const";
 
 const initialState = {
@@ -74,21 +75,21 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       let sortedProducts =
         payload === "Mayor-Menor"
           ? state.product.sort(function (a, b) {
-              if (a.price > b.price) {
-                return 1;
-              } else if (b.price > a.price) {
-                return -1;
-              }
-              return 0;
-            })
+            if (a.price > b.price) {
+              return 1;
+            } else if (b.price > a.price) {
+              return -1;
+            }
+            return 0;
+          })
           : state.product.sort(function (a, b) {
-              if (a.price > b.price) {
-                return -1;
-              } else if (a.price > b.price) {
-                return 1;
-              }
-              return 0;
-            });
+            if (a.price > b.price) {
+              return -1;
+            } else if (a.price > b.price) {
+              return 1;
+            }
+            return 0;
+          });
       return {
         ...state,
         product: payload === "All" ? state.products : sortedProducts,
@@ -130,6 +131,11 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       return {
         ...state,
         allUsers: payload
+      }
+    case PUT_USER:
+      return {
+        ...state,
+        getInfoGoogle: payload
       }
     default: {
       return state;

@@ -13,3 +13,4 @@ export const FILTER_BY_SEARCH = "FILTER_BY_SEARCH";
 export const USER_MESSAGE = "USER_MESSAGE";
 export const GET_SUBCATEGORIES = "GET_SUBCATEGIES";
 export const GET_ALL_USERS= "GET_ALL_USERS";
+export const PUT_USER= "PUT_USER";

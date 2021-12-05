@@ -16,7 +16,8 @@ import {
   USER_MESSAGE,
   FILTER_BY_SEARCH,
   GET_SUBCATEGORIES,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  PUT_USER,
 } from "./const";
 
 export function getProduct() {
@@ -64,7 +65,6 @@ export function getUserInfoGoogle(payload) {
     const arr = await axios.get(`${URL}sessionActive/`, {
       withCredentials: true,
     });
-    console.log("soy el arr ", arr)
     return dispatch({
       type: GET_INFO_GOOGLE,
       payload: arr.data,
@@ -162,19 +162,17 @@ export function userMessage(payload) {
 export function postProducts(payload) {
   return async function (dispatch) {
     let response = await axios.post(URL + 'product/', payload)
-    console.log("Soy respuesta de la actions", response.data)
     return response
   }
 }
 
 export function getSubcategory(payload) {
-  console.log(payload)
   return {
     type: GET_SUBCATEGORIES,
     payload
   }
 }
-export function getAllUsers(){
+export function getAllUsers() {
   return async function (dispatch) {
     let user = await axios.get(URL + 'user')
     dispatch({
@@ -182,6 +180,20 @@ export function getAllUsers(){
       payload: user.data
     })
   }
+}
+
+export function updateUser(payload) {
+  return async function (dispatch) {
+    await axios
+      .put(`${URL}user`, payload)
+      .then((response) => {
+        dispatch({
+          type: PUT_USER,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
 }
 
 // export function geUserInfo(id){

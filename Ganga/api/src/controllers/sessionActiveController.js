@@ -6,11 +6,12 @@ async function sessionActive(req, res) {
       admin: req.user.admin,
       seller: req.user.seller,
       name: req.user.name,
-      lastname: req.user.lastname,
+      surname: req.user.surname,
       mail: req.user.mail,
       address: req.user.address,
       image: req.user.image
     });
+  else res.json({ login: false });
 }
 
 

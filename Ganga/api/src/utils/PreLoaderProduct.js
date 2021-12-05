@@ -101,7 +101,7 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_906599-MLA47575297130_092021-O.webp",
-    categories: "Tecnología",
+    categories: "Tecnologia",
     subcategories: ["Celulares y telefonos"],
   },
   {
@@ -113,7 +113,7 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_878604-MLA44160072739_112020-O.webp",
-    categories: "Tecnología",
+    categories: "Tecnologia",
     subcategories: ["Televisores"],
   },
   {
@@ -125,7 +125,7 @@ const infoProduct = [
     stock: 2,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_624926-MLA44490109901_012021-O.webp",
-    categories: "Tecnología",
+    categories: "Tecnologia",
     subcategories: ["Computacion"],
   },
   {
@@ -137,7 +137,7 @@ const infoProduct = [
     stock: 4,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_962681-MLA47729250270_102021-O.webp",
-    categories: "Tecnología",
+    categories: "Tecnologia",
     subcategories: ["Computacion"],
   },
   {
@@ -149,7 +149,7 @@ const infoProduct = [
     stock: 1,
     image:
       "https://http2.mlstatic.com/D_NQ_NP_984177-MLA44963321666_022021-O.webp",
-    categories: "Tecnología",
+    categories: "Tecnologia",
     subcategories: ["Consolas y videojuegos"],
   },
   {
