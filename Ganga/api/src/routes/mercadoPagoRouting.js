@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const router = Router();
 const {
-    mercadoPagoPost,
-} = require("../controllers/mercadoPagoController");
+    mercadoPagoPost2,
+} = require("../controllers/mercadoPagoController2");
 
-router.post("/", mercadoPagoPost);
+router.post("/", mercadoPagoPost2);
 
 
 module.exports = router;

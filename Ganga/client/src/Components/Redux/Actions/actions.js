@@ -23,6 +23,7 @@ import {
   CLEAR_CART,
   DELETE_ITEM,
   MERCADO_PAGO,
+  MERCADO_PAGO2,
   SUCCESS_MAIL,
   FAIL_MAIL
 } from "./const";
@@ -274,11 +275,26 @@ export function getAllUsers() {
 export function compraMP(payload) {
   return async function (dispatch) {
   await axios
-    .post(`${URL}mercadoPago`, payload,)
+    .post(`${URL}mercadoPago2`, payload,)
     .then((response) => {
 
       dispatch({
         type: MERCADO_PAGO,
+        payload: response.data,
+      });
+    })
+    .catch((error) => console.log(error));
+};
+}
+
+export function compraMP2(payload) {
+  return async function (dispatch) {
+  await axios
+    .post(`${URL}mercadoPago`, payload,)
+    .then((response) => {
+
+      dispatch({
+        type: MERCADO_PAGO2,
         payload: response.data,
       });
     })

@@ -19,5 +19,6 @@ export const SUM_PRODUCT = "SUM_PRODUCT";
 export const CLEAR_CART = "CLEAR_CART";
 export const DELETE_ITEM = "DELETE_ITEM"
 export const MERCADO_PAGO = "MERCADO_PAGO"
+export const MERCADO_PAGO2 = "MERCADO_PAGO2"
 export const SUCCESS_MAIL = "SUCCES_MAIL"
 export const FAIL_MAIL = "FAIL_MAIL"

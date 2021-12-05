@@ -5,12 +5,12 @@ mercadopago.configure({
     "APP_USR-3165543253229123-102923-7e846c48429d8c5d99d4da622ae38cff-1009370863", // token de la persona que recibe los pagos
 });
 
-async function mercadoPagoPost(req, res) {
-  const compras = req.body;
+async function mercadoPagoPost2(req, res) {
+  const objMp = req.body;
   // console.log(compras);
 
   let preference = {
-    items: compras,
+    items: [objMp],
 
    back_urls: {
    	success: "http://localhost:3000/successMp",
@@ -31,12 +31,12 @@ async function mercadoPagoPost(req, res) {
     });
 }
 
-// async function mercadoPagoPost(req, res) {
-//   const compras = req.body;
-//   console.log(compras);
-//   res.send(`${compras}`)
+// async function mercadoPagoPost2(req, res) {
+//   const objMp = req.body;
+//   console.log(objMp);
+//   res.send(`holii`)
 // }
 
 module.exports = {
-  mercadoPagoPost,
+  mercadoPagoPost2,
 };

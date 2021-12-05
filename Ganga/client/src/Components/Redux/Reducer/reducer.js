@@ -19,8 +19,9 @@ import {
   CLEAR_CART,
   DELETE_ITEM,
   MERCADO_PAGO,
+  MERCADO_PAGO2,
   SUCCESS_MAIL,
-  FAIL_MAIL
+  FAIL_MAIL,
 } from "../Actions/const";
 
 const initialState = {
@@ -33,6 +34,7 @@ const initialState = {
   detailProduct: [],
   subcategories: [],
   mp: [],
+  mp2: [],
   // cart
   addProduct: [],
   decreseProduct: [],
@@ -170,6 +172,12 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       return {
         ...state,
         mp: payload[0].url,
+      };
+
+    case MERCADO_PAGO2:
+      return {
+        ...state,
+        mp2: payload[0].url,
       };
 
     case SUCCESS_MAIL:
