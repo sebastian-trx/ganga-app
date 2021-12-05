@@ -11,38 +11,38 @@ import c from "./bestSellingBrands.css";
 export default function BestSellingBrands() {
   return (
     <div className={c.bg}>
-    <main className="container">
-      <div className="tittle">
-        <Titulo>MARCAS DESTACADAS</Titulo>
-      </div>
-      <Slideshow2
-        controles={true}
-        autoplay={true}
-        velocidad="3000"
-        intervalo="3000"
-      >
-        <Slide>
-          <section>
-            <img className={c.image} src={img1} alt="" />
-          </section>
-        </Slide>
-        <Slide>
-          <section>
-            <img className={c.image} src={img2} alt="" />
-          </section>
-        </Slide>
-        <Slide>
-          <section>
-            <img className={c.image} src={img3} alt="" />
-          </section>
-        </Slide>
-        <Slide>
-          <section>
-            <img className={c.image} src={img4} alt="" />
-          </section>
-        </Slide>
-      </Slideshow2>
-    </main>
+      <main className="container">
+        <div className="tittle">
+          <Titulo>MARCAS DESTACADAS</Titulo>
+        </div>
+        <Slideshow2
+          controles={true}
+          autoplay={true}
+          velocidad="3000"
+          intervalo="3000"
+        >
+          <Slide>
+            <section>
+              <img className={c.image} src={img1} alt="" />
+            </section>
+          </Slide>
+          <Slide>
+            <section>
+              <img className={c.image} src={img2} alt="" />
+            </section>
+          </Slide>
+          <Slide>
+            <section>
+              <img className={c.image} src={img3} alt="" />
+            </section>
+          </Slide>
+          <Slide>
+            <section>
+              <img className={c.image} src={img4} alt="" />
+            </section>
+          </Slide>
+        </Slideshow2>
+      </main>
     </div>
   );
 }
