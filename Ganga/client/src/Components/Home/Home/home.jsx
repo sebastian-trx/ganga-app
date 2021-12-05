@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../Redux/Actions/actions";
 import Nav from "../../Nav/NavBar/nav";
 import Carousel from "./Carousel/carousel";
+import BestSellingBrands from "../BestSellingBrands/bestSellingBrands";
 import FooterPage from "../Footer/footer";
 import ContactForm from "../ContactForm/contactForm";
 // import Map from "../ContactForm/map";
@@ -36,6 +37,9 @@ export default function Home() {
       <div className={s.bgHome}>
         <div>
           <Carousel />
+        </div>
+        <div>
+          <BestSellingBrands />
         </div>
         <div>
           {/* <Map /> */}

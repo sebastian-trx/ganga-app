@@ -56,7 +56,7 @@ export default function Carousel() {
             <img className={c.image} src={img5} alt="" />
           </Link>
           <TextoSlide colorFondo="navy">
-            <p>Quieres vender tus propductos?</p>
+            <p>Quieres vender tus productos?</p>
           </TextoSlide>
         </Slide>
         <Slide>
