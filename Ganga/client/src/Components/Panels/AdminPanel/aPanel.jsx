@@ -24,8 +24,9 @@ export default function AdminPanel() {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  const vendors = allUsers.filter((u) => u.seller === true);
-  const users = allUsers.filter((u) => u.seller === false);
+  const vendors = allUsers?.filter((u) => u.seller === true);
+  const users = allUsers?.filter((u) => u.seller === false);
+  console.log("u", users);
 
   return (
     <div className="bg-gray-100">

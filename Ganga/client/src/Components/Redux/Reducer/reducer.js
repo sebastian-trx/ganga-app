@@ -12,7 +12,9 @@ import {
   FILTER_BY_SEARCH,
   USER_MESSAGE,
   GET_SUBCATEGORIES,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  DELETE_USER,
+  DELETE_PRODUCT
 } from "../Actions/const";
 
 const initialState = {
@@ -125,12 +127,22 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       return {
         ...state,
         subcategories: subcatego
-      }
+      };
     case GET_ALL_USERS:
       return {
         ...state,
         allUsers: payload
-      }
+      };
+    case DELETE_USER:
+       state.allUsers.filter((el) => el.id !== payload)
+      return {
+      state,
+      };
+    case DELETE_PRODUCT:
+       state.product.filter((el) => el.id !== payload)
+      return {
+      state,
+       };
     default: {
       return state;
     }
