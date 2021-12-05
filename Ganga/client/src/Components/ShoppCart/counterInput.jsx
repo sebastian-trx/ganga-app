@@ -1,48 +1,49 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, /*useEffect*/ } from "react";
+import { /*useSelector,*/ useDispatch } from "react-redux";
+import { addProduct, decreseProduct, /*getDetailsProduct*/ } from "../Redux/Actions/actions";
 import s from "./counterInput.module.css";
 
-export default function CounterInput({idUser, idProd, quantP}) {
-  //let {idUser, idProd, quantity} = data
-  console.log("Soy el idUs:", idUser)
-  console.log("Soy el idProd:", idProd)
-  console.log("Soy el Q:", quantP)
+export default function CounterInput({ idUser, idProd, quantP, stock }) {
+  const dispatch = useDispatch();
+
+  // console.log("Soy el idUs:", idUser)
+  // console.log("Soy el idProd:", idProd)
+  // console.log("Soy el Q:", quantP)
+  // console.log("Soy el stock:", stock)
 
   const [cant, setCant] = useState(quantP);
 
-  if( cant !== quantP)  {window.location.reload()} // setTimeout para que espere la respuesta del back 
+  if (cant !== quantP) {
+    window.location.reload();
+  } // setTimeout para que espere la respuesta del back
 
-console.log(cant, quantP)
+  console.log("soy el cant:" + cant)
+
+  if(cant > stock){
+    decrement()
+  }
 
   function decrement(e) {
     if (cant > 1) {
       setCant(cant - 1);
+      dispatch(
+        decreseProduct({ id: idUser, item: { id: idProd }, cant: 1, que: "-" })
+      );
     }
   }
 
   function increment(e) {
-    if (cant < 7) {
+    //if (cant < 7) {
+    if (cant < stock) {
       setCant(cant + 1);
+      dispatch(
+        addProduct({ id: idUser, item: { id: idProd }, cant: 1, que: "+" })
+      );
     } else {
-      alert("No se puede superar la cantidad maxima de Stock")
+      alert("No se puede superar la cantidad maxima de Stock");
     }
   }
 
-  const decrementButtons = document.querySelectorAll(
-    `button[data-action="decrement"]`
-  );
-
-  const incrementButtons = document.querySelectorAll(
-    `button[data-action="increment"]`
-  );
-
-  decrementButtons.forEach((btn) => {
-    btn.addEventListener("click", decrement);
-  });
-
-  incrementButtons.forEach((btn) => {
-    btn.addEventListener("click", increment);
-  });
 
   return (
     <div class="custom-number-input h-10 w-32">

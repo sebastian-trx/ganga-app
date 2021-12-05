@@ -21,6 +21,10 @@ import {
   DECRESE_PRODUCT,
   SUM_PRODUCT,
   CLEAR_CART,
+  DELETE_ITEM,
+  MERCADO_PAGO,
+  SUCCESS_MAIL,
+  FAIL_MAIL
 } from "./const";
 
 export function getProduct() {
@@ -33,6 +37,7 @@ export function getProduct() {
   };
 }
 
+// carrito
 export function addProduct(payload) {
   // --------> payload {id:"id usario", item: {id:"id producto"}, que: >=1}({id:input, item:{id: input2}, que: input3})
   console.log("soy el payload de manipulateCart: ", payload); // payload para toda la accion (podes añadir el producto por primera vez, sumar o restar(modificar que o cant)) ---> {id:"id del usuario", item: {id:"id del producto"}, cant:"1"(SIEMPRE QUE QUERRAMOS AÑADIR AL CARRITO), que:"+ o -"(SI LO MANDO VACIO ME BORRA EL PRODUCTO)}
@@ -48,6 +53,7 @@ export function addProduct(payload) {
   };
 }
 
+// carrito
 export function decreseProduct(payload) {
   // --------> payload {id:"id usario", item: {id:"id producto"}, que: >=1}({id:input, item:{id: input2}, que: input3})
   console.log("soy el payload de manipulateCart: ", payload); // payload para toda la accion (podes añadir el producto por primera vez, sumar o restar(modificar que o cant)) ---> {id:"id del usuario", item: {id:"id del producto"}, cant:"1"(SIEMPRE QUE QUERRAMOS AÑADIR AL CARRITO), que:"+ o -"(SI LO MANDO VACIO ME BORRA EL PRODUCTO)}
@@ -63,6 +69,7 @@ export function decreseProduct(payload) {
   };
 }
 
+// carrito
 export function clearCart(payload) {
   console.log("soy el payload de clearCart: ", payload);
   return async function (dispatch) {
@@ -72,6 +79,21 @@ export function clearCart(payload) {
     console.log("soy el response de clearCart: ", response);
     dispatch({
       type: CLEAR_CART,
+      payload: response.data,
+    });
+  };
+}
+
+// carrito
+export function deleteItem(payload) {
+  console.log("soy el payload de deleteItem: ",payload);
+  return async function (dispatch) {
+    const response = axios.put(
+      `http://localhost:3001/user/deleteProduct`,payload
+    );
+    console.log("soy el response de deleteItem: ", response);
+    dispatch({
+      type: DELETE_ITEM,
       payload: response.data,
     });
   };
@@ -247,3 +269,49 @@ export function getAllUsers() {
 //     }
 //   }
 // }
+
+// mercadopago
+export function compraMP(payload) {
+  return async function (dispatch) {
+  await axios
+    .post(`${URL}mercadoPago`, payload,)
+    .then((response) => {
+
+      dispatch({
+        type: MERCADO_PAGO,
+        payload: response.data,
+      });
+    })
+    .catch((error) => console.log(error));
+};
+}
+
+export function successMail(payload) {
+  return async function (dispatch) {
+  await axios
+    .post(`${URL}successMail`, payload, { withCredentials: true })
+    .then((response) => {
+
+      dispatch({
+        type: SUCCESS_MAIL,
+        payload: response.data,
+      });
+    })
+    .catch((error) => console.log(error));
+};
+}
+
+export function failMail(payload) {
+  return async function (dispatch) {
+  await axios
+    .post(`${URL}failMail`, payload, { withCredentials: true })
+    .then((response) => {
+
+      dispatch({
+        type: FAIL_MAIL,
+        payload: response.data,
+      });
+    })
+    .catch((error) => console.log(error));
+};
+}

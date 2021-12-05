@@ -7,7 +7,8 @@ const {
   allUsers,
   userInfo,
   addCart,
-  clearCart
+  clearCart,
+  deleteProduct
  } = require("../controllers/userController.js");
 
 router.post("/", postUser);
@@ -17,6 +18,7 @@ router.get("/", allUsers);
 router.get("/info", userInfo);
 router.post("/addCart", addCart);
 router.put('/clearCart', clearCart)
+router.put('/deleteProduct', deleteProduct)
 
 
 module.exports = router;

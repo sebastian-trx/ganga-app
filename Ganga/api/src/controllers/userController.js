@@ -192,6 +192,32 @@ const clearCart = async (req, res) => {
   }
 }
 
+const deleteProduct = async (req, res) => {
+  const { id, item } = req.body;
+
+  let Cart;
+  try{
+
+    const user = await User.findByPk(id)
+
+    // const product = await Product.findOne({
+    //   where:{id: item}
+    // })
+  
+    
+    user ? (Cart = user.Cart) : console.log('No existe user con ese id')
+    
+    Cart ? (Cart = Cart.filter((product) => product.id !== item)) : console.log('No existe ese carrito')
+
+    console.log('soy el carrito del usuario: ', Cart)
+   
+    res.send(await user.update({ Cart: Cart} ))
+  }
+  catch(error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   postUser,
   putUser,
@@ -199,5 +225,6 @@ module.exports = {
   allUsers,
   userInfo,
   addCart,
-  clearCart
+  clearCart,
+  deleteProduct
 };

@@ -10,6 +10,8 @@ import LoginSuccess from "./Components/Nav/User/LoginGoogle/loginSuccess";
 import CreateProduct from "./Components/CreateProducts/createProducts";
 import ShopCart from "./Components/ShoppCart/shoppCart.jsx";
 import AdminPanel from "./Components/Panels/AdminPanel/aPanel";
+import { SuccesMp } from "./Components/MercadoPago/successMp";
+import { FailMp } from "./Components/MercadoPago/failMp";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
          <Route exact path="/login/success" element={<LoginSuccess />} />
          <Route path ='/shopCart' element={<ShopCart/>}/>
          <Route path ='/panel' element={<AdminPanel/>}/>
+         <Route path ='/successMp' element={<SuccesMp/>}/>
+         <Route path ='/failMp' element={<FailMp/>}/>
         </Routes>
     </BrowserRouter>
   );

@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CountInput from "./counterInput.jsx";
-import {getUserInfoGoogle} from "../Redux/Actions/actions"
+import {getUserInfoGoogle, /*deleteItem,*/ decreseProduct} from "../Redux/Actions/actions"
+import { ClearCart } from "./clearCart.jsx";
+import { DeleteItem } from "./deleteItem.jsx";
+import { MercadoPago } from "../MercadoPago/mercadoPago.jsx";
 
 export default function ShoppCart() {
   const dispatch = useDispatch();
   const User = useSelector((state) => state.getInfoGoogle)
   const cart = User.Cart;
   let flag = false;
-  console.log("carrito",cart)
+  // console.log("carrito",cart)
 
-  
   // useEffect(() => {
     //   dispatch(getUserInfoGoogle());
     //   console.log('holi')
@@ -20,11 +22,6 @@ export default function ShoppCart() {
     useEffect(() => {
       dispatch(getUserInfoGoogle());
     },[]);
-
-    // if(cart?.length !== 0 && !flag) {
-    //      flag = true
-    //      window.location.reload()
-    //  } 
     
   return (
     <div class="flex justify-center my-6">
@@ -33,7 +30,9 @@ export default function ShoppCart() {
           <table class="w-full text-sm lg:text-base" cellspacing="0">
             <thead>
               <tr class="h-12 uppercase">
-                <th class="hidden md:table-cell"></th>
+                <th class="hidden md:table-cell">
+                <ClearCart idUser={User.id} />
+                </th>
                 <th class="text-left">Producto</th>
                 <th class="lg:text-right text-left pl-5 lg:pl-0">
                   <span class="lg:hidden" title="Quantity">
@@ -62,17 +61,13 @@ export default function ShoppCart() {
                 <td>
                   <Link to={`/${el.id}`}>
                     <p class="mb-2 md:ml-4">{el.name}</p>
-                    <form action="" method="POST">
-                      <button type="submit" class="text-gray-700 md:ml-4">
-                        <small>(Borrar item)</small>
-                      </button>
-                    </form>
                   </Link>
+                  <DeleteItem idUser={User.id} idProd={el.id} quantP= {el.quantity} />
                 </td>
                 <td class="justify-center md:justify-end md:flex mt-6">
                   <div class="w-20 h-10">
                     <div class="relative flex flex-row w-full h-8">
-                      <CountInput idUser={User.id} idProd={el.id} quantP= {el.quantity}/>
+                      <CountInput idUser={User.id} idProd={el.id} quantP= {el.quantity} stock={el.stock}/>
                     </div>
                   </div>
                 </td>
@@ -228,6 +223,7 @@ export default function ShoppCart() {
                     </svg>
                     <span class="ml-2 mt-5px">Comprar</span>
                   </button>
+                  <MercadoPago cart={cart}/>
                 {/* </a> */}
               </div>
             </div>

@@ -16,7 +16,11 @@ import {
   ADD_PRODUCT,
   DECRESE_PRODUCT,
   SUM_PRODUCT,
-  CLEAR_CART
+  CLEAR_CART,
+  DELETE_ITEM,
+  MERCADO_PAGO,
+  SUCCESS_MAIL,
+  FAIL_MAIL
 } from "../Actions/const";
 
 const initialState = {
@@ -28,11 +32,11 @@ const initialState = {
   categories: [],
   detailProduct: [],
   subcategories: [],
+  mp: [],
   // cart
-  addProduct:[],
-  decreseProduct:[],
-  clearCart:[]
-
+  addProduct: [],
+  decreseProduct: [],
+  clearCart: [],
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -130,32 +134,53 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
       };
     case GET_SUBCATEGORIES:
-      let subcatego = state.categories.filter((el) => el.id === payload)
+      let subcatego = state.categories.filter((el) => el.id === payload);
       return {
         ...state,
-        subcategories: subcatego
-      }
+        subcategories: subcatego,
+      };
     case GET_ALL_USERS:
       return {
         ...state,
-        allUsers: payload
-      }
-      case ADD_PRODUCT:
-        return{
-          ...state,
-          addProduct: payload
-        }
-       case DECRESE_PRODUCT:
-         return{
-           ...state,
-           decreseProduct: payload
-         }
+        allUsers: payload,
+      };
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        addProduct: payload,
+      };
+    case DECRESE_PRODUCT:
+      return {
+        ...state,
+        decreseProduct: payload,
+      };
 
-         case CLEAR_CART:
-           return{
-             ...state,
-             clearCart: payload
-           }
+    case CLEAR_CART:
+      return {
+        ...state,
+        clearCart: payload,
+      };
+
+    case DELETE_ITEM:
+      return {
+        ...state,
+      };
+
+    case MERCADO_PAGO:
+      return {
+        ...state,
+        mp: payload[0].url,
+      };
+
+    case SUCCESS_MAIL:
+      return {
+        ...state,
+      };
+
+    case FAIL_MAIL:
+      return {
+        ...state,
+      };
 
     default: {
       return state;
