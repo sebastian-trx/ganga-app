@@ -6,6 +6,7 @@ import Carousel from "./Carousel/carousel";
 import BestSellingBrands from "../BestSellingBrands/bestSellingBrands";
 import FooterPage from "../Footer/footer";
 import ContactForm from "../ContactForm/contactForm";
+import CollagePhotos from "../CollageProducts/collagePhotos";
 // import Map from "../ContactForm/map";
 import s from "./home.module.css";
 
@@ -40,6 +41,9 @@ export default function Home() {
         </div>
         <div>
           <BestSellingBrands />
+        </div>
+        <div>
+          <CollagePhotos />
         </div>
         <div>
           {/* <Map /> */}
