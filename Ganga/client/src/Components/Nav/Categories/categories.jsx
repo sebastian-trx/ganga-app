@@ -23,8 +23,6 @@ export default function Categorias() {
   const userGoogle = useSelector((state) => state.getInfoGoogle);
   const allProduct = useSelector((state) => state.product);
   const [, setOrden] = useState("");
-  console.log("soy el nombre", nombre)
-
 
   useEffect(() => {
     dispatch(getFilterByCategory(nombre))
@@ -34,24 +32,14 @@ export default function Categorias() {
     dispatch(getSubCategoryByName(nombre));
   }, [dispatch, nombre])
 
-  // useEffect(() => {  
-  //   dispatch(getSubCategoryByName(nombre));
-  // },[])
-
   useEffect(() => {
     dispatch(getUser())
   }, [dispatch])
-
 
   function handleClick(e) {
     e.preventDefault();
     navigate("/catalogo")
   }
-
-  // function handleSubCat(e) {
-  //   e.preventDefault();
-  //  dispatch(filterBySubCat(e.target.value))
-  // }
   
   function handleSubCat(e) {
     e.preventDefault();
@@ -75,7 +63,7 @@ export default function Categorias() {
         </Link>
 
         <div>
-          <select className="w-40" /*onChange={handleSubCat}*/>
+          <select className="w-40" onChange={handleSubCat}>
             <option > SubCategorias </option>
             {
               subcategories[0]?.subcategories.map((el, i) =>
