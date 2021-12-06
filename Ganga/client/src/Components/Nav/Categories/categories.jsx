@@ -57,6 +57,7 @@ export default function Categorias() {
   function handleSubCat(e) {
     e.preventDefault();
     dispatch(filterBySubCat(e.target.value))
+    setCurrentPage(1);
 
   }
 
@@ -64,6 +65,7 @@ export default function Categorias() {
   function handleOrder(e) {
     e.preventDefault();
     dispatch(orderByPrice(e.target.value));
+    setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
   }
 

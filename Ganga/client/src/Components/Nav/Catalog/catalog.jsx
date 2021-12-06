@@ -52,6 +52,7 @@ export default function Catalogo() {
   function handleOrder(e) {
     e.preventDefault();
     dispatch(orderByPrice(e.target.value));
+    setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
   }
 
