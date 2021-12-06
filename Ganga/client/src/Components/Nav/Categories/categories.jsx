@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Card from "../../Card/card";
 import { getProduct, orderByPrice, getUser, getSubCategoryByName, getFilterByCategory, filterBySubCat } from "../../Redux/Actions/actions";
+
 import s from './categories.module.css'
 import FilterPrice from "../Filter/filterPrice";
 
@@ -16,6 +17,7 @@ export default function Categorias() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { nombre } = useParams();
   const subcategories = useSelector((state) => state.subcategories);
   const userGoogle = useSelector((state) => state.getInfoGoogle);
@@ -28,13 +30,13 @@ export default function Categorias() {
     dispatch(getFilterByCategory(nombre))
   }, [dispatch, nombre])
 
-
-
   useEffect(() => {
     dispatch(getSubCategoryByName(nombre));
   }, [dispatch, nombre])
 
-
+  // useEffect(() => {  
+  //   dispatch(getSubCategoryByName(nombre));
+  // },[])
 
   useEffect(() => {
     dispatch(getUser())
@@ -46,13 +48,16 @@ export default function Categorias() {
     navigate("/catalogo")
   }
 
-
+  // function handleSubCat(e) {
+  //   e.preventDefault();
+  //  dispatch(filterBySubCat(e.target.value))
+  // }
+  
   function handleSubCat(e) {
     e.preventDefault();
     dispatch(filterBySubCat(e.target.value))
 
   }
-
 
   function handleOrder(e) {
     e.preventDefault();
@@ -70,7 +75,7 @@ export default function Categorias() {
         </Link>
 
         <div>
-          <select className="w-40" onChange={handleSubCat}>
+          <select className="w-40" /*onChange={handleSubCat}*/>
             <option > SubCategorias </option>
             {
               subcategories[0]?.subcategories.map((el, i) =>
@@ -79,7 +84,7 @@ export default function Categorias() {
                   {el}
                 </option>
               ))
-            } 
+            }
           </select>
         </div>
 
@@ -130,7 +135,7 @@ export default function Categorias() {
       <div className={s.cards}>
         {allProduct?.length === 0 ? (
           <div>
-            <h1>Cargando</h1>
+            <h1>Cargando...</h1>
           </div>
         ) : (
           allProduct?.map((el, i) => {
