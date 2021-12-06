@@ -75,7 +75,7 @@ export default function Nav() {
             <span>
               <select className="w-28" onChange={handleCat}>
                 <option > Categorias </option>
-                {categories.map((el, i) => (
+                {categories?.map((el, i) => (
                   <option key={el.name + i}>{el.name}</option>
                 ))}
               </select>

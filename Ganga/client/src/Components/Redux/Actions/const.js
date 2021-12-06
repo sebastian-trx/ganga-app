@@ -22,3 +22,5 @@ export const MERCADO_PAGO = "MERCADO_PAGO"
 export const MERCADO_PAGO2 = "MERCADO_PAGO2"
 export const SUCCESS_MAIL = "SUCCES_MAIL"
 export const FAIL_MAIL = "FAIL_MAIL"
+export const DELETE_USER = "DELETE_USER";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";

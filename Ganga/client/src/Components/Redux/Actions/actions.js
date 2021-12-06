@@ -25,7 +25,9 @@ import {
   MERCADO_PAGO,
   MERCADO_PAGO2,
   SUCCESS_MAIL,
-  FAIL_MAIL
+  FAIL_MAIL,
+  DELETE_USER,
+  DELETE_PRODUCT,
 } from "./const";
 
 export function getProduct() {
@@ -135,7 +137,6 @@ export function getUserInfoGoogle(payload) {
     const arr = await axios.get(`${URL}sessionActive/`, {
       withCredentials: true,
     });
-    console.log("soy el arr ", arr);
     return dispatch({
       type: GET_INFO_GOOGLE,
       payload: arr.data,
@@ -233,13 +234,11 @@ export function userMessage(payload) {
 export function postProducts(payload) {
   return async function (dispatch) {
     let response = await axios.post(URL + "product/", payload);
-    console.log("Soy respuesta de la actions", response.data);
     return response;
   };
 }
 
 export function getSubcategory(payload) {
-  console.log(payload);
   return {
     type: GET_SUBCATEGORIES,
     payload,
@@ -252,6 +251,34 @@ export function getAllUsers() {
       type: GET_ALL_USERS,
       payload: user.data,
     });
+  };
+}
+
+export function deleteUser(payload) {
+  return async function (dispatch) {
+    axios
+      .delete(URL + "user?id=" + payload)
+      .then((response) => {
+        dispatch({
+          type: DELETE_USER,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+}
+
+export function deleteProduct(payload) {
+  return async function (dispatch) {
+    axios
+      .delete(URL + "product?id=" + payload)
+      .then((response) => {
+        dispatch({
+          type: DELETE_PRODUCT,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
   };
 }
 

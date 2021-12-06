@@ -5,13 +5,15 @@ import Catalogo from "./Components/Nav/Catalog/catalog";
 import Login from "./Components/Nav/User/Login/login";
 import SignUp from "./Components/Nav/User/SignUp/singUp";
 import Categorias from "./Components/Nav/Categories/categories";
-import ProductId from './Components/ProductoId/productoId'
+import ProductId from "./Components/ProductoId/productoId";
 import LoginSuccess from "./Components/Nav/User/LoginGoogle/loginSuccess";
 import CreateProduct from "./Components/CreateProducts/createProducts";
 import ShopCart from "./Components/ShoppCart/shoppCart.jsx";
 import AdminPanel from "./Components/Panels/AdminPanel/aPanel";
 import { SuccesMp } from "./Components/MercadoPago/successMp";
 import { FailMp } from "./Components/MercadoPago/failMp";
+import SubAdminForm from "./Components/Panels/AdminPanel/subAdminForm";
+import AdminPanelV from "./Components/Panels/VendorPanel/vPanel";
 
 function App() {
   return (
@@ -30,7 +32,9 @@ function App() {
          <Route path ='/panel' element={<AdminPanel/>}/>
          <Route path ='/successMp' element={<SuccesMp/>}/>
          <Route path ='/failMp' element={<FailMp/>}/>
-        </Routes>
+        <Route path="/registrar" element={<SubAdminForm />} />
+        <Route exact path="/panelV" element={<AdminPanelV />} />
+      </Routes>
     </BrowserRouter>
   );
 }

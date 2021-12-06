@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../Redux/Actions/actions";
 import Nav from "../../Nav/NavBar/nav";
 import Carousel from "./Carousel/carousel";
+import BestSellingBrands from "../BestSellingBrands/bestSellingBrands";
 import FooterPage from "../Footer/footer";
 import ContactForm from "../ContactForm/contactForm";
+import CollagePhotos from "../CollageProducts/collagePhotos";
 // import Map from "../ContactForm/map";
 import s from "./home.module.css";
 
@@ -33,9 +35,15 @@ export default function Home() {
       <div className={nav ? s.Nav : s.nav}>
         <Nav />
       </div>
-      <div className={s.bgHome}>
-        <div>
+      <div className={s.bghome}>
+        <div className={s.bgCarousel}>
           <Carousel />
+        </div>
+        <div>
+          <BestSellingBrands />
+        </div>
+        <div>
+          <CollagePhotos />
         </div>
         <div>
           {/* <Map /> */}

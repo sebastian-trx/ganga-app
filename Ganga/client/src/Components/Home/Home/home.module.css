@@ -13,8 +13,13 @@
   z-index: 50;
 }
 
-.bgHome {
+.bghome {
   background-color: rgb(255, 255, 255);
+  height: 665px;
+}
+
+.bgCarousel {
+  background-color: rgb(83, 83, 83);
   height: 600px;
   padding-top: 200px;
 }

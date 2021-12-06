@@ -1,11 +1,9 @@
-import React, { useState /*useEffect*/ } from "react";
-import { useDispatch /*useSelector*/ } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-// import { FcGoogle  } from "react-icons/fc";
+
 import { LoginG } from "../../User/LoginGoogle/loginG";
 import { signUp, localLogin } from "../../../Redux/Actions/actions";
-
-// import s from "./signup.module.css";
 
 export default function SignUpForm() {
   const dispatch = useDispatch();
@@ -29,7 +27,7 @@ export default function SignUpForm() {
     } else if (!input.surname) {
       errors.surname = "Ingrese su apellido.";
     } else if (!input.mail) {
-      errors.mail = "Ingrese el correo con el que se ha registrado";
+      errors.mail = "Ingrese su correo.";
     } else if (!input.password) {
       errors.password = "Ingrese su contraseña.";
     } else if (!input.numero) {

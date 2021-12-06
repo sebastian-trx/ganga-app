@@ -22,6 +22,8 @@ import {
   MERCADO_PAGO2,
   SUCCESS_MAIL,
   FAIL_MAIL,
+  DELETE_USER,
+  DELETE_PRODUCT,
 } from "../Actions/const";
 
 const initialState = {
@@ -190,6 +192,16 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
       };
 
+    case DELETE_USER:
+       state.allUsers.filter((el) => el.id !== payload)
+      return {
+      state,
+      };
+    case DELETE_PRODUCT:
+       state.product.filter((el) => el.id !== payload)
+      return {
+      state,
+       };
     default: {
       return state;
     }
