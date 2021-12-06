@@ -28,6 +28,7 @@ import {
   FAIL_MAIL,
   DELETE_USER,
   DELETE_PRODUCT,
+  LOGOUT
 } from "../Actions/const";
 
 const initialState = {
@@ -236,6 +237,11 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     default: {
       return state;
     }
+    case LOGOUT:
+      return {
+        ...state,
+        // getInfoGoogle: payload,
+      };
   }
 }
 

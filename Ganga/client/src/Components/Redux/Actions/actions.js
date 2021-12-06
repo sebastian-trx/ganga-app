@@ -32,6 +32,7 @@ import {
   FAIL_MAIL,
   DELETE_USER,
   DELETE_PRODUCT,
+  LOGOUT
 } from "./const";
 
 export function getProduct() {
@@ -394,4 +395,15 @@ export function failMail(payload) {
     })
     .catch((error) => console.log(error));
 };
+}
+
+// cerrar sesion
+export function logout() {
+  return async function (dispatch) {
+    let response = await axios.get("http://localhost:3001/loginGoogle/logout", { withCredentials: true });
+    dispatch({
+      type: LOGOUT,
+      payload: response.data,
+    });
+  };
 }
