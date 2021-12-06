@@ -35,8 +35,8 @@ export default function Home() {
       <div className={nav ? s.Nav : s.nav}>
         <Nav />
       </div>
-      <div className={s.bgHome}>
-        <div>
+      <div className={s.bghome}>
+        <div className={s.bgCarousel}>
           <Carousel />
         </div>
         <div>
