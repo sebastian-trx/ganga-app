@@ -10,6 +10,11 @@ import LoginSuccess from "./Components/Nav/User/LoginGoogle/loginSuccess";
 import CreateProduct from "./Components/CreateProducts/createProducts";
 import ShopCart from "./Components/ShoppCart/shoppCart.jsx";
 import AdminPanel from "./Components/Panels/AdminPanel/aPanel";
+<<<<<<< Updated upstream
+import SubAdminForm from "./Components/Panels/AdminPanel/subAdminForm";
+=======
+import AdminPanelV from "./Components/Panels/VendorPanel/vPanel"
+>>>>>>> Stashed changes
 
 function App() {
   return (
@@ -26,6 +31,11 @@ function App() {
          <Route exact path="/login/success" element={<LoginSuccess />} />
          <Route path ='/shopCart' element={<ShopCart/>}/>
          <Route path ='/panel' element={<AdminPanel/>}/>
+<<<<<<< Updated upstream
+         <Route path ='/registrar' element={<SubAdminForm/>}/>
+=======
+         <Route exact path ='/panelV' element={<AdminPanelV/>}/>
+>>>>>>> Stashed changes
         </Routes>
     </BrowserRouter>
   );
