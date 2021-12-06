@@ -28,7 +28,7 @@ console.log(compras);
   };
   return (
     <div>
-      <button onClick={onClick_compraMP}> comprar </button>
+      <button onClick={onClick_compraMP}>Comprar</button>
     </div>
   );
 }
