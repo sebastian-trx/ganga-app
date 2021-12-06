@@ -1,35 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
+import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
 
+import Nav from "../../Nav/NavBar/nav"
+import s from "./user.module.css"
 
-import { updateUser } from "../../Redux/Actions/actions";
 
 export default function UserInfo() {
     const dispatch = useDispatch();
-    const modUser = useSelector((state) => state.allUsers)
+    const allUsers = useSelector((state) => state.allUsers)
 
     const navigate = useNavigate();
 
-
     const { id } = useParams()
 
-    const name = modUser.name
-    const surname = modUser.surname
-    const mail = modUser.mail
+    const userfil = allUsers.filter((el) => el.id === id)
+
+    const name = userfil[0].name
+    const surname = userfil[0].surname
+    const mail = userfil[0].mail
+    const birthdate = userfil[0].birthdate
+    const address = userfil[0].address
 
     const [input, setInput] = useState({
-        id: modUser.id,
+        id: userfil[0].id,
         name: name,
         surname: surname,
-        mail: mail
+        mail: mail,
+        birthdate: birthdate,
+        address: address,
     })
 
-    // useEffect(() => {
-    //     dispatch(updateUser());
-    // }, [dispatch]);
+    useEffect(() => {
+        dispatch(updateUser(input))
+        dispatch(getAllUsers())
+    }, [dispatch])
 
     const handleChange = (e) => {
         setInput({
@@ -45,9 +53,10 @@ export default function UserInfo() {
     }
 
     return (
-        <div>
-            <h3>Modificalo chee</h3>
-            <form onSubmit={submit}>
+        <div className={s.div1}>
+            <Nav />
+            <h3 className={s.h33}>Modificalo chee</h3>
+            <form className={s.form1} onSubmit={submit}>
                 <div>
                     <input
                         onChange={handleChange}
@@ -66,9 +75,45 @@ export default function UserInfo() {
                         placeholder="Apellido"
                     />
                 </div>
-                <button type="submit">
-                    Actualizar
-                </button>
+                <div>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        value={input.mail}
+                        name="mail"
+                        placeholder="Correo"
+                    />
+                </div>
+                <div>
+                    <input
+                        onChange={handleChange}
+                        type="date"
+                        value={input.birthdate}
+                        name="birthdate"
+                        placeholder="Fecha de Nacimiento"
+                    />
+                </div>
+                <div>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        value={input.address}
+                        name="address"
+                        placeholder="Zona"
+                    />
+                </div>
+                <div>
+                    <button type="submit">
+                        Actualizar
+                    </button>
+                </div>
+                <div>
+                    <Link to="/panel">
+                        <button type="button">
+                            {"<-Volver"}
+                        </button>
+                    </Link>
+                </div>
             </form>
         </div>
     )

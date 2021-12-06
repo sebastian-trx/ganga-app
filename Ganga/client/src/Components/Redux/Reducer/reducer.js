@@ -25,6 +25,7 @@ const initialState = {
   categories: [],
   detailProduct: [],
   subcategories: [],
+  updateUser: [],
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -135,7 +136,7 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case PUT_USER:
       return {
         ...state,
-        getInfoGoogle: payload
+        updateUser: payload,
       }
     default: {
       return state;
