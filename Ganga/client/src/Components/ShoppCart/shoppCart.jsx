@@ -52,8 +52,7 @@ export default function ShoppCart() {
               {/* LA ETIQUETA DE AQUI ABAJO DEBERIAMOS MAPEAR PARA MOSTRAR LOS ITEMS DEL CARRITO */}
               {cart?.length !== 0
                 ? cart?.map((el) => (
-                    <tr key={el.id}>
-                      {((prod = el.quantity * el.price), (sum = sum + prod))}
+                  <tr key={el.id} prod={prod = el.price * el.quantity} sum={sum = sum+prod}>
                       <td class="hidden pb-4 md:table-cell">
                         <Link to={`/${el.id}`}>
                           <img
@@ -231,7 +230,7 @@ export default function ShoppCart() {
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                     {/* total = subtotal + envio */}
-                    $ {sum}
+                    $ {total = sum + prod}
 
                   </div>
                 </div>
