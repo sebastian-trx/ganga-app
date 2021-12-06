@@ -11,7 +11,7 @@ export default function SignUpForm() {
 
   const [input, setInput] = useState({
     name: "",
-    lastname: "",
+    surname: "",
     mail: "",
     password: "",
     numero: "",
@@ -24,8 +24,8 @@ export default function SignUpForm() {
     let errors = {};
     if (!input.name) {
       errors.name = "Ingrese su nombre.";
-    } else if (!input.lastname) {
-      errors.lastname = "Ingrese su apellido.";
+    } else if (!input.surname) {
+      errors.surname = "Ingrese su apellido.";
     } else if (!input.mail) {
       errors.mail = "Ingrese su correo.";
     } else if (!input.password) {
@@ -60,7 +60,7 @@ export default function SignUpForm() {
     }, 1000);
     setInput({
       name: "",
-      lastname: "",
+      surname: "",
       mail: "",
       password: "",
       numero: "",
@@ -90,13 +90,13 @@ export default function SignUpForm() {
         <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
-            name="lastname"
+            name="surname"
             type="text"
             placeholder="apellido"
-            value={input.lastname}
+            value={input.surname}
             onChange={handleChange}
           ></input>
-          {errors.lastname && <p>{errors.lastname}</p>}
+          {errors.surname && <p>{errors.surname}</p>}
         </div>
 
         <div className="pt-5">
@@ -154,7 +154,7 @@ export default function SignUpForm() {
           disabled={
             !(
               input.name &&
-              input.lastname &&
+              input.surname &&
               input.password &&
               input.mail &&
               input.numero &&
