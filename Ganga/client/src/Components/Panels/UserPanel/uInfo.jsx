@@ -6,8 +6,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
 
 import Nav from "../../Nav/NavBar/nav"
-import s from "./user.module.css"
-
 
 export default function UserInfo() {
     const dispatch = useDispatch();
@@ -53,10 +51,10 @@ export default function UserInfo() {
     }
 
     return (
-        <div className={s.div1}>
+        <div>
             <Nav />
-            <h3 className={s.h33}>Modificalo chee</h3>
-            <form className={s.form1} onSubmit={submit}>
+            <h3>Modificalo chee</h3>
+            <form onSubmit={submit}>
                 <div>
                     <input
                         onChange={handleChange}

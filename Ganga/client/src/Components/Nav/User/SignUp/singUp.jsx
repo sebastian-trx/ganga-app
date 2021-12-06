@@ -4,11 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getUserInfoGoogle } from "../../../Redux/Actions/actions";
 
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { getUserInfoGoogle } from "../../../Redux/Actions/actions";
-
 import SignUpForm from "./signUpForm";
 import foto from "../../../Resources/zapatillas.jpeg";
 import fondo from "../../../Resources/fondo forms.jpeg";

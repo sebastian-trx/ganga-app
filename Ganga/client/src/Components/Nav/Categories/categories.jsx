@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Card from "../../Card/card";
-import { getCategories, getProduct, orderByPrice, getUser, getSubCategoryByName, getFilterByCategory, filterBySubCat} from "../../Redux/Actions/actions";
+import { getCategories, getProduct, orderByPrice, getUser, /*getSubCategoryByName, getFilterByCategory, filterBySubCat*/ } from "../../Redux/Actions/actions";
 import s from './categories.module.css'
 import FilterPrice from "../Filter/filterPrice";
 
@@ -22,13 +22,13 @@ export default function Categorias() {
   const userGoogle = useSelector((state) => state.getInfoGoogle);
   const [, setOrden] = useState("");
 
-useEffect(() => {
-  dispatch(getFilterByCategory(nombre))
-},[])
+  // useEffect(() => {
+  //   dispatch(getFilterByCategory(nombre))
+  // },[])
 
-  useEffect(() => {  
-    dispatch(getSubCategoryByName(nombre));
-  },[])
+  // useEffect(() => {  
+  //   dispatch(getSubCategoryByName(nombre));
+  // },[])
 
   useEffect(() => {
     dispatch(getUser())
@@ -40,11 +40,11 @@ useEffect(() => {
     dispatch(getProduct());
   }
 
-  function handleSubCat(e) {
-    e.preventDefault();
-   dispatch(filterBySubCat(e.target.value))
-   
-  }
+  // function handleSubCat(e) {
+  //   e.preventDefault();
+  //  dispatch(filterBySubCat(e.target.value))
+
+  // }
 
   function handleOrder(e) {
     e.preventDefault();
@@ -62,16 +62,16 @@ useEffect(() => {
         </Link>
 
         <div>
-          <select className="w-40" onChange={handleSubCat}>
+          <select className="w-40" /*onChange={handleSubCat}*/>
             <option > SubCategorias </option>
-             {
+            {
               subcategories[0]?.subcategories.map((el, i) =>
               (
                 <option key={i} value={el}>
                   {el}
                 </option>
               ))
-            } 
+            }
           </select>
         </div>
 
