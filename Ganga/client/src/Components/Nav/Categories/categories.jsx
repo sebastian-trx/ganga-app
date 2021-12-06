@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Card from "../../Card/card";
-import { getProduct, orderByPrice, getUser, getSubCategoryByName, getFilterByCategory, filterBySubCat } from "../../Redux/Actions/actions";
+import { orderByPrice, getUser, getSubCategoryByName, getFilterByCategory, filterBySubCat } from "../../Redux/Actions/actions";
 import s from './categories.module.css'
 import FilterPrice from "../Filter/filterPrice";
-
+import Pagination from '../../Home/Pagination/pagination'
 import { IoIosCart } from "react-icons/io";
 
 import Logo from "../Logo/logo";
@@ -21,8 +21,15 @@ export default function Categorias() {
   const userGoogle = useSelector((state) => state.getInfoGoogle);
   const allProduct = useSelector((state) => state.product);
   const [, setOrden] = useState("");
-  console.log("soy el nombre", nombre)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [elementsPerPage, setElementsPerPage] = useState(8)
+  const indexOfLastProducts = currentPage * elementsPerPage;
+  const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
+  const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);
 
+  const paginate = (pageNumbers) => {
+    setCurrentPage(pageNumbers)
+  }
 
   useEffect(() => {
     dispatch(getFilterByCategory(nombre))
@@ -79,7 +86,7 @@ export default function Categorias() {
                   {el}
                 </option>
               ))
-            } 
+            }
           </select>
         </div>
 
@@ -126,14 +133,22 @@ export default function Categorias() {
             </>
         }
       </nav>
+      <div>
+        <Pagination
+          elementsPerPage={elementsPerPage}
+          allProduct={allProduct}
+          paginate={paginate} />
+      </div>
+
+      
 
       <div className={s.cards}>
-        {allProduct?.length === 0 ? (
+        {currentProducts?.length === 0 ? (
           <div>
             <h1>Cargando</h1>
           </div>
         ) : (
-          allProduct?.map((el, i) => {
+          currentProducts?.map((el, i) => {
             return (
               <div key={"card" + i}>
                 <Card
@@ -147,6 +162,7 @@ export default function Categorias() {
           })
         )}
       </div>
+     
     </div>
   );
 }
