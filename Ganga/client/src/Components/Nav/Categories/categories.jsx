@@ -49,7 +49,7 @@ export default function Categorias() {
       <div1>
         {products?.length === 0 ? (
           <div>
-            <h1>Cargando</h1>
+            <h1>Cargando...</h1>
           </div>
         ) : (
           products.map((el, i) => {
