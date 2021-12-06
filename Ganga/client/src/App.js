@@ -9,7 +9,7 @@ import ProductId from "./Components/ProductoId/productoId";
 import LoginSuccess from "./Components/Nav/User/LoginGoogle/loginSuccess";
 import CreateProduct from "./Components/CreateProducts/createProducts";
 import ShopCart from "./Components/ShoppCart/shoppCart.jsx";
-import AdminPanel from "./Components/Panels/AdminPanel/aPanel";
+import Panel from "./Components/Panels/Panel/panel";
 import Modificar from "./Components/Panels/UserPanel/uInfo";
 
 import { SuccesMp } from "./Components/MercadoPago/successMp";
@@ -31,7 +31,7 @@ function App() {
          <Route exact path="/login/success" element={<LoginSuccess />}/>
          <Route exact path="/login/success" element={<LoginSuccess />} />
          <Route path ='/shopCart' element={<ShopCart/>}/>
-         <Route path ='/panel' element={<AdminPanel/>}/>
+         <Route path ='/panel' element={<Panel/>}/>
          <Route path='/user/:id' element={<Modificar />} />
          <Route path ='/successMp' element={<SuccesMp/>}/>
          <Route path ='/failMp' element={<FailMp/>}/>
