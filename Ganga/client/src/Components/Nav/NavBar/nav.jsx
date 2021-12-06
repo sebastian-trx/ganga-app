@@ -63,8 +63,6 @@ export default function Nav() {
             </div>
           </Link>
 
-          <Link to="/panel" className="pr-10">
-            <button>panel </button>  </Link>
 
           <div
             onClick={() => {
@@ -94,12 +92,13 @@ export default function Nav() {
               type="text"
               placeholder="Busca tu producto"
               onChange={handleInput}
-              className="bg-gray-100 pt-2 pb-1 ml-10 h-8 border-gray-500 border-l-2 border-t-2 border-b-2"
+              className="bg-gray-100 pt-3 pb-1 ml-10 h-7 border-gray-500"
+              // border-l-2 border-t-2 border-b-2"
             />
             <button
               type="submit"
               onClick={handleSubmit}
-              className=" px-1  h-8 bg-gray-100 mr-4 mb-2 border-gray-500 border-r-2 border-t-2 border-b-2"
+             // className=" px-1  h-7 bg-gray-100 mr-4 mb-2 border-gray-500 border-r-2 border-t-2 border-b-2"
             >
               <ImSearch />
             </button>

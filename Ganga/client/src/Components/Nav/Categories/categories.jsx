@@ -23,7 +23,7 @@ export default function Categorias() {
   const allProduct = useSelector((state) => state.product);
   const [, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [elementsPerPage, setElementsPerPage] = useState(8)
+  const [elementsPerPage, setElementsPerPage] = useState(12)
   const indexOfLastProducts = currentPage * elementsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
   const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);

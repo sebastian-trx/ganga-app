@@ -18,7 +18,7 @@ export default function User() {
   return (
     <Menu>
       <Menu.Button>
-        <Avatar src="" />
+        <Avatar  src="" />
       </Menu.Button>
 
       <Menu.Items className="origin-top-right absolute right-0 shadow-lg ring-4 ring-white  ring-opacity-20 mr-4 mt-2 p-2 bg-white">
