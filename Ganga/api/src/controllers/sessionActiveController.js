@@ -9,9 +9,10 @@ async function sessionActive(req, res) {
       surname: req.user.surname,
       mail: req.user.mail,
       address: req.user.address,
-      image: req.user.image
+      image: req.user.image,
+      Cart: req.user.Cart
     });
-  else res.json({ login: false });
+    else res.json({ login: false });
 }
 
 

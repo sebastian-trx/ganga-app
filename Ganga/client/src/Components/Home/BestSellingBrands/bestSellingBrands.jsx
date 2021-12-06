@@ -10,7 +10,6 @@ import c from "./bestSellingBrands.css";
 
 export default function BestSellingBrands() {
   return (
-    <div className={c.bg}>
       <main className="container">
         <div className="tittle">
           <Titulo>MARCAS DESTACADAS</Titulo>
@@ -43,7 +42,6 @@ export default function BestSellingBrands() {
           </Slide>
         </Slideshow2>
       </main>
-    </div>
   );
 }
 

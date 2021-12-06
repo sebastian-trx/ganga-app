@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoIosCart } from "react-icons/io";
 import { ImSearch } from "react-icons/im";
 
-import { getUser, getCategories } from "../../Redux/Actions/actions";
+import { getUserInfoGoogle, getCategories } from "../../Redux/Actions/actions";
 import Logo from "../Logo/logo";
 import User from "../User/user";
 import j from "./nav.module.css";
@@ -31,7 +31,7 @@ export default function Nav() {
   window.addEventListener("scroll", scrollHandler);
 
   useEffect(() => {
-    dispatch(getUser());
+    dispatch(getUserInfoGoogle());
   }, [dispatch]);
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export default function Nav() {
             <span>
               <select className="w-28" onChange={handleCat}>
                 <option > Categorias </option>
-                {categories.map((el, i) => (
+                {categories?.map((el, i) => (
                   <option key={el.name + i}>{el.name}</option>
                 ))}
               </select>

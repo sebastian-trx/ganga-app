@@ -13,7 +13,18 @@ import {
   USER_MESSAGE,
   GET_SUBCATEGORIES,
   GET_ALL_USERS,
-  PUT_USER
+  PUT_USER,
+  ADD_PRODUCT,
+  DECRESE_PRODUCT,
+  SUM_PRODUCT,
+  CLEAR_CART,
+  DELETE_ITEM,
+  MERCADO_PAGO,
+  MERCADO_PAGO2,
+  SUCCESS_MAIL,
+  FAIL_MAIL,
+  DELETE_USER,
+  DELETE_PRODUCT,
 } from "../Actions/const";
 
 const initialState = {
@@ -26,6 +37,12 @@ const initialState = {
   detailProduct: [],
   subcategories: [],
   updateUser: [],
+  mp: [],
+  mp2: [],
+  // cart
+  addProduct: [],
+  decreseProduct: [],
+  clearCart: [],
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -123,11 +140,11 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
       };
     case GET_SUBCATEGORIES:
-      let subcatego = state.categories.filter((el) => el.id === payload)
+      let subcatego = state.categories.filter((el) => el.id === payload);
       return {
         ...state,
-        subcategories: subcatego
-      }
+        subcategories: subcatego,
+      };
     case GET_ALL_USERS:
       return {
         ...state,
@@ -138,6 +155,60 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
         updateUser: payload,
       }
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        addProduct: payload,
+      };
+    case DECRESE_PRODUCT:
+      return {
+        ...state,
+        decreseProduct: payload,
+      };
+
+    case CLEAR_CART:
+      return {
+        ...state,
+        clearCart: payload,
+      };
+
+    case DELETE_ITEM:
+      return {
+        ...state,
+      };
+
+    case MERCADO_PAGO:
+      return {
+        ...state,
+        mp: payload[0].url,
+      };
+
+    case MERCADO_PAGO2:
+      return {
+        ...state,
+        mp2: payload[0].url,
+      };
+
+    case SUCCESS_MAIL:
+      return {
+        ...state,
+      };
+
+    case FAIL_MAIL:
+      return {
+        ...state,
+      };
+
+    case DELETE_USER:
+       state.allUsers.filter((el) => el.id !== payload)
+      return {
+      state,
+      };
+    case DELETE_PRODUCT:
+       state.product.filter((el) => el.id !== payload)
+      return {
+      state,
+       };
     default: {
       return state;
     }

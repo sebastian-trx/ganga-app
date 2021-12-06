@@ -23,7 +23,7 @@ export default function Carousel() {
           <Link to="/catalogo">
             <img className={c.image} src={img1} alt="" />
           </Link>
-          <TextoSlide colorFondo="navy">
+          <TextoSlide colorFondo="blue">
             <p>Mejor calidad</p>
           </TextoSlide>
         </Slide>
@@ -31,7 +31,7 @@ export default function Carousel() {
           <Link to="/catalogo">
             <img className={c.image} src={img2} alt="" />
           </Link>
-          <TextoSlide colorFondo="navy">
+          <TextoSlide colorFondo="blue">
             <p>A precios bajos</p>
           </TextoSlide>
         </Slide>
@@ -39,7 +39,7 @@ export default function Carousel() {
           <Link to="/catalogo">
             <img className={c.image} src={img3} alt="" />
           </Link>
-          <TextoSlide colorFondo="navy">
+          <TextoSlide colorFondo="blue">
             <p>Todo en un solo lugar</p>
           </TextoSlide>
         </Slide>
@@ -47,7 +47,7 @@ export default function Carousel() {
           <Link to="/catalogo">
             <img className={c.image} src={img4} alt="" />
           </Link>
-          <TextoSlide colorFondo="navy">
+          <TextoSlide colorFondo="blue">
             <p>Que esperas?</p>
           </TextoSlide>
         </Slide>
@@ -55,7 +55,7 @@ export default function Carousel() {
           <Link to="/catalogo">
             <img className={c.image} src={img5} alt="" />
           </Link>
-          <TextoSlide colorFondo="navy">
+          <TextoSlide colorFondo="blue">
             <p>Quieres vender tus productos?</p>
           </TextoSlide>
         </Slide>
@@ -63,7 +63,7 @@ export default function Carousel() {
           <Link to="/catalogo">
             <img className={c.image} src={img6} alt="" />
           </Link>
-          <TextoSlide>
+          <TextoSlide colorFondo="blue">
             <p>Esta es tu GanGa</p>
           </TextoSlide>
         </Slide>

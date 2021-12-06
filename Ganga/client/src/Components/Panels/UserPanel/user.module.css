@@ -1,19 +1,11 @@
-.div1{
-    background: rgb(177, 177, 177);
-    height: 657px;
+.container {
+    display: flex;
 }
 
-.form1{
-    position: absolute;
-    left: 570px;
-    top: 150px;
-    right: 0px;
-    bottom: 0px;
+.sidebar {
+    flex: 1;
 }
 
-.h33{
-    position: absolute;
-    top:100px;
-    left: 570px;
+.body {
+    flex: 4;
 }
-
