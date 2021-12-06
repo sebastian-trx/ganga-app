@@ -20,13 +20,13 @@ export default function User() {
         <Avatar src="" />
       </Menu.Button>
 
-      <Menu.Items className="origin-top-right absolute right-0 shadow-lg ring-4 ring-white  ring-opacity-20 mr-4 mt-2 p-2 bg-black">
+      <Menu.Items className="origin-top-right absolute right-0 shadow-lg ring-4 ring-white  ring-opacity-20 mr-4 mt-2 p-2 bg-white">
         <div>
           <Menu.Item className="py-2">
             {({ active }) => (
               <div>
                 <a
-                  href="/"
+                  href="/panel"
                   className={`${active ? "opacity-100 " : "opacity-60"}`}
                 >
                   Mis Datos

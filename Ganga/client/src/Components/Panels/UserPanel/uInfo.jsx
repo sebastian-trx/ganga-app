@@ -4,31 +4,34 @@ import { useParams } from "react-router";
 import { useNavigate, Link } from "react-router-dom";
 
 import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
+import s from './user.module.css';
 
-import Nav from "../../Nav/NavBar/nav"
 
 export default function UserInfo() {
     const dispatch = useDispatch();
     const allUsers = useSelector((state) => state.allUsers)
+    const userfil = useSelector((state) => state.getInfoGoogle)
+
 
     const navigate = useNavigate();
 
     const { id } = useParams()
 
-    const userfil = allUsers.filter((el) => el.id === id)
 
-    const name = userfil[0].name
-    const surname = userfil[0].surname
-    const mail = userfil[0].mail
-    const birthdate = userfil[0].birthdate
-    const address = userfil[0].address
+    console.log("user", userfil)
+
+    const name = userfil.name
+    const surname = userfil.surname
+    const mail = userfil.mail
+   // const birthdate = userfil.birthdate
+    const address = userfil.address
 
     const [input, setInput] = useState({
-        id: userfil[0].id,
+        id: userfil.id,
         name: name,
         surname: surname,
         mail: mail,
-        birthdate: birthdate,
+       // birthdate: birthdate,
         address: address,
     })
 
@@ -52,11 +55,20 @@ export default function UserInfo() {
 
     return (
         <div>
-            <Nav />
-            <h3>Modificalo chee</h3>
-            <form onSubmit={submit}>
+                        <div className="p-5">
+                    <Link to="/panel">
+                        <button type="button">
+                            {"<-Volver"}
+                        </button>
+                    </Link>
+                </div>
+            <h3 className="text-center text-3xl">Modificar tus datos</h3>
+            <form className="text-center" onSubmit={submit}>
+                <div className="p-5">
                 <div>
-                    <input
+                <label> Nombre </label>
+                </div>
+                    <input className="text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"
                         value={input.name}
@@ -64,8 +76,11 @@ export default function UserInfo() {
                         placeholder="Nombre"
                     />
                 </div>
+                <div className="p-5">
                 <div>
-                    <input
+                <label> Apellido </label>
+                </div>
+                    <input className="text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"
                         value={input.surname}
@@ -73,8 +88,11 @@ export default function UserInfo() {
                         placeholder="Apellido"
                     />
                 </div>
+                <div className="p-5">
                 <div>
-                    <input
+                <label> Correo </label>
+                </div>
+                    <input className="text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"
                         value={input.mail}
@@ -82,7 +100,7 @@ export default function UserInfo() {
                         placeholder="Correo"
                     />
                 </div>
-                <div>
+                {/* <div>
                     <input
                         onChange={handleChange}
                         type="date"
@@ -90,9 +108,12 @@ export default function UserInfo() {
                         name="birthdate"
                         placeholder="Fecha de Nacimiento"
                     />
-                </div>
+                </div> */}
+                <div className="p-5">
                 <div>
-                    <input
+                <label> Zona </label>
+                </div>
+                    <input className="text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"
                         value={input.address}
@@ -100,18 +121,12 @@ export default function UserInfo() {
                         placeholder="Zona"
                     />
                 </div>
-                <div>
-                    <button type="submit">
+                <div className="p-5">
+                    <button className={s.btnActualizar} type="submit">
                         Actualizar
                     </button>
                 </div>
-                <div>
-                    <Link to="/panel">
-                        <button type="button">
-                            {"<-Volver"}
-                        </button>
-                    </Link>
-                </div>
+
             </form>
         </div>
     )
