@@ -1,17 +1,18 @@
 import React from "react";
 import { Menu } from "@headlessui/react";
-
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import {logout} from "../../Redux/Actions/actions"
 import Avatar from "@mui/material/Avatar";
 
 export default function User() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // console.log(dispatch);
 
   function handleLogout(e) {
     e.preventDefault();
-    // dispatch(logout());
+    dispatch(logout());
     // history.push("/");
+    window.location.reload()
   }
 
   return (
