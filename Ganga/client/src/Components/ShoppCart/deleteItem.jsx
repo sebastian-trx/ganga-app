@@ -18,7 +18,7 @@ export function DeleteItem({ idUser, idProd, quantP }) {
         onClick={handleDeleteItem}
         class="text-gray-700 md:ml-4"
       >
-        <small>Borrar item</small>
+        <small class="text-blue-500">Borrar item</small>
       </button>
     </div>
   );
