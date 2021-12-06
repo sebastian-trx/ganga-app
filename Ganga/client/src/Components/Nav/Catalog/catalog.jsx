@@ -141,7 +141,7 @@ export default function Catalogo() {
 
           </div>
         )}
-        <Link to="/carrito" className="pl-6 pr-10">
+        <Link to="/shopCart" className="pl-6 pr-10">
           <button>
             <IoIosCart />
           </button>
