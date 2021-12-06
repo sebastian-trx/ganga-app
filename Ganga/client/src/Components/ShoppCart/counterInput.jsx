@@ -56,7 +56,7 @@ export default function CounterInput({ idUser, idProd, quantP, stock }) {
         </button>
         <div
           className={s.countInp}
-          class="outline-none focus:outline-none text-center w-6 bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+          class="outline-none focus:outline-none text-center w-6 bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
         >
           {cant}
         </div>
