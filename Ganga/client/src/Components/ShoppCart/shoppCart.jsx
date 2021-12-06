@@ -102,7 +102,9 @@ export default function ShoppCart() {
           </table>
           {/* <hr class="pb-6 mt-6"> */}
           <div class="my-4 mt-6 -mx-2 lg:flex">
-            <div class="lg:px-2 lg:w-1/2">
+
+
+            {/* <div class="lg:px-2 lg:w-1/2">
               <div class="p-4 bg-gray-100 rounded-full">
                 <h1 class="ml-2 font-bold uppercase">DESCUENTO POR CUPON</h1>
               </div>
@@ -156,7 +158,9 @@ export default function ShoppCart() {
                 </p>
                 <textarea class="w-full h-24 p-2 bg-gray-100 rounded"></textarea>
               </div>
-            </div>
+            </div> */}
+
+
             <div class="lg:px-2 lg:w-1/2">
               <div class="p-4 bg-gray-100 rounded-full">
                 <h1 class="ml-2 font-bold uppercase">Detalle de la Orden</h1>
@@ -166,15 +170,17 @@ export default function ShoppCart() {
                   Shipping and additionnal costs are calculated based on values
                   you have entered
                 </p> */}
-                <div class="flex justify-between border-b">
+                {/* <div class="flex justify-between border-b">
                   <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                     Subtotal
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                     $ {sum}
                   </div>
-                </div>
-                <div class="flex justify-between pt-4 border-b">
+                </div> */}
+
+
+                {/* <div class="flex justify-between pt-4 border-b">
                   <div class="flex lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-gray-800">
                     <form action="" method="POST">
                       <button type="submit" class="mr-2 mt-1 lg:mt-2">
@@ -198,13 +204,15 @@ export default function ShoppCart() {
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-green-700">
                     DESCUENTO : $ -{desc = 50}
                   </div>
-                </div>
-                <div class="flex justify-between pt-4 border-b">
+                </div> */}
+
+
+                {/* <div class="flex justify-between pt-4 border-b">
                   <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                     Nuevo Subtotal
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                    ${subtotal = sum - desc}
+                    $ {subtotal = sum - desc}
                   </div>
                 </div>
                 <div class="flex justify-between pt-4 border-b">
@@ -212,15 +220,19 @@ export default function ShoppCart() {
                     Envio
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                    {envio = 10}
+                    $ {envio = 10}
                   </div>
-                </div>
+                </div> */}
+
+
                 <div class="flex justify-between pt-4 border-b">
                   <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                     Total
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                    {total = subtotal + envio}
+                    {/* total = subtotal + envio */}
+                    $ {sum}
+
                   </div>
                 </div>
                 {/* <a href="#"> */}
