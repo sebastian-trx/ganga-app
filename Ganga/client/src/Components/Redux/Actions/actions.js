@@ -16,7 +16,10 @@ import {
   USER_MESSAGE,
   FILTER_BY_SEARCH,
   GET_SUBCATEGORIES,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  FILTER_BY_SUB_CATEGORY,
+  GET_FILTER_BY_CATEGORY,
+  GET_SUB_CAT_BY_NAME
 } from "./const";
 
 export function getProduct() {
@@ -183,7 +186,26 @@ export function getAllUsers(){
     })
   }
 }
+ export function filterBySubCat (payload){
+   return{
+     type: FILTER_BY_SUB_CATEGORY,
+     payload
+   }
+ }
+ export function getFilterByCategory (payload){
+   console.log(payload)
+   return{
+    type: GET_FILTER_BY_CATEGORY,
+    payload
+   }
+ }
 
+ export function getSubCategoryByName(payload){
+   return{
+     type: GET_SUB_CAT_BY_NAME,
+     payload
+   }
+ }
 // export function geUserInfo(id){
 //   return async (dispatch) => {
 //     try {

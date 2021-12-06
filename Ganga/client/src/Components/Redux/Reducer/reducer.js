@@ -12,7 +12,10 @@ import {
   FILTER_BY_SEARCH,
   USER_MESSAGE,
   GET_SUBCATEGORIES,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  FILTER_BY_SUB_CATEGORY,
+  GET_FILTER_BY_CATEGORY,
+  GET_SUB_CAT_BY_NAME
 } from "../Actions/const";
 
 const initialState = {
@@ -31,8 +34,8 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case GET_PRODUCT: {
       return {
         ...state,
-        product: payload,
         allProducts2: payload,
+        product: payload,
       };
     }
     case GET_PRODUCT_BY_NAME: {
@@ -74,21 +77,21 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       let sortedProducts =
         payload === "Mayor-Menor"
           ? state.product.sort(function (a, b) {
-              if (a.price > b.price) {
-                return 1;
-              } else if (b.price > a.price) {
-                return -1;
-              }
-              return 0;
-            })
+            if (a.price > b.price) {
+              return 1;
+            } else if (b.price > a.price) {
+              return -1;
+            }
+            return 0;
+          })
           : state.product.sort(function (a, b) {
-              if (a.price > b.price) {
-                return -1;
-              } else if (a.price > b.price) {
-                return 1;
-              }
-              return 0;
-            });
+            if (a.price > b.price) {
+              return -1;
+            } else if (a.price > b.price) {
+              return 1;
+            }
+            return 0;
+          });
       return {
         ...state,
         product: payload === "All" ? state.products : sortedProducts,
@@ -130,6 +133,27 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       return {
         ...state,
         allUsers: payload
+      }
+    case GET_FILTER_BY_CATEGORY:
+      console.log(payload, "ljdwboubdlwnb")
+      let filter = state.allProducts2.filter((el) => (el.categories === payload))
+      return {
+        ...state,
+        product: filter
+      }
+
+    case FILTER_BY_SUB_CATEGORY:
+      let filter2 = state.allProducts2.filter((el) => el.subcategories[0] === payload)
+      return {
+       ...state,
+       product: filter2
+      }
+
+    case GET_SUB_CAT_BY_NAME:
+      let filter3 = state.categories.filter((el) => (el.name === payload))
+      return {
+        ...state,
+        subcategories: filter3
       }
     default: {
       return state;

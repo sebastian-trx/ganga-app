@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Card from "../../Card/card";
-import { getCategories, getProduct, orderByPrice, getUser, getSubCategoryByName, getFilterByCategory, filterBySubCat} from "../../Redux/Actions/actions";
+import { getProduct, orderByPrice, getUser, getSubCategoryByName, getFilterByCategory, filterBySubCat } from "../../Redux/Actions/actions";
 import s from './categories.module.css'
 import FilterPrice from "../Filter/filterPrice";
 
@@ -15,21 +15,24 @@ import { VscDebugRestart } from "react-icons/vsc";
 export default function Categorias() {
 
   const dispatch = useDispatch();
-
-
+  const navigate = useNavigate();
   const { nombre } = useParams();
-  const allProduct = useSelector((state) => state.product);
   const subcategories = useSelector((state) => state.subcategories);
   const userGoogle = useSelector((state) => state.getInfoGoogle);
+  const allProduct = useSelector((state) => state.product);
   const [, setOrden] = useState("");
+  console.log("soy el nombre", nombre)
 
-useEffect(() => {
-  dispatch(getFilterByCategory(nombre))
-},[])
 
-  useEffect(() => {  
+  useEffect(() => {
+    dispatch(getFilterByCategory(nombre))
+  }, [dispatch, nombre])
+
+
+
+  useEffect(() => {
     dispatch(getSubCategoryByName(nombre));
-  },[])
+  }, [dispatch, nombre])
 
 
 
@@ -40,17 +43,15 @@ useEffect(() => {
 
   function handleClick(e) {
     e.preventDefault();
-    dispatch(getProduct());
+    navigate("/catalogo")
   }
 
 
   function handleSubCat(e) {
     e.preventDefault();
-   dispatch(filterBySubCat(e.target.value))
-   
+    dispatch(filterBySubCat(e.target.value))
+
   }
-
-
 
 
   function handleOrder(e) {
@@ -71,7 +72,7 @@ useEffect(() => {
         <div>
           <select className="w-40" onChange={handleSubCat}>
             <option > SubCategorias </option>
-             {
+            {
               subcategories[0]?.subcategories.map((el, i) =>
               (
                 <option key={i} value={el}>
@@ -132,7 +133,7 @@ useEffect(() => {
             <h1>Cargando</h1>
           </div>
         ) : (
-          allProduct.map((el, i) => {
+          allProduct?.map((el, i) => {
             return (
               <div key={"card" + i}>
                 <Card
