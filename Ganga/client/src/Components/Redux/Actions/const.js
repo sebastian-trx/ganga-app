@@ -13,6 +13,7 @@ export const FILTER_BY_SEARCH = "FILTER_BY_SEARCH";
 export const USER_MESSAGE = "USER_MESSAGE";
 export const GET_SUBCATEGORIES = "GET_SUBCATEGIES";
 export const GET_ALL_USERS= "GET_ALL_USERS";
+export const PUT_USER= "PUT_USER";
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const DECRESE_PRODUCT = "DECRESE_PRODUCT";
 export const SUM_PRODUCT = "SUM_PRODUCT";

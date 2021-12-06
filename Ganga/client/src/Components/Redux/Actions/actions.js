@@ -17,6 +17,7 @@ import {
   FILTER_BY_SEARCH,
   GET_SUBCATEGORIES,
   GET_ALL_USERS,
+  PUT_USER,
   ADD_PRODUCT,
   DECRESE_PRODUCT,
   SUM_PRODUCT,
@@ -275,6 +276,20 @@ export function deleteProduct(payload) {
       .then((response) => {
         dispatch({
           type: DELETE_PRODUCT,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+}
+
+export function updateUser(payload) {
+  return async function (dispatch) {
+    await axios
+      .put(`${URL}user`, payload)
+      .then((response) => {
+        dispatch({
+          type: PUT_USER,
           payload: response.data,
         });
       })

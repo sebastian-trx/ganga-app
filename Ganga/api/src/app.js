@@ -37,6 +37,9 @@ server.use((req, res, next) => {
   next();
 });
 
+
+// - - - - Deploy - - - -
+
 // server.use(                                             //se habilita el manejo de sesiones para el server
 //   session({
 //     secret: "secretcode",

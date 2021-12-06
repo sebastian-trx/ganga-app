@@ -13,6 +13,7 @@ import {
   USER_MESSAGE,
   GET_SUBCATEGORIES,
   GET_ALL_USERS,
+  PUT_USER,
   ADD_PRODUCT,
   DECRESE_PRODUCT,
   SUM_PRODUCT,
@@ -35,6 +36,7 @@ const initialState = {
   categories: [],
   detailProduct: [],
   subcategories: [],
+  updateUser: [],
   mp: [],
   mp2: [],
   // cart
@@ -91,21 +93,21 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       let sortedProducts =
         payload === "Mayor-Menor"
           ? state.product.sort(function (a, b) {
-              if (a.price > b.price) {
-                return 1;
-              } else if (b.price > a.price) {
-                return -1;
-              }
-              return 0;
-            })
+            if (a.price > b.price) {
+              return 1;
+            } else if (b.price > a.price) {
+              return -1;
+            }
+            return 0;
+          })
           : state.product.sort(function (a, b) {
-              if (a.price > b.price) {
-                return -1;
-              } else if (a.price > b.price) {
-                return 1;
-              }
-              return 0;
-            });
+            if (a.price > b.price) {
+              return -1;
+            } else if (a.price > b.price) {
+              return 1;
+            }
+            return 0;
+          });
       return {
         ...state,
         product: payload === "All" ? state.products : sortedProducts,
@@ -146,8 +148,13 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case GET_ALL_USERS:
       return {
         ...state,
-        allUsers: payload,
-      };
+        allUsers: payload
+      }
+    case PUT_USER:
+      return {
+        ...state,
+        updateUser: payload,
+      }
     case ADD_PRODUCT:
       return {
         ...state,

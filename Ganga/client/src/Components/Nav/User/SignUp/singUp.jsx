@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getUserInfoGoogle } from "../../../Redux/Actions/actions";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,14 +33,14 @@ export default function Login() {
     }
     //////////////////////////////////////////////
   return (
-  <div>
-   <img className={s.fondo} src={fondo} alt="" />
+    <div>
+      <img className={s.fondo} src={fondo} alt="" />
       <div className={s.left}>
-       <img className={s.foto} src={foto} alt="" />
+        <img className={s.foto} src={foto} alt="" />
       </div>
       <div className={s.right}>
         <SignUpForm />
+      </div>
     </div>
-  </div>
   );
 }

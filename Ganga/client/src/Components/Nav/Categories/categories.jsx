@@ -16,7 +16,6 @@ export default function Categorias() {
 
   const dispatch = useDispatch();
 
-
   const { nombre } = useParams();
   const allProduct = useSelector((state) => state.product);
   const subcategories = useSelector((state) => state.subcategories);
@@ -31,8 +30,6 @@ useEffect(() => {
     dispatch(getSubCategoryByName(nombre));
   },[])
 
-
-
   useEffect(() => {
     dispatch(getUser())
   }, [dispatch])
@@ -43,15 +40,11 @@ useEffect(() => {
     dispatch(getProduct());
   }
 
-
   function handleSubCat(e) {
     e.preventDefault();
    dispatch(filterBySubCat(e.target.value))
    
   }
-
-
-
 
   function handleOrder(e) {
     e.preventDefault();

@@ -14,7 +14,7 @@ export default function SignUpForm() {
     surname: "",
     mail: "",
     password: "",
-    numero: "",
+    cellphone: "",
     address: "",
   });
 
@@ -30,8 +30,8 @@ export default function SignUpForm() {
       errors.mail = "Ingrese su correo.";
     } else if (!input.password) {
       errors.password = "Ingrese su contraseña.";
-    } else if (!input.numero) {
-      errors.numero = "Ingrese su numero de telefono.";
+    } else if (!input.cellphone) {
+      errors.cellphone = "Ingrese su numero de telefono.";
     } else if (!input.address) {
       errors.address = "Ingrese la dirección de su vivienda.";
     }
@@ -63,7 +63,7 @@ export default function SignUpForm() {
       surname: "",
       mail: "",
       password: "",
-      numero: "",
+      cellphone: "",
       address: "",
     });
     navigate("/");
@@ -126,13 +126,13 @@ export default function SignUpForm() {
         <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
-            name="numero"
+            name="cellphone"
             type="number"
-            placeholder="numero"
-            value={input.numero}
+            placeholder="cellphone"
+            value={input.cellphone}
             onChange={handleChange}
           ></input>
-          {errors.numero && <p>{errors.numero}</p>}
+          {errors.cellphone && <p>{errors.cellphone}</p>}
         </div>
 
         <div className="py-5">
@@ -157,7 +157,7 @@ export default function SignUpForm() {
               input.surname &&
               input.password &&
               input.mail &&
-              input.numero &&
+              input.cellphone &&
               input.address
             )
           }
