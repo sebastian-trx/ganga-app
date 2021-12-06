@@ -13,6 +13,9 @@ import {
   USER_MESSAGE,
   GET_SUBCATEGORIES,
   GET_ALL_USERS,
+  FILTER_BY_SUB_CATEGORY,
+  GET_FILTER_BY_CATEGORY,
+  GET_SUB_CAT_BY_NAME,
   PUT_USER,
   ADD_PRODUCT,
   DECRESE_PRODUCT,
@@ -50,8 +53,8 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case GET_PRODUCT: {
       return {
         ...state,
-        product: payload,
         allProducts2: payload,
+        product: payload,
       };
     }
     case GET_PRODUCT_BY_NAME: {
@@ -149,6 +152,27 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       return {
         ...state,
         allUsers: payload
+      }
+    case GET_FILTER_BY_CATEGORY:
+      console.log(payload, "ljdwboubdlwnb")
+      let filter = state.allProducts2.filter((el) => (el.categories === payload))
+      return {
+        ...state,
+        product: filter
+      }
+
+    case FILTER_BY_SUB_CATEGORY:
+      let filter2 = state.allProducts2.filter((el) => el.subcategories[0] === payload)
+      return {
+       ...state,
+       product: filter2
+      }
+
+    case GET_SUB_CAT_BY_NAME:
+      let filter3 = state.categories.filter((el) => (el.name === payload))
+      return {
+        ...state,
+        subcategories: filter3
       }
     case PUT_USER:
       return {

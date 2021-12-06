@@ -17,6 +17,9 @@ import {
   FILTER_BY_SEARCH,
   GET_SUBCATEGORIES,
   GET_ALL_USERS,
+  FILTER_BY_SUB_CATEGORY,
+  GET_FILTER_BY_CATEGORY,
+  GET_SUB_CAT_BY_NAME,
   PUT_USER,
   ADD_PRODUCT,
   DECRESE_PRODUCT,
@@ -296,7 +299,26 @@ export function updateUser(payload) {
       .catch((error) => console.log(error));
   };
 }
+ export function filterBySubCat (payload){
+   return{
+     type: FILTER_BY_SUB_CATEGORY,
+     payload
+   }
+ }
+ export function getFilterByCategory (payload){
+   console.log(payload)
+   return{
+    type: GET_FILTER_BY_CATEGORY,
+    payload
+   }
+ }
 
+ export function getSubCategoryByName(payload){
+   return{
+     type: GET_SUB_CAT_BY_NAME,
+     payload
+   }
+ }
 // export function geUserInfo(id){
 //   return async (dispatch) => {
 //     try {

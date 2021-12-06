@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Card from "../../Card/card";
-import { getCategories, getProduct, orderByPrice, getUser, /*getSubCategoryByName, getFilterByCategory, filterBySubCat*/ } from "../../Redux/Actions/actions";
+import { getProduct, orderByPrice, getUser, getSubCategoryByName, getFilterByCategory, filterBySubCat } from "../../Redux/Actions/actions";
+
 import s from './categories.module.css'
 import FilterPrice from "../Filter/filterPrice";
 
@@ -15,16 +16,23 @@ import { VscDebugRestart } from "react-icons/vsc";
 export default function Categorias() {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { nombre } = useParams();
-  const allProduct = useSelector((state) => state.product);
   const subcategories = useSelector((state) => state.subcategories);
   const userGoogle = useSelector((state) => state.getInfoGoogle);
+  const allProduct = useSelector((state) => state.product);
   const [, setOrden] = useState("");
+  console.log("soy el nombre", nombre)
 
-  // useEffect(() => {
-  //   dispatch(getFilterByCategory(nombre))
-  // },[])
+
+  useEffect(() => {
+    dispatch(getFilterByCategory(nombre))
+  }, [dispatch, nombre])
+
+  useEffect(() => {
+    dispatch(getSubCategoryByName(nombre));
+  }, [dispatch, nombre])
 
   // useEffect(() => {  
   //   dispatch(getSubCategoryByName(nombre));
@@ -37,14 +45,19 @@ export default function Categorias() {
 
   function handleClick(e) {
     e.preventDefault();
-    dispatch(getProduct());
+    navigate("/catalogo")
   }
 
   // function handleSubCat(e) {
   //   e.preventDefault();
   //  dispatch(filterBySubCat(e.target.value))
-
   // }
+  
+  function handleSubCat(e) {
+    e.preventDefault();
+    dispatch(filterBySubCat(e.target.value))
+
+  }
 
   function handleOrder(e) {
     e.preventDefault();
@@ -125,7 +138,7 @@ export default function Categorias() {
             <h1>Cargando...</h1>
           </div>
         ) : (
-          allProduct.map((el, i) => {
+          allProduct?.map((el, i) => {
             return (
               <div key={"card" + i}>
                 <Card
