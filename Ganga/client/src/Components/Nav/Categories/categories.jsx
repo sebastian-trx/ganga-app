@@ -22,7 +22,7 @@ export default function Categorias() {
   const allProduct = useSelector((state) => state.product);
   const [, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [elementsPerPage, setElementsPerPage] = useState(8)
+  const [elementsPerPage, setElementsPerPage] = useState(12)
   const indexOfLastProducts = currentPage * elementsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
   const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);
@@ -135,14 +135,6 @@ export default function Categorias() {
             </>
         }
       </nav>
-      <div>
-        <Pagination
-          elementsPerPage={elementsPerPage}
-          allProduct={allProduct}
-          paginate={paginate} />
-      </div>
-
-      
 
       <div className={s.cards}>
         {currentProducts?.length === 0 ? (
@@ -164,7 +156,12 @@ export default function Categorias() {
           })
         )}
       </div>
-     
+      <div>
+        <Pagination
+          elementsPerPage={elementsPerPage}
+          allProduct={allProduct}
+          paginate={paginate} />
+      </div>
     </div>
   );
 }
