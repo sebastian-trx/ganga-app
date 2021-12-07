@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useCallback } from "react";
-import { ReactComponent as FlechaIzquierda } from "../../../Resources/iconmonstr-angel-left-thin.svg";
-import { ReactComponent as FlechaDerecha } from "../../../Resources/iconmonstr-angel-right-thin.svg";
+import { ReactComponent as FlechaIzquierda } from "../../../Resources/back-svgrepo-com.svg";
+import { ReactComponent as FlechaDerecha } from "../../../Resources/next-svgrepo-com.svg";
 import styled from "styled-components";
 
 const Slideshow = ({
@@ -145,10 +145,11 @@ const TextoSlide = styled.div`
 
 const Controles = styled.div`
   position: absolute;
+  left: 50px;
   top: 0;
   z-index: 20;
-  width: 100%;
-  height: 140%;
+  width: 92%;
+  height: 170%;
   pointer-events: none;
 `;
 
