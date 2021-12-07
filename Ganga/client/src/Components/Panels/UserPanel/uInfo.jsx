@@ -39,7 +39,7 @@ export default function UserInfo() {
     useEffect(() => {
         dispatch(updateUser(input))
         dispatch(getAllUsers())
-    }, [dispatch])
+    }, [dispatch, input])
 
     const handleChange = (e) => {
         setInput({

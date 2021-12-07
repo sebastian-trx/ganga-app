@@ -22,7 +22,7 @@ export default function Catalogo() {
   const [wordEntered, setWordEntered] = useState("");
   const [name, setName] = useState(" ")
   const [currentPage, setCurrentPage] = useState(1);
-  const [elementsPerPage, setElementsPerPage] = useState(8)
+const [elementsPerPage, /*setElementsPerPage*/] = useState(8)
   const indexOfLastProducts = currentPage * elementsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
   const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);

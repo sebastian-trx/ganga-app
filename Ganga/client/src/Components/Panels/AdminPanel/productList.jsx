@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { /*useEffect,*/ useState } from "react";
+import { Link, /*useNavigate*/ } from "react-router-dom";
+import { useDispatch, /*useSelector*/ } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 
-import { deleteProduct, getProduct } from "../../Redux/Actions/actions";
+import { deleteProduct, /*getProduct*/ } from "../../Redux/Actions/actions";
 import ProductsChart from "./aCharts/Products";
 import s from "./admin.module.css";
 
 export default function ProductList({products}) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   
 
 

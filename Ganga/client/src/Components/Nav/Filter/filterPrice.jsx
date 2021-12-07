@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 export default function FilterPrice() {
     const dispatch = useDispatch();
-    const [currentPage, setCurrentPage] = useState(1);
+    const [/*currentPage*/, setCurrentPage] = useState(1);
     const [price1, setPrice1]= useState("")
     const [price2, setPrice2]= useState("")
 

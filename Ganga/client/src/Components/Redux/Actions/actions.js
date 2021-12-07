@@ -23,7 +23,7 @@ import {
   PUT_USER,
   ADD_PRODUCT,
   DECRESE_PRODUCT,
-  SUM_PRODUCT,
+  // SUM_PRODUCT,
   CLEAR_CART,
   DELETE_ITEM,
   MERCADO_PAGO,
@@ -51,7 +51,7 @@ export function addProduct(payload) {
   console.log("soy el payload de manipulateCart: ", payload); // payload para toda la accion (podes añadir el producto por primera vez, sumar o restar(modificar que o cant)) ---> {id:"id del usuario", item: {id:"id del producto"}, cant:"1"(SIEMPRE QUE QUERRAMOS AÑADIR AL CARRITO), que:"+ o -"(SI LO MANDO VACIO ME BORRA EL PRODUCTO)}
   return async function (dispatch) {
     const response = await axios.post(
-      "http://localhost:3001/user/addCart",
+      `/user/addCart`,
       payload
     );
     dispatch({
@@ -67,7 +67,7 @@ export function decreseProduct(payload) {
   console.log("soy el payload de manipulateCart: ", payload); // payload para toda la accion (podes añadir el producto por primera vez, sumar o restar(modificar que o cant)) ---> {id:"id del usuario", item: {id:"id del producto"}, cant:"1"(SIEMPRE QUE QUERRAMOS AÑADIR AL CARRITO), que:"+ o -"(SI LO MANDO VACIO ME BORRA EL PRODUCTO)}
   return async function (dispatch) {
     const response = await axios.post(
-      "http://localhost:3001/user/addCart",
+      `/user/addCart`,
       payload
     );
     dispatch({
@@ -82,7 +82,7 @@ export function clearCart(payload) {
   console.log("soy el payload de clearCart: ", payload);
   return async function (dispatch) {
     const response = axios.put(
-      `http://localhost:3001/user/clearCart?id=${payload}`
+      `/user/clearCart?id=${payload}`
     );
     console.log("soy el response de clearCart: ", response);
     dispatch({
@@ -97,7 +97,7 @@ export function deleteItem(payload) {
   console.log("soy el payload de deleteItem: ",payload);
   return async function (dispatch) {
     const response = axios.put(
-      `http://localhost:3001/user/deleteProduct`,payload
+      `/user/deleteProduct`,payload
     );
     console.log("soy el response de deleteItem: ", response);
     dispatch({
@@ -262,7 +262,7 @@ export function getAllUsers() {
 export function deleteUser(payload) {
   return async function (dispatch) {
     axios
-      .delete(URL + "user?id=" + payload)
+      .delete(`user?id=` + payload)
       .then((response) => {
         dispatch({
           type: DELETE_USER,
@@ -276,7 +276,7 @@ export function deleteUser(payload) {
 export function deleteProduct(payload) {
   return async function (dispatch) {
     axios
-      .delete(URL + "product?id=" + payload)
+      .delete(`/product?id=` + payload)
       .then((response) => {
         dispatch({
           type: DELETE_PRODUCT,
@@ -290,7 +290,7 @@ export function deleteProduct(payload) {
 export function updateUser(payload) {
   return async function (dispatch) {
     await axios
-      .put(`${URL}user`, payload)
+      .put(`/user`, payload)
       .then((response) => {
         dispatch({
           type: PUT_USER,
@@ -340,7 +340,7 @@ export function updateUser(payload) {
 export function compraMP(payload) {
   return async function (dispatch) {
   await axios
-    .post(`${URL}mercadoPago2`, payload,)
+    .post(`/mercadoPago2`, payload,)
     .then((response) => {
 
       dispatch({
@@ -355,7 +355,7 @@ export function compraMP(payload) {
 export function compraMP2(payload) {
   return async function (dispatch) {
   await axios
-    .post(`${URL}mercadoPago`, payload,)
+    .post(`/mercadoPago`, payload,)
     .then((response) => {
 
       dispatch({
