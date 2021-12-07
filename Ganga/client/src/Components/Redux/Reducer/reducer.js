@@ -15,7 +15,8 @@ import {
   GET_ALL_USERS,
   FILTER_BY_SUB_CATEGORY,
   GET_FILTER_BY_CATEGORY,
-  GET_SUB_CAT_BY_NAME
+  GET_SUB_CAT_BY_NAME,
+  PRODUCTS_BY_NAME
 } from "../Actions/const";
 
 const initialState = {
@@ -155,6 +156,12 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
         subcategories: filter3
       }
+      case PRODUCTS_BY_NAME:
+        let filter4 = state.allProducts2.filter((el) => (el.name.toLowerCase()).includes(payload.toLowerCase()))
+        return{
+          ...state,
+          product: filter4
+        }
     default: {
       return state;
     }

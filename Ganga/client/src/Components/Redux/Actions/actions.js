@@ -19,7 +19,8 @@ import {
   GET_ALL_USERS,
   FILTER_BY_SUB_CATEGORY,
   GET_FILTER_BY_CATEGORY,
-  GET_SUB_CAT_BY_NAME
+  GET_SUB_CAT_BY_NAME,
+  PRODUCTS_BY_NAME
 } from "./const";
 
 export function getProduct() {
@@ -203,6 +204,14 @@ export function getAllUsers(){
  export function getSubCategoryByName(payload){
    return{
      type: GET_SUB_CAT_BY_NAME,
+     payload
+   }
+ }
+
+ export function productsByName(payload){
+   console.log(payload)
+   return{
+     type: PRODUCTS_BY_NAME,
      payload
    }
  }

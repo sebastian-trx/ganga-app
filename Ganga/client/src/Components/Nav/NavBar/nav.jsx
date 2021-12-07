@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoIosCart } from "react-icons/io";
 import { ImSearch } from "react-icons/im";
 
-import { getUser, getCategories } from "../../Redux/Actions/actions";
+import { getUser, getCategories, productsByName } from "../../Redux/Actions/actions";
 import Logo from "../Logo/logo";
 import User from "../User/user";
 import j from "./nav.module.css";
@@ -19,6 +19,7 @@ export default function Nav() {
 
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const [name, setName] = useState('')
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -44,10 +45,17 @@ export default function Nav() {
     navigate("/categorias/" + nombre);
   }
 
-  function handleSubmit() {}
-
-  function handleInput() {}
-
+  
+  function handleInput(e) {
+    e.preventDefault()
+    setName(e.target.value)
+  }
+  
+  function handleSubmit(e) {
+    e.preventDefault()
+    navigate("/catalogo");
+    dispatch(productsByName(name))
+  }
   return (
     <div
       expanded={expand}
@@ -89,8 +97,8 @@ export default function Nav() {
               <span>Nosotros</span>
             </Link>
 
-            <input 
-            // className="px-4"
+            <input
+              // className="px-4"
               type="text"
               placeholder="Busca tu producto"
               onChange={handleInput}
