@@ -467,7 +467,7 @@ const infoProduct = [
     image:
       "https://http2.mlstatic.com/D_NQ_NP_718459-MLA45878256417_052021-O.webp",
     categories: "Tecnologia",
-    subcategories: ["Celulares y Telefonos"],
+    subcategories: ["Celulares y telefonos"],
   },
   {
     name: "Huawei Mate 10",
@@ -478,7 +478,7 @@ const infoProduct = [
     image:
       "https://http2.mlstatic.com/D_NQ_NP_836368-MLA47044200655_082021-O.webp",
     categories: "Tecnologia",
-    subcategories: ["Celulares y Telefonos"],
+    subcategories: ["Celulares y telefonos"],
   },
   {
     name: "Apple iPhone 11",
@@ -489,7 +489,7 @@ const infoProduct = [
     image:
       "https://http2.mlstatic.com/D_NQ_NP_699194-MLA46115014420_052021-O.webp",
     categories: "Tecnologia",
-    subcategories: ["Celulares y Telefonos"],
+    subcategories: ["Celulares y telefonos"],
   },
   {
     name: "Camara B B500",

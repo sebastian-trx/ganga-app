@@ -8,14 +8,12 @@ import { deleteProduct, getProduct } from "../../Redux/Actions/actions";
 import ProductsChart from "./aCharts/Products";
 import s from "./admin.module.css";
 
-export default function ProductList() {
+export default function ProductList({products}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const products = useSelector((state) => state.product);
+  
 
-  useEffect(() => {
-    dispatch(getProduct());
-  }, [dispatch]);
+
 
   const columns = [
     { field: "id", headerName: "ID", width: 150 },

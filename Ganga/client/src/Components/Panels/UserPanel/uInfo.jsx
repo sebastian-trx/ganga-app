@@ -10,28 +10,29 @@ import s from './user.module.css';
 export default function UserInfo() {
     const dispatch = useDispatch();
     const allUsers = useSelector((state) => state.allUsers)
-    const userfil = useSelector((state) => state.getInfoGoogle)
+    // const userfil = useSelector((state) => state.getInfoGoogle)
+    const { id } = useParams()
+    const userfil = allUsers.filter((el) => el.id === id)
 
 
     const navigate = useNavigate();
 
-    const { id } = useParams()
 
 
     console.log("user", userfil)
 
-    const name = userfil.name
-    const surname = userfil.surname
-    const mail = userfil.mail
-   // const birthdate = userfil.birthdate
-    const address = userfil.address
+    const name = userfil[0]?.name
+    const surname = userfil[0]?.surname
+    const mail = userfil[0]?.mail
+    // const birthdate = userfil.birthdate
+    const address = userfil[0]?.address
 
     const [input, setInput] = useState({
-        id: userfil.id,
+        id: userfil[0]?.id,
         name: name,
         surname: surname,
         mail: mail,
-       // birthdate: birthdate,
+        // birthdate: birthdate,
         address: address,
     })
 
@@ -51,23 +52,24 @@ export default function UserInfo() {
         e.preventDefault();
         dispatch(updateUser(input));
         navigate("/panel")
+        window.location.reload();
     }
 
     return (
         <div>
-                        <div className="p-5">
-                    <Link to="/panel">
-                        <button type="button">
-                            {"<-Volver"}
-                        </button>
-                    </Link>
-                </div>
+            <div className="p-5">
+                <Link to="/panel">
+                    <button type="button">
+                        {"<-Volver"}
+                    </button>
+                </Link>
+            </div>
             <h3 className="text-center text-3xl">Modificar tus datos</h3>
             <form className="text-center" onSubmit={submit}>
                 <div className="p-5">
-                <div>
-                <label> Nombre </label>
-                </div>
+                    <div>
+                        <label> Nombre </label>
+                    </div>
                     <input className="text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"
@@ -77,9 +79,9 @@ export default function UserInfo() {
                     />
                 </div>
                 <div className="p-5">
-                <div>
-                <label> Apellido </label>
-                </div>
+                    <div>
+                        <label> Apellido </label>
+                    </div>
                     <input className="text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"
@@ -89,9 +91,9 @@ export default function UserInfo() {
                     />
                 </div>
                 <div className="p-5">
-                <div>
-                <label> Correo </label>
-                </div>
+                    <div>
+                        <label> Correo </label>
+                    </div>
                     <input className="text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"
@@ -110,9 +112,9 @@ export default function UserInfo() {
                     />
                 </div> */}
                 <div className="p-5">
-                <div>
-                <label> Zona </label>
-                </div>
+                    <div>
+                        <label> Zona </label>
+                    </div>
                     <input className="text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"

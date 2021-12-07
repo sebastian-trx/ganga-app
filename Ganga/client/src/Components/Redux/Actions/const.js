@@ -28,3 +28,4 @@ export const SUCCESS_MAIL = "SUCCES_MAIL"
 export const FAIL_MAIL = "FAIL_MAIL"
 export const DELETE_USER = "DELETE_USER";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const LOGOUT = "LOGOUT";

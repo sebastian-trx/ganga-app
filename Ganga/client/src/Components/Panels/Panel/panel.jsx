@@ -16,6 +16,8 @@ export default function Panel() {
       }, [dispatch]);
     return (
         <div>
+     { user.login ? 
+     <div>
         {
             user && user.admin ?
             <AdminPanel/> : null 
@@ -28,6 +30,8 @@ export default function Panel() {
             !user.admin && !user.seller ? 
             <UserPanel/> : null
         }   
+    </div>
+    : <h1>cargando...</h1> }
         </div>
     )
 }

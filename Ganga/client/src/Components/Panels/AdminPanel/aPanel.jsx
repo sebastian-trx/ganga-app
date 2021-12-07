@@ -10,7 +10,7 @@ import BrandNewUsers from "./NewInfo/brandNewUsers";
 import NewSales from "./NewInfo/newSales";
 import ProductList from "./productList";
 import VendorList from "./vendorList";
-import { getAllUsers } from "../../Redux/Actions/actions";
+import { getAllUsers, getProduct } from "../../Redux/Actions/actions";
 import s from "./admin.module.css";
 
 export default function AdminPanel() {
@@ -19,6 +19,11 @@ export default function AdminPanel() {
   const [usuarios, verUsuarios] = useState(false);
   const [productos, verProductos] = useState(false);
   const [vendedores, verVendedores] = useState(false);
+  const products = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(getProduct());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -26,7 +31,6 @@ export default function AdminPanel() {
 
   const vendors = allUsers?.filter((u) => u.seller === true);
   const users = allUsers?.filter((u) => u.seller === false);
-  console.log("u", users);
 
   return (
     <div className="bg-gray-100">
@@ -84,7 +88,7 @@ export default function AdminPanel() {
                 verVendedores={verVendedores}
               />
               <div className={s.productosBody}>
-                <ProductList />
+                <ProductList  products={products}/>
               </div>
             </div>
           )}
