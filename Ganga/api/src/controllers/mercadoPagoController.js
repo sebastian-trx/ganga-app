@@ -13,9 +13,13 @@ async function mercadoPagoPost(req, res) {
     items: compras,
 
    back_urls: {
-   	success: "http://localhost:3000/successMp",
-   	failure: "http://localhost:3000/failMp",
+   	success: "https://ganga-app.vercel.app/successMp",
+   	failure: "https://ganga-app.vercel.app/failMp",
 //    	pending: "http://www.pending.com"
+//    back_urls: {
+//    	success: "http://localhost:3000/successMp",
+//    	failure: "http://localhost:3000/failMp",
+// //    	pending: "http://www.pending.com"
    }
    
   };

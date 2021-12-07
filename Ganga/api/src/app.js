@@ -18,12 +18,12 @@ const cors = require('cors');
 server.name = 'API';
 
 // server.use(cors());
-// server.use(
-//   cors({
-//     origin: true,             //se habilitan las credenciales de cors para los pedidos que vengan del front
-//     credentials: true,
-//   })
-// )
+server.use(
+  cors({
+    origin: true,             //se habilitan las credenciales de cors para los pedidos que vengan del front
+    credentials: true,
+  })
+)
 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
@@ -40,18 +40,18 @@ server.use((req, res, next) => {
 
 // - - - - Deploy - - - -
 
-// server.use(                                             //se habilita el manejo de sesiones para el server
-//   session({
-//     secret: "secretcode",
-//     resave: true,
-//     saveUninitialized: true,
-//     cookie: {
-//       httpOnly: true,
-//       secure: true,
-//       sameSite: "none",
-//     }
-//   })
-// );
+server.use(                                             //se habilita el manejo de sesiones para el server
+  session({
+    secret: "secretcode",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    }
+  })
+);
 
 server.use(                                             //se habilita el manejo de sesiones para el server
   session({
