@@ -8,7 +8,7 @@ import {
   GET_PRODUCT_BY_NAME,
   FILTER_PRICE_BY_RANGE,
   ORDER_BY_PRICE,
-  URL,
+  // URL,
   SIGNUP,
   GET_USER,
   GET_CATEGORIES,
@@ -37,7 +37,7 @@ import {
 
 export function getProduct() {
   return async function (dispatch) {
-    let product = await axios.get("http://localhost:3001/product");
+    let product = await axios.get(`/product`);
     dispatch({
       type: GET_PRODUCT,
       payload: product.data,
@@ -110,7 +110,7 @@ export function deleteItem(payload) {
 export function getProductByName(name) {
   return async function (dispatch) {
     try {
-      let product = await axios.get(URL + "product?name=" + name);
+      let product = await axios.get(`/product?name=` + name);
       return dispatch({
         type: GET_PRODUCT_BY_NAME,
         payload: product.data,
@@ -139,7 +139,7 @@ export function orderByPrice(payload) {
 // action para obtener la sesion activa
 export function getUserInfoGoogle(payload) {
   return async function (dispatch) {
-    const arr = await axios.get(`${URL}sessionActive/`, {
+    const arr = await axios.get(`/sessionActive/`, {
       withCredentials: true,
     });
     return dispatch({
@@ -153,7 +153,7 @@ export function getUserInfoGoogle(payload) {
 export function localLogin(payload) {
   return async function (dispatch) {
     await axios
-      .post(`${URL}localLogin/`, payload, { withCredentials: true })
+      .post(`/localLogin/`, payload, { withCredentials: true })
       .then((response) => {
         dispatch({
           type: LOCAL_LOGIN,
@@ -166,7 +166,7 @@ export function localLogin(payload) {
 
 export function getUser() {
   return async function (dispatch) {
-    const info = await axios.get("http://localhost:3001/sessionActive");
+    const info = await axios.get(`/sessionActive`);
     return dispatch({
       type: GET_USER,
       payload: info,
@@ -178,7 +178,7 @@ export function getUser() {
 export function signUp(payload) {
   return async function (dispatch) {
     await axios
-      .post(`${URL}user/`, payload)
+      .post(`/user/`, payload)
       .then((response) => {
         dispatch({
           type: SIGNUP,
@@ -191,7 +191,7 @@ export function signUp(payload) {
 
 export function getCategories() {
   return async function (dispatch) {
-    const info = await axios.get("http://localhost:3001/category");
+    const info = await axios.get(`/category`);
     return dispatch({
       type: GET_CATEGORIES,
       payload: info.data,
@@ -202,7 +202,7 @@ export function getCategories() {
 export function getDetailsProduct(id) {
   return async (dispatch) => {
     try {
-      let urlId = await axios.get(URL + "product/", {
+      let urlId = await axios.get(`/product/`, {
         params: { id: id },
       });
       dispatch({
@@ -225,7 +225,7 @@ export function filterBySearch(payload) {
 export function userMessage(payload) {
   return async function (dispatch) {
     await axios
-      .post(`${URL}userMessage/`, payload)
+      .post(`/userMessage/`, payload)
       .then((response) => {
         dispatch({
           type: USER_MESSAGE,
@@ -238,9 +238,9 @@ export function userMessage(payload) {
 
 export function postProducts(payload) {
   return async function (dispatch) {
-    let response = await axios.post(URL + "product/", payload);
-    return response;
-  };
+    let response = await axios.post(`/product/`, payload)
+    return response
+  }
 }
 
 export function getSubcategory(payload) {
@@ -251,7 +251,7 @@ export function getSubcategory(payload) {
 }
 export function getAllUsers() {
   return async function (dispatch) {
-    let user = await axios.get(URL + "user");
+    let user = await axios.get(`/user`)
     dispatch({
       type: GET_ALL_USERS,
       payload: user.data,
