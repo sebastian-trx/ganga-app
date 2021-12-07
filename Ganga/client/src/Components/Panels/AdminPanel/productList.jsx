@@ -8,14 +8,12 @@ import { deleteProduct, getProduct } from "../../Redux/Actions/actions";
 import ProductsChart from "./aCharts/Products";
 import s from "./admin.module.css";
 
-export default function ProductList() {
+export default function ProductList({products}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const products = useSelector((state) => state.product);
+  
 
-  useEffect(() => {
-    dispatch(getProduct());
-  }, [dispatch]);
+
 
   const columns = [
     { field: "id", headerName: "ID", width: 150 },
@@ -64,7 +62,7 @@ export default function ProductList() {
   return (
     <div>
       <h4 className="text-5xl text-center font-light pt-10 pb-12">Productos</h4>
-      <Link to="/registrarme">
+      <Link to="/create">
         <button className="absolute top-40 right-10 rounded-3xl bg-gray-300 hover:bg-gray-400 p-3">
           Crear
         </button>

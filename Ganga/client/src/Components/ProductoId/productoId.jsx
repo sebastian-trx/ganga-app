@@ -67,7 +67,7 @@ export default function ProductId() {
                 </div>
                 <div className={a.start}>⭐⭐⭐⭐⭐</div>
                 <div className={a.price}>
-                  <h2>$ {info.price} usd</h2>
+                  <h2>$ {info.price}</h2>
                 </div>
               </div>
             </div>
