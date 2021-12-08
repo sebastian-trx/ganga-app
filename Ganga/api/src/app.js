@@ -53,7 +53,7 @@ server.use(                                             //se habilita el manejo 
       sameSite: "none",
     },
     store: MongoStore.create({
-      mongoUrl: "mongodb+srv://USER:PASSWORD@cluster0.bubyh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+      mongoUrl: "mongodb+srv://ezequielcamargo009@gmail.com:harry009@cluster0.bubyh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
       ttl: 14 * 24 * 60 * 60 // = 14 days. Default
     })
   })
