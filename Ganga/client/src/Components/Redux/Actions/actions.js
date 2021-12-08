@@ -370,7 +370,7 @@ export function compraMP2(payload) {
 export function successMail(payload) {
   return async function (dispatch) {
   await axios
-    .post(`${URL}successMail`, payload, { withCredentials: true })
+    .post(`/successMail`, payload, { withCredentials: true })
     .then((response) => {
 
       dispatch({
@@ -385,7 +385,7 @@ export function successMail(payload) {
 export function failMail(payload) {
   return async function (dispatch) {
   await axios
-    .post(`${URL}failMail`, payload, { withCredentials: true })
+    .post(`/failMail`, payload, { withCredentials: true })
     .then((response) => {
 
       dispatch({
@@ -400,7 +400,7 @@ export function failMail(payload) {
 // cerrar sesion
 export function logout() {
   return async function (dispatch) {
-    let response = await axios.get("http://localhost:3001/loginGoogle/logout", { withCredentials: true });
+    let response = await axios.get(`/loginGoogle/logout`, { withCredentials: true });
     dispatch({
       type: LOGOUT,
       payload: response.data,
