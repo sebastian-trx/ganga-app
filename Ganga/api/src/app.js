@@ -3,6 +3,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+// MongoDB
+const MongoStore = require('connect-mongo');
 // passport
 const passport = require('passport');                   //se importa passport para autenticacion con google
 const session = require("express-session");             //se importa session para el manejo de sesiones con passport
@@ -49,17 +51,14 @@ server.use(                                             //se habilita el manejo 
       httpOnly: true,
       secure: true,
       sameSite: "none",
-    }
+    },
+    store: MongoStore.create({
+      mongoUrl: "mongodb+srv://USER:PASSWORD@cluster0.bubyh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+      ttl: 14 * 24 * 60 * 60 // = 14 days. Default
+    })
   })
 );
 
-server.use(                                             //se habilita el manejo de sesiones para el server
-  session({
-    secret: "secretcode",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
 
 server.use(passport.initialize());                    //se inicializa passport y passport session para el manejo de la session con passport
 server.use(passport.session());
