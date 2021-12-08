@@ -16,6 +16,19 @@ import {
   FILTER_BY_SUB_CATEGORY,
   GET_FILTER_BY_CATEGORY,
   GET_SUB_CAT_BY_NAME,
+  PUT_USER,
+  ADD_PRODUCT,
+  DECRESE_PRODUCT,
+  SUM_PRODUCT,
+  CLEAR_CART,
+  DELETE_ITEM,
+  MERCADO_PAGO,
+  MERCADO_PAGO2,
+  SUCCESS_MAIL,
+  FAIL_MAIL,
+  DELETE_USER,
+  DELETE_PRODUCT,
+  LOGOUT,
   PRODUCTS_BY_NAME
 } from "../Actions/const";
 
@@ -28,6 +41,13 @@ const initialState = {
   categories: [],
   detailProduct: [],
   subcategories: [],
+  updateUser: [],
+  mp: [],
+  mp2: [],
+  // cart
+  addProduct: [],
+  decreseProduct: [],
+  clearCart: [],
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -125,11 +145,11 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
       };
     case GET_SUBCATEGORIES:
-      let subcatego = state.categories.filter((el) => el.id === payload)
+      let subcatego = state.categories.filter((el) => el.id === payload);
       return {
         ...state,
-        subcategories: subcatego
-      }
+        subcategories: subcatego,
+      };
     case GET_ALL_USERS:
       return {
         ...state,
@@ -156,6 +176,65 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
         subcategories: filter3
       }
+    case PUT_USER:
+      return {
+        ...state,
+        updateUser: payload,
+      }
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        addProduct: payload,
+      };
+    case DECRESE_PRODUCT:
+      return {
+        ...state,
+        decreseProduct: payload,
+      };
+
+    case CLEAR_CART:
+      return {
+        ...state,
+        clearCart: payload,
+      };
+
+    case DELETE_ITEM:
+      return {
+        ...state,
+      };
+
+    case MERCADO_PAGO:
+      return {
+        ...state,
+        mp: payload[0].url,
+      };
+
+    case MERCADO_PAGO2:
+      return {
+        ...state,
+        mp2: payload[0].url,
+      };
+
+    case SUCCESS_MAIL:
+      return {
+        ...state,
+      };
+
+    case FAIL_MAIL:
+      return {
+        ...state,
+      };
+
+    case DELETE_USER:
+       state.allUsers.filter((el) => el.id !== payload)
+      return {
+      state,
+      };
+    case DELETE_PRODUCT:
+       state.product.filter((el) => el.id !== payload)
+      return {
+      state,
+       };
       case PRODUCTS_BY_NAME:
         let filter4 = state.allProducts2.filter((el) => (el.name.toLowerCase()).includes(payload.toLowerCase()))
         return{
@@ -165,6 +244,11 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     default: {
       return state;
     }
+    case LOGOUT:
+      return {
+        ...state,
+        // getInfoGoogle: payload,
+      };
   }
 }
 

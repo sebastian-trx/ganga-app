@@ -16,6 +16,7 @@ export default function Categorias() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { nombre } = useParams();
   const subcategories = useSelector((state) => state.subcategories);
   const userGoogle = useSelector((state) => state.getInfoGoogle);
@@ -35,32 +36,25 @@ export default function Categorias() {
     dispatch(getFilterByCategory(nombre))
   }, [dispatch, nombre])
 
-
-
   useEffect(() => {
     dispatch(getSubCategoryByName(nombre));
   }, [dispatch, nombre])
-
-
 
   useEffect(() => {
     dispatch(getUser())
   }, [dispatch])
 
-
   function handleClick(e) {
     e.preventDefault();
     navigate("/catalogo")
   }
-
-
+  
   function handleSubCat(e) {
     e.preventDefault();
     dispatch(filterBySubCat(e.target.value))
     setCurrentPage(1);
 
   }
-
 
   function handleOrder(e) {
     e.preventDefault();
@@ -139,7 +133,7 @@ export default function Categorias() {
       <div className={s.cards}>
         {currentProducts?.length === 0 ? (
           <div>
-            <h1>Cargando</h1>
+            <h1>Cargando...</h1>
           </div>
         ) : (
           currentProducts?.map((el, i) => {
