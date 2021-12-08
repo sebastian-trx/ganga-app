@@ -45,7 +45,7 @@ export default function LoginForm() {
     //   mail: "",
     //   password: "",
     // });
-    console.log(localLogin)
+    // console.log(localLogin)
     setTimeout(() => {
       dispatch(getUserInfoGoogle());
     }, 1000);
