@@ -8,29 +8,42 @@ export default function AdminSidebar({
   verProductos,
   vendedores,
   verVendedores,
+  ordenes,
+  verOrdenes
 }) {
   const toggle = () => {
     verUsuarios((usuarios = true));
     verProductos((productos = false));
     verVendedores((vendedores = false));
+    verOrdenes((ordenes = false));
   };
 
   const Toggle = () => {
     verProductos((productos = true));
     verUsuarios((usuarios = false));
     verVendedores((vendedores = false));
+    verOrdenes((ordenes = false));
   };
 
   const togle = () => {
     verVendedores((vendedores = true));
     verUsuarios((usuarios = false));
     verProductos((productos = false));
+    verOrdenes((ordenes = false));
   };
 
   const Togle = () => {
     verVendedores((vendedores = false));
     verProductos((productos = false));
     verUsuarios((usuarios = false));
+    verOrdenes((ordenes = false));
+  };
+
+  const togglE = () => {
+    verVendedores((vendedores = false));
+    verProductos((productos = false));
+    verUsuarios((usuarios = false));
+    verOrdenes((ordenes = true));
   };
 
   return (
@@ -48,6 +61,9 @@ export default function AdminSidebar({
           </li>
           <li className="p-8 text-xl hover:bg-gray-400">
             <button onClick={togle}>Vendedores</button>
+          </li>
+          <li className="p-8 text-xl hover:bg-gray-400">
+            <button onClick={togglE}>Ventas</button>
           </li>
         </ul>
     </div>
