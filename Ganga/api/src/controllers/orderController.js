@@ -10,7 +10,6 @@ const postOrder = async (req, res) => {
     const order = {info, userInfo,
       productInfo, total}
     const newOrder = await Order.create(order);
-    console.log('soy el userInfo: ', userInfo)
     const userInfoDb = await User.findByPk(userInfo);
 
 
@@ -86,9 +85,7 @@ const getOrderWithUserId = async (req, res) => {
 
   try{
     const allOrder = await Order.findAll();
-    console.log('soy el allOrder: ', allOrder)
-    const orderByUser = allOrder.filter((order) => order.userInfo === id)
-    console.log('soy el orderByUser: ', orderByUser)
+    const orderByUser = allOrder.filter((order) => order.userInfo === id);
 
     orderByUser? res.send(orderByUser) : res.send(`No existen ordenes para el usuario con el id: ${id}`)
   }

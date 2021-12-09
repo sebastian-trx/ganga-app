@@ -1,4 +1,4 @@
-const { User, Review, Product } = require("../db.js");
+const { User, Review, Product, Order } = require("../db.js");
 const { Op } = require('sequelize');
 
 async function postUser(req, res) {
@@ -115,11 +115,17 @@ const userInfo = async (req, res) => {
     const userReview = await Review.findAll({  // seria algo parecido para el review del usuario
       where: { userId: id }
     });
-    const products = await Product.findAll({ where: { userId: id}})
+    const products = await Product.findAll({ where: { userId: id}});
+    const allOrder = await Order.findAll();
+    // const idOrder = allOrder.map((order) => order.id)
+    // console.log('soy el idOrder: ', idOrder)
+    const orderByUser = allOrder.filter((orders) => orders.userInfo === id)
+
     dbUser ? res.send({
       user: dbUser,
-      review: userReview,
-      products: products
+      reviews: userReview,
+      products: products,
+      orders: orderByUser
     }) : res.send(`No se ha encontrado el producto con el id: ${id}`)
   }
   catch (error) {

@@ -106,7 +106,6 @@ async function putProduct(req, res) {
 
 async function deleteProduct(req, res) {
   const { id } = req.query;
-  console.log("soy el id de deleteProduct(controller): ", id);
 
   try {
     const deleteProduct = await Product.findByPk(id);
