@@ -126,6 +126,7 @@ const userInfo = async (req, res) => {
       reviews: userReview,
       products: products,
       orders: orderByUser
+
     }) : res.send(`No se ha encontrado el producto con el id: ${id}`)
   }
   catch (error) {

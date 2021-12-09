@@ -29,6 +29,7 @@ import {
   DELETE_USER,
   DELETE_PRODUCT,
   LOGOUT,
+  GET_ALL_ORDERS,
   PRODUCTS_BY_NAME
 } from "../Actions/const";
 
@@ -44,10 +45,12 @@ const initialState = {
   updateUser: [],
   mp: [],
   mp2: [],
+  orders: [],
   // cart
   addProduct: [],
   decreseProduct: [],
   clearCart: [],
+
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -153,34 +156,34 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case GET_ALL_USERS:
       return {
         ...state,
-        allUsers: payload
-      }
+        allUsers: payload,
+      };
     case GET_FILTER_BY_CATEGORY:
-      console.log(payload, "ljdwboubdlwnb")
-      let filter = state.allProducts2.filter((el) => (el.categories === payload))
+      console.log(payload, "ljdwboubdlwnb");
+      let filter = state.allProducts2.filter((el) => el.categories === payload);
       return {
         ...state,
-        product: filter
-      }
+        product: filter,
+      };
 
     case FILTER_BY_SUB_CATEGORY:
       let filter2 = state.allProducts2?.filter((el) => el.subcategories[0] === payload)
       return {
-       ...state,
-       product: filter2
-      }
+        ...state,
+        product: filter2,
+      };
 
     case GET_SUB_CAT_BY_NAME:
-      let filter3 = state.categories.filter((el) => (el.name === payload))
+      let filter3 = state.categories.filter((el) => el.name === payload);
       return {
         ...state,
-        subcategories: filter3
-      }
+        subcategories: filter3,
+      };
     case PUT_USER:
       return {
         ...state,
         updateUser: payload,
-      }
+      };
     case ADD_PRODUCT:
       return {
         ...state,
@@ -226,29 +229,35 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       };
 
     case DELETE_USER:
-       state.allUsers.filter((el) => el.id !== payload)
+      state.allUsers.filter((el) => el.id !== payload);
       return {
-      state,
+        state,
       };
     case DELETE_PRODUCT:
-       state.product.filter((el) => el.id !== payload)
+      state.product.filter((el) => el.id !== payload);
       return {
-      state,
-       };
-      case PRODUCTS_BY_NAME:
-        let filter4 = state.allProducts2.filter((el) => (el.name.toLowerCase()).includes(payload.toLowerCase()))
-        return{
-          ...state,
-          product: filter4
-        }
-    default: {
-      return state;
-    }
+
+        state,
+      };
+    case PRODUCTS_BY_NAME:
+      let filter4 = state.allProducts2.filter((el) => (el.name.toLowerCase()).includes(payload.toLowerCase()))
+      return {
+        ...state,
+        product: filter4
+      }
     case LOGOUT:
       return {
         ...state,
         // getInfoGoogle: payload,
       };
+    case GET_ALL_ORDERS:
+      return {
+        ...state,
+        orders: payload
+      }
+    default: {
+      return state;
+    }
   }
 }
 

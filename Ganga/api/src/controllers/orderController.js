@@ -10,6 +10,7 @@ const postOrder = async (req, res) => {
     const order = {info, userInfo,
       productInfo, total}
     const newOrder = await Order.create(order);
+
     const userInfoDb = await User.findByPk(userInfo);
 
 
