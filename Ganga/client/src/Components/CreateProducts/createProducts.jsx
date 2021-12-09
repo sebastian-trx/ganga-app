@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { getCategories, getSubcategory, postProducts } from '../Redux/Actions/actions'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import s from './createProducts.module.css'
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
-
+import Boton from '../Nav/boton'
 
 
 function validate(input) {
@@ -143,7 +143,10 @@ export default function CreateProducts() {
 
     return (
         <div className={s.body}>
-<Link to="/panel"  className={s.volver}><BsFillArrowLeftSquareFill/></Link>
+            <Boton
+                parametro={"/panel"}
+                icono={<BsFillArrowLeftSquareFill />} />
+
             <form className={s.form} onSubmit={handleSubmit}>
 
                 <div className={s.grid1}>
@@ -170,7 +173,7 @@ export default function CreateProducts() {
                         <div className={s.product}>
                             <label><span>Tu producto es: </span></label>
                             <select className="text-center bg-gray-700 text-white" name="status" onChange={handleSelect}>
-                                <option  value="" >Nuevo o Usado</option>
+                                <option value="" >Nuevo o Usado</option>
                                 <option value="true">Nuevo </option>
                                 <option value="false">Usado </option>
                             </select>
@@ -257,7 +260,7 @@ export default function CreateProducts() {
                             </div>
                             <div className="text-center bg-gray-700 text-white">
                                 <input
-                                
+
                                     className={s.inputs}
                                     onChange={uploadImage}
                                     type="file"
@@ -277,7 +280,7 @@ export default function CreateProducts() {
                             </label>
                         </div>
                         <div className="p-5">
-                            <button className={s.crear}type='submit'>Publicar Producto</button>
+                            <button className={s.crear} type='submit'>Publicar Producto</button>
                         </div>
                     </div>
                 </div>
