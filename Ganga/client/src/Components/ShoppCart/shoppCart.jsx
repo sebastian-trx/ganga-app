@@ -9,13 +9,14 @@ import {
 import { ClearCart } from "./clearCart.jsx";
 import { DeleteItem } from "./deleteItem.jsx";
 import { MercadoPago } from "../MercadoPago/mercadoPago.jsx";
+import { SuccessLogicMp } from "../MercadoPago/successLogicMp.jsx";
 
 export default function ShoppCart() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserInfoGoogle());
-  }, []);
+  }, [dispatch]);
 
   const User = useSelector((state) => state.getInfoGoogle);
   const cart = User.Cart;

@@ -33,6 +33,9 @@ import {
   DELETE_USER,
   DELETE_PRODUCT,
   LOGOUT,
+  UPDATE_STOCK,
+  POST_ORDER,
+  GET_ALL_ORDERS,
   PRODUCTS_BY_NAME
 } from "./const";
 
@@ -416,3 +419,55 @@ export function logout() {
     });
   };
 }
+
+// actualizar stock de los productos despues de la compra
+export function updateStock(payload) {
+  return async function (dispatch) {
+  await axios
+    .post(`${URL}product/update`, payload)
+    .then((response) => {
+
+      dispatch({
+        type: UPDATE_STOCK,
+        payload: response.data,
+      });
+    })
+    .catch((error) => console.log(error));
+};
+}
+
+// postear una orden de compra 
+export function postOrder(payload) {
+  return async function (dispatch) {
+  await axios
+    .post(`${URL}order`, payload)
+    .then((response) => {
+
+      dispatch({
+        type: POST_ORDER,
+        payload: response.data,
+      });
+    })
+    .catch((error) => console.log(error));
+};
+}
+
+export function getAllOrders() {
+return async function (dispatch) {
+  let orders = await axios.get(URL + "order");
+  dispatch({
+    type: GET_ALL_ORDERS,
+    payload: orders.data
+  });
+ };
+}
+
+// export function getAllUsers() {
+//   return async function (dispatch) {
+//     let user = await axios.get(URL + "user");
+//     dispatch({
+//       type: GET_ALL_USERS,
+//       payload: user.data,
+//     });
+//   };
+// }

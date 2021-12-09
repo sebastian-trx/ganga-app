@@ -112,13 +112,14 @@ const userInfo = async (req, res) => {
 
   try {
     const dbUser = await User.findByPk(id);
-    console.log('soy el dbUser: ', dbUser)
     const userReview = await Review.findAll({  // seria algo parecido para el review del usuario
       where: { userId: id }
-    })
+    });
+    const products = await Product.findAll({ where: { userId: id}})
     dbUser ? res.send({
       user: dbUser,
-      review: userReview
+      review: userReview,
+      products: products
     }) : res.send(`No se ha encontrado el producto con el id: ${id}`)
   }
   catch (error) {
@@ -211,7 +212,7 @@ const deleteProduct = async (req, res) => {
 
     console.log('soy el carrito del usuario: ', Cart)
    
-    res.send(await user.update({ Cart: Cart} ))
+    res.send(await user.update({ Cart: Cart }))
   }
   catch(error) {
     console.log(error)
