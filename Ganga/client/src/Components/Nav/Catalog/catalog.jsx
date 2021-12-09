@@ -21,6 +21,7 @@ export default function Catalogo() {
   const [, setOrden] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
+ 
   const [name, setName] = useState(" ")
   const [currentPage, setCurrentPage] = useState(1);
   const [elementsPerPage, setElementsPerPage] = useState(12)
@@ -52,10 +53,12 @@ export default function Catalogo() {
  
 
   function handleOrder(e) {
+
     e.preventDefault();
     dispatch(orderByPrice(e.target.value));
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
+
   }
 
   function handleFilter(e) {

@@ -88,7 +88,7 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
       };
     case FILTER_PRICE_BY_RANGE: {
-      const products = state.product;
+      const products = state.allProducts2;
       let filterPrice = products.filter(
         (el) => el.price >= price1 && el.price <= price2
       );
