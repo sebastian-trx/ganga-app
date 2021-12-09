@@ -167,9 +167,7 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       };
 
     case FILTER_BY_SUB_CATEGORY:
-      let filter2 = state.allProducts2.filter(
-        (el) => el.subcategories[0] === payload
-      );
+      let filter2 = state.allProducts2?.filter((el) => el.subcategories[0] === payload)
       return {
         ...state,
         product: filter2,

@@ -450,7 +450,6 @@ export function postOrder(payload) {
     })
     .catch((error) => console.log(error));
 };
-}
 
 export function getAllOrders() {
 return async function (dispatch) {
