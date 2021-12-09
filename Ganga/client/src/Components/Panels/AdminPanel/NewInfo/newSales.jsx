@@ -1,7 +1,16 @@
 import React from "react";
 import s from "../admin.module.css";
 
-export default function NewSales({today, sales}) {
+export default function NewSales({today, orders, users}) {
+
+  const sales = orders.map((o) => {
+    return {
+      fecha: o.createdAt.slice(8, 10),
+      usuario: users.filter((u) => u.id === o.userId),
+      products: o.productInfo.map((p) => p.quantity),
+      total: o.total,
+    };
+  });
 
   let Sales = sales.filter(s => s.fecha === today);
   let transacciones = Sales.map(s => {
@@ -37,10 +46,10 @@ export default function NewSales({today, sales}) {
           <td className="h-10">
             <span>{t.usuario}</span>
           </td>
-          <td className="pb-4">
+          <td className="h-10">
             <span> {t.productos} </span>
           </td>
-          <td className="pb-4">
+          <td className="h-10">
             <span> $ {t.total}</span>
           </td>
         </tr>

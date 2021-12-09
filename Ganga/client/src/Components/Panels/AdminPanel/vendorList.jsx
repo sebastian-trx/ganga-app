@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { TiDeleteOutline } from "react-icons/ti";
 
 import RevenueChart from "./aCharts/Revenue";
@@ -10,7 +10,7 @@ import { deleteUser } from "../../Redux/Actions/actions";
 
 export default function VendorList({ vendors }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  
 
   const columns = [
     { field: "id", headerName: "ID", width: 140 },
