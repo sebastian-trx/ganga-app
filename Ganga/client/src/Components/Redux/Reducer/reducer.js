@@ -28,7 +28,8 @@ import {
   FAIL_MAIL,
   DELETE_USER,
   DELETE_PRODUCT,
-  LOGOUT
+  LOGOUT,
+  PRODUCTS_BY_NAME
 } from "../Actions/const";
 
 const initialState = {
@@ -163,7 +164,7 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       }
 
     case FILTER_BY_SUB_CATEGORY:
-      let filter2 = state.allProducts2.filter((el) => el.subcategories[0] === payload)
+      let filter2 = state.allProducts2?.filter((el) => el.subcategories[0] === payload)
       return {
        ...state,
        product: filter2
@@ -234,6 +235,12 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       return {
       state,
        };
+      case PRODUCTS_BY_NAME:
+        let filter4 = state.allProducts2.filter((el) => (el.name.toLowerCase()).includes(payload.toLowerCase()))
+        return{
+          ...state,
+          product: filter4
+        }
     default: {
       return state;
     }
