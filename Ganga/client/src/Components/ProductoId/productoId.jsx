@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   getDetailsProduct,
-  addProduct, 
+  addProduct,
 } from "../Redux/Actions/actions";
 import Nav from "../../Components/Nav/NavBar/nav";
 import a from "./productoId.module.css";
@@ -35,7 +35,7 @@ export default function ProductId() {
     dispatch(
       addProduct({ id: User.id, item: { id: info.id }, cant: 1, que: "+" })
     );
-    navigate("/shopCart");
+    alert("El producto se agregó al carrito")
   }
 
   useEffect(() => {
