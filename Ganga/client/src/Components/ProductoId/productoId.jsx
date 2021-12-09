@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   getDetailsProduct,
-  addProduct,
-  getUserInfoGoogle,
+  addProduct, 
 } from "../Redux/Actions/actions";
 import Nav from "../../Components/Nav/NavBar/nav";
 import a from "./productoId.module.css";
@@ -31,12 +30,12 @@ export default function ProductId() {
   // },[]);
 
   function handleAddToCart() {
-    // console.log("id User", User.id);
-    // console.log("Product id:", info.id);
+    console.log("id User", User.id);
+    console.log("Product id:", info.id);
     dispatch(
       addProduct({ id: User.id, item: { id: info.id }, cant: 1, que: "+" })
     );
-    alert("El producto se agregó al carrito")
+    navigate("/shopCart");
   }
 
   useEffect(() => {
@@ -78,16 +77,9 @@ export default function ProductId() {
               </div>
               <div className={a.div3}>
                 {/* <button className={a.bnt}>Comprar</button> */}
-                {User.login && (
-                  <button className={a.bnt}>
-                    <MercadoPago2
-                      title={info.name}
-                      unit_price={info.price}
-                      id={User.id}
-                      item_id={info.id}
-                    />
-                  </button>
-                )}
+                <button className={a.bnt}>
+                  <MercadoPago2 title={info.name} unit_price={info.price} />
+                </button>
                 <button onClick={handleAddToCart} className={a.bnt}>
                   Agregar al carrito
                 </button>

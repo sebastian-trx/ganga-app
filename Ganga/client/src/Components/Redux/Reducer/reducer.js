@@ -19,7 +19,6 @@ import {
   PUT_USER,
   ADD_PRODUCT,
   DECRESE_PRODUCT,
-  SUM_PRODUCT,
   CLEAR_CART,
   DELETE_ITEM,
   MERCADO_PAGO,
@@ -30,7 +29,9 @@ import {
   DELETE_PRODUCT,
   LOGOUT,
   GET_ALL_ORDERS,
-  PRODUCTS_BY_NAME
+  PRODUCTS_BY_NAME,
+  POST_NEWSLETTER,
+  DELETE_NEWSLETTER,
 } from "../Actions/const";
 
 const initialState = {
@@ -50,7 +51,6 @@ const initialState = {
   addProduct: [],
   decreseProduct: [],
   clearCart: [],
-  
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -88,7 +88,7 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
       };
     case FILTER_PRICE_BY_RANGE: {
-      const products = state.product;
+      const products = state.allProducts2;
       let filterPrice = products.filter(
         (el) => el.price >= price1 && el.price <= price2
       );
@@ -167,9 +167,8 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       };
 
     case FILTER_BY_SUB_CATEGORY:
-      let filter2 = state.allProducts2.filter(
-        (el) => el.subcategories[0] === payload
-      );
+      let filter2 = state.allProducts2?.filter((el) => el.subcategories[0] === payload)
+
       return {
         ...state,
         product: filter2,
@@ -238,18 +237,16 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case DELETE_PRODUCT:
       state.product.filter((el) => el.id !== payload);
       return {
-
-      state,
-       };
-      case PRODUCTS_BY_NAME:
-        let filter4 = state.allProducts2.filter((el) => (el.name.toLowerCase()).includes(payload.toLowerCase()))
-        return{
-          ...state,
-          product: filter4
-        }
-    default: {
-      return state;
-    }
+        state,
+      };
+    case PRODUCTS_BY_NAME:
+      let filter4 = state.allProducts2.filter((el) =>
+        el.name.toLowerCase().includes(payload.toLowerCase())
+      );
+      return {
+        ...state,
+        product: filter4,
+      };
     case LOGOUT:
       return {
         ...state,
@@ -258,8 +255,16 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case GET_ALL_ORDERS:
       return {
         ...state,
-        orders: payload
-      }
+        orders: payload,
+      };
+    case POST_NEWSLETTER:
+      return {
+        ...state,
+      };
+    case DELETE_NEWSLETTER:
+      return {
+        ...state,
+      };
     default: {
       return state;
     }
