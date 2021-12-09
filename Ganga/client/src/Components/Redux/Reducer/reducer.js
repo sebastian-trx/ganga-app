@@ -30,6 +30,7 @@ import {
   DELETE_PRODUCT,
   LOGOUT,
   GET_ALL_ORDERS,
+  PRODUCTS_BY_NAME
 } from "../Actions/const";
 
 const initialState = {
@@ -237,8 +238,18 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case DELETE_PRODUCT:
       state.product.filter((el) => el.id !== payload);
       return {
-        state,
-      };
+
+      state,
+       };
+      case PRODUCTS_BY_NAME:
+        let filter4 = state.allProducts2.filter((el) => (el.name.toLowerCase()).includes(payload.toLowerCase()))
+        return{
+          ...state,
+          product: filter4
+        }
+    default: {
+      return state;
+    }
     case LOGOUT:
       return {
         ...state,
