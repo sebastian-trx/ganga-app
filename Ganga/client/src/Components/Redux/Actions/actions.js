@@ -34,7 +34,8 @@ import {
   DELETE_PRODUCT,
   LOGOUT,
   UPDATE_STOCK,
-  POST_ORDER
+  POST_ORDER,
+  GET_ALL_ORDERS
 } from "./const";
 
 export function getProduct() {
@@ -441,3 +442,23 @@ export function postOrder(payload) {
     .catch((error) => console.log(error));
 };
 }
+
+export function getAllOrders() {
+return async function (dispatch) {
+  let orders = await axios.get(URL + "order");
+  dispatch({
+    type: GET_ALL_ORDERS,
+    payload: orders.data
+  });
+ };
+}
+
+// export function getAllUsers() {
+//   return async function (dispatch) {
+//     let user = await axios.get(URL + "user");
+//     dispatch({
+//       type: GET_ALL_USERS,
+//       payload: user.data,
+//     });
+//   };
+// }
