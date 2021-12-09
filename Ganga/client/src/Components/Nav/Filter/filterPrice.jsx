@@ -11,20 +11,20 @@ export default function FilterPrice() {
     const [price2, setPrice2]= useState("")
 
     function handleInput1(e) {
+        e.preventDefault();
         setPrice1(e.target.value)
-        console.log(e.target.value)
     }
     function handleInput2(e) {
+        e.preventDefault();
         setPrice2(e.target.value)
-        console.log(e.target.value)
     }
-
+    
     function handleSubmit(e){
         e.preventDefault()
         dispatch(filterPriceByRange(price1, price2));
-        setPrice1(" ")
-        setPrice2(" ")
-        setCurrentPage(1);
+        setPrice1(" ");
+        setPrice2(" ");
+        setCurrentPage(1); 
     }
     return (
         <div>
@@ -40,7 +40,6 @@ export default function FilterPrice() {
             onChange={handleInput2}
             />
             <button type="submit" onClick={handleSubmit}>Filtrar</button>
-
         </div>
     )
 }
