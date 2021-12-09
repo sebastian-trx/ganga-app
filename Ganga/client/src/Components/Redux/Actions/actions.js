@@ -23,7 +23,6 @@ import {
   PUT_USER,
   ADD_PRODUCT,
   DECRESE_PRODUCT,
-  SUM_PRODUCT,
   CLEAR_CART,
   DELETE_ITEM,
   MERCADO_PAGO,
@@ -36,7 +35,9 @@ import {
   UPDATE_STOCK,
   POST_ORDER,
   GET_ALL_ORDERS,
-  PRODUCTS_BY_NAME
+  PRODUCTS_BY_NAME,
+  POST_NEWSLETTER,
+  DELETE_NEWSLETTER,
 } from "./const";
 
 export function getProduct() {
@@ -460,6 +461,35 @@ return async function (dispatch) {
   });
  };
 }
+
+export const postNewsletter = (payload) => { 
+  // console.log('entrando a newsletter', payload) 
+  return async function (dispatch){
+      try {
+          const res = await axios.post(`/newsletter/subscribe`, payload );
+          dispatch({
+            type: POST_NEWSLETTER,
+            payload: res.data,
+          });
+      } catch (err) {
+          console.log( err);
+      }
+  }
+};
+
+export const deleteNewsletter = (payload) => {  
+  return async function (dispatch) {
+      try {
+          const res = await axios.post(`/newsletter/unsubscribe`, payload );
+          dispatch({
+            type: DELETE_NEWSLETTER,
+            payload: res.data,
+          });
+      } catch (err) {
+          console.log( err);
+      }
+  }
+};
 
 // export function getAllUsers() {
 //   return async function (dispatch) {

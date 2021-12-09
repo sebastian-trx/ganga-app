@@ -19,7 +19,6 @@ import {
   PUT_USER,
   ADD_PRODUCT,
   DECRESE_PRODUCT,
-  SUM_PRODUCT,
   CLEAR_CART,
   DELETE_ITEM,
   MERCADO_PAGO,
@@ -30,7 +29,9 @@ import {
   DELETE_PRODUCT,
   LOGOUT,
   GET_ALL_ORDERS,
-  PRODUCTS_BY_NAME
+  PRODUCTS_BY_NAME,
+  POST_NEWSLETTER,
+  DELETE_NEWSLETTER,
 } from "../Actions/const";
 
 const initialState = {
@@ -50,7 +51,6 @@ const initialState = {
   addProduct: [],
   decreseProduct: [],
   clearCart: [],
-
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -101,21 +101,21 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       let sortedProducts =
         payload === "Mayor-Menor"
           ? state.product.sort(function (a, b) {
-            if (a.price > b.price) {
-              return 1;
-            } else if (b.price > a.price) {
-              return -1;
-            }
-            return 0;
-          })
+              if (a.price > b.price) {
+                return 1;
+              } else if (b.price > a.price) {
+                return -1;
+              }
+              return 0;
+            })
           : state.product.sort(function (a, b) {
-            if (a.price > b.price) {
-              return -1;
-            } else if (a.price > b.price) {
-              return 1;
-            }
-            return 0;
-          });
+              if (a.price > b.price) {
+                return -1;
+              } else if (a.price > b.price) {
+                return 1;
+              }
+              return 0;
+            });
       return {
         ...state,
         product: payload === "All" ? state.products : sortedProducts,
@@ -236,15 +236,16 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case DELETE_PRODUCT:
       state.product.filter((el) => el.id !== payload);
       return {
-
         state,
       };
     case PRODUCTS_BY_NAME:
-      let filter4 = state.allProducts2.filter((el) => (el.name.toLowerCase()).includes(payload.toLowerCase()))
+      let filter4 = state.allProducts2.filter((el) =>
+        el.name.toLowerCase().includes(payload.toLowerCase())
+      );
       return {
         ...state,
-        product: filter4
-      }
+        product: filter4,
+      };
     case LOGOUT:
       return {
         ...state,
@@ -253,8 +254,16 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case GET_ALL_ORDERS:
       return {
         ...state,
-        orders: payload
-      }
+        orders: payload,
+      };
+    case POST_NEWSLETTER:
+      return {
+        ...state,
+      };
+    case DELETE_NEWSLETTER:
+      return {
+        ...state,
+      };
     default: {
       return state;
     }
