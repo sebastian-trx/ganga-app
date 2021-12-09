@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import Nav from "../../Nav/NavBar/nav";
 import VendedorSidebar from "./vSidebar";
+import InfoUser from "../UserPanel/infoUser";
 import s from "./vendor.module.css";
-import UserInfo from "../UserPanel/uInfo";
+import { getAllOrders } from "../../Redux/Actions/actions";
 
-export default function VendorPanel() {
-  const [datos] = useState(false);
+export default function VendorPanel({user}) {
+  
+  const dispatch = useDispatch();
+
   const [productos, verProductos] = useState(false);
   const [ventas, verVentas] = useState(false);
+  const [compras, verCompras] = useState(false);
+  const orders = useSelector((state) => state.orders);
+
+  useEffect(() => {
+    dispatch(getAllOrders());
+  }, [dispatch]);
+
+
+  console.log("user", user);
+  console.log("orders",orders);
 
   return (
     <div className="bg-gray-100">
@@ -16,7 +31,7 @@ export default function VendorPanel() {
         <div>
           {!productos ? (
             <div>
-              {!datos ? (
+              {!compras ? (
                 <div className={s.container}>
                   <div>
                     <VendedorSidebar
@@ -24,37 +39,42 @@ export default function VendorPanel() {
                       verProductos={verProductos}
                       ventas={ventas}
                       verVentas={verVentas}
+                      compras={compras}
+                      verCompras={verCompras}
                     />
                   </div>
                   <div className={s.body}>
-                    <UserInfo />
-                    <div className={s.newInfo}></div>
+                    <InfoUser/>
                   </div>
                 </div>
               ) : (
-                <div className={s.containerUsuarios}>
+                <div className={s.container}>
                   <div>
                   <VendedorSidebar
                       productos={productos}
                       verProductos={verProductos}
                       ventas={ventas}
                       verVentas={verVentas}
+                      compras={compras}
+                      verCompras={verCompras}
                     />
                   </div>
                   <div className={s.usuariosBody}>
-                    tus productos
+                    tus compras
                   </div>
                 </div>
               )}
             </div>
           ) : (
-            <div className={s.containerUsuarios}>
+            <div className={s.container}>
                   <div>
                   <VendedorSidebar
                       productos={productos}
                       verProductos={verProductos}
                       ventas={ventas}
                       verVentas={verVentas}
+                      compras={compras}
+                      verCompras={verCompras}
                     />
                   </div>
                   <div className={s.usuariosBody}>
@@ -64,13 +84,15 @@ export default function VendorPanel() {
           )}
         </div>
       ) : (
-        <div className={s.containerVendedores}>
+        <div className={s.container}>
           <div>
           <VendedorSidebar
                       productos={productos}
                       verProductos={verProductos}
                       ventas={ventas}
                       verVentas={verVentas}
+                      compras={compras}
+                      verCompras={verCompras}
                     />
           </div>
           <div className={s.vendedoresBody}>

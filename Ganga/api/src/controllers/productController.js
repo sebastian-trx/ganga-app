@@ -46,6 +46,8 @@ async function postProduct(req, res) {
         ? await newProduct.setUser(idUser)
         : console.log("No se ha podido relacionar el producto con el usuario");
 
+      newProduct ? await newProduct.update({ owner: idUser }) : console.log('No se ha podido actualizar el owner');
+
       newProduct
         ? await newProduct.setCategory(idCategory)
         : console.log(
@@ -104,7 +106,6 @@ async function putProduct(req, res) {
 
 async function deleteProduct(req, res) {
   const { id } = req.query;
-  console.log("soy el id de deleteProduct(controller): ", id);
 
   try {
     const deleteProduct = await Product.findByPk(id);
@@ -149,13 +150,15 @@ const productInfo = async (req, res) => {
 
   try {
     const dbProduct = await Product.findByPk(id);
-    console.log("soy el dbProduct: ", dbProduct);
     const productReview = await Review.findAll({
       // seria algo parecido para el review del usuario
       where: { productId: id },
     });
+    const owner = dbProduct.owner;
+    const seller = await User.findOne({where: { id: owner }})
+
     dbProduct
-      ? res.send({ product: dbProduct, review: productReview })
+      ? res.send({ product: dbProduct, reviews: productReview, seller: seller })
       : res.send(`No se ha encontrado el producto con el id: ${id}`);
   } catch (error) {
     console.log(error);

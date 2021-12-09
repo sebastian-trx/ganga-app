@@ -31,3 +31,7 @@ export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const LOGOUT = "LOGOUT";
 export const UPDATE_STOCK = "UPDATE_STOCK";
 export const POST_ORDER = "POST_ORDER";
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
+export const PRODUCTS_BY_NAME = "PRODUCTS_BY_NAME";
+export const POST_NEWSLETTER= "POST_NEWSLETTER";
+export const DELETE_NEWSLETTER= "POST_NEWSLETTER";

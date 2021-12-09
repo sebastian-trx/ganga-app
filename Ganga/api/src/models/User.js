@@ -55,6 +55,7 @@ module.exports = (sequelize) => {
 
             admin: {
                 type: DataTypes.BOOLEAN,
+                defaultValue: false
             },
 
             birthdate: {
@@ -67,6 +68,7 @@ module.exports = (sequelize) => {
 
             seller: {
                 type: DataTypes.BOOLEAN,
+                defaultValue: false
             },
 
             Cart: {
