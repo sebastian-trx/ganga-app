@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { getCategories, getSubcategory, postProducts } from '../Redux/Actions/actions'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import s from './createProducts.module.css'
-import AllUser from "../AllUser/allUser"
+import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import Boton from '../Nav/boton'
 
 
 function validate(input) {
@@ -39,9 +40,9 @@ export default function CreateProducts() {
     const dispatch = useDispatch()
     const categories = useSelector((state) => state.categories)
     const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
-   
+
     const subcategories = useSelector((state) => state.subcategories)
-   
+
     const [error, setError] = useState({})
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState("");
@@ -90,7 +91,7 @@ export default function CreateProducts() {
     function handleSelect2(e) {
         setInput({
             ...input,
-            [subcategories]: e.target.value,
+            subcategories: [e.target.value]
         })
     }
     const uploadImage = async (e) => {
@@ -123,7 +124,6 @@ export default function CreateProducts() {
         e.preventDefault();
         console.log("Soy input de la function", input)
         dispatch(postProducts(input))
-        alert("Producto Subido con exito, Esperando aprobacion del Administrador")
         setInput({
             name: " ",
             mark: " ",
@@ -136,142 +136,159 @@ export default function CreateProducts() {
             idCategory: " ",
             subcategories: " ",
         })
+        alert("Producto Subido con exito, Esperando aprobacion del Administrador")
         navigate("/");
     }
 
 
     return (
         <div className={s.body}>
-            <div className={s.form}>
-                <form onSubmit={handleSubmit}>
+            <Boton
+                parametro={"/panel"}
+                icono={<BsFillArrowLeftSquareFill />} />
 
-                    <div className={s.name}>
-                        <label ><span >Nombre: </span ></label>
-                        <div>
-                            <input className={s.Input} onChange={handleChange} type='text' name="name" autoComplete="off" required />
-                            {error.name && (
-                                <p >{error.name}</p>
-                            )}
-                        </div>
-                    </div>
-                    <div >
-                        <label><span >Marca: </span ></label>
-                        <div>
-                            <input onChange={handleChange} type='text' name="mark" autoComplete="off" required />
-                            {error.mark && (
-                                <p >{error.mark}</p>
-                            )}
-                        </div>
-                    </div>
-                    <div>
-                        <label><span >Descripción: </span ></label>
-                        <div>
-                            <input onChange={handleChange} type='text' name="description" autoComplete="off" required />
-                            {error.description && (
-                                <p >{error.description}</p>
-                            )}
-                        </div>
-                    </div>
-                    <div>
-                        <label><span >Precio: </span ></label>
-                        <div>
-                            <input onChange={handleChange} type='Number' name="price" autoComplete="off" required />
-                            {error.price && (
-                                <p >{error.price}</p>
-                            )}
-                        </div>
-                    </div>
-                    <div>
-                        <label><span>Tu producto es: </span></label>
-                        <select name="status" onChange={handleSelect}>
-                            <option value="" >Nuevo o Usado</option>
-                            <option value="true">Nuevo </option>
-                            <option value="false">Usado </option>
-                        </select>
-                    </div>
+            <form className={s.form} onSubmit={handleSubmit}>
 
-                    {(input.status === "true") ?
-                        (<div><label><span>Stock: </span></label>
-                            <input onChange={handleChange} type="number" name="stock" autoComplete="off" />
-                        </div>) : <p></p>
-
-                    }
-                    <div>
-                        <div className="pt-0 pb-2">
-                            <label>Imagen</label>
+                <div className={s.grid1}>
+                    <div className={s.derec}>
+                        <div className={s.name}>
+                            <label ><span >Nombre: </span ></label>
+                            <div>
+                                <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="name" autoComplete="off" required />
+                                {error.name && (
+                                    <p>{error.name}</p>
+                                )}
+                            </div>
                         </div>
-                        <div>
-                            <input
-                                className={s.inputs}
-                                onChange={uploadImage}
-                                type="file"
-                                name="image"
-                                required="required"
-                                accept="image/png,image/jpeg"
-                            />
-                            {error.image ? <p>{error.image}</p> : null}
+                        <div className={s.price}>
+                            <label><span >Precio: </span ></label>
+                            <div>
+                                <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='Number' name="price" autoComplete="off" required />
+                                {error.price && (
+                                    <p >{error.price}</p>
+                                )}
+                            </div>
                         </div>
-                        <div>{(input.image = image)}</div>
-                        <label>
-                            {loading ? (
-                                <img className={s.imagenSubida} src={image} alt="No hay imagen" />
-                            ) : (
-                                <p>Aun no has subido una imagen</p>
-                            )}
-                        </label>
-                    </div>
 
-                    <div>
-                        <label > Categoria: </label>
-                        <select name="idCategory" onChange={handleSelect1} >
-                            {
-                                categories.map((p, i) => (
-                                    <option key={i} value={p.id}>{p.name}</option>
-                                ))
+                        <div className={s.product}>
+                            <label><span>Tu producto es: </span></label>
+                            <select className="text-center bg-gray-700 text-white" name="status" onChange={handleSelect}>
+                                <option value="" >Nuevo o Usado</option>
+                                <option value="true">Nuevo </option>
+                                <option value="false">Usado </option>
+                            </select>
+                        </div>
 
-                            }
-                        </select >
-                    </div>
+                        {(input.status === "true") ?
+                            (<div className={s.stock}>  <label><span>Stock: </span></label>
+                                <input className="text-center bg-gray-700 text-white" onChange={handleChange} type="number" name="stock" autoComplete="off" />
+                            </div>) : <p></p>
 
-                    <div>
-                        {
-                            (input.idCategory === " ") ?
-                                (<h1>Debes Seleccionar una Categoria</h1>) :
-                                (
-                                    <div>
-                                        <label > SubCategoria: </label>
-                                        <select name="subcategories" onChange={handleSelect2} >
-                                            {(
-                                                subcategories[0].subcategories.map((p, i) => (
-                                                    <option key={i} value={p}>{p}</option>
-                                                ))
-                                            )}
-                                        </select >
-                                    </div>
-                                )
                         }
-
                     </div>
 
-                    <div>
-                        <button type='submit'>Publicar Producto</button>
+                    <div className={s.izq}>
+                        <div className={s.grid2}>
+                            <div>
+                                <div className={s.marca}>
+                                    <label><span >Marca: </span ></label>
+                                    <div>
+                                        <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="mark" autoComplete="off" required />
+                                        {error.mark && (
+                                            <p >{error.mark}</p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className={s.descri}>
+                                    <label><span >Descripción: </span ></label>
+                                    <div >
+                                        <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="description" autoComplete="off" required />
+                                        {error.description && (
+                                            <p >{error.description}</p>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div className={s.cate}>
+                                <label > Categoria: </label>
+                                <select className="text-center bg-gray-700 text-white" name="idCategory" onChange={handleSelect1} >
+                                    {
+                                        categories.map((p, i) => (
+                                            <option key={i} value={p.id}>{p.name}</option>
+                                        ))
+
+                                    }
+                                </select >
+                            </div>
+
+                            <div className="text-center bg-gray-700 text-white">
+                                {
+                                    (input.idCategory === " ") ?
+                                        (<h1>Debes Seleccionar una Categoria</h1>) :
+                                        (
+                                            <div>
+                                                <label > SubCategoria: </label>
+                                                <select className="text-center bg-gray-700 text-white" name="subcategories" onChange={handleSelect2} >
+                                                    {(
+                                                        subcategories[0].subcategories.map((p, i) => (
+                                                            <option key={i} value={p}>{p}</option>
+                                                        ))
+                                                    )}
+                                                </select >
+                                            </div>
+                                        )
+                                }
+                            </div>
+                        </div>
                     </div>
-
-                </form>
-            </div >
-
-            <div>
+                </div>
 
 
 
-            </div>
-            <AllUser/>
+                <div className={s.grid5}>
+                    <div className={s.grid3}>
+                        <div>
+                            <div className="pt-0 pb-2">
+                                <label>Imagen</label>
+                            </div>
+                            <div className="text-center bg-gray-700 text-white">
+                                <input
+
+                                    className={s.inputs}
+                                    onChange={uploadImage}
+                                    type="file"
+                                    name="image"
+                                    required="required"
+                                    accept="image/png,image/jpeg"
+                                />
+                                {error.image ? <p>{error.image}</p> : null}
+                            </div>
+                            <div className={s.imgName}>{(input.image = image)}</div>
+                            <label>
+                                {loading ? (
+                                    <img className={s.imagenSubida} src={image} alt="No hay imagen" />
+                                ) : (
+                                    <p>Aun no has subido una imagen</p>
+                                )}
+                            </label>
+                        </div>
+                        <div className="p-5">
+                            <button className={s.crear} type='submit'>Publicar Producto</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
         </div >
-
-
-
     )
-    
-}
 
+}
 
