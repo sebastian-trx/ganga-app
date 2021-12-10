@@ -8,10 +8,11 @@ import s from "./vendor.module.css";
 import { getAllOrders, getAllUsers, getProduct } from "../../Redux/Actions/actions";
 import VendorProductList from "./vProductList";
 import VendorSalesList from "./vSalesList";
+import PurchaseList from "./vPurchaseList";
 
 
-export default function VendorPanel({user}) {
-  
+export default function VendorPanel({ user }) {
+
   const dispatch = useDispatch();
 
   const [productos, verProductos] = useState(false);
@@ -21,7 +22,7 @@ export default function VendorPanel({user}) {
   const products = useSelector((state) => state.product);
   const allUsers = useSelector((state) => state.allUsers);
   const userOrders = orders.filter(o => o.userId === user.id);
-  
+
 
   useEffect(() => {
     dispatch(getAllOrders());
@@ -34,8 +35,8 @@ export default function VendorPanel({user}) {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
-  
-  console.log("orders",orders);
+
+  console.log("orders", orders);
 
   return (
     <div className="bg-gray-100">
@@ -57,13 +58,13 @@ export default function VendorPanel({user}) {
                     />
                   </div>
                   <div className={s.body}>
-                    <InfoUser/>
+                    <InfoUser />
                   </div>
                 </div>
               ) : (
                 <div className={s.container}>
                   <div>
-                  <VendedorSidebar
+                    <VendedorSidebar
                       productos={productos}
                       verProductos={verProductos}
                       ventas={ventas}
@@ -73,43 +74,43 @@ export default function VendorPanel({user}) {
                     />
                   </div>
                   <div className={s.usuariosBody}>
-                    <PurchaseList orders={userOrders}/>
+                    <PurchaseList orders={userOrders} />
                   </div>
                 </div>
               )}
             </div>
           ) : (
             <div className={s.container}>
-                  <div>
-                  <VendedorSidebar
-                      productos={productos}
-                      verProductos={verProductos}
-                      ventas={ventas}
-                      verVentas={verVentas}
-                      compras={compras}
-                      verCompras={verCompras}
-                    />
-                  </div>
-                  <div className={s.body}>
-                    <VendorProductList products={products} user={user} users={allUsers}/>
-                  </div>
-                </div>
+              <div>
+                <VendedorSidebar
+                  productos={productos}
+                  verProductos={verProductos}
+                  ventas={ventas}
+                  verVentas={verVentas}
+                  compras={compras}
+                  verCompras={verCompras}
+                />
+              </div>
+              <div className={s.body}>
+                <VendorProductList products={products} user={user} users={allUsers} />
+              </div>
+            </div>
           )}
         </div>
       ) : (
         <div className={s.container}>
           <div>
-          <VendedorSidebar
-                      productos={productos}
-                      verProductos={verProductos}
-                      ventas={ventas}
-                      verVentas={verVentas}
-                      compras={compras}
-                      verCompras={verCompras}
-                    />
+            <VendedorSidebar
+              productos={productos}
+              verProductos={verProductos}
+              ventas={ventas}
+              verVentas={verVentas}
+              compras={compras}
+              verCompras={verCompras}
+            />
           </div>
           <div className={s.vendedoresBody}>
-         <VendorSalesList orders={orders} user={user}/>
+            <VendorSalesList orders={orders} user={user} />
           </div>
         </div>
       )}
