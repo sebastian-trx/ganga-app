@@ -11,11 +11,11 @@ import CreateProduct from "./Components/CreateProducts/createProducts";
 import ShopCart from "./Components/ShoppCart/shoppCart.jsx";
 import Panel from "./Components/Panels/Panel/panel";
 import Modificar from "./Components/Panels/AdminPanel/uInfo";
-
 import { SuccesMp } from "./Components/MercadoPago/successMp";
 import { FailMp } from "./Components/MercadoPago/failMp";
 import SubAdminForm from "./Components/Panels/AdminPanel/subAdminForm";
 import AdminPanelV from "./Components/Panels/VendorPanel/vPanel";
+import { Review } from "./Components/Reviews/Review.jsx"
 
 function App() {
   return (
@@ -37,6 +37,7 @@ function App() {
          <Route path ='/failMp' element={<FailMp/>}/>
          <Route path="/registrar" element={<SubAdminForm />} />
          <Route exact path="/panelV" element={<AdminPanelV />} />
+         <Route path='/agregarreview' element={<Review/>} />
       </Routes>
     </BrowserRouter>
   );

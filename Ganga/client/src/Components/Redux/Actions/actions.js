@@ -38,6 +38,7 @@ import {
   PRODUCTS_BY_NAME,
   POST_NEWSLETTER,
   DELETE_NEWSLETTER,
+  ADD_REVIEW
 } from "./const";
 
 export function getProduct() {
@@ -495,6 +496,18 @@ export const deleteNewsletter = (payload) => {
     }
   }
 };
+
+export function addReview(payload) {
+  console.log('soy el payload de addReview: ', payload)
+  return async function (dispatch) {
+    const response = await axios.post(`${URL}review`, payload)
+    console.log('soy el response de addReview: ', response)
+    dispatch({
+      type: ADD_REVIEW,
+      payload: response.data,
+    })
+  }
+}
 
 // export function getAllUsers() {
 //   return async function (dispatch) {
