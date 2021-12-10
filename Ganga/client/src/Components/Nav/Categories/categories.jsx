@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Card from "../../Card/card";
-import { orderByPrice, getUser, getSubCategoryByName, getFilterByCategory, filterBySubCat } from "../../Redux/Actions/actions";
+import { orderByPrice, getUser, getSubCategoryByName, getProduct, getFilterByCategory, filterBySubCat } from "../../Redux/Actions/actions";
 import s from './categories.module.css'
 import FilterPrice from "../Filter/filterPrice";
 import Pagination from '../../Home/Pagination/pagination'
@@ -47,6 +47,7 @@ export default function Categorias() {
   function handleClick(e) {
     e.preventDefault();
     navigate("/catalogo")
+    dispatch(getProduct())
   }
   
   function handleSubCat(e) {
