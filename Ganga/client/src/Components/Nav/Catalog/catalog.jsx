@@ -33,9 +33,6 @@ export default function Catalogo() {
     setCurrentPage(pageNumbers)
   }
 
-  useEffect(() => {
-    dispatch(getProduct());
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getUser())
