@@ -9,10 +9,8 @@ for (var i = 0; i < orders.length; i++) {
     }
 }
 
-
 let Products = orders.map(o => o.productInfo);
 let products = Products.flat().reverse();
-console.log(products, "p")
 
     return (
         <div>

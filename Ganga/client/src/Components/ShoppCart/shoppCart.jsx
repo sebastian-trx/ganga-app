@@ -71,7 +71,7 @@ export default function ShoppCart() {
                   </span>
                   <span class="hidden lg:inline">Cantidad</span>
                 </th>
-                <th class="hidden text-right md:table-cell">Precio U.</th>
+                <th class="hidden text-right md:table-cell">Precio</th>
                 <th class="text-right">Total</th>
               </tr>
             </thead>

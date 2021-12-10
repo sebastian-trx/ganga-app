@@ -6,6 +6,7 @@ import VendedorSidebar from "./vSidebar";
 import InfoUser from "../UserPanel/infoUser";
 import s from "./vendor.module.css";
 import { getAllOrders } from "../../Redux/Actions/actions";
+import PurchaseList from "./vPurchaseList";
 
 export default function VendorPanel({user}) {
   
@@ -15,6 +16,8 @@ export default function VendorPanel({user}) {
   const [ventas, verVentas] = useState(false);
   const [compras, verCompras] = useState(false);
   const orders = useSelector((state) => state.orders);
+  const userOrders = orders.filter(o => o.userId === user.id);
+  
 
   useEffect(() => {
     dispatch(getAllOrders());
@@ -60,7 +63,7 @@ export default function VendorPanel({user}) {
                     />
                   </div>
                   <div className={s.usuariosBody}>
-                    tus compras
+                    <PurchaseList orders={userOrders}/>
                   </div>
                 </div>
               )}
