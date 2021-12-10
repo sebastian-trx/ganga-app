@@ -99,9 +99,9 @@ export default function Catalogo() {
           </div>
           </Link>
 
-        <div>
+        {/* <div>
         <Link to="/create" className="pl-10"><button>Tu Producto</button> </Link>
-        </div>
+        </div> */}
 
 
         <div className=" w-30">

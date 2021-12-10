@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+
 import { DataGrid } from "@mui/x-data-grid";
-import { Link, useNavigate } from "react-router-dom";
-import s from "./admin.module.css";
+
+
 
 export default function OrderList({orders, users}) {
 
@@ -17,8 +17,6 @@ export default function OrderList({orders, users}) {
     
 let sales = orders.map(o => o.productInfo).flat();
 
-
-console.log(sales, "s")
 
   const columns = [
     { field: "id", headerName: "id", width: 30 },

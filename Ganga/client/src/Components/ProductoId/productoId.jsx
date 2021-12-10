@@ -33,13 +33,13 @@ export default function ProductId() {
     console.log("id User", User.id);
     console.log("Product id:", info.id);
     if(!User.login){
-      navigate("/registrarme");
+      navigate("/ingresar");
       return
     }
     dispatch(
       addProduct({ id: User.id, item: { id: info.id }, cant: 1, que: "+" })
     );
-    alert("El producto se agregó al carrito")
+    alert("Tu producto se ha agregado al carrito.")
   }
 
   useEffect(() => {
