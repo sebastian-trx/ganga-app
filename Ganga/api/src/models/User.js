@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
             },
 
             cellphone: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.BIGINT,
             },
 
             password: {
@@ -78,6 +78,6 @@ module.exports = (sequelize) => {
               },
 
         },
-        { timestamps: false, paranoid: true }
+        { timestamps: true, paranoid: true }
     );
 };

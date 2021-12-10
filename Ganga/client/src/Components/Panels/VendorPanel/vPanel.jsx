@@ -92,7 +92,7 @@ export default function VendorPanel({ user }) {
                 />
               </div>
               <div className={s.body}>
-                <VendorProductList products={products} user={user} users={allUsers} />
+                <VendorProductList products={products} user={user}  />
               </div>
             </div>
           )}
@@ -109,8 +109,8 @@ export default function VendorPanel({ user }) {
               verCompras={verCompras}
             />
           </div>
-          <div className={s.vendedoresBody}>
-            <VendorSalesList orders={orders} user={user} />
+          <div className={s.body}>
+            <VendorSalesList orders={orders} user={user} users={allUsers}/>
           </div>
         </div>
       )}
