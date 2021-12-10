@@ -28,6 +28,8 @@ export default function AdminPanel() {
   const [vendedores, verVendedores] = useState(false);
   const [ordenes, verOrdenes] = useState(false);
 
+
+
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
@@ -77,11 +79,12 @@ export default function AdminPanel() {
                         <AdminWidgets
                           sales={sales}
                           products={productsSold}
+                          users={allUsers.length}
                           today={today}
                         />
                         <ActiveUsers />
                         <div className={s.newInfo}>
-                          <BrandNewUsers />
+                          <BrandNewUsers today={today} users={allUsers} />
                           <NewSales today={today} orders={orders} users={allUsers} />
                         </div>
                       </div>
@@ -135,7 +138,7 @@ export default function AdminPanel() {
                 verOrdenes={verOrdenes}
               />
               <div className={s.body}>
-                <VendorList vendors={vendors} />
+                <VendorList vendors={vendors} products={products} />
               </div>
             </div>
           )}
