@@ -44,44 +44,44 @@ export default function ShoppCart() {
           <div class="flex-1">
             <th class="w-full text-sm lg:text-base" cellspacing="0">
               <button class="flex justify-center w-full px-4 py-2 font-medium text-white uppercase bg-red-600 rounded-full shadow item-center hover:bg-red-500 focus:shadow-outline focus:outline-none">
-                <svg
-                  aria-hidden="true"
-                  data-prefix="far"
-                  data-icon="trash-alt"
-                  class="inline w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M268 416h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12zM432 80h-82.41l-34-56.7A48 48 0 00274.41 0H173.59a48 48 0 00-41.16 23.3L98.41 80H16A16 16 0 000 96v16a16 16 0 0016 16h16v336a48 48 0 0048 48h288a48 48 0 0048-48V128h16a16 16 0 0016-16V96a16 16 0 00-16-16zM171.84 50.91A6 6 0 01177 48h94a6 6 0 015.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12z"
-                  />
-                </svg>
-                <span class="ml-2 mt-5px">
-                  <ClearCart idUser={User.id} />
-                </span>
-              </button>
-            </th>
-            <table class="w-full text-sm lg:text-base" cellspacing="0">
-              <thead>
-                <tr class="h-12 uppercase">
-                  <th class="hidden md:table-cell">
-                  </th>
-                  <th class="text-left">Producto</th>
-                  <th class="lg:text-right text-left pl-5 lg:pl-0">
-                    <span class="lg:hidden" title="Quantity">
-                      Cant
-                    </span>
-                    <span class="hidden lg:inline">Cantidad</span>
-                  </th>
-                  <th class="hidden text-right md:table-cell">Precio U.</th>
-                  <th class="text-right">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* LA ETIQUETA DE AQUI ABAJO DEBERIAMOS MAPEAR PARA MOSTRAR LOS ITEMS DEL CARRITO */}
-                {cart?.length !== 0
-                  ? cart?.map((el) => (
+                        <svg
+                          aria-hidden="true"
+                          data-prefix="far"
+                          data-icon="trash-alt"
+                          class="inline w-4"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 448 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M268 416h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12zM432 80h-82.41l-34-56.7A48 48 0 00274.41 0H173.59a48 48 0 00-41.16 23.3L98.41 80H16A16 16 0 000 96v16a16 16 0 0016 16h16v336a48 48 0 0048 48h288a48 48 0 0048-48V128h16a16 16 0 0016-16V96a16 16 0 00-16-16zM171.84 50.91A6 6 0 01177 48h94a6 6 0 015.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12z"
+                          />
+                        </svg>
+                        <span class="ml-2 mt-5px">
+                          <ClearCart idUser={User.id}/>
+                        </span>
+                      </button>
+              </th>
+          <table class="w-full text-sm lg:text-base" cellspacing="0">
+            <thead>
+              <tr class="h-12 uppercase">
+                <th class="hidden md:table-cell">
+                </th>
+                <th class="text-left">Producto</th>
+                <th class="lg:text-right text-left pl-5 lg:pl-0">
+                  <span class="lg:hidden" title="Quantity">
+                    Cant
+                  </span>
+                  <span class="hidden lg:inline">Cantidad</span>
+                </th>
+                <th class="hidden text-right md:table-cell">Precio</th>
+                <th class="text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* LA ETIQUETA DE AQUI ABAJO DEBERIAMOS MAPEAR PARA MOSTRAR LOS ITEMS DEL CARRITO */}
+              {cart?.length !== 0
+                ? cart?.map((el) => (
                     <tr key={el.id}>
                       <td class="hidden pb-4 md:table-cell">
                         <Link to={`/${el.id}`}>
