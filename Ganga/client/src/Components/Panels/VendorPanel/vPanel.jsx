@@ -9,6 +9,7 @@ import { getAllOrders, getAllUsers, getProduct } from "../../Redux/Actions/actio
 import VendorProductList from "./vProductList";
 import VendorSalesList from "./vSalesList";
 
+
 export default function VendorPanel({user}) {
   
   const dispatch = useDispatch();
@@ -19,6 +20,8 @@ export default function VendorPanel({user}) {
   const orders = useSelector((state) => state.orders);
   const products = useSelector((state) => state.product);
   const allUsers = useSelector((state) => state.allUsers);
+  const userOrders = orders.filter(o => o.userId === user.id);
+  
 
   useEffect(() => {
     dispatch(getAllOrders());
@@ -70,7 +73,7 @@ export default function VendorPanel({user}) {
                     />
                   </div>
                   <div className={s.usuariosBody}>
-                    tus compras
+                    <PurchaseList orders={userOrders}/>
                   </div>
                 </div>
               )}
