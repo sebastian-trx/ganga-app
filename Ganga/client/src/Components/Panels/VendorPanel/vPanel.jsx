@@ -5,7 +5,9 @@ import Nav from "../../Nav/NavBar/nav";
 import VendedorSidebar from "./vSidebar";
 import InfoUser from "../UserPanel/infoUser";
 import s from "./vendor.module.css";
-import { getAllOrders } from "../../Redux/Actions/actions";
+import { getAllOrders, getAllUsers, getProduct } from "../../Redux/Actions/actions";
+import VendorProductList from "./vProductList";
+import VendorSalesList from "./vSalesList";
 
 export default function VendorPanel({user}) {
   
@@ -15,13 +17,21 @@ export default function VendorPanel({user}) {
   const [ventas, verVentas] = useState(false);
   const [compras, verCompras] = useState(false);
   const orders = useSelector((state) => state.orders);
+  const products = useSelector((state) => state.product);
+  const allUsers = useSelector((state) => state.allUsers);
 
   useEffect(() => {
     dispatch(getAllOrders());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getProduct());
+  }, [dispatch]);
 
-  console.log("user", user);
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
+  
   console.log("orders",orders);
 
   return (
@@ -77,8 +87,8 @@ export default function VendorPanel({user}) {
                       verCompras={verCompras}
                     />
                   </div>
-                  <div className={s.usuariosBody}>
-                    <h1 className="text-center pt-80">tus productos</h1>
+                  <div className={s.body}>
+                    <VendorProductList products={products} user={user} users={allUsers}/>
                   </div>
                 </div>
           )}
@@ -96,7 +106,7 @@ export default function VendorPanel({user}) {
                     />
           </div>
           <div className={s.vendedoresBody}>
-          <h1 className="text-center pt-80">tus ventas</h1>
+         <VendorSalesList orders={orders} user={user}/>
           </div>
         </div>
       )}

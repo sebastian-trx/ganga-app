@@ -28,6 +28,8 @@ export default function AdminPanel() {
   const [vendedores, verVendedores] = useState(false);
   const [ordenes, verOrdenes] = useState(false);
 
+  console.log("orders", orders);
+
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
