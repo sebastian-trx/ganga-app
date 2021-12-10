@@ -1,13 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu } from "@headlessui/react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {logout} from "../../Redux/Actions/actions"
 import Avatar from "@mui/material/Avatar";
 
 export default function User() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const infoUser= useSelector((state) => state.getInfoGoogle);
 
   function handleLogout(e) {
     e.preventDefault();
@@ -20,7 +21,7 @@ export default function User() {
   return (
     <Menu>
       <Menu.Button>
-        <Avatar  src="" />
+        <Avatar  src={infoUser.image} />
       </Menu.Button>
 
       {/* <Menu.Items className="origin-top-right absolute shadow-lg ring-4 ring-white  ring-opacity-20 mr-1 mt-2 p-2 bg-white"> */}

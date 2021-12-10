@@ -10,6 +10,8 @@ export default function InfoUser() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.getInfoGoogle);
+    const [loading, setLoading] = useState(false);
+    const [image, setImage] = useState("");
 
     useEffect(() => {
         dispatch(getUserInfoGoogle());
@@ -24,7 +26,6 @@ export default function InfoUser() {
     const country = user.country;
     const province = user.province;
     const cp = user.cp;
-    // const image = user.image;
 
     const [input, setInput] = useState({
         id: user.id,
@@ -37,7 +38,7 @@ export default function InfoUser() {
         country: country,
         province: province,
         cp: cp,
-        // image: image,
+        image: image,
     })
 
     const handleChange = (e) => {
@@ -46,7 +47,25 @@ export default function InfoUser() {
             [e.target.name]: e.target.value
         })
     }
+    
+    const uploadImage = async (e) => {
+        const files = e.target.files;
+        const data = new FormData();
+        data.append("file", files[0]);
+        data.append("upload_preset", "htnah6yo");
+        setLoading(true);
 
+        const res = await fetch(
+            "https://api.cloudinary.com/v1_1/djrddcab5/image/upload",
+            {
+                method: "POST",
+                body: data,
+            }
+        );
+
+        const file = await res.json();
+        setImage(file.secure_url);
+    };
     const submit = (e) => {
         e.preventDefault();
         dispatch(updateUser(input));
@@ -167,12 +186,37 @@ export default function InfoUser() {
                         placeholder="Código postal"
                     />
                 </div>
-                <div className="p-5">
-                    <button className={s.btnActualizar} type="submit">
-                        Actualizar
-                    </button>
-                </div>
+            <div>
+                            <div className="pt-0 pb-2">
+                                <label>Imagen de Perfil</label>
+                            </div>
+                            <div className="text-center bg-gray-700 text-white">
+                                <input
 
+                                    className={s.inputs}
+                                    onChange={uploadImage}
+                                    type="file"
+                                    name="image"
+                                    required="required"
+                                    accept="image/png,image/jpeg"
+                                />
+                            </div>
+                            <div className={s.imgName}>{(input.image = image)}</div>
+                            <label>
+                                {loading ? (
+                                    <div>
+                                    <img className={s.imageUp} src={image} alt="No hay imagen" />
+                                    </div>
+                                ) : (
+                                    <p>Aun no has subido una imagen</p>
+                                )}
+                            </label>
+                        </div>
+            <div className="p-5">
+                <button className={s.btnActualizar} type="submit">
+                    Actualizar
+                </button>
+            </div>
             </form>
         </div>
 
