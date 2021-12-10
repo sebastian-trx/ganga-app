@@ -1,4 +1,6 @@
 import React from 'react'
+import { Review } from '../../Reviews/Review.jsx'
+
 
 export default function PurchaseList({orders}) {
 
@@ -60,6 +62,7 @@ let products = Products.flat().reverse();
                       <td class="text-right">
                         <span class="text-sm lg:text-base font-medium">
                           $ {el.price}
+                          {console.log('soy el product mapeado: ', el)}
                         </span>
                       </td>
                       <td class="text-right">
@@ -67,6 +70,7 @@ let products = Products.flat().reverse();
                           $ {el.price * el.quantity}
                         </span>
                       </td>
+                      <Review idUser={el.userId} idProduct={el.id} />
                     </tr>
                   ))
                 : 
