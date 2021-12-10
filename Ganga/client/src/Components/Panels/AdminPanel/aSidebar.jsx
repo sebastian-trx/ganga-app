@@ -48,7 +48,7 @@ export default function AdminSidebar({
 
   return (
     <div className={s.sidebar}>
-        <h3 className="p-10 pt-32 pl-16 text-3xl opacity-60">opciones</h3>
+        <h3 className="p-10 pt-32 pl-16 text-3xl opacity-60">Opciones</h3>
         <ul>
           <li className="p-8 pr-48 text-xl hover:bg-gray-400">
             <button onClick={Togle}>Datos</button>

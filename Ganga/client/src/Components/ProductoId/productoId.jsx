@@ -33,7 +33,7 @@ export default function ProductId() {
     console.log("id User", User.id);
     console.log("Product id:", info.id);
     if(!User.login){
-      navigate("/registrarme");
+      navigate("/ingresar");
       return
     }
     dispatch(
