@@ -82,7 +82,7 @@ export default function AdminPanel() {
                         <ActiveUsers />
                         <div className={s.newInfo}>
                           <BrandNewUsers />
-                          <NewSales today={today} orders={orders} users={allUsers}/>
+                          <NewSales today={today} orders={orders} users={allUsers} />
                         </div>
                       </div>
                     </div>
