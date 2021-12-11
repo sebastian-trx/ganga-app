@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate, Link } from "react-router-dom";
+import Nav from "../../Nav/NavBar/nav";
 
 import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
 import s from './admin.module.css';
@@ -14,12 +15,7 @@ export default function UserInfo() {
     const { id } = useParams()
     const userfil = allUsers.filter((el) => el.id === id)
 
-
     const navigate = useNavigate();
-
-
-
-    console.log("user", userfil)
 
     const name = userfil[0]?.name;
     const surname = userfil[0]?.surname;
@@ -30,6 +26,8 @@ export default function UserInfo() {
     const country = userfil[0]?.country;
     const province = userfil[0]?.province;
     const cp = userfil[0]?.cp;
+    const seller = userfil[0]?.seller;
+    const officialStore = userfil[0]?.officialStore;
     // const image = userfil[0]?.image;
 
     const [input, setInput] = useState({
@@ -43,13 +41,17 @@ export default function UserInfo() {
         country: country,
         province: province,
         cp: cp,
+        seller: seller,
+        officialStore: officialStore
         // image: image,
     })
+
+    console.log(input)
 
     useEffect(() => {
         dispatch(updateUser(input))
         dispatch(getAllUsers())
-    }, [dispatch])
+    }, [dispatch, input])
 
     const handleChange = (e) => {
         setInput({
@@ -60,6 +62,7 @@ export default function UserInfo() {
 
     const submit = (e) => {
         e.preventDefault();
+        console.log('soy el input del submit: ', input)
         dispatch(updateUser(input));
         navigate("/panel")
         window.location.reload();
@@ -67,6 +70,7 @@ export default function UserInfo() {
 
     return (
         <div>
+            <Nav />
             <div className="p-5">
                 <Link to="/panel">
                     <button type="button">
@@ -184,13 +188,33 @@ export default function UserInfo() {
                         placeholder="Código postal"
                     />
                 </div>
+                <div className="p-4">
+                    <div>
+                        <label> Tienda Oficial </label>
+                    </div>
+                    <select className="text-center bg-gray-700 text-white" name="officialStore" onChange={handleChange}>
+                        <option selected="true" disabled="disabled" >Seleccionar </option>
+                        <option value="true" >true </option>
+                        <option value="false" >false </option>
+                    </select>
+                </div>
+                <div className="p-4">
+                    <div>
+                        <label> Hacer vendedor / Deshacer vendedor </label>
+                    </div>
+                    <select className="text-center bg-gray-700 text-white" name="seller" onChange={handleChange}>
+                        <option selected="true" disabled="disabled" >Seleccionar </option>
+                        <option value="true" >true </option>
+                        <option value="false" >false </option>
+                    </select>
+                </div>
                 <div className="p-5">
                     <button className={s.btnActualizar} type="submit">
                         Actualizar
                     </button>
                 </div>
 
-            </form>
-        </div>
+            </form >
+        </div >
     )
 }

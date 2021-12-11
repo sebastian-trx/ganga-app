@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   getDetailsProduct,
   addProduct,
+  allReviews
 } from "../Redux/Actions/actions";
 import Nav from "../../Components/Nav/NavBar/nav";
 import a from "./productoId.module.css";
@@ -16,18 +17,19 @@ export default function ProductId() {
   const [, /*state*/ setState] = useState([]);
   const info = useSelector((state) => state.detailProduct);
   const User = useSelector((state) => state.getInfoGoogle);
+  const Reviews = useSelector((state) => state.allReviews)
   const { id } = useParams();
 
   // const getDetails = () => {
   //   if (Object.keys(state).length === 0) dispatch(getDetailsProduct(id));
   // };
 
-  // useEffect(() => {
-  //   getDetails();
-  //   return () => {
-  //     setState([]);
-  //   };
-  // },[]);
+  useEffect(() => {
+    dispatch(allReviews())
+  },[dispatch]);
+
+  const productReviews = Reviews.filter((review) => review.productId === id)
+  console.log('soy el productReviews: ', productReviews)
 
   function handleAddToCart() {
     console.log("id User", User.id);
@@ -44,7 +46,6 @@ export default function ProductId() {
 
   useEffect(() => {
     dispatch(getDetailsProduct(id));
-    // dispatch(getUserInfoGoogle())
   }, [dispatch, id]);
 
   useEffect(() => {
@@ -72,12 +73,23 @@ export default function ProductId() {
                 <div className={a.price}>
                   <h2>$ {info.price}</h2>
                 </div>
+                <div>
+                  {productReviews?.map((review) => {
+                    console.log('soy el review mapeado: ', review)
+                    return(
+                      <div key={review.id}>
+                        <h6>Descripcion: {review.description}</h6>
+                        <h4>Calificación: {review.qualificacion}</h4>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             </div>
 
             <div className={a.izq}>
               <div className={a.pago}>
-                <h3> DESCRIPCION DEL PAGO</h3>
+                <h3> DESCRIPCION DEL PAGO </h3>
               </div>
               <div className={a.div3}>
                 {/* <button className={a.bnt}>Comprar</button> */}
