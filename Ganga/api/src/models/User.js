@@ -32,11 +32,6 @@ module.exports = (sequelize) => {
                 type: DataTypes.BIGINT,
             },
 
-            password: {
-                type: DataTypes.STRING,
-                // allowNull: false,
-            },
-
             address: {
                 type: DataTypes.STRING
             },

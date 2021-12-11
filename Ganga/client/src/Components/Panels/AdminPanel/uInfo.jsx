@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate, Link } from "react-router-dom";
+import Nav from "../../Nav/NavBar/nav";
 
 import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
 import s from './admin.module.css';
@@ -67,6 +68,7 @@ export default function UserInfo() {
 
     return (
         <div>
+            <Nav />
             <div className="p-5">
                 <Link to="/panel">
                     <button type="button">

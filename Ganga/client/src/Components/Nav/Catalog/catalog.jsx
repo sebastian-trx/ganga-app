@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProduct, orderByPrice, getUser, getCategories, getProductByName } from "../../Redux/Actions/actions";
@@ -11,9 +11,8 @@ import { ImSearch } from "react-icons/im";
 import { IoIosCart } from "react-icons/io";
 import { GrClose } from "react-icons/gr";
 import User from '../User/user'
-import PaginationCatalog from '../../Home/Pagination/paginationCatalog';
+import Pagination from '../../Home/Pagination/pagination';
 
-let PageSize = 12;
 
 export default function Catalogo() {
   const dispatch = useDispatch();
@@ -26,29 +25,20 @@ export default function Catalogo() {
 
   const [name, setName] = useState(" ");
 
-  // - - - Paginado anterior - - - //
-
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [elementsPerPage, setElementsPerPage] = useState(12)
-  // const indexOfLastProducts = currentPage * elementsPerPage;
-  // const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
-  // const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);
-
-  // const paginate = (pageNumbers) => {
-  //   setCurrentPage(pageNumbers)
-  // }
-
-  // - - - Paginado nuevo - - - //
-
   const [currentPage, setCurrentPage] = useState(1);
+  const [elementsPerPage, setElementsPerPage] = useState(12)
+  const indexOfLastProducts = currentPage * elementsPerPage;
+  const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
+  const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);
 
-  const currentProducts = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize;
-    const lastPageIndex = firstPageIndex + PageSize;
-    return allProduct.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
+  const paginate = (pageNumbers) => {
+    setCurrentPage(pageNumbers)
+  }
 
-  // - - - Paginado nuevo - - - //
+
+  useEffect(() => {
+    dispatch(getProduct())
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getUser())
@@ -203,19 +193,11 @@ export default function Catalogo() {
         </div>
       </div>
       <div>
-        <PaginationCatalog
-          currentPage={currentPage}
-          totalCount={allProduct.length}
-          pageSize={PageSize}
-          onPageChange={page => setCurrentPage(page)}
-        />
-      </div>
-      {/* <div>
         <Pagination
           elementsPerPage={elementsPerPage}
           allProduct={allProduct}
           paginate={paginate} />
-      </div> */}
+      </div>
     </div>
   );
 }
