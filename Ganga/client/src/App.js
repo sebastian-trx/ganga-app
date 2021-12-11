@@ -16,6 +16,7 @@ import { FailMp } from "./Components/MercadoPago/failMp";
 import SubAdminForm from "./Components/Panels/AdminPanel/subAdminForm";
 import AdminPanelV from "./Components/Panels/VendorPanel/vPanel";
 import { Review } from "./Components/Reviews/Review.jsx"
+import ModifyProduct from './Components/ModifyProduct/modifyProduct'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
          <Route path="/registrar" element={<SubAdminForm />} />
          <Route exact path="/panelV" element={<AdminPanelV />} />
          <Route path='/agregarreview' element={<Review/>} />
+         <Route path="/product/:id" element={<ModifyProduct/>}/>
       </Routes>
     </BrowserRouter>
   );
