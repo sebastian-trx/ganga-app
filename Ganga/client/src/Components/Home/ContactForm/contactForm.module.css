@@ -88,3 +88,12 @@
   background-color: #03182c;
   color: #f1faee;
 }
+
+.Location {
+  width: 50%;
+  height: 600px;
+  float: left;
+  margin-right: 30px;
+  overflow: hidden;
+  background: #00000030;
+}
