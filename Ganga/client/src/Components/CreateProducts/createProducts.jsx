@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getCategories, getSubcategory, postProducts } from '../Redux/Actions/actions'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import s from './createProducts.module.css'
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import Boton from '../Nav/boton'

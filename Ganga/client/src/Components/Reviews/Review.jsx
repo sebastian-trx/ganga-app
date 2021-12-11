@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { /*useSelector,*/ useDispatch } from "react-redux";
 import { addReview, getUserInfoGoogle } from '../Redux/Actions/actions.js'
 
 export function Review ({idUser, idProduct}){
@@ -115,6 +115,3 @@ export function Review ({idUser, idProduct}){
         </div>
     )
 }
-
-{/* <h4 className="text-left pl-10 pb-3 pt-6 text-2xl">Inicia Sesión</h4>
-<hr className=" border-black mx-10"/> */}

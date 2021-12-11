@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import s from "../admin.module.css";
 
 export default function NewSales({today, orders, users}) {

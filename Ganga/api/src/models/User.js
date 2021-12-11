@@ -70,12 +70,12 @@ module.exports = (sequelize) => {
                 type: DataTypes.ARRAY(DataTypes.JSON),
                 defaultValue: [],
                 // allowNull: false,
-              },
-            
-              officialStore: {
+            },
+
+            officialStore: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false
-              }
+            }
 
         },
         { timestamps: true, paranoid: true }

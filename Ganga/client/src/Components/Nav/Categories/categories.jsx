@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Card from "../../Card/card";
@@ -28,7 +28,7 @@ export default function Categorias() {
   // - - - Paginado anterior - - - //
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [elementsPerPage, setElementsPerPage] = useState(12)
+const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
   const indexOfLastProducts = currentPage * elementsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
   const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);

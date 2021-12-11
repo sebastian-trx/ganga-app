@@ -26,7 +26,7 @@ export default function Catalogo() {
   const [name, setName] = useState(" ");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [elementsPerPage, setElementsPerPage] = useState(12)
+  const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
   const indexOfLastProducts = currentPage * elementsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
   const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);
