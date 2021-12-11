@@ -39,3 +39,9 @@
     border-width: 2px;
     border-color: rgb(0, 255, 0);
 }
+
+.imageUp{
+    
+    max-width:100px;
+    max-height:150px ;
+}

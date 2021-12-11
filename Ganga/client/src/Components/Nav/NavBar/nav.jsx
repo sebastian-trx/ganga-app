@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoIosCart } from "react-icons/io";
 import { ImSearch } from "react-icons/im";
 
-import { getUserInfoGoogle, getCategories,  productsByName} from "../../Redux/Actions/actions";
+import { getUserInfoGoogle, getCategories, getProduct, productsByName} from "../../Redux/Actions/actions";
 
 import Logo from "../Logo/logo";
 import User from "../User/user";
@@ -57,6 +57,13 @@ export default function Nav() {
     navigate("/catalogo");
     dispatch(productsByName(name))
   }
+ function handleCatalag(e){
+   e.preventDefault()
+   navigate("/catalogo");
+   dispatch(getProduct())
+ }
+
+
   return (
     <div
       expanded={expand}
@@ -89,7 +96,7 @@ export default function Nav() {
             </span>
 
             <Link to="/catalogo" className="px-6">
-              <span>Catalogo</span>
+              <span onClick={handleCatalag}>Catalogo</span>
             </Link>
 
             <Link to="/" className="px-6">

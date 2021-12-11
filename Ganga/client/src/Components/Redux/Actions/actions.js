@@ -38,6 +38,8 @@ import {
   PRODUCTS_BY_NAME,
   POST_NEWSLETTER,
   DELETE_NEWSLETTER,
+  ADD_REVIEW,
+  ALL_REVIEWS
 } from "./const";
 
 export function getProduct() {
@@ -495,6 +497,30 @@ export const deleteNewsletter = (payload) => {
     }
   }
 };
+
+export function addReview(payload) {
+  console.log('soy el payload de addReview: ', payload)
+  return async function(dispatch) {
+    const response = await axios.post(`${URL}review`, payload)
+    console.log('soy el response de addReview: ', response)
+    dispatch({
+      type: ADD_REVIEW,
+      payload: response.data,
+    })
+  }
+}
+
+export function allReviews() {
+  return async function(dispatch) {
+    const response = await axios.get(`${URL}review`)
+    // const response = await axios.get(`${URL}product/info?id=${payload}`, payload)
+    console.log('soy el response de allReviews: ', response)
+    dispatch({
+      type: ALL_REVIEWS,
+      payload: response.data
+    })
+  }
+}
 
 // export function getAllUsers() {
 //   return async function (dispatch) {

@@ -14,8 +14,14 @@ export default function SignUpForm() {
     surname: "",
     mail: "",
     password: "",
+    rPassword: "",
     cellphone: "",
     address: "",
+    country: "",
+    province: "",
+    cp: "",
+    birthdate: "",
+    // seller: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -30,10 +36,20 @@ export default function SignUpForm() {
       errors.mail = "Ingrese su correo.";
     } else if (!input.password) {
       errors.password = "Ingrese su contraseña.";
+    } else if (!input.rPassword) {
+      errors.rPassword = "Ingrese su contraseña.";
     } else if (!input.cellphone) {
       errors.cellphone = "Ingrese su numero de telefono.";
     } else if (!input.address) {
       errors.address = "Ingrese la dirección de su vivienda.";
+    } else if (!input.country) {
+      errors.country = "Ingrese su país.";
+    } else if (!input.province) {
+      errors.province = "Ingrese su provincia.";
+    } else if (!input.cp) {
+      errors.cp = "Ingrese su código postal.";
+    } else if (!input.birthdate) {
+      errors.birthdate = "Ingrese su fecha de nacimiento.";
     }
     return errors;
   }
@@ -119,16 +135,28 @@ export default function SignUpForm() {
         <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
+            name="rPassword"
+            type="password"
+            placeholder="repetir contraseña"
+            value={input.rPassword}
+            onChange={handleChange}
+          ></input>
+          {errors.rPassword && <p>{errors.rPassword}</p>}
+        </div>
+
+        <div className="pt-5">
+          <input
+            className="w-96 border-gray-400 border-2 rounded pl-2"
             name="cellphone"
             type="number"
-            placeholder="cellphone"
+            placeholder="número de celular"
             value={input.cellphone}
             onChange={handleChange}
           ></input>
           {errors.cellphone && <p>{errors.cellphone}</p>}
         </div>
 
-        <div className="py-5">
+        <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="address"
@@ -140,6 +168,54 @@ export default function SignUpForm() {
           {errors.address && <p>{errors.address}</p>}
         </div>
 
+        <div className="pt-5">
+          <input
+            className="w-96 border-gray-400 border-2 rounded pl-2"
+            name="country"
+            type="text"
+            placeholder="país"
+            value={input.country}
+            onChange={handleChange}
+          ></input>
+          {errors.country && <p>{errors.country}</p>}
+        </div>
+
+        <div className="pt-5">
+          <input
+            className="w-96 border-gray-400 border-2 rounded pl-2"
+            name="province"
+            type="text"
+            placeholder="provincia"
+            value={input.province}
+            onChange={handleChange}
+          ></input>
+          {errors.province && <p>{errors.province}</p>}
+        </div>
+
+        <div className="pt-5">
+          <input
+            className="w-96 border-gray-400 border-2 rounded pl-2"
+            name="cp"
+            type="text"
+            placeholder="código postal"
+            value={input.cp}
+            onChange={handleChange}
+          ></input>
+          {errors.cp && <p>{errors.cp}</p>}
+        </div>
+
+        <div className="py-5">
+          <input
+            className="w-96 border-gray-400 border-2 rounded pl-2"
+            name="birthdate"
+            type="date"
+            placeholder="fecha de nacimiento"
+            value={input.birthdate}
+            onChange={handleChange}
+          ></input>
+          {errors.birthdate && <p>{errors.birthdate}</p>}
+        </div>
+
         <button
           className="border-gray-400 border-2 rounded px-2 py-1 text-xl"
           type="submit"
@@ -149,9 +225,14 @@ export default function SignUpForm() {
               input.name &&
               input.surname &&
               input.password &&
+              input.rPassword &&
               input.mail &&
               input.cellphone &&
-              input.address
+              input.address &&
+              input.country &&
+              input.province &&
+              input.cp &&
+              input.birthdate
             )
           }
         >
