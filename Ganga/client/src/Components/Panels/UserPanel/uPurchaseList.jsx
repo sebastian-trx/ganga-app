@@ -64,7 +64,6 @@ export default function PurchaseList({ orders }) {
                         <td class="text-right">
                           <span class="text-sm lg:text-base font-medium">
                             $ {el.price}
-                            {console.log('soy el product mapeado: ', el)}
                           </span>
                         </td>
                         <td class="text-right">
@@ -72,7 +71,7 @@ export default function PurchaseList({ orders }) {
                             $ {el.price * el.quantity}
                           </span>
                         </td>
-                        <Review idUser={el.idUser} idProduct={el.id} />
+                        <Review idUser={el.userId} idProduct={el.id} />
                       </tr>
                     ))
                   ) : (

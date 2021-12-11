@@ -18,7 +18,7 @@ export default function UserInfo() {
 
     const navigate = useNavigate();
 
-
+    
 
     console.log("user", userfil)
 
@@ -31,6 +31,7 @@ export default function UserInfo() {
     const country = userfil[0]?.country;
     const province = userfil[0]?.province;
     const cp = userfil[0]?.cp;
+    const officialStore = userfil[0]?.officialStore;
     // const image = userfil[0]?.image;
 
     const [input, setInput] = useState({
@@ -44,8 +45,11 @@ export default function UserInfo() {
         country: country,
         province: province,
         cp: cp,
+        officialStore: officialStore
         // image: image,
     })
+
+    console.log(input)
 
     useEffect(() => {
         dispatch(updateUser(input))
@@ -61,6 +65,7 @@ export default function UserInfo() {
 
     const submit = (e) => {
         e.preventDefault();
+        console.log('soy el input del submit: ', input)
         dispatch(updateUser(input));
         navigate("/panel")
         window.location.reload();
@@ -185,6 +190,15 @@ export default function UserInfo() {
                         name="cp"
                         placeholder="Código postal"
                     />
+
+                    <div>
+                        <label> Tienda Oficial </label>
+                    </div>
+                    <select name="officialStore" onChange={handleChange}>
+                        <option selected="true" disabled="disabled" >Seleccionar </option>
+                        <option value="true" >true </option>
+                        <option value="false" >false </option>
+                    </select>
                 </div>
                 <div className="p-5">
                     <button className={s.btnActualizar} type="submit">
