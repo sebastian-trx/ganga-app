@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CountInput from "./counterInput.jsx";
 import {
   getUserInfoGoogle,
-  /*deleteItem,*/ decreseProduct,
+  /*deleteItem, decreseProduct,*/
 } from "../Redux/Actions/actions";
 import { ClearCart } from "./clearCart.jsx";
 import { DeleteItem } from "./deleteItem.jsx";
 import { MercadoPago } from "../MercadoPago/mercadoPago.jsx";
-import { SuccessLogicMp } from "../MercadoPago/successLogicMp.jsx";
+// import { SuccessLogicMp } from "../MercadoPago/successLogicMp.jsx";
 import Nav from "../Nav/NavBar/nav.jsx";
 
 export default function ShoppCart() {
@@ -21,13 +21,13 @@ export default function ShoppCart() {
 
   const User = useSelector((state) => state.getInfoGoogle);
   const cart = User.Cart;
-  let flag = false;
+  // let flag = false;
   let prod = 0,
-    sum = 0,
-    desc = 0,
-    envio = 0,
-    subtotal = 0,
-    total = 0;
+    sum = 0;
+    // desc = 0,
+    // envio = 0,
+    // subtotal = 0,
+    // total = 0;
   // console.log("carrito",cart)
 
   // useEffect(() => {
@@ -123,7 +123,7 @@ export default function ShoppCart() {
                         <span class="text-sm lg:text-base font-medium">
                           {prod = el.price * el.quantity}
                         </span>
-                        {sum = sum + prod, console.log("")}
+                        {sum = sum + prod}
                       </td>
                     </tr>
                   ))

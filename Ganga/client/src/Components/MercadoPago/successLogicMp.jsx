@@ -18,7 +18,7 @@ export function SuccessLogicMp({ user, sum }) {
     // DESPACHAR LA ORDEN 
     dispatch(postOrder({ info: "orden de prueba", userInfo: user.id, productInfo:user.Cart ,total:sum }))
     // console.log(user);
-  }, []);
+  }, [dispatch, sum, user.Cart, user.id]);
 
 
 
