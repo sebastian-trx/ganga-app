@@ -73,7 +73,7 @@ export default function VendorPanel({ user }) {
                       verCompras={verCompras}
                     />
                   </div>
-                  <div className={s.usuariosBody}>
+                  <div className={s.body}>
                     <PurchaseList orders={userOrders} />
                   </div>
                 </div>

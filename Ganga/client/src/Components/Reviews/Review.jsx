@@ -70,18 +70,18 @@ export function Review ({idUser, idProduct}){
         <div>
             <form>
 
-        <div class="flex item-center content-center justify-center">
+        <div class="flex item-center content-center justify-center my-1">
           <textarea
             className="h-19 border-gray-400 border-2 rounded pl-2 resize-none"
             name="description"
             type="text"
-            placeholder="Reseña del Producto"
+            placeholder="¿Que te parecio el producto?"
             value={input.description}
             onChange={handleChange}
           ></textarea>
           {errors.description && <p>{errors.description}</p>}
         <button
-          className="border-gray-400 border-2 rounded px-1 text-s"
+          className="border-gray-400 border-2 rounded ml-1 px-1 text-s"
           type="text"
           value="submit"
           onClick={handleSubmitReviewProduct}
@@ -91,18 +91,18 @@ export function Review ({idUser, idProduct}){
         </button>
         </div>
 
-        <div class="flex item-center content-center justify-center">
+        <div class="flex item-center content-center justify-center my-1">
           <textarea
             className="h-19 border-gray-400 border-2 rounded pl-2 resize-none"
             name="qualificacion"
             type="text"
-            placeholder="Calificacion del Vendedor"
+            placeholder="Califica al Vendedor"
             value={input.qualificacion}
             onChange={handleChange}
           ></textarea>
           {errors.qualificacion && <p>{errors.qualificacion}</p>}
         <button
-          className="border-gray-400 border-2 rounded px-1 py-1 text-m"
+          className="border-gray-400 border-2 rounded ml-1 px-1 text-s"
           type="text"
           value="submit"
           onClick={handleSubmitReviewUser}

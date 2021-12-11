@@ -1,7 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import { Review } from '../../Reviews/Review.jsx'
-
+import { Review } from "../../Reviews/Review.jsx";
 
 export default function PurchaseList({ orders }) {
   for (var i = 0; i < orders.length; i++) {
@@ -35,12 +34,9 @@ export default function PurchaseList({ orders }) {
                       <span class="hidden lg:inline">Cant</span>
                     </th>
                     <th class="text-right">Precio</th>
-
                     <th class="text-right">Total</th>
                   </tr>
-                  <th class="text-right">
-
-                  </th>
+                  <th class="text-right"></th>
                 </thead>
                 <tbody>
                   {products?.length !== 0 ? (
@@ -76,7 +72,7 @@ export default function PurchaseList({ orders }) {
                           </span>
                         </td>
                         <td class="text-right">
-                        <Review idUser={el.userId} idProduct={el.id} />
+                          <Review idUser={el.userId} idProduct={el.id} />
                         </td>
                       </tr>
                     ))
