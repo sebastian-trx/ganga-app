@@ -70,47 +70,46 @@ export function Review ({idUser, idProduct}){
         <div>
             <form>
 
-        <div className="pt-10">
-          <input className="w-96 border-gray-400 border-2 rounded pl-2"
+        <div class="flex item-center content-center justify-center">
+          <textarea
+            className="h-19 border-gray-400 border-2 rounded pl-2 resize-none"
             name="description"
             type="text"
-            placeholder="Descripción"
+            placeholder="Reseña del Producto"
             value={input.description}
             onChange={handleChange}
-          ></input>
+          ></textarea>
           {errors.description && <p>{errors.description}</p>}
-        </div>
-
-        <div className="py-14">
-          <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
-            name="qualificacion"
-            type="text"
-            placeholder="Calificacion"
-            value={input.qualificacion}
-            onChange={handleChange}
-          ></input>
-          {errors.qualificacion && <p>{errors.qualificacion}</p>}
-        </div>
-
         <button
-          className="border-gray-400 border-2 rounded px-3 py-1 text-xl"
+          className="border-gray-400 border-2 rounded px-1 text-s"
           type="text"
           value="submit"
           onClick={handleSubmitReviewProduct}
           disabled={!(input.qualificacion && input.description)}
         >
-          Agregar reseña a producto
+          Agregar
         </button>
+        </div>
+
+        <div class="flex item-center content-center justify-center">
+          <textarea
+            className="h-19 border-gray-400 border-2 rounded pl-2 resize-none"
+            name="qualificacion"
+            type="text"
+            placeholder="Calificacion del Vendedor"
+            value={input.qualificacion}
+            onChange={handleChange}
+          ></textarea>
+          {errors.qualificacion && <p>{errors.qualificacion}</p>}
         <button
-          className="border-gray-400 border-2 rounded px-3 py-1 text-xl"
+          className="border-gray-400 border-2 rounded px-1 py-1 text-m"
           type="text"
           value="submit"
           onClick={handleSubmitReviewUser}
           disabled={!(input.qualificacion && input.description)}
-        >
-          Agregar reseña a vendedor
-        </button>
+        >Calificar</button>
+        </div>
+
       </form>
         </div>
     )
