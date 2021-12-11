@@ -46,12 +46,12 @@ async function postUser(req, res) {
 }
 
 async function putUser(req, res) {
-  const { id, name, surname, mail, address, image, seller, birthdate, password, cellphone, country, province, cp } = req.body;
+  const { id, name, surname, mail, address, image, seller, birthdate, password, cellphone, country, province, cp, officialStore } = req.body;
 
   try {
     const infoUpdateUser = {
       name, surname, mail, address, image, seller, birthdate, password, cellphone,
-      country, province, cp
+      country, province, cp, officialStore // agregar a postman officialStore
     };
 
     const userById = await User.findByPk(id);

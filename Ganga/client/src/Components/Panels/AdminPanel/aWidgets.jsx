@@ -1,11 +1,12 @@
 import React from "react";
 import s from "./admin.module.css";
 
-export default function AdminWidgets({sales, products, today}) {
+export default function AdminWidgets({sales, products, users, today }) {
 
  
  let promedioS = sales / today;
  let promedioP = products / today;
+ let promedioU = users / today;
 
   return (
     <div className={s.widgets}>
@@ -36,9 +37,9 @@ export default function AdminWidgets({sales, products, today}) {
         <div className="pb-3">
           <span className="text-xl opacity-90">Usuarios nuevos</span>
         </div>
-        <span className="text-3xl">21.389</span>
+        <span className="text-3xl">{users}</span>
         <div className="pt-5">
-          <span className="text-base opacity-80">880</span>
+          <span className="text-base opacity-80">{promedioU}</span>
         </div>
         <span className="text-xs opacity-70">*promedio x día</span>
       </div>

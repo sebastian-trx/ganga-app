@@ -81,6 +81,7 @@ async function putProduct(req, res) {
     image,
     owner,
     idCategory,
+    approved  // agregar a postman approved
   } = req.body; // modificar en postman brand por mark y agregar owner
 
   try {
@@ -92,6 +93,7 @@ async function putProduct(req, res) {
       stock,
       image,
       owner,
+      approved
     };
 
     const productById = await Product.findByPk(id);
