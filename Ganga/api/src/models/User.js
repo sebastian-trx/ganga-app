@@ -76,6 +76,11 @@ module.exports = (sequelize) => {
                 defaultValue: [],
                 // allowNull: false,
               },
+            
+              officialStore: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false
+              }
 
         },
         { timestamps: true, paranoid: true }
