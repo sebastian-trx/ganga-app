@@ -21,23 +21,23 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-         <Route path ='/' element={<Home/>}/>
-         <Route path ='/:id' element={<ProductId/>}/>
-         <Route path ='/catalogo' element={<Catalogo/>}/>
-         <Route path ='/ingresar' element={<Login/>}/>
-         <Route path ='/registrarme' element={<SignUp/>}/>
-         <Route path = '/create' element={<CreateProduct/>}/>
-         <Route path ='/categorias/:nombre' element={<Categorias/>}/>
-         <Route exact path="/login/success" element={<LoginSuccess />}/>
-         <Route exact path="/login/success" element={<LoginSuccess />} />
-         <Route path ='/shopCart' element={<ShopCart/>}/>
-         <Route path ='/panel' element={<Panel/>}/>
-         <Route path='/user/:id' element={<Modificar />} />
-         <Route path ='/successMp' element={<SuccesMp/>}/>
-         <Route path ='/failMp' element={<FailMp/>}/>
-         <Route path="/registrar" element={<SubAdminForm />} />
-         <Route exact path="/panelV" element={<AdminPanelV />} />
-         <Route path='/agregarreview' element={<Review/>} />
+        <Route path='/' element={<Home />} />
+        <Route path='/:id' element={<ProductId />} />
+        <Route path='/catalogo' element={<Catalogo />} />
+        <Route path='/ingresar' element={<Login />} />
+        <Route path='/registrarme' element={<SignUp />} />
+        <Route path='/create' element={<CreateProduct />} />
+        <Route path='/categorias/:nombre' element={<Categorias />} />
+        <Route exact path="/login/success" element={<LoginSuccess />} />
+        <Route exact path="/login/success" element={<LoginSuccess />} />
+        <Route path='/shopCart' element={<ShopCart />} />
+        <Route path='/panel' element={<Panel />} />
+        <Route path='/user/:id' element={<Modificar />} />
+        <Route path='/successMp' element={<SuccesMp />} />
+        <Route path='/failMp' element={<FailMp />} />
+        <Route path="/registrar" element={<SubAdminForm />} />
+        <Route exact path="/panelV" element={<AdminPanelV />} />
+        <Route path='/agregarreview' element={<Review />} />
       </Routes>
     </BrowserRouter>
   );

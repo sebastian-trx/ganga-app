@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { /*useSelector,*/ useDispatch } from "react-redux";
 import { addReview, getUserInfoGoogle } from '../Redux/Actions/actions.js'
 
 export function Review ({idUser, idProduct}){
@@ -10,9 +10,6 @@ export function Review ({idUser, idProduct}){
         idUser: idUser,
         idProduct: idProduct
       });
-
-      console.log('soy el idUser: ', idUser)
-      console.log('soy el idProduct: ', idProduct)
 
       
       useEffect(() => {
@@ -44,14 +41,34 @@ export function Review ({idUser, idProduct}){
         );
       }
     
-      function handleSubmit(e) {
+      function handleSubmitReviewProduct(e) {
         e.preventDefault();
-        dispatch(addReview(input))
+        dispatch(addReview({description: input.description,
+        qualificacion: input.qualificacion,
+        idProduct: input.idProduct,
+        }));
+        setInput({        
+        description: "",
+        qualificacion: "",
+        })
+
+      } 
+
+      function handleSubmitReviewUser(e) {
+        e.preventDefault();
+        dispatch(addReview({description: input.description,
+        qualificacion: input.qualificacion,
+        idUser: input.idUser,
+        }))
+        setInput({        
+        description: "",
+        qualificacion: "",
+})
       }  
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form>
 
         <div className="pt-10">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"
@@ -78,16 +95,23 @@ export function Review ({idUser, idProduct}){
 
         <button
           className="border-gray-400 border-2 rounded px-3 py-1 text-xl"
-          type="submit"
+          type="text"
           value="submit"
+          onClick={handleSubmitReviewProduct}
           disabled={!(input.qualificacion && input.description)}
         >
-          Agregar
+          Agregar reseña a producto
+        </button>
+        <button
+          className="border-gray-400 border-2 rounded px-3 py-1 text-xl"
+          type="text"
+          value="submit"
+          onClick={handleSubmitReviewUser}
+          disabled={!(input.qualificacion && input.description)}
+        >
+          Agregar reseña a vendedor
         </button>
       </form>
         </div>
     )
 }
-
-{/* <h4 className="text-left pl-10 pb-3 pt-6 text-2xl">Inicia Sesión</h4>
-<hr className=" border-black mx-10"/> */}
