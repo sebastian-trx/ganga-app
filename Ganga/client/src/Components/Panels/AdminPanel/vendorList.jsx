@@ -8,17 +8,17 @@ import RevenueChart from "./aCharts/Revenue";
 import s from "./admin.module.css";
 import { deleteUser } from "../../Redux/Actions/actions";
 
-export default function VendorList({ vendors }) {
+export default function VendorList({ vendors, products}) {
   const dispatch = useDispatch();
-  
+ 
 
   const columns = [
     { field: "id", headerName: "ID", width: 140 },
     { field: "Nombre", headerName: "Nombre", width: 130 },
     { field: "Apellido", headerName: "Apellido", width: 160 },
     { field: "Correo", headerName: "Correo", width: 150 },
-    //{ field: "Productos", headerName: "Variedad de productos", type: "number", width: 150,},
-    //{ field: "Stock", headerName: "stock", type: "number", width: 150 },
+    { field: "Productos", headerName: "Variedad de productos", type: "number", width: 150,},
+    { field: "Stock", headerName: "stock", type: "number", width: 150 },
     {
       field: "action",
       headerName: "Acción",
@@ -46,6 +46,9 @@ export default function VendorList({ vendors }) {
   }
 
   const Rows = vendors?.map((u) => {
+   let Products = products.filter(p=> p.owner === u.id);
+   let productos = Products.map(p=> p.stock).reduce((a, b) => a + b, 0);
+
     return {
       id: u.id,
       Nombre: u.name,
@@ -53,6 +56,8 @@ export default function VendorList({ vendors }) {
       Correo: u.mail,
       Fecha: u.birthdate,
       Dirección: u.address,
+      Productos: Products.length,
+      Stock: productos
     };
   });
 

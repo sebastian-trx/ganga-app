@@ -1,3 +1,25 @@
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #acacac;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff5656;
+  border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(94, 94, 94, 0.911);
+  border-radius: 12px;
+}
+
 /* .App {
   text-align: center;
 }
@@ -36,24 +58,3 @@
     transform: rotate(360deg);
   }
 } */
-
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #acacac;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #ff5656;
-  border-radius: 12px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(94, 94, 94, 0.911);
-  border-radius: 12px;
-}

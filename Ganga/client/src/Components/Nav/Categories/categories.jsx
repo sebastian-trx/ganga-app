@@ -12,6 +12,8 @@ import Logo from "../Logo/logo";
 import User from '../User/user'
 import { VscDebugRestart } from "react-icons/vsc";
 
+// let PageSize = 10;
+
 export default function Categorias() {
 
   const dispatch = useDispatch();
@@ -22,8 +24,11 @@ export default function Categorias() {
   const userGoogle = useSelector((state) => state.getInfoGoogle);
   const allProduct = useSelector((state) => state.product);
   const [, setOrden] = useState("");
+
+  // - - - Paginado anterior - - - //
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [elementsPerPage, setElementsPerPage] = useState(12)
+const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
   const indexOfLastProducts = currentPage * elementsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
   const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);
@@ -31,6 +36,18 @@ export default function Categorias() {
   const paginate = (pageNumbers) => {
     setCurrentPage(pageNumbers)
   }
+
+  // - - - Paginado nuevo - - - //
+
+  // const [currentPage, setCurrentPage] = useState(1);
+
+  // const currentProducts = useMemo(() => {
+  //   const firstPageIndex = (currentPage - 1) * PageSize;
+  //   const lastPageIndex = firstPageIndex + PageSize;
+  //   return allProduct.slice(firstPageIndex, lastPageIndex);
+  // }, [currentPage]);
+
+  // - - - Paginado nuevo - - - //
 
   useEffect(() => {
     dispatch(getFilterByCategory(nombre))
@@ -49,7 +66,7 @@ export default function Categorias() {
     navigate("/catalogo")
     dispatch(getProduct())
   }
-  
+
   function handleSubCat(e) {
     e.preventDefault();
     dispatch(filterBySubCat(e.target.value))
@@ -151,6 +168,14 @@ export default function Categorias() {
           })
         )}
       </div>
+      {/* <div>
+        <Pagination
+          currentPage={currentPage}
+          totalCount={allProduct.length}
+          pageSize={PageSize}
+          onPageChange={page => setCurrentPage(page)}
+        />
+      </div> */}
       <div>
         <Pagination
           elementsPerPage={elementsPerPage}

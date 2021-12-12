@@ -2,25 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate, Link } from "react-router-dom";
+import Nav from "../../Nav/NavBar/nav";
 
 import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
 import s from './admin.module.css';
+import VendorProducts from "./vendorProducts";
 
 
 export default function UserInfo() {
     const dispatch = useDispatch();
-    const allUsers = useSelector((state) => state.allUsers)
+    const navigate = useNavigate();
+    const allUsers = useSelector((state) => state.allUsers);
+  
     // const userfil = useSelector((state) => state.getInfoGoogle)
     const { id } = useParams()
     const userfil = allUsers.filter((el) => el.id === id)
-
-
-    const navigate = useNavigate();
-
+   
     
 
-    console.log("user", userfil)
-
+    
     const name = userfil[0]?.name;
     const surname = userfil[0]?.surname;
     const mail = userfil[0]?.mail;
@@ -30,6 +30,7 @@ export default function UserInfo() {
     const country = userfil[0]?.country;
     const province = userfil[0]?.province;
     const cp = userfil[0]?.cp;
+    const seller = userfil[0]?.seller;
     const officialStore = userfil[0]?.officialStore;
     // const image = userfil[0]?.image;
 
@@ -44,16 +45,16 @@ export default function UserInfo() {
         country: country,
         province: province,
         cp: cp,
+        seller: seller,
         officialStore: officialStore
         // image: image,
     })
 
-    console.log(input)
 
     useEffect(() => {
         dispatch(updateUser(input))
         dispatch(getAllUsers())
-    }, [dispatch])
+    }, [dispatch, input])
 
     const handleChange = (e) => {
         setInput({
@@ -72,6 +73,7 @@ export default function UserInfo() {
 
     return (
         <div>
+            <Nav />
             <div className="p-5">
                 <Link to="/panel">
                     <button type="button">
@@ -188,11 +190,22 @@ export default function UserInfo() {
                         name="cp"
                         placeholder="Código postal"
                     />
-
+                </div>
+                <div className="p-4">
                     <div>
                         <label> Tienda Oficial </label>
                     </div>
-                    <select name="officialStore" onChange={handleChange}>
+                    <select className="text-center bg-gray-700 text-white" name="officialStore" onChange={handleChange}>
+                        <option selected="true" disabled="disabled" >Seleccionar </option>
+                        <option value="true" >true </option>
+                        <option value="false" >false </option>
+                    </select>
+                </div>
+                <div className="p-4">
+                    <div>
+                        <label> Hacer vendedor / Deshacer vendedor </label>
+                    </div>
+                    <select className="text-center bg-gray-700 text-white" name="seller" onChange={handleChange}>
                         <option selected="true" disabled="disabled" >Seleccionar </option>
                         <option value="true" >true </option>
                         <option value="false" >false </option>
@@ -204,7 +217,8 @@ export default function UserInfo() {
                     </button>
                 </div>
 
-            </form>
-        </div>
+            </form >
+            {!seller?  null : <VendorProducts id={id}/>}
+        </div >
     )
 }

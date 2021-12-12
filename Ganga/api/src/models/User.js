@@ -32,11 +32,6 @@ module.exports = (sequelize) => {
                 type: DataTypes.BIGINT,
             },
 
-            password: {
-                type: DataTypes.STRING,
-                // allowNull: false,
-            },
-
             address: {
                 type: DataTypes.STRING
             },
@@ -75,12 +70,12 @@ module.exports = (sequelize) => {
                 type: DataTypes.ARRAY(DataTypes.JSON),
                 defaultValue: [],
                 // allowNull: false,
-              },
-            
-              officialStore: {
+            },
+
+            officialStore: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false
-              }
+            }
 
         },
         { timestamps: true, paranoid: true }

@@ -33,7 +33,9 @@ import {
   POST_NEWSLETTER,
   DELETE_NEWSLETTER,
   ADD_REVIEW,
-  ALL_REVIEWS
+  ALL_REVIEWS,
+  APPROVE_PRODUCT,
+  PUT_PRODUCT,
 } from "../Actions/const";
 
 const initialState = {
@@ -46,6 +48,7 @@ const initialState = {
   detailProduct: [],
   subcategories: [],
   updateUser: [],
+  updateProduct: [],
   mp: [],
   mp2: [],
   orders: [],
@@ -55,6 +58,7 @@ const initialState = {
   clearCart: [],
   newReview: [],
   allReviews: [],
+  productApproved: [],
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -275,6 +279,11 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       ...state,
       newReview: payload
     }
+    case PUT_PRODUCT:
+      return {
+        ...state,
+        updateProduct: payload,
+      };
     
     case ALL_REVIEWS:
 
@@ -283,6 +292,11 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       allReviews: payload
     }
 
+    case APPROVE_PRODUCT:
+    return {
+      ...state,
+      productApproved: payload
+    }
     default: {
       return state;
     }

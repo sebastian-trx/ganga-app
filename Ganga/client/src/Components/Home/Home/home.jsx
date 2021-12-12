@@ -7,7 +7,7 @@ import BestSellingBrands from "../BestSellingBrands/bestSellingBrands";
 import FooterPage from "../Footer/footer";
 import ContactForm from "../ContactForm/contactForm";
 import CollagePhotos from "../CollageProducts/collagePhotos";
-// import Map from "../ContactForm/map";
+import MapView from "../ContactForm/Map/map";
 import s from "./home.module.css";
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
   }, [dispatch]);
 
   const navOpacity = () => {
-    if (window.scrollY >= 200) {
+    if (window.scrollY >= 100) {
       setNav(true);
     } else {
       setNav(false);
@@ -45,7 +45,9 @@ export default function Home() {
           <CollagePhotos />
         </div>
         <div>
-          {/* <Map /> */}
+          <MapView />
+        </div>
+        <div>
           <ContactForm />
         </div>
         <div>

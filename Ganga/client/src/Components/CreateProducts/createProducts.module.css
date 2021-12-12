@@ -16,15 +16,13 @@
     border-radius: 10px;
     border: 2px solid rgba(230, 230, 230, 0.575);
     display: grid;
-grid-template-columns: 1fr;
-grid-template-rows: repeat(2, 1fr);
-grid-column-gap: 0px;
-grid-row-gap: 0px;
-
-
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
+
 .grid1{
-  
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;

@@ -69,9 +69,9 @@ export default function Nav() {
       expanded={expand}
       fixed="top"
       expand="md"
-      className={navColour ? j.nav : j.sticky}
+      className={navColour ? j.navbar : j.sticky}
     >
-      <div /*className={j.navbar}*/>
+      <div className={j.navbar}>
         <nav className={j.NavContainer}>
           <Link to="/" className="pl-10">
             <div className={j.logo}>
@@ -99,7 +99,7 @@ export default function Nav() {
               <span onClick={handleCatalag}>Catalogo</span>
             </Link>
 
-            <Link to="/" className="px-6">
+            <Link to="/nosotros" className="px-6">
               <span>Nosotros</span>
             </Link>
 

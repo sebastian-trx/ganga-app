@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Review } from '../../Reviews/Review.jsx'
-
+// import { Link } from "react-router-dom";
+import { Review } from "../../Reviews/Review.jsx";
 
 export default function PurchaseList({ orders }) {
   for (var i = 0; i < orders.length; i++) {
@@ -19,7 +18,7 @@ export default function PurchaseList({ orders }) {
   return (
     <div>
       <div class="flex justify-center my-6">
-        <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
+        <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-11/12 lg:w-11/12">
           <div class="flex-1">
             {products?.length !== 0 ? (
               <table class="w-full text-sm lg:text-base" cellspacing="0">
@@ -27,17 +26,17 @@ export default function PurchaseList({ orders }) {
                   <tr class="h-12 uppercase">
                     <th class="hidden md:table-cell"></th>
                     <th class="text-left">Producto</th>
-                    <th class="hidden text-left md:table-cell">Fecha</th>
+                    {/* <th class="hidden text-left md:table-cell">Fecha</th> */}
                     <th class="lg:text-right text-left pl-5 lg:pl-0">
                       <span class="lg:hidden" title="Quantity">
                         Cant
                       </span>
-                      <span class="hidden lg:inline">Cantidad</span>
+                      <span class="hidden lg:inline">Cant</span>
                     </th>
                     <th class="text-right">Precio</th>
-
                     <th class="text-right">Total</th>
                   </tr>
+                  <th class="text-right"></th>
                 </thead>
                 <tbody>
                   {products?.length !== 0 ? (
@@ -52,26 +51,29 @@ export default function PurchaseList({ orders }) {
                         </td>
                         <td>
                           <p class="mb-2 md:ml-4">{el.name}</p>
+                          <p class="mb-2 md:ml-4">Fecha: {el.date}</p>
+                          <p class="mb-2 md:ml-4">Vendedor: </p>
                         </td>
-                        <td class="hidden md:table-cell">
-                          <p class="mb-2">{el.date}</p>
-                        </td>
-                        <td class="text-right">
+                        {/* <td class="hidden md:table-cell">
+                        </td> */}
+                        <td class="text-center">
                           <span class="text-sm lg:text-base font-medium">
                             {el.quantity}
                           </span>
                         </td>
                         <td class="text-right">
                           <span class="text-sm lg:text-base font-medium">
-                            $ {el.price}
+                            ${el.price}
                           </span>
                         </td>
                         <td class="text-right">
                           <span class="text-sm lg:text-base font-medium">
-                            $ {el.price * el.quantity}
+                            ${el.price * el.quantity}
                           </span>
                         </td>
-                        <Review idUser={el.userId} idProduct={el.id} />
+                        <td class="text-right">
+                          <Review idUser={el.userId} idProduct={el.id} />
+                        </td>
                       </tr>
                     ))
                   ) : (

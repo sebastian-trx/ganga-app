@@ -39,7 +39,9 @@ import {
   POST_NEWSLETTER,
   DELETE_NEWSLETTER,
   ADD_REVIEW,
-  ALL_REVIEWS
+  ALL_REVIEWS,
+  APPROVE_PRODUCT,
+  PUT_PRODUCT,
 } from "./const";
 
 export function getProduct() {
@@ -510,6 +512,19 @@ export function addReview(payload) {
   }
 }
 
+export function updateProduct(payload){
+  console.log(payload, "lkbldnflinwfdre")
+return async function (dispatch) {
+  await axios.put( URL + "product/" , payload)
+  .then((response) => {
+    dispatch({
+      type:PUT_PRODUCT,
+      payload: response.data
+    })
+  })
+  .catch((error) => console.log(error));
+}
+
 export function allReviews() {
   return async function(dispatch) {
     const response = await axios.get(`${URL}review`)
@@ -517,6 +532,18 @@ export function allReviews() {
     console.log('soy el response de allReviews: ', response)
     dispatch({
       type: ALL_REVIEWS,
+      payload: response.data
+    })
+  }
+}
+
+export function approveProduct(payload) {
+  console.log('soy el payload de approveProduct: ', payload)
+  return async function(dispatch) {
+    const response = await axios.put(`${URL}product/aprobar?id=${payload}`)
+    console.log('soy el response de approveProduct: ', response)
+    dispatch({
+      type: APPROVE_PRODUCT,
       payload: response.data
     })
   }
