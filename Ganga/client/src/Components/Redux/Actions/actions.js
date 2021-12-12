@@ -39,6 +39,7 @@ import {
   POST_NEWSLETTER,
   DELETE_NEWSLETTER,
   ADD_REVIEW,
+  PUT_PRODUCT,
   ALL_REVIEWS
 } from "./const";
 
@@ -508,6 +509,19 @@ export function addReview(payload) {
       payload: response.data,
     })
   }
+}
+
+export function updateProduct(payload){
+  console.log(payload, "lkbldnflinwfdre")
+return async function (dispatch) {
+  await axios.put( URL + "product/" , payload)
+  .then((response) => {
+    dispatch({
+      type:PUT_PRODUCT,
+      payload: response.data
+    })
+  })
+  .catch((error) => console.log(error));
 }
 
 export function allReviews() {
