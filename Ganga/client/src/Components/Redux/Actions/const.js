@@ -37,3 +37,5 @@ export const POST_NEWSLETTER= "POST_NEWSLETTER";
 export const DELETE_NEWSLETTER= "POST_NEWSLETTER";
 export const ADD_REVIEW = "ADD_REVIEW";
 export const PUT_PRODUCT = "PUT_PRODUCT";
+export const ALL_REVIEWS = "ALL_REVIEWS";
+

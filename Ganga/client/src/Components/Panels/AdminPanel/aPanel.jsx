@@ -17,6 +17,7 @@ import {
 } from "../../Redux/Actions/actions";
 import s from "./admin.module.css";
 import OrderList from "./orderList";
+import NewProducts from "./NewInfo/newProducts";
 
 export default function AdminPanel() {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ export default function AdminPanel() {
   const [productos, verProductos] = useState(false);
   const [vendedores, verVendedores] = useState(false);
   const [ordenes, verOrdenes] = useState(false);
+
+
 
   useEffect(() => {
     dispatch(getProduct());
@@ -77,13 +80,15 @@ export default function AdminPanel() {
                         <AdminWidgets
                           sales={sales}
                           products={productsSold}
+                          users={allUsers.length}
                           today={today}
                         />
                         <ActiveUsers />
                         <div className={s.newInfo}>
-                          <BrandNewUsers />
-                          <NewSales today={today} orders={orders} users={allUsers} />
+                          <BrandNewUsers today={today} users={allUsers} />
+                          <NewSales today={today} orders={orders} users={allUsers}  ordenes={ordenes} verOrdenes={verOrdenes}/>
                         </div>
+                          <NewProducts products={products}/>
                       </div>
                     </div>
                   ) : (
@@ -135,7 +140,7 @@ export default function AdminPanel() {
                 verOrdenes={verOrdenes}
               />
               <div className={s.body}>
-                <VendorList vendors={vendors} />
+                <VendorList vendors={vendors} products={products} />
               </div>
             </div>
           )}

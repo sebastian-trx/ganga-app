@@ -1,34 +1,35 @@
 import React from "react";
-import s from "../admin.module.css";
-import { GrView } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
-export default function BrandNewUsers() {
+import s from "../admin.module.css";
+
+
+export default function BrandNewUsers({today, users}) {
+
+  let newUsers = users.filter(u => u.createdAt.slice(8, 10) === today);
   return (
     <div className={s.newUsersContainer}>
       <div className="py-5 text-center">
-        <span className="text-2xl ">Usuarios nuevos</span>
+        <span className="text-2xl -ml-8">Usuarios nuevos</span>
       </div>
       <ul>
+      {
+        newUsers.map(u=> {
+          return (
+
         <li className={s.newUser}>
-          <div className="pl-10 flex flex-col text-center">
-            <span className="pt-5 text-base">Juan Ortega</span>
-            <span className="pt-1 text-base">jOrt@gmail.com</span>
+        <Link to={"/user/" + u.id}>
+          <div className=" text-center">
+            <div className="pt-5 text-base">{u.name + " " + u.surname}</div>
+            <div className="pt-1 text-base">{u.mail}</div>
+            <div className="pt-1 text-base">{u.address}</div>
+            <div className="pt-1 text-base">{u.seller? "Vendedor" : "Usuario"}</div>
           </div>
-          <button className="mr-16 mt-4 border-2 px-2 bg-white py-1 rounded-md">
-            {" "}
-            <GrView />{" "}
-          </button>
+          </Link>
         </li>
-        <li className={s.newUser}>
-          <div className="pl-5 flex flex-col text-center">
-            <span className="pt-5 text-base">Marcos Monzon</span>
-            <span className="pt-1 text-base">MyM@gmail.com</span>
-          </div>
-          <button className="mr-16 mt-4 border-2 px-2 bg-white py-1 rounded-md">
-            {" "}
-            <GrView />{" "}
-          </button>
-        </li>
+          )
+        })
+      }
       </ul>
     </div>
   );

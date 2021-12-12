@@ -39,7 +39,8 @@ import {
   POST_NEWSLETTER,
   DELETE_NEWSLETTER,
   ADD_REVIEW,
-  PUT_PRODUCT
+  PUT_PRODUCT,
+  ALL_REVIEWS
 } from "./const";
 
 export function getProduct() {
@@ -500,7 +501,7 @@ export const deleteNewsletter = (payload) => {
 
 export function addReview(payload) {
   console.log('soy el payload de addReview: ', payload)
-  return async function (dispatch) {
+  return async function(dispatch) {
     const response = await axios.post(`${URL}review`, payload)
     console.log('soy el response de addReview: ', response)
     dispatch({
@@ -522,6 +523,17 @@ return async function (dispatch) {
   })
   .catch((error) => console.log(error));
 }
+
+export function allReviews() {
+  return async function(dispatch) {
+    const response = await axios.get(`${URL}review`)
+    // const response = await axios.get(`${URL}product/info?id=${payload}`, payload)
+    console.log('soy el response de allReviews: ', response)
+    dispatch({
+      type: ALL_REVIEWS,
+      payload: response.data
+    })
+  }
 }
 
 // export function getAllUsers() {
