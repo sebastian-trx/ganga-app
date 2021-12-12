@@ -1,5 +1,15 @@
+.bc:hover {
+  /* box-shadow: 0px 5px 10px #00000030;
+  cursor: pointer;
+  border: none; */
+  cursor: pointer;
+  transform: translateY(-10px);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2)
+}
+
 .bgImagen {
-  background-image: url("vectorcontacto2.jpg");
+  /* background-image: url("vectorcontacto2.jpg"); */
+  background-color: #fff;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -8,21 +18,18 @@
 }
 
 .bc {
-  background-color: white;
+  /* background-color: white; */
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
   text-align: center;
   border-radius: 10px;
   width: 400px;
-  margin-top: 100px;
+  margin-top: -420px;
+  transition: 0.5s all;
 }
 
-.bc:hover {
-  box-shadow: 0px 5px 10px #00000030;
-  cursor: pointer;
-  border: none;
-}
 
 .container {
   display: flex;
@@ -31,6 +38,13 @@
   padding-left: 850px;
   flex-direction: column;
   transition: all 0.25s ease;
+}
+
+.animate {
+  display: flex;
+  position: relative;
+  right: 750px;
+  top: 100px;
 }
 
 .title {
