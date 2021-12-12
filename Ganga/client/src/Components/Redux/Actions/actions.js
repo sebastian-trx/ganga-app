@@ -511,9 +511,9 @@ export function addReview(payload) {
 }
 
 export function updateProduct(payload){
-  console.log(payload, "lkbldnflinwfdre")
+  console.log(payload, "Soy el input de la actions")
 return async function (dispatch) {
-  await axios.put( URL + "product/" , payload)
+  await axios.put( URL + "product" , payload)
   .then((response) => {
     dispatch({
       type:PUT_PRODUCT,

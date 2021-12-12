@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getDetailsProduct, getCategories, getSubcategory, updateProduct } from '../Redux/Actions/actions'
 import s from './modifyProduct.module.css'
 import Boton from '../Nav/boton'
@@ -17,11 +17,11 @@ export default function ModifyProduct() {
     const categories = useSelector((state) => state.categories)
     const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
     const subcategories = useSelector((state) => state.subcategories)
-    
-// function getInfo(){
-//     async
-//         if(info.length === 0) await dispatch(getDetailsProduct(id))
-//     }
+
+    // function getInfo(){
+    //     async
+    //         if(info.length === 0) await dispatch(getDetailsProduct(id))
+    //     }
 
     useEffect(() => {
         dispatch(getDetailsProduct(id));
@@ -55,6 +55,13 @@ export default function ModifyProduct() {
         e.preventDefault();
         dispatch(getSubcategory(e.target.value))
     }
+
+    function handleSelect2(e) {
+        setInput({
+            ...input,
+            subcategories: [e.target.value]
+        })
+    }
     const uploadImage = async (e) => {
         const files = e.target.files;
         const data = new FormData();
@@ -76,21 +83,21 @@ export default function ModifyProduct() {
 
     const [errors, setErrors] = useState({});
     function validate(input) {
-      let errors = {};
-      if (!input.name) {
-        errors.name = "Debe poner el nombre de su producto.";
-      } else if (!input.price) {
-        errors.price = "Debe poner el Precio de su Producto.";
-      } else if (!input.description) {
-        errors.description = "Debe tener una descripción";
-      } else if (!input.stock) {
-        errors.stock = "Debe igresar la cantidad de stock.";
-      } else if (input.brand === "") {
-        errors.brand = "Debe colocar la marca del producto";
-      }else if (input.status === "") {
-        errors.status = "Debe seleccionar la condicion del Producto";
-      }
-      return errors;
+        let errors = {};
+        if (!input.name) {
+            errors.name = "Debe poner el nombre de su producto.";
+        } else if (!input.price) {
+            errors.price = "Debe poner el Precio de su Producto.";
+        } else if (!input.description) {
+            errors.description = "Debe tener una descripción";
+        } else if (!input.stock) {
+            errors.stock = "Debe igresar la cantidad de stock.";
+        } else if (input.brand === "") {
+            errors.brand = "Debe colocar la marca del producto";
+        } else if (input.status === "") {
+            errors.status = "Debe seleccionar la condicion del Producto";
+        }
+        return errors;
     }
     function handleChange(e) {
         setInput({
@@ -98,7 +105,7 @@ export default function ModifyProduct() {
             [e.target.name]: e.target.value
         })
     }
-    const submit = (e) => {
+    function submit(e) {
         e.preventDefault();
         console.log(input, "SOY INPUT DEL SUBMIT")
         dispatch(updateProduct(input));
@@ -108,10 +115,10 @@ export default function ModifyProduct() {
     return (
         <div >
             <div className={s.body}>
-            <Boton
-                parametro={"/panel"}
-                icono={<BsFillArrowLeftSquareFill />}
-            />
+                <Boton
+                    parametro={"/panel"}
+                    icono={<BsFillArrowLeftSquareFill />}
+                />
                 <form onSubmit={submit} className={s.form} >
                     <div>
                         <h1 className="text-center bg-gray-700 text-white text-5xl" >Modifica tu Producto</h1>
@@ -126,11 +133,11 @@ export default function ModifyProduct() {
                                         value={input.name}
                                         className="text-center bg-gray-700 text-white"
                                         onChange={handleChange}
-                                        type='text' 
+                                        type='text'
                                         name="name"
                                         placeholder="Nombre del Producto"
-                                         />
-                                        {errors.name ? <p>{errors.name}</p> : null}
+                                    />
+                                    {errors.name ? <p>{errors.name}</p> : null}
                                 </div>
                             </div>
                             <div className={s.price}>
@@ -144,7 +151,7 @@ export default function ModifyProduct() {
                                         name="price"
                                         autoComplete="off"
                                         required />
-                                        {errors.price ? <p>{errors.price}</p> : null}
+                                    {errors.price ? <p>{errors.price}</p> : null}
                                 </div>
                             </div>
 
@@ -163,12 +170,12 @@ export default function ModifyProduct() {
 
                             {(input.status === "true") ?
                                 (<div className={s.stock}>  <label> <span> Stock: </span></label>
-                                    <input 
-                                    className="text-center bg-gray-700 text-white" 
-                                    type="number" 
-                                    name="stock" 
-                                    onChange={handleChange}
-                                    autoComplete="off" />
+                                    <input
+                                        className="text-center bg-gray-700 text-white"
+                                        type="number"
+                                        name="stock"
+                                        onChange={handleChange}
+                                        autoComplete="off" />
                                 </div>) : <p></p>
                             }
                             {errors.stock ? <p>{errors.stock}</p> : null}
@@ -186,10 +193,10 @@ export default function ModifyProduct() {
                                                 name="brand"
                                                 onChange={handleChange}
                                                 value={input.brand}
-                                                autoComplete="off" required />
+                                                autoComplete="off" />
                                             {errors.brand && (
-                                         <p >{errors.brand}</p>
-                                                    )}
+                                                <p >{errors.brand}</p>
+                                            )}
                                         </div>
                                     </div>
 
@@ -202,10 +209,10 @@ export default function ModifyProduct() {
                                                 type='text'
                                                 onChange={handleChange}
                                                 name="description"
-                                                autoComplete="off" required />
+                                                autoComplete="off" />
                                             {errors.description && (
-                            <p >{errors.description}</p>
-                        )}
+                                                <p >{errors.description}</p>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +239,7 @@ export default function ModifyProduct() {
                                             (
                                                 <div>
                                                     <label > SubCategoria: </label>
-                                                    <select className="text-center bg-gray-700 text-white" name="subcategories"  >
+                                                    <select className="text-center bg-gray-700 text-white" name="subcategories" onChange={handleSelect2} >
                                                         {(
                                                             subcategories[0]?.subcategories.map((p, i) => (
                                                                 <option key={i} value={p}>{p}</option>
@@ -261,7 +268,6 @@ export default function ModifyProduct() {
                                         onChange={uploadImage}
                                         type="file"
                                         name="image"
-                                        required="required"
                                         accept="image/png,image/jpeg"
                                     />
                                     {errors.image ? <p>{errors.image}</p> : null}
@@ -269,14 +275,14 @@ export default function ModifyProduct() {
                                 <div className={s.imgName}>{(input.image = image)}</div>
                                 <label>
                                     {loading ? (
-                            <img className={s.imagenSubida} src={image} alt="No hay imagen" />
-                        ) : (
-                         <p>Aun no has subido una imagen</p>
-                                 )}
+                                        <img className={s.imagenSubida} src={image} alt="No hay imagen" />
+                                    ) : (
+                                        <p>Aun no has subido una imagen</p>
+                                    )}
                                 </label>
-                            <div className={s.btn}>
-                                <button  className={s.crear} type='submit'>Modificar Producto</button>
-                            </div>
+                                <div className={s.btn}>
+                                    <button className={s.crear} type='submit'>Modificar Producto</button>
+                                </div>
                             </div>
                         </div>
                         <div className={s.grid6}>

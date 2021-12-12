@@ -137,7 +137,7 @@ export default function CreateProducts() {
             subcategories: " ",
         })
         alert("Producto Subido con exito, Esperando aprobacion del Administrador")
-        navigate("/");
+        navigate("/panel");
     }
 
 
@@ -228,7 +228,7 @@ export default function CreateProducts() {
                                 </select >
                             </div>
 
-                            <div className="text-center bg-gray-700 text-white">
+                            <div>
                                 {
                                     (input.idCategory === " ") ?
                                         (<h1>Debes Seleccionar una Categoria</h1>) :
