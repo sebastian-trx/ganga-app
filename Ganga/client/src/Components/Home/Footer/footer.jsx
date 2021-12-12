@@ -1,6 +1,6 @@
 import React from "react";
 import j from "./footer.module.css";
-import Newsletter from "../NewsLetter/newsletter.jsx";
+import Newsletter from "../Newsletter/newsletter";
 
 export default function FooterPage() {
   return (
