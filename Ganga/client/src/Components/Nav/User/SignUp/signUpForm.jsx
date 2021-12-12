@@ -82,50 +82,78 @@ export default function SignUpForm() {
     <div>
       <form onSubmit={handleSubmit}>
         <h2 className="text-left pl-20 pb-3 pt-5 text-2xl">Registrate</h2>
-        <hr className="border-black mr-10 ml-20 " />
+        <hr className="border-black mx-8 mb-4" />
 
-        <div className="pt-5">
+        <div className="flex items-center content-center justify-center">
+        {/* <div> */}
           <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
+            className="w-60 border-gray-400 border-2 rounded pl-2"
             name="name"
             type="text"
-            placeholder="nombre"
+            placeholder="Nombre"
             value={input.name}
             onChange={handleChange}
           ></input>
           {errors.name && <p>{errors.name}</p>}
-        </div>
-
-        <div className="pt-5">
+        {/* </div> */}
+        {/* <div> */}
           <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
+            className="w-60 border-gray-400 border-2 rounded pl-2"
             name="surname"
             type="text"
-            placeholder="apellido"
+            placeholder="Apellido"
             value={input.surname}
             onChange={handleChange}
-          ></input>
+            ></input>
           {errors.surname && <p>{errors.surname}</p>}
+        {/* </div> */}
+            </div>
+
+            <div className="flex items-center content-center justify-center pt-5">
+            <div>
+          <input
+            className="w-40 border-gray-400 border-2 rounded pl-2"
+            name="cellphone"
+            type="number"
+            placeholder="Número de celular"
+            value={input.cellphone}
+            onChange={handleChange}
+          ></input>
+          {errors.cellphone && <p>{errors.cellphone}</p>}
         </div>
+        <div>
+          <input
+            className="w-40 border-gray-400 border-2 rounded pl-2"
+            name="birthdate"
+            type="date"
+            placeholder="fecha de nacimiento"
+            value={input.birthdate}
+            onChange={handleChange}
+          ></input>
+          {errors.birthdate && <p>{errors.birthdate}</p>}
+        </div>
+            </div>
 
         <div className="pt-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="mail"
             type="email"
-            placeholder="correo electrónico"
+            placeholder="Correo electrónico"
             value={input.mail}
             onChange={handleChange}
           ></input>
           {errors.mail && <p>{errors.mail}</p>}
         </div>
 
+        <div className="flex items-center content-center justify-center">
+
         <div className="pt-5">
           <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
+            className="w-60 border-gray-400 border-2 rounded pl-2"
             name="password"
             type="password"
-            placeholder="contraseña"
+            placeholder="Contraseña"
             value={input.password}
             onChange={handleChange}
           ></input>
@@ -134,67 +162,45 @@ export default function SignUpForm() {
 
         <div className="pt-5">
           <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
+            className="w-60 border-gray-400 border-2 rounded pl-2"
             name="rPassword"
             type="password"
-            placeholder="repetir contraseña"
+            placeholder="Repetir contraseña"
             value={input.rPassword}
             onChange={handleChange}
-          ></input>
+            ></input>
           {errors.rPassword && <p>{errors.rPassword}</p>}
         </div>
+            </div>
 
-        <div className="pt-5">
+            <div className="flex items-center content-center justify-center pt-5">
+              
+            <div>
           <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
-            name="cellphone"
-            type="number"
-            placeholder="número de celular"
-            value={input.cellphone}
-            onChange={handleChange}
-          ></input>
-          {errors.cellphone && <p>{errors.cellphone}</p>}
-        </div>
-
-        <div className="pt-5">
-          <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
-            name="address"
-            type="text"
-            placeholder="dirección"
-            value={input.address}
-            onChange={handleChange}
-          ></input>
-          {errors.address && <p>{errors.address}</p>}
-        </div>
-
-        <div className="pt-5">
-          <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
+            className="w-60 border-gray-400 border-2 rounded pl-2"
             name="country"
             type="text"
-            placeholder="país"
+            placeholder="País"
             value={input.country}
             onChange={handleChange}
           ></input>
           {errors.country && <p>{errors.country}</p>}
         </div>
 
-        <div className="pt-5">
+        <div>
           <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
+            className="w-60 border-gray-400 border-2 rounded pl-2"
             name="province"
             type="text"
-            placeholder="provincia"
+            placeholder="Departamento"
             value={input.province}
             onChange={handleChange}
           ></input>
           {errors.province && <p>{errors.province}</p>}
         </div>
-
-        <div className="pt-5">
+        <div>
           <input
-            className="w-96 border-gray-400 border-2 rounded pl-2"
+            className="w-40 border-gray-400 border-2 rounded pl-2"
             name="cp"
             type="text"
             placeholder="código postal"
@@ -203,17 +209,18 @@ export default function SignUpForm() {
           ></input>
           {errors.cp && <p>{errors.cp}</p>}
         </div>
+            </div>
 
         <div className="py-5">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
-            name="birthdate"
-            type="date"
-            placeholder="fecha de nacimiento"
-            value={input.birthdate}
+            name="address"
+            type="text"
+            placeholder="Dirección"
+            value={input.address}
             onChange={handleChange}
           ></input>
-          {errors.birthdate && <p>{errors.birthdate}</p>}
+          {errors.address && <p>{errors.address}</p>}
         </div>
 
         <button

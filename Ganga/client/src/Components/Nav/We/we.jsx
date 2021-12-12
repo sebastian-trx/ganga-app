@@ -89,12 +89,15 @@ function Nosotros() {
       <div className="containerProducModal">
         <div className="prodModal1">
           <img src={prodModal1} alt="" />
+          <h1 className="ord">tú ordenas</h1>
         </div>
         <div className="prodModal2">
           <img src={prodModal2} alt="" />
+          <h1 className="org">nosotros organizamos</h1>
         </div>
         <div className="prodModal3">
           <img src={prodModal3} alt="" />
+          <h1 className="man">lo recibes en tus manos</h1>
         </div>
       </div>
     </div>

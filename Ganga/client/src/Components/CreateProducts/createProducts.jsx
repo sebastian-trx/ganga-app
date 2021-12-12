@@ -51,7 +51,7 @@ export default function CreateProducts() {
 
     const [input, setInput] = useState({
         name: " ",
-        mark: " ",
+        brand: " ",
         description: " ",
         price: " ",
         status: " ",
@@ -126,7 +126,7 @@ export default function CreateProducts() {
         dispatch(postProducts(input))
         setInput({
             name: " ",
-            mark: " ",
+            brand: " ",
             description: " ",
             price: " ",
             status: " ",
@@ -193,7 +193,7 @@ export default function CreateProducts() {
                                 <div className={s.marca}>
                                     <label><span >Marca: </span ></label>
                                     <div>
-                                        <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="mark" autoComplete="off" required />
+                                        <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="brand" autoComplete="off" required />
                                         {error.mark && (
                                             <p >{error.mark}</p>
                                         )}
