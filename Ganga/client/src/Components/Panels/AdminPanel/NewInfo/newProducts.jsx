@@ -1,10 +1,14 @@
-import React from 'react';
-// import { Link } from "react-router-dom";
-import Card from '../../../Card/card';
+import React  from 'react';
+import NewProductsCard from './newProductsCard';
+
 
 export default function NewProducts({products}) {
+
     let newProducts = products.filter(p=> p.approved === false);
-    console.log("np", newProducts);
+    
+    
+
+    
     return (
         <div>
         <h1> Productos a revisar:</h1>
@@ -12,8 +16,9 @@ export default function NewProducts({products}) {
                 newProducts.map(p => {
                     return (
                         <div className='inline-block'>
-                        <Card
+                        <NewProductsCard products={newProducts} 
                         name= {p.name} image={p.image} id={p.id} price={p.price}
+                        descripcion={p.description} 
                         />
                      </div>
                         
