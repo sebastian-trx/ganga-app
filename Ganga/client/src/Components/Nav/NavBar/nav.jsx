@@ -99,7 +99,7 @@ export default function Nav() {
               <span onClick={handleCatalag}>Catalogo</span>
             </Link>
 
-            <Link to="/" className="px-6">
+            <Link to="/nosotros" className="px-6">
               <span>Nosotros</span>
             </Link>
 

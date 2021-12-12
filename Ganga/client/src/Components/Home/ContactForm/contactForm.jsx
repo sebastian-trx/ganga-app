@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { userMessage } from "../../Redux/Actions/actions";
 import styles from "./contactForm.module.css";
-import animate from "../../Resources/contactForm.gif"
+import animate from "../../Resources/contactForm.gif";
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -78,7 +78,7 @@ export default function ContactForm() {
     <div className={styles.bgImagen}>
       <div className={styles.container}>
         <div className={styles.animate}>
-          <img src={animate} alt=""/>
+          <img src={animate} alt="" />
         </div>
         <div className={styles.bc}>
           <h1 className={styles.title}>PONTE EN CONTACTO</h1>
