@@ -45,7 +45,7 @@ export default function OrderList({ orders, users }) {
       Vendedor: Seller,
       Producto: s.name,
       Cantidad: s.quantity,
-      Total: s.total,
+      Total:"$ " + s.total,
       Fecha: s.date,
       id: s.id,
     };
