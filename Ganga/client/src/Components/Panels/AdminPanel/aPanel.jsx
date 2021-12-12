@@ -17,6 +17,7 @@ import {
 } from "../../Redux/Actions/actions";
 import s from "./admin.module.css";
 import OrderList from "./orderList";
+import NewProducts from "./NewInfo/newProducts";
 
 export default function AdminPanel() {
   const dispatch = useDispatch();
@@ -85,8 +86,9 @@ export default function AdminPanel() {
                         <ActiveUsers />
                         <div className={s.newInfo}>
                           <BrandNewUsers today={today} users={allUsers} />
-                          <NewSales today={today} orders={orders} users={allUsers} />
+                          <NewSales today={today} orders={orders} users={allUsers}  ordenes={ordenes} verOrdenes={verOrdenes}/>
                         </div>
+                          <NewProducts products={products}/>
                       </div>
                     </div>
                   ) : (
