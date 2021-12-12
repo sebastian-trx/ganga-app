@@ -48,8 +48,8 @@ const MapView = (props) => {
       <div  className="tittle">
         <h1>CENTROS DE DISTRIBUCIÓN</h1>
       </div>
-      <div>
-      <MapContainer center={state.currentLocation} zoom={state.zoom}>
+      <div class="z-10">
+      <MapContainer class="z-10" center={state.currentLocation} zoom={state.zoom}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

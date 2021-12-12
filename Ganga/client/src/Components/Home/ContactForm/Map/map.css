@@ -1,6 +1,8 @@
 .bgUbi {
   background-color: #fff;
   margin-top: -50px;
+  z-index: 10px;
+
 }
 
 .leaflet-container {
@@ -11,9 +13,11 @@
   left: 10vw;
   border-radius: 15px;
   top: -15px;
+  z-index: 10px;
 }
 
 .tittle {
+  z-index: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
