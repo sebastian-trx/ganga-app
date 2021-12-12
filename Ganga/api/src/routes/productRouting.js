@@ -7,7 +7,8 @@ const {
     allProducts,
     productInfo,
     updateProduct,
-    updateProduct2
+    updateProduct2,
+    approveProduct
  } = require("../controllers/productController.js");
 
 router.post("/", postProduct);
@@ -17,6 +18,7 @@ router.get("/", allProducts);
 router.get("/info", productInfo);
 router.post("/update", updateProduct);
 router.post("/update2", updateProduct2);
+router.put('/aprobar', approveProduct)
 
 
 module.exports = router;

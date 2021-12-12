@@ -39,8 +39,9 @@ import {
   POST_NEWSLETTER,
   DELETE_NEWSLETTER,
   ADD_REVIEW,
+  ALL_REVIEWS,
+  APPROVE_PRODUCT,
   PUT_PRODUCT,
-  ALL_REVIEWS
 } from "./const";
 
 export function getProduct() {
@@ -531,6 +532,18 @@ export function allReviews() {
     console.log('soy el response de allReviews: ', response)
     dispatch({
       type: ALL_REVIEWS,
+      payload: response.data
+    })
+  }
+}
+
+export function approveProduct(payload) {
+  console.log('soy el payload de approveProduct: ', payload)
+  return async function(dispatch) {
+    const response = await axios.put(`${URL}product/aprobar?id=${payload}`)
+    console.log('soy el response de approveProduct: ', response)
+    dispatch({
+      type: APPROVE_PRODUCT,
       payload: response.data
     })
   }

@@ -201,6 +201,21 @@ const updateProduct2 = async (req, res) => {
   }
 };
 
+const approveProduct = async(req, res) => {
+  const { id } = req.query;
+
+  try{
+    const productDb = await Product.findByPk(id);
+
+    productDb ? await productDb.update({ approved: true}) : console.log('No se ha podido actualizar la propiedad')
+
+    res.send(productDb)
+  }
+  catch(error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   postProduct,
   putProduct,
@@ -209,4 +224,5 @@ module.exports = {
   productInfo,
   updateProduct,
   updateProduct2,
+  approveProduct
 };

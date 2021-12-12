@@ -20,7 +20,7 @@ export default function Home() {
   }, [dispatch]);
 
   const navOpacity = () => {
-    if (window.scrollY >= 200) {
+    if (window.scrollY >= 100) {
       setNav(true);
     } else {
       setNav(false);

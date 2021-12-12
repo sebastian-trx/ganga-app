@@ -20,9 +20,11 @@ export default function Login() {
       dispatch(getUserInfoGoogle());
     }, [dispatch]);
   
-    console.log(getInfoGoogle.login);
+    //console.log(getInfoGoogle.login);
   
-    if (getInfoGoogle.login === true) {
+    if(getInfoGoogle.login === true && getInfoGoogle.address === null){
+      navigate("/panel")
+    }else if (getInfoGoogle.login === true) {
       // history.push("/home ")
       navigate("/");
     }
