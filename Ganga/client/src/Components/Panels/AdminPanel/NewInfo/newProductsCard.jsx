@@ -37,8 +37,8 @@ export default function NewProductsCard({ image, price, name, id, descripcion, p
         </div>
         </Link>
         <div className={s.div2} >
-            <button className="border-2 border-black m-2 hover:border-gray-500 hover:bg-gray-900 hover:text-white" onClick={handleSubmit}>
-            <span className="text-base p-2 ">  aprobar</span>
+            <button className="border-2 border-black rounded m-2 hover:border-gray-500 hover:bg-gray-900 hover:text-white" onClick={handleSubmit}>
+            <span className="text-base p-2 ">  APROBAR </span>
             </button>
         </div>
      
