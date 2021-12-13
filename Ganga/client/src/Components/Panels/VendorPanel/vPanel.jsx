@@ -36,7 +36,7 @@ export default function VendorPanel({ user }) {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  console.log("orders", orders);
+
 
   return (
     <div className="bg-gray-100">
