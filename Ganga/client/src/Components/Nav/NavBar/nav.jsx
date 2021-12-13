@@ -7,7 +7,6 @@ import { ImSearch } from "react-icons/im";
 import { getUserInfoGoogle, getCategories, getProduct, productsByName} from "../../Redux/Actions/actions";
 
 import Logo from "../Logo/logo";
-import User from "../User/user";
 import j from "./nav.module.css";
 
 export default function Nav() {
@@ -57,7 +56,7 @@ export default function Nav() {
     navigate("/catalogo");
     dispatch(productsByName(name))
   }
- function handleCatalag(e){
+ function handleCatalago(e){
    e.preventDefault()
    navigate("/catalogo");
    dispatch(getProduct())
@@ -96,10 +95,10 @@ export default function Nav() {
             </span>
 
             <Link to="/catalogo" className="px-6">
-              <span onClick={handleCatalag}>Catalogo</span>
+              <span onClick={handleCatalago}>Catalogo</span>
             </Link>
 
-            <Link to="/" className="px-6">
+            <Link to="/nosotros" className="px-6">
               <span>Nosotros</span>
             </Link>
 
@@ -125,7 +124,7 @@ export default function Nav() {
               </button>
             </Link>
             {userGoogle && userGoogle.login ? (
-              <User />
+             null
             ) : (
               <>
                 <Link to="/registrarme" className="pl-4">

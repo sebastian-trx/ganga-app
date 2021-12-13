@@ -6,17 +6,21 @@ import Nav from "../../Nav/NavBar/nav";
 
 import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
 import s from './admin.module.css';
+import VendorProducts from "./vendorProducts";
 
 
 export default function UserInfo() {
     const dispatch = useDispatch();
-    const allUsers = useSelector((state) => state.allUsers)
+    const navigate = useNavigate();
+    const allUsers = useSelector((state) => state.allUsers);
+  
     // const userfil = useSelector((state) => state.getInfoGoogle)
     const { id } = useParams()
     const userfil = allUsers.filter((el) => el.id === id)
+   
+    
 
-    const navigate = useNavigate();
-
+    
     const name = userfil[0]?.name;
     const surname = userfil[0]?.surname;
     const mail = userfil[0]?.mail;
@@ -46,7 +50,6 @@ export default function UserInfo() {
         // image: image,
     })
 
-    console.log(input)
 
     useEffect(() => {
         dispatch(updateUser(input))
@@ -215,6 +218,7 @@ export default function UserInfo() {
                 </div>
 
             </form >
+            {!seller?  null : <VendorProducts id={id}/>}
         </div >
     )
 }

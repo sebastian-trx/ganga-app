@@ -50,12 +50,15 @@ align-items: center;
     font-size: 10px;
     justify-content: center;
     align-items: center;
+    text-align: center;
     display:flex;
     width: 280px;
     height: 60px;
     font-size: 20px;
     font-family: "Mulish";
     font-weight: ExtraBold;
+    margin: 10px;
+    text-align: center;
 }
 .h1{
     justify-content: center;
