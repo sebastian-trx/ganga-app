@@ -42,6 +42,8 @@ import {
   ALL_REVIEWS,
   APPROVE_PRODUCT,
   PUT_PRODUCT,
+  POST_PRODUCT,
+  DB_SUBCATEGORIES
 } from "./const";
 
 export function getProduct() {
@@ -246,9 +248,14 @@ export function userMessage(payload) {
 }
 
 export function postProducts(payload) {
+  console.log('soy el payload de postProducts: ', payload)
   return async function (dispatch) {
     let response = await axios.post(URL + "product/", payload);
-    return response;
+    console.log('soy el response de postProducts: ', response)
+    dispatch({
+      type: POST_PRODUCT,
+      payload: response.data 
+    })
   };
 }
 
@@ -524,6 +531,7 @@ return async function (dispatch) {
   })
   .catch((error) => console.log(error));
 }
+}
 
 export function allReviews() {
   return async function(dispatch) {
@@ -549,6 +557,15 @@ export function approveProduct(payload) {
   }
 }
 
+export function getDbSubcategories() {
+  return async function(dispatch) {
+    const response = await axios.get(`${URL}subcategory`)
+    dispatch({
+      type: DB_SUBCATEGORIES,
+      payload: response.data
+    })
+  }
+}
 // export function getAllUsers() {
 //   return async function (dispatch) {
 //     let user = await axios.get(URL + "user");

@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
-import { deleteProduct } from "../../Redux/Actions/actions";
+import { deleteProduct, getCategories, getDbSubcategories } from "../../Redux/Actions/actions";
 
 import s from "../AdminPanel/admin.module.css";
 
 export default function VendorProductList({ products, user }) {
-  
     const dispatch = useDispatch();
+    const categories = useSelector((state) => state.categories)
+    const subcategories = useSelector((state) => state.dbSubcategories)
     let myProducts = products.filter((p) => p.owner === user.id);
-    console.log("products", products)
+
+    console.log("pp", products);
+    console.log("sub", subcategories);
+
+    useEffect(() => {
+      dispatch(getCategories());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getDbSubcategories());
+}, [dispatch]);
 
   const columns = [
     { field: "id", headerName: "ID", width: 50 },
@@ -49,12 +60,28 @@ export default function VendorProductList({ products, user }) {
   }
 
   let Rows = myProducts?.map((p) => {
+    const MyCategory = categories.filter(c => c.id === p.categoryId);
+    const myCategory = MyCategory[0].name;
+    const mySubcategory = subcategories.filter(s=> s.id === p.subcategoryId);
+    console.log("subc", mySubcategory);
+    let mySubCategory= "";
+  if (mySubcategory?.length === 0  ) {
+       mySubCategory = "no definida"
+       console.log("msubc1", mySubCategory);
+    } else {
+       mySubCategory = mySubcategory[0].name;
+       console.log("msubc2", mySubCategory);
+    }
+   
+    console.log("msubc3", mySubCategory);
     return {
       id: p.id,
       Nombre: p.name,
       Precio: "$" + p.price,
-      Categoria: p.categories,
+      Categoria: myCategory,
+      Subcategoria: mySubCategory,
       Stock: p.stock,
+      Marca: p.brand,
     };
   });
 

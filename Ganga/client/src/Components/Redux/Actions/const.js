@@ -39,4 +39,6 @@ export const ADD_REVIEW = "ADD_REVIEW";
 export const PUT_PRODUCT = "PUT_PRODUCT";
 export const ALL_REVIEWS = "ALL_REVIEWS";
 export const APPROVE_PRODUCT = "APPROVE_PRODUCT";
+export const POST_PRODUCT = "POST_PRODUCT";
+export const DB_SUBCATEGORIES = "DB_SUBCATEGORIES";
 
