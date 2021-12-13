@@ -1,4 +1,4 @@
-const { Product, User, Category, Review } = require("../db.js");
+const { Product, User, Category, Review, Subcategory } = require("../db.js");
 const { Op } = require("sequelize");
 
 async function postProduct(req, res) {
@@ -17,7 +17,7 @@ async function postProduct(req, res) {
     owner,
     idUser,
     idCategory,
-    idReview,
+    idSubcategory,
   } = req.body;
   // Formato para enviar cumpleaños: 1991-11-28       // modificar en postman brand por mark y agregar owner
 
@@ -54,8 +54,13 @@ async function postProduct(req, res) {
             "No se ha podido relacionar el producto con la categoria"
           );
 
-      // console.log('soy el idReview: ', idReview)
-      // newProduct ? await newProduct.setReview(idReview) : console.log('No se ha podido relacionar el producto con la devolucion')
+      newProduct
+        ? await newProduct.setSubcategory(idSubcategory)
+        : console.log(
+            "No se ha podido relacionar el producto con la subcategoria"
+          );
+
+        
 
       // if (newProduct) res.json({ type: "success", data: product });
       // else {
@@ -81,8 +86,10 @@ async function putProduct(req, res) {
     image,
     owner,
     idCategory,
-    approved  // agregar a postman approved
+    approved,
+    idSubcategory  // agregar a postman approved
   } = req.body; // modificar en postman brand por mark y agregar owner
+  //agregar en postman idSubcategory
 
   try {
     const infoUpdateProduct = {
@@ -201,6 +208,21 @@ const updateProduct2 = async (req, res) => {
   }
 };
 
+const approveProduct = async(req, res) => {
+  const { id } = req.query;
+
+  try{
+    const productDb = await Product.findByPk(id);
+
+    productDb ? await productDb.update({ approved: true}) : console.log('No se ha podido actualizar la propiedad')
+
+    res.send(productDb)
+  }
+  catch(error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   postProduct,
   putProduct,
@@ -209,4 +231,5 @@ module.exports = {
   productInfo,
   updateProduct,
   updateProduct2,
+  approveProduct
 };

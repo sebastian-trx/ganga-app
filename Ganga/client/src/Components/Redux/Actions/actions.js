@@ -39,7 +39,11 @@ import {
   POST_NEWSLETTER,
   DELETE_NEWSLETTER,
   ADD_REVIEW,
-  ALL_REVIEWS
+  ALL_REVIEWS,
+  APPROVE_PRODUCT,
+  PUT_PRODUCT,
+  POST_PRODUCT,
+  DB_SUBCATEGORIES
 } from "./const";
 
 export function getProduct() {
@@ -244,9 +248,14 @@ export function userMessage(payload) {
 }
 
 export function postProducts(payload) {
+  console.log('soy el payload de postProducts: ', payload)
   return async function (dispatch) {
     let response = await axios.post(URL + "product/", payload);
-    return response;
+    console.log('soy el response de postProducts: ', response)
+    dispatch({
+      type: POST_PRODUCT,
+      payload: response.data 
+    })
   };
 }
 
@@ -510,6 +519,20 @@ export function addReview(payload) {
   }
 }
 
+export function updateProduct(payload){
+  console.log(payload, "lkbldnflinwfdre")
+return async function (dispatch) {
+  await axios.put( URL + "product/" , payload)
+  .then((response) => {
+    dispatch({
+      type:PUT_PRODUCT,
+      payload: response.data
+    })
+  })
+  .catch((error) => console.log(error));
+}
+}
+
 export function allReviews() {
   return async function(dispatch) {
     const response = await axios.get(`${URL}review`)
@@ -522,6 +545,27 @@ export function allReviews() {
   }
 }
 
+export function approveProduct(payload) {
+  console.log('soy el payload de approveProduct: ', payload)
+  return async function(dispatch) {
+    const response = await axios.put(`${URL}product/aprobar?id=${payload}`)
+    console.log('soy el response de approveProduct: ', response)
+    dispatch({
+      type: APPROVE_PRODUCT,
+      payload: response.data
+    })
+  }
+}
+
+export function getDbSubcategories() {
+  return async function(dispatch) {
+    const response = await axios.get(`${URL}subcategory`)
+    dispatch({
+      type: DB_SUBCATEGORIES,
+      payload: response.data
+    })
+  }
+}
 // export function getAllUsers() {
 //   return async function (dispatch) {
 //     let user = await axios.get(URL + "user");
