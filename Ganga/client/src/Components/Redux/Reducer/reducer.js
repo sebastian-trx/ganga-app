@@ -19,7 +19,6 @@ import {
   PUT_USER,
   ADD_PRODUCT,
   DECRESE_PRODUCT,
-  // SUM_PRODUCT,
   CLEAR_CART,
   DELETE_ITEM,
   MERCADO_PAGO,
@@ -28,7 +27,17 @@ import {
   FAIL_MAIL,
   DELETE_USER,
   DELETE_PRODUCT,
-  LOGOUT
+  LOGOUT,
+  GET_ALL_ORDERS,
+  PRODUCTS_BY_NAME,
+  POST_NEWSLETTER,
+  DELETE_NEWSLETTER,
+  ADD_REVIEW,
+  ALL_REVIEWS,
+  APPROVE_PRODUCT,
+  PUT_PRODUCT,
+  POST_PRODUCT,
+  DB_SUBCATEGORIES
 } from "../Actions/const";
 
 const initialState = {
@@ -41,12 +50,19 @@ const initialState = {
   detailProduct: [],
   subcategories: [],
   updateUser: [],
+  updateProduct: [],
   mp: [],
   mp2: [],
+  orders: [],
   // cart
   addProduct: [],
   decreseProduct: [],
   clearCart: [],
+  newReview: [],
+  allReviews: [],
+  productApproved: [],
+  postProduct: [],
+  dbSubcategories: []
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -84,7 +100,7 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         ...state,
       };
     case FILTER_PRICE_BY_RANGE: {
-      const products = state.product;
+      const products = state.allProducts2;
       let filterPrice = products.filter(
         (el) => el.price >= price1 && el.price <= price2
       );
@@ -152,34 +168,34 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
     case GET_ALL_USERS:
       return {
         ...state,
-        allUsers: payload
-      }
+        allUsers: payload,
+      };
     case GET_FILTER_BY_CATEGORY:
-      console.log(payload, "ljdwboubdlwnb")
-      let filter = state.allProducts2.filter((el) => (el.categories === payload))
+      let filter = state.allProducts2.filter((el) => el.categories === payload);
       return {
         ...state,
-        product: filter
-      }
+        product: filter,
+      };
 
     case FILTER_BY_SUB_CATEGORY:
-      let filter2 = state.allProducts2.filter((el) => el.subcategories[0] === payload)
-      return {
-       ...state,
-       product: filter2
-      }
+      let filter2 = state.allProducts2?.filter((el) => el.subcategories[0] === payload)
 
-    case GET_SUB_CAT_BY_NAME:
-      let filter3 = state.categories.filter((el) => (el.name === payload))
       return {
         ...state,
-        subcategories: filter3
-      }
+        product: filter2,
+      };
+
+    case GET_SUB_CAT_BY_NAME:
+      let filter3 = state.categories.filter((el) => el.name === payload);
+      return {
+        ...state,
+        subcategories: filter3,
+      };
     case PUT_USER:
       return {
         ...state,
         updateUser: payload,
-      }
+      };
     case ADD_PRODUCT:
       return {
         ...state,
@@ -225,23 +241,81 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       };
 
     case DELETE_USER:
-       state.allUsers.filter((el) => el.id !== payload)
+      state.allUsers.filter((el) => el.id !== payload);
       return {
-      state,
+        state,
       };
     case DELETE_PRODUCT:
-       state.product.filter((el) => el.id !== payload)
+      state.product.filter((el) => el.id !== payload);
       return {
-      state,
-       };
-    default: {
-      return state;
-    }
+        state,
+      };
+    case PRODUCTS_BY_NAME:
+      let filter4 = state.allProducts2.filter((el) =>
+        el.name.toLowerCase().includes(payload.toLowerCase())
+      );
+      return {
+        ...state,
+        product: filter4,
+      };
     case LOGOUT:
       return {
         ...state,
         // getInfoGoogle: payload,
       };
+    case GET_ALL_ORDERS:
+      return {
+        ...state,
+        orders: payload,
+      };
+    case POST_NEWSLETTER:
+      return {
+        ...state,
+      };
+    case DELETE_NEWSLETTER:
+      return {
+        ...state,
+      };
+
+    case ADD_REVIEW:
+      return {
+        ...state,
+        newReview: payload
+      }
+    case PUT_PRODUCT:
+      return {
+        ...state,
+        updateProduct: payload,
+      };
+
+    case ALL_REVIEWS:
+
+      return {
+        ...state,
+        allReviews: payload
+      }
+
+    case APPROVE_PRODUCT:
+      return {
+        ...state,
+        productApproved: payload
+      }
+
+    case POST_PRODUCT:
+      return {
+        ...state,
+        postProduct: payload
+      }
+
+    case DB_SUBCATEGORIES:
+      return {
+        ...state,
+        dbSubcategories: payload
+      }
+
+    default: {
+      return state;
+    }
   }
 }
 

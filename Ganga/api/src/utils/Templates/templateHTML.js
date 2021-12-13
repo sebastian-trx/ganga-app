@@ -10,7 +10,7 @@ function templateSuccessEmail(address, mail) {
     </head>
     <body>
     <h1>PAGO APROBADO</h1>
-    <h2>Hola ${mail} estamos felices porque tu pedido será despachado a la siguiente direccion: ${address}. que lo disfurtes :)</h2>
+    <h2>Hola ${mail} estamos felices porque tu pedido será despachado a la siguiente dirección: ${address}. Que lo disfrutes :)</h2>
     </body>
     </html>
   `;

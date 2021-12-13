@@ -1,26 +1,25 @@
-import React, { /*useEffect,*/ useState } from "react";
-import { Link, /*useNavigate*/ } from "react-router-dom";
-import { useDispatch, /*useSelector*/ } from "react-redux";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 
-import { deleteProduct, /*getProduct*/ } from "../../Redux/Actions/actions";
+import { deleteProduct } from "../../Redux/Actions/actions";
 import ProductsChart from "./aCharts/Products";
 import s from "./admin.module.css";
 
-export default function ProductList({products}) {
+export default function ProductList({ products }) {
+
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  
-
-
 
   const columns = [
-    { field: "id", headerName: "ID", width: 150 },
+    { field: "id", headerName: "ID", width: 50 },
     { field: "Nombre", headerName: "Nombre", width: 200 },
     { field: "Precio", headerName: "Precio", type: "number", width: 100 },
     { field: "Categoria", headerName: "Categoria", width: 160 },
-    { field: "Stock", headerName: "Stock", type: "number", width: 100 },
+    { field: "Subcategoria", headerName: "Subcategoria", width: 160 },
+    { field: "Marca", headerName: "Marca", width: 100 },
+    { field: "Stock", headerName: "Stock", type: "number", width: 70 },
     {
       field: "action",
       headerName: "Acción",
@@ -45,6 +44,7 @@ export default function ProductList({products}) {
   function handleDelete(id) {
     dispatch(deleteProduct(id));
     setRows(rows.filter((i) => i.id !== id));
+    window.location.reload();
   }
 
   let Rows = products?.map((p) => {
@@ -80,5 +80,3 @@ export default function ProductList({products}) {
     </div>
   );
 }
-
-//DELETE: http://localhost:3001/product?id=

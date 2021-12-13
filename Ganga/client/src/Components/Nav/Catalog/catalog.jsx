@@ -11,29 +11,35 @@ import { ImSearch } from "react-icons/im";
 import { IoIosCart } from "react-icons/io";
 import { GrClose } from "react-icons/gr";
 import User from '../User/user'
-import Pagination from '../../Home/Pagination/pagination'
+import Pagination from '../../Home/Pagination/pagination';
+
 
 export default function Catalogo() {
   const dispatch = useDispatch();
   const allProduct = useSelector((state) => state.product);
+  const products = allProduct.filter(p => p.approved === true);
   const userGoogle = useSelector((state) => state.getInfoGoogle);
+
   const [, setOrden] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
-  const [name, setName] = useState(" ")
+
+  const [name, setName] = useState(" ");
+
   const [currentPage, setCurrentPage] = useState(1);
-const [elementsPerPage, /*setElementsPerPage*/] = useState(8)
+  const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
   const indexOfLastProducts = currentPage * elementsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
-  const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);
- 
+  const currentProducts = products?.slice(indexOfFirstProducts, indexOfLastProducts);
+
   const paginate = (pageNumbers) => {
     setCurrentPage(pageNumbers)
   }
 
+
   useEffect(() => {
-    dispatch(getProduct());
-  }, [dispatch]);
+    dispatch(getProduct())
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getUser())
@@ -46,14 +52,17 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(8)
   function handleClick(e) {
     e.preventDefault();
     dispatch(getProduct());
+    setCurrentPage(1);
   }
- 
+
 
   function handleOrder(e) {
+
     e.preventDefault();
     dispatch(orderByPrice(e.target.value));
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
+
   }
 
   function handleFilter(e) {
@@ -69,14 +78,14 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(8)
     }
   }
 
-  function clearInput() {
-    setFilteredData([]);
-    setWordEntered("")
-  }
   function handleInput(e) {
     setName(e.target.value);
     setWordEntered(e.target.value);
     setFilteredData([])
+  }
+  function clearInput() {
+    setFilteredData([]);
+    setWordEntered("")
   }
 
 
@@ -88,15 +97,15 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(8)
   return (
     <div>
       <nav className="flex justify-between items-center h-20  text-black">
-      <Link to="/" className="pl-10">
+        <Link to="/" className="pl-10">
           <div className=" w-30">
             <Logo />
           </div>
-          </Link>
+        </Link>
 
-        <div>
+        {/* <div>
         <Link to="/create" className="pl-10"><button>Tu Producto</button> </Link>
-        </div>
+        </div> */}
 
 
         <div className=" w-30">
@@ -160,12 +169,7 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(8)
             </>
         }
       </nav>
-      <div>
-        <Pagination
-          elementsPerPage={elementsPerPage}
-          allProduct={allProduct}
-          paginate={paginate} />
-      </div>
+
       <div className={s.nav}>
 
         <div className={s.cards}>
@@ -188,6 +192,12 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(8)
             })
           )}
         </div>
+      </div>
+      <div>
+        <Pagination
+          elementsPerPage={elementsPerPage}
+          allProduct={products}
+          paginate={paginate} />
       </div>
     </div>
   );

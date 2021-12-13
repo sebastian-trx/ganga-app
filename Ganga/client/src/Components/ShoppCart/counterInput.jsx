@@ -19,7 +19,7 @@ export default function CounterInput({ idUser, idProd, quantP, stock }) {
 
   console.log("soy el cant:" + cant)
 
-  if(cant > stock){
+  if (cant > stock) {
     decrement()
   }
 

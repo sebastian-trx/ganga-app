@@ -10,28 +10,28 @@ import { getUserInfoGoogle } from "../../Redux/Actions/actions";
 export default function Panel() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.getInfoGoogle);
-  
+
     useEffect(() => {
         dispatch(getUserInfoGoogle());
-      }, [dispatch]);
+    }, [dispatch]);
     return (
         <div>
-     { user.login ? 
-     <div>
-        {
-            user && user.admin ?
-            <AdminPanel/> : null 
-        }
-        {
-            !user.admin && user.seller ? 
-            <VendorPanel/> : null
-        }
-        {
-            !user.admin && !user.seller ? 
-            <UserPanel/> : null
-        }   
-    </div>
-    : <h1>cargando...</h1> }
+            {user?.login && user?.login ?
+                <div>
+                    {
+                        user && user.admin ?
+                            <AdminPanel /> : null
+                    }
+                    {
+                        !user.admin && user.seller ?
+                            <VendorPanel user={user} /> : null
+                    }
+                    {
+                        !user.admin && !user.seller ?
+                            <UserPanel user={user} /> : null
+                    }
+                </div>
+                : <h1>cargando...</h1>}
         </div>
     )
 }

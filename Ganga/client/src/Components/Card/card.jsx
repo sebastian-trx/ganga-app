@@ -11,7 +11,7 @@ export default function Card({ image, name, price, id }) {
                 </div>
 
                 <div className={s.name}>
-                    <h1>{name.toUpperCase()}</h1>
+                    <h1 className={s.h1}>{name.toUpperCase()}</h1>
                 </div>
 
                 <div className={s.div2}>

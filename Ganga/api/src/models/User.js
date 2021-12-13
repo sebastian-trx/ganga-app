@@ -29,12 +29,7 @@ module.exports = (sequelize) => {
             },
 
             cellphone: {
-                type: DataTypes.INTEGER,
-            },
-
-            password: {
-                type: DataTypes.STRING,
-                // allowNull: false,
+                type: DataTypes.BIGINT,
             },
 
             address: {
@@ -55,6 +50,7 @@ module.exports = (sequelize) => {
 
             admin: {
                 type: DataTypes.BOOLEAN,
+                defaultValue: false
             },
 
             birthdate: {
@@ -67,15 +63,21 @@ module.exports = (sequelize) => {
 
             seller: {
                 type: DataTypes.BOOLEAN,
+                defaultValue: false
             },
 
             Cart: {
                 type: DataTypes.ARRAY(DataTypes.JSON),
                 defaultValue: [],
                 // allowNull: false,
-              },
+            },
+
+            officialStore: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false
+            }
 
         },
-        { timestamps: false, paranoid: true }
+        { timestamps: true, paranoid: true }
     );
 };

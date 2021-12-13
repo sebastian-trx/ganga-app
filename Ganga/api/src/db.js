@@ -87,6 +87,10 @@ Review.belongsTo(User)
 Subcategory.hasMany(Category)
 Category.belongsTo(Subcategory)
 
+Subcategory.hasMany(Product)
+Product.belongsTo(Subcategory)
+
+
 ///// carrito (trolley)
 Cart.belongsToMany(Product, {through: "cart_product",});
 Product.belongsToMany(Cart, {through: "cart_product",});

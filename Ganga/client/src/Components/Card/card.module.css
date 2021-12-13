@@ -1,15 +1,25 @@
 *{
 margin: 0;
 }
+.div1{
+display: flex;
+justify-content:center;
+align-items: center;
+min-width: 200px;
+min-height: 230px;
+max-height: 230px;
+}
 
 .img{
-height: 220px;
-width: 250x;
+height: auto;
+width: auto;
+max-width: 230px;
+max-height: 230px;
 border-radius: 20px;
 display: flex;
 justify-content:center;
 align-items: center;
-margin-top: -32px;
+
 }
 
 .container{
@@ -19,7 +29,6 @@ margin-top: -32px;
     border-radius: 20px;
     margin: 20px;
     border: 2px solid rgba(0, 0, 0, 0.466); ;
-    display: flex;
     justify-content:center;
     align-items: center;
     box-shadow: 0px 10px 10px 0px rgba(9, 5, 29, 0.171) !important;
@@ -29,20 +38,32 @@ margin-top: -32px;
     justify-content: center;
     align-items: center;
     display:flex;
-    margin-top: 25px;
+    margin-top: 15px;
     font-family: "Mulish";
     font-weight: Regular;
     font-size: 25px;
+   
 }
+
 .name{
     margin-top: 20px;
     font-size: 10px;
     justify-content: center;
     align-items: center;
+    text-align: center;
     display:flex;
+    width: 280px;
+    height: 60px;
     font-size: 20px;
     font-family: "Mulish";
     font-weight: ExtraBold;
+    margin: 10px;
+    text-align: center;
+}
+.h1{
+    justify-content: center;
+    align-items: center;
+    display:flex;
 }
 
 .container{
@@ -52,7 +73,7 @@ margin-top: -32px;
 }
 
 .star{
-    margin-top: 20px;
+    margin-top: 15px;
   font-size: 20px;
   justify-content: center;
     align-items: center;

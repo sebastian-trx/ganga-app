@@ -3,9 +3,9 @@ import { /*useSelector,*/ useDispatch } from "react-redux";
 import { decreseProduct } from "../Redux/Actions/actions";
 
 export function DeleteItem({ idUser, idProd, quantP }) {
-    const dispatch = useDispatch()
-  
-    function handleDeleteItem(e) {
+  const dispatch = useDispatch()
+
+  function handleDeleteItem(e) {
     dispatch(
       decreseProduct({ id: idUser, item: { id: idProd }, cant: quantP, que: "-" })
     );

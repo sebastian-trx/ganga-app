@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoIosCart } from "react-icons/io";
 import { ImSearch } from "react-icons/im";
 
-import { getUserInfoGoogle, getCategories } from "../../Redux/Actions/actions";
+import { getUserInfoGoogle, getCategories, getProduct, productsByName } from "../../Redux/Actions/actions";
+
 import Logo from "../Logo/logo";
-import User from "../User/user";
 import j from "./nav.module.css";
 
 export default function Nav() {
@@ -19,6 +19,7 @@ export default function Nav() {
 
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const [name, setName] = useState('')
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -44,18 +45,32 @@ export default function Nav() {
     navigate("/categorias/" + nombre);
   }
 
-  function handleSubmit() {}
 
-  function handleInput() {}
+  function handleInput(e) {
+    e.preventDefault()
+    setName(e.target.value)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    navigate("/catalogo");
+    dispatch(productsByName(name))
+  }
+  function handleCatalago(e) {
+    e.preventDefault()
+    navigate("/catalogo");
+    dispatch(getProduct())
+  }
+
 
   return (
     <div
       expanded={expand}
       fixed="top"
       expand="md"
-      className={navColour ? j.nav : j.sticky}
+      className={navColour ? j.navbar : j.sticky}
     >
-      <div /*className={j.navbar}*/>
+      <div className={j.navbar}>
         <nav className={j.NavContainer}>
           <Link to="/" className="pl-10">
             <div className={j.logo}>
@@ -80,25 +95,25 @@ export default function Nav() {
             </span>
 
             <Link to="/catalogo" className="px-6">
-              <span>Catalogo</span>
+              <span onClick={handleCatalago}>Catalogo</span>
             </Link>
 
-            <Link to="/" className="px-6">
+            <Link to="/nosotros" className="px-6">
               <span>Nosotros</span>
             </Link>
 
-            <input 
-            // className="px-4"
+            <input
+              // className="px-4"
               type="text"
               placeholder="Busca tu producto"
               onChange={handleInput}
               className="bg-gray-100 pt-3 pb-1 ml-10 h-7 border-gray-500"
-              // border-l-2 border-t-2 border-b-2"
+            // border-l-2 border-t-2 border-b-2"
             />
             <button
               type="submit"
               onClick={handleSubmit}
-             // className=" px-1  h-7 bg-gray-100 mr-4 mb-2 border-gray-500 border-r-2 border-t-2 border-b-2"
+            // className=" px-1  h-7 bg-gray-100 mr-4 mb-2 border-gray-500 border-r-2 border-t-2 border-b-2"
             >
               <ImSearch />
             </button>
@@ -109,7 +124,7 @@ export default function Nav() {
               </button>
             </Link>
             {userGoogle && userGoogle.login ? (
-              <User />
+              null
             ) : (
               <>
                 <Link to="/registrarme" className="pl-4">

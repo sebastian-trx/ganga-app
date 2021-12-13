@@ -10,23 +10,25 @@ import fondo from "../../../Resources/fondo forms.jpeg";
 import s from "./signup.module.css";
 
 export default function Login() {
-    ///////
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { getInfoGoogle } = useSelector((state) => state);
-  
-    ///////////////////////////////////////////////
-    useEffect(() => {
-      dispatch(getUserInfoGoogle());
-    }, [dispatch]);
-  
-    console.log(getInfoGoogle.login);
-  
-    if (getInfoGoogle.login === true) {
-      // history.push("/home ")
-      navigate("/");
-    }
-    //////////////////////////////////////////////
+  ///////
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { getInfoGoogle } = useSelector((state) => state);
+
+  ///////////////////////////////////////////////
+  useEffect(() => {
+    dispatch(getUserInfoGoogle());
+  }, [dispatch]);
+
+  //console.log(getInfoGoogle.login);
+
+  if (getInfoGoogle.login === true && getInfoGoogle.address === null) {
+    navigate("/panel")
+  } else if (getInfoGoogle.login === true) {
+    // history.push("/home ")
+    navigate("/");
+  }
+  //////////////////////////////////////////////
   return (
     <div>
       <img className={s.fondo} src={fondo} alt="" />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, /*useNavigate*/ } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 
@@ -60,6 +60,7 @@ export default function UserList({ users }) {
   function handleDelete(id) {
     dispatch(deleteUser(id));
     setRows(rows.filter((i) => i.id !== id));
+    window.location.reload();
   }
 
   return (

@@ -1,16 +1,15 @@
- .countInp::-webkit-inner-spin-button,::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+.countInp::-webkit-inner-spin-button,::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-  .countInp:focus {
-    outline: none !important;
-  }
+.countInp:focus {
+  outline: none !important;
+}
 
-  /* .custom-number-input input:focus {
-    outline: none !important;
-  }
-
-  .custom-number-input button:focus {
-    outline: none !important;
-  } */
+/* .custom-number-input input:focus {
+  outline: none !important;
+}
+.custom-number-input button:focus {
+  outline: none !important;
+} */

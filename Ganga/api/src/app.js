@@ -17,6 +17,8 @@ const server = express();
 
 const cors = require('cors');
 
+server.set("trust proxy", 1);
+
 server.name = 'API';
 
 // server.use(cors());
@@ -42,20 +44,40 @@ server.use(morgan('dev'));
 
 // - - - - Deploy - - - -
 
-server.use(                                             //se habilita el manejo de sesiones para el server
+// server.use(                                             //se habilita el manejo de sesiones para el server
+//   session({
+//     secret: "secretcode",
+//     resave: true,
+//     saveUninitialized: true,
+//     cookie: {
+//       httpOnly: true,
+//       secure: true,
+//       sameSite: "none",
+//     },
+//     store: MongoStore.create({
+//       mongoUrl: "mongodb+srv://eze:eze@cluster0.5cxnx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+//       ttl: 14 * 24 * 60 * 60 // = 14 days. Default
+//     })
+//   })
+// );
+
+server.use(
   session({
     secret: "secretcode",
-    resave: true,
+    resave: false,
+    path: "/",
+    proxy: true,
     saveUninitialized: true,
-    cookie: {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    },
     store: MongoStore.create({
       mongoUrl: "mongodb+srv://eze:eze@cluster0.5cxnx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
       ttl: 14 * 24 * 60 * 60 // = 14 days. Default
-    })
+    }),
+    cookie: {
+      
+      sameSite: 'none',
+      secure: true,
+      maxAge: 60 * 60 * 1000 * 24 * 365,
+    },
   })
 );
 

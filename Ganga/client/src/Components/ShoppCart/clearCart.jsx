@@ -1,6 +1,6 @@
-import React /*{ useEffect, useState }*/ from "react";
+import React /*, { useEffect, useState }*/ from "react";
 import { useDispatch } from "react-redux";
-import { clearCart, /*getUserInfoGoogle*/ } from "../Redux/Actions/actions";
+import { clearCart/*, getUserInfoGoogle */ } from "../Redux/Actions/actions";
 
 export function ClearCart({ idUser }) {
   const dispatch = useDispatch();

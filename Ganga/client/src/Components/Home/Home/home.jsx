@@ -1,26 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch/*, useSelector */} from "react-redux";
-import { getProduct } from "../../Redux/Actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getProduct, getUserInfoGoogle } from "../../Redux/Actions/actions";
 import Nav from "../../Nav/NavBar/nav";
 import Carousel from "./Carousel/carousel";
 import BestSellingBrands from "../BestSellingBrands/bestSellingBrands";
 import FooterPage from "../Footer/footer";
 import ContactForm from "../ContactForm/contactForm";
 import CollagePhotos from "../CollageProducts/collagePhotos";
-// import Map from "../ContactForm/map";
+import MapView from "../ContactForm/Map/map";
 import s from "./home.module.css";
+import User from "../../Nav/User/user";
 
 export default function Home() {
   const dispatch = useDispatch();
-  // const allProduct = useSelector((state) => state.product);
-
+  const userGoogle = useSelector((state) => state.getInfoGoogle);
   const [nav, setNav] = useState(false);
+
+  useEffect(() => {
+    dispatch(getUserInfoGoogle());
+  }, [dispatch]);
+
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
 
   const navOpacity = () => {
-    if (window.scrollY >= 200) {
+    if (window.scrollY >= 100) {
       setNav(true);
     } else {
       setNav(false);
@@ -32,6 +37,11 @@ export default function Home() {
   return (
     <div>
       <div className={nav ? s.Nav : s.nav}>
+        {userGoogle && userGoogle.login ?
+          <div className="fixed top-5 right-20 z-50 mr-10 w-28">
+            <User />
+          </div>
+          : null}
         <Nav />
       </div>
       <div className={s.bghome}>
@@ -45,7 +55,9 @@ export default function Home() {
           <CollagePhotos />
         </div>
         <div>
-          {/* <Map /> */}
+          <MapView />
+        </div>
+        <div>
           <ContactForm />
         </div>
         <div>

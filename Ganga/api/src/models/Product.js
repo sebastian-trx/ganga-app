@@ -46,7 +46,12 @@ module.exports = (sequelize) => {
 
             owner: {
                 type: DataTypes.STRING,
-            }
+            },
+
+            approved: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false
+            },
 
         },
         { timestamps: false, paranoid: true }

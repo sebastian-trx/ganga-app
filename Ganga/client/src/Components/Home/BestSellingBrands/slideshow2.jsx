@@ -120,7 +120,6 @@ const Slide = styled.div`
   min-height: 180px;
   height: 290px;
   position: center;
-
   img {
     width: 100%;
     vertical-align: top;
@@ -136,7 +135,6 @@ const TextoSlide = styled.div`
   text-align: center;
   position: absolute;
   bottom: 0;
-
   @media screen and (max-width: 700px) {
     position: relative;
     background: #000;
@@ -170,14 +168,12 @@ const Boton = styled.button`
 			fill: #fff;
 		}
 	} */
-
   path {
     filter: ${(props) =>
-      props.derecho
-        ? "drop-shadow(-2px 0px 0px #fff)"
-        : "drop-shadow(2px 0px 0px #fff)"};
+    props.derecho
+      ? "drop-shadow(-2px 0px 0px #fff)"
+      : "drop-shadow(2px 0px 0px #fff)"};
   }
-
   ${(props) => (props.derecho ? "right: 0" : "left: 0")}
 `;
 

@@ -45,7 +45,7 @@ export default function LoginForm() {
     //   mail: "",
     //   password: "",
     // });
-    // console.log(localLogin)
+    console.log(localLogin)
     setTimeout(() => {
       dispatch(getUserInfoGoogle());
     }, 1000);
@@ -55,7 +55,7 @@ export default function LoginForm() {
     <div>
       <form onSubmit={handleSubmit}>
         <h4 className="text-left pl-10 pb-3 pt-6 text-2xl">Inicia Sesión</h4>
-        <hr className=" border-black mx-10"/>
+        <hr className=" border-black mx-10" />
 
         <div className="pt-10">
           <input className="w-96 border-gray-400 border-2 rounded pl-2"
