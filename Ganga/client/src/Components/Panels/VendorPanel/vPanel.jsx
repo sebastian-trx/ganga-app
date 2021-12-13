@@ -40,7 +40,6 @@ export default function VendorPanel({ user }) {
 
   return (
     <div className="bg-gray-100">
-      <Nav />
       {!ventas ? (
         <div>
           {!productos ? (
