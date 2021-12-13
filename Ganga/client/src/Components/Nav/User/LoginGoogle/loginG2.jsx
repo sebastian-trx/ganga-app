@@ -36,7 +36,7 @@ export function LoginG2(params) {
     <>
       <button
         onClick={redirectToGoogleLogin}
-        className="border-2 border-black px-2 text-xl" //onClick= {}
+        className="border-2 border-gray-400 rounded px-2 text-xl" //onClick= {}
       >
         <FcGoogle className="inline-block px-1 w-10 h-10" /> Inicia sesión con
         Google

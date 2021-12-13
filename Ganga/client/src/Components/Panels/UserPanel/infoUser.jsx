@@ -153,12 +153,12 @@ export default function InfoUser() {
               <label> Número de celular </label>
             </div>
             <input
-              className="w-60 text-center rounded-full bg-gray-700 text-white"
+              class="w-60 text-center rounded-full bg-gray-700 text-white appearance-none"
               onChange={handleChange}
               type="number"
               value={input.cellphone}
               name="cellphone"
-              placeholder="Núnero de celular"
+              placeholder="Número de celular"
             />
           </div>
 
