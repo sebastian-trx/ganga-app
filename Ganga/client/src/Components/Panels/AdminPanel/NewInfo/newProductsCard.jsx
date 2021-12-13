@@ -9,7 +9,7 @@ import { approveProduct } from "../../../Redux/Actions/actions";
 
 export default function NewProductsCard({ image, price, name, id, descripcion, products }) {
     const dispatch = useDispatch();
-    const [productos, reloadProducts]=useState(products)
+    const [/*productos*/, reloadProducts]=useState(products)
     
     function handleSubmit(){
         dispatch(approveProduct(id));

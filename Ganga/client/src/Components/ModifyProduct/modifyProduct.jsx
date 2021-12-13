@@ -72,25 +72,25 @@ export default function ModifyProduct() {
         setImage(file.secure_url);
     };
 
-    const [errors, setErrors] = useState({});
+    const [errors, /*setErrors*/] = useState({});
 
-    function validate(input) {
-      let errors = {};
-      if (!input.name) {
-        errors.name = "Debe poner el nombre de su producto.";
-      } else if (!input.price) {
-        errors.price = "Debe poner el Precio de su Producto.";
-      } else if (!input.description) {
-        errors.description = "Debe tener una descripción";
-      } else if (!input.stock) {
-        errors.stock = "Debe igresar la cantidad de stock.";
-      } else if (input.brand === "") {
-        errors.brand = "Debe colocar la marca del producto";
-      }else if (input.status === "") {
-        errors.status = "Debe seleccionar la condicion del Producto";
-      }
-      return errors;
-    }
+    // function validate(input) {
+    //   let errors = {};
+    //   if (!input.name) {
+    //     errors.name = "Debe poner el nombre de su producto.";
+    //   } else if (!input.price) {
+    //     errors.price = "Debe poner el Precio de su Producto.";
+    //   } else if (!input.description) {
+    //     errors.description = "Debe tener una descripción";
+    //   } else if (!input.stock) {
+    //     errors.stock = "Debe igresar la cantidad de stock.";
+    //   } else if (input.brand === "") {
+    //     errors.brand = "Debe colocar la marca del producto";
+    //   }else if (input.status === "") {
+    //     errors.status = "Debe seleccionar la condicion del Producto";
+    //   }
+    //   return errors;
+    // }
     function handleChange(e) {
         setInput({
             ...input,
