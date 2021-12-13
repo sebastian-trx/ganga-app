@@ -16,9 +16,10 @@ import Pagination from '../../Home/Pagination/pagination';
 
 export default function Catalogo() {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.getInfoGoogle);
   const allProduct = useSelector((state) => state.product);
   const products  = allProduct.filter(p=> p.approved === true);
-  const userGoogle = useSelector((state) => state.getInfoGoogle);
+ ;
 
   const [, setOrden] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -103,10 +104,7 @@ export default function Catalogo() {
           </div>
         </Link>
 
-        {/* <div>
-        <Link to="/create" className="pl-10"><button>Tu Producto</button> </Link>
-        </div> */}
-
+ 
 
         <div className=" w-30">
           <button onClick={handleClick}>
@@ -156,8 +154,10 @@ export default function Catalogo() {
           </button>
         </Link>
         {
-          userGoogle && userGoogle.login ?
-            <User /> :
+          user && user.login ?
+          <div className="absolute top-5 right-20 z-50 mr-10 w-28">
+            <User />
+          </div> :
             <>
               <Link to="/registrarme" className="pl-4">
                 <span>Crear cuenta</span>

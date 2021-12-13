@@ -54,7 +54,6 @@ export default function AdminPanel() {
 
   return (
     <div className="bg-gray-100">
-      <Nav />
       {!ordenes ? (
         <div>
           {!vendedores ? (
