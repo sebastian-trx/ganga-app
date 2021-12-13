@@ -1,7 +1,13 @@
 import React from "react";
+// import { Link } from "react-router-dom";
 import s from "../admin.module.css";
 
-export default function NewSales({today, orders, users}) {
+export default function NewSales({today, orders, users, verOrdenes, ordenes}) {
+
+  const togglE = () => {
+    verOrdenes((ordenes = true));
+  };
+
 
   const sales = orders.map((o) => {
     return {
@@ -45,9 +51,13 @@ export default function NewSales({today, orders, users}) {
         <tr className={s.sale}>
           <td className="h-10">
             <span>{t.usuario}</span>
+          <button className="w-10 h-1" onClick={togglE}>___________________________________
+        </button>
           </td>
           <td className="h-10">
             <span> {t.productos} </span>
+            <button className="w-10 h-1" onClick={togglE}>_____________________________
+        </button>
           </td>
           <td className="h-10">
             <span> $ {t.total}</span>

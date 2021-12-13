@@ -36,7 +36,7 @@ export default function VendorPanel({ user }) {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  console.log("orders", orders);
+
 
   return (
     <div className="bg-gray-100">
@@ -73,7 +73,7 @@ export default function VendorPanel({ user }) {
                       verCompras={verCompras}
                     />
                   </div>
-                  <div className={s.usuariosBody}>
+                  <div className={s.body}>
                     <PurchaseList orders={userOrders} />
                   </div>
                 </div>

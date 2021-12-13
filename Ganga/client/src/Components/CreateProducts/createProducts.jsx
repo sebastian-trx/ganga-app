@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { getCategories, getSubcategory, postProducts } from '../Redux/Actions/actions'
+import { getCategories, getDbSubcategories, getSubcategory, postProducts } from '../Redux/Actions/actions'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import s from './createProducts.module.css'
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import Boton from '../Nav/boton'
@@ -37,11 +37,20 @@ function validate(input) {
 
 
 export default function CreateProducts() {
-    const dispatch = useDispatch()
-    const categories = useSelector((state) => state.categories)
-    const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
+    const dispatch = useDispatch();
+    const categories = useSelector((state) => state.categories);
+    const getInfoGoogle = useSelector((state) => state.getInfoGoogle);
+    const subcategories = useSelector((state) => state.dbSubcategories);
+    
+    useEffect(() => {
+        dispatch(getCategories());
+    }, [dispatch]);
 
-    const subcategories = useSelector((state) => state.subcategories)
+    useEffect(() => {
+        dispatch(getDbSubcategories());
+    }, [dispatch]);
+
+    console.log("subC", subcategories)
 
     const [error, setError] = useState({})
     const [loading, setLoading] = useState(false);
@@ -59,15 +68,14 @@ export default function CreateProducts() {
         image: " ",
         idUser: getInfoGoogle.id,
         idCategory: " ",
-        subcategories: " ",
+        idSubcategory: " ",
     });
-    console.log(input)
 
     function handleChange(e) {
-        setInput(values => ({
-            ...values,
+        setInput ({
+            ...input,
             [e.target.name]: e.target.value
-        }));
+        });
         setError(validate({
             ...input,
             [e.target.name]: e.target.value
@@ -91,7 +99,7 @@ export default function CreateProducts() {
     function handleSelect2(e) {
         setInput({
             ...input,
-            subcategories: [e.target.value]
+            idSubcategory: [e.target.value]
         })
     }
     const uploadImage = async (e) => {
@@ -114,15 +122,11 @@ export default function CreateProducts() {
     };
 
 
-    useEffect(() => {
-        dispatch(getCategories());
-    }, [dispatch]);
 
 
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("Soy input de la function", input)
         dispatch(postProducts(input))
         setInput({
             name: " ",
@@ -134,9 +138,10 @@ export default function CreateProducts() {
             image: " ",
             idUser: " ",
             idCategory: " ",
-            subcategories: " ",
+            idSubcategory: " ",
         })
-        alert("Producto Subido con exito, Esperando aprobacion del Administrador")
+
+        alert("Producto Subido con exito, esperando aprobacion del Administrador")
         navigate("/panel");
     }
 
@@ -152,18 +157,18 @@ export default function CreateProducts() {
                 <div className={s.grid1}>
                     <div className={s.derec}>
                         <div className={s.name}>
-                            <label ><span >Nombre: </span ></label>
+                            <label >Nombre:</label>
                             <div>
-                                <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="name" autoComplete="off" required />
+                                <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="name" value={input.name} autoComplete="off" required />
                                 {error.name && (
                                     <p>{error.name}</p>
                                 )}
                             </div>
                         </div>
                         <div className={s.price}>
-                            <label><span >Precio: </span ></label>
+                            <label>Precio: </label>
                             <div>
-                                <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='Number' name="price" autoComplete="off" required />
+                                <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='Number' name="price" value={input.price} autoComplete="off" required />
                                 {error.price && (
                                     <p >{error.price}</p>
                                 )}
@@ -171,8 +176,8 @@ export default function CreateProducts() {
                         </div>
 
                         <div className={s.product}>
-                            <label><span>Tu producto es: </span></label>
-                            <select className="text-center bg-gray-700 text-white" name="status" onChange={handleSelect}>
+                            <label>Tu producto es:</label>
+                            <select className="text-center bg-gray-700 text-white" name="status" value={input.status} onChange={handleSelect}>
                                 <option value="" >Nuevo o Usado</option>
                                 <option value="true">Nuevo </option>
                                 <option value="false">Usado </option>
@@ -180,8 +185,8 @@ export default function CreateProducts() {
                         </div>
 
                         {(input.status === "true") ?
-                            (<div className={s.stock}>  <label><span>Stock: </span></label>
-                                <input className="text-center bg-gray-700 text-white" onChange={handleChange} type="number" name="stock" autoComplete="off" />
+                            (<div className={s.stock}>  <label>Stock: </label>
+                                <input className="text-center bg-gray-700 text-white" onChange={handleChange} type="number" name="stock" value={input.stock} autoComplete="off" />
                             </div>) : <p></p>
 
                         }
@@ -191,9 +196,9 @@ export default function CreateProducts() {
                         <div className={s.grid2}>
                             <div>
                                 <div className={s.marca}>
-                                    <label><span >Marca: </span ></label>
+                                    <label>Marca: </label>
                                     <div>
-                                        <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="brand" autoComplete="off" required />
+                                        <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="brand" value={input.brand} autoComplete="off" required />
                                         {error.mark && (
                                             <p >{error.mark}</p>
                                         )}
@@ -201,20 +206,15 @@ export default function CreateProducts() {
                                 </div>
 
                                 <div className={s.descri}>
-                                    <label><span >Descripción: </span ></label>
+                                    <label>Descripción: </label>
                                     <div >
-                                        <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="description" autoComplete="off" required />
+                                        <input className="text-center bg-gray-700 text-white" onChange={handleChange} type='text' name="description" value={input.description} autoComplete="off" required />
                                         {error.description && (
                                             <p >{error.description}</p>
                                         )}
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
 
                             <div className={s.cate}>
                                 <label > Categoria: </label>
@@ -225,27 +225,26 @@ export default function CreateProducts() {
                                         ))
 
                                     }
-                                </select >
+                                </select>
                             </div>
 
                             <div>
+
                                 {
                                     (input.idCategory === " ") ?
                                         (<h1>Debes Seleccionar una Categoria</h1>) :
                                         (
                                             <div>
+
                                                 <label > SubCategoria: </label>
-                                                <select className="text-center bg-gray-700 text-white" name="subcategories" onChange={handleSelect2} >
+                                                <select className="text-center bg-gray-700 text-white" name="idSubcategory" onChange={handleSelect2} >
                                                     {(
-                                                        subcategories[0].subcategories.map((p, i) => (
-                                                            <option key={i} value={p}>{p}</option>
+                                                        subcategories&&subcategories.map((p, i) => (
+                                                            <option key={i} value={p.id}>{p.name}</option>
                                                         ))
                                                     )}
-                                                </select >
-                                            </div>
-                                        )
-                                }
-                            </div>
+                                                </select>
+                                            </div> )}
                         </div>
                     </div>
                 </div>
@@ -283,6 +282,7 @@ export default function CreateProducts() {
                             <button className={s.crear} type='submit'>Publicar Producto</button>
                         </div>
                     </div>
+                </div>
                 </div>
             </form>
 

@@ -39,7 +39,11 @@ import {
   POST_NEWSLETTER,
   DELETE_NEWSLETTER,
   ADD_REVIEW,
-  PUT_PRODUCT
+  ALL_REVIEWS,
+  APPROVE_PRODUCT,
+  PUT_PRODUCT,
+  POST_PRODUCT,
+  DB_SUBCATEGORIES
 } from "./const";
 
 export function getProduct() {
@@ -244,9 +248,14 @@ export function userMessage(payload) {
 }
 
 export function postProducts(payload) {
+  console.log('soy el payload de postProducts: ', payload)
   return async function (dispatch) {
     let response = await axios.post(URL + "product/", payload);
-    return response;
+    console.log('soy el response de postProducts: ', response)
+    dispatch({
+      type: POST_PRODUCT,
+      payload: response.data 
+    })
   };
 }
 
@@ -500,7 +509,7 @@ export const deleteNewsletter = (payload) => {
 
 export function addReview(payload) {
   console.log('soy el payload de addReview: ', payload)
-  return async function (dispatch) {
+  return async function(dispatch) {
     const response = await axios.post(`${URL}review`, payload)
     console.log('soy el response de addReview: ', response)
     dispatch({
@@ -524,6 +533,39 @@ return async function (dispatch) {
 }
 }
 
+export function allReviews() {
+  return async function(dispatch) {
+    const response = await axios.get(`${URL}review`)
+    // const response = await axios.get(`${URL}product/info?id=${payload}`, payload)
+    console.log('soy el response de allReviews: ', response)
+    dispatch({
+      type: ALL_REVIEWS,
+      payload: response.data
+    })
+  }
+}
+
+export function approveProduct(payload) {
+  console.log('soy el payload de approveProduct: ', payload)
+  return async function(dispatch) {
+    const response = await axios.put(`${URL}product/aprobar?id=${payload}`)
+    console.log('soy el response de approveProduct: ', response)
+    dispatch({
+      type: APPROVE_PRODUCT,
+      payload: response.data
+    })
+  }
+}
+
+export function getDbSubcategories() {
+  return async function(dispatch) {
+    const response = await axios.get(`${URL}subcategory`)
+    dispatch({
+      type: DB_SUBCATEGORIES,
+      payload: response.data
+    })
+  }
+}
 // export function getAllUsers() {
 //   return async function (dispatch) {
 //     let user = await axios.get(URL + "user");

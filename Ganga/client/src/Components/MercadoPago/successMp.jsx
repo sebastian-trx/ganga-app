@@ -10,7 +10,7 @@ export function SuccesMp() {
 
   useEffect(() => {
     dispatch(getUserInfoGoogle());
-  }, []);
+  }, [dispatch]);
 
   const User = useSelector((state) => state.getInfoGoogle);
   const cart = User.Cart;

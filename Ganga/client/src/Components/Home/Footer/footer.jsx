@@ -1,6 +1,6 @@
 import React from "react";
 import j from "./footer.module.css";
-import Newsletter from "../Newsletter/newsletter.jsx";
+import Newsletter from "../Newsletter/newsletter";
 
 export default function FooterPage() {
   return (
@@ -20,14 +20,6 @@ export default function FooterPage() {
           </div>
           <div>
           <Newsletter/>
-            {/* <ul>
-              <h1 className={j.vender}>Puedes vender tus productos</h1>
-            </ul>
-            <div className={j.textVender}>
-              <h3>De una forma sencilla puedes convertirte en vendedor</h3>
-              <h3>en una plataforma que te garantiza un buen soporte</h3>
-              <h3>además de que tendrás asesoria en caso de requerirla.</h3>
-            </div> */}
           </div>
           <div>
             <ul>
