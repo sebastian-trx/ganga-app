@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 // MongoDB
 const MongoStore = require('connect-mongo');
+const mongoose = require("mongoose");
 // passport
 const passport = require('passport');                   //se importa passport para autenticacion con google
 const session = require("express-session");             //se importa session para el manejo de sesiones con passport
@@ -41,6 +42,14 @@ server.use(morgan('dev'));
 //   next();
 // });
 
+mongoose.connect(
+  "mongodb+srv://eze:eze@cluster0.5cxnx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("Mongoose Is Connected");
+  }
+);
+// mongoose.set("useCreateIndex", false);
 
 // - - - - Deploy - - - -
 
