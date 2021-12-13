@@ -13,39 +13,37 @@ export default function ModifyProduct() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState("");
-    const info = useSelector((state) => state.detailProduct);
+    const Info = useSelector((state) => state.detailProduct);
     const categories = useSelector((state) => state.categories)
     const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
-    const subcategories = useSelector((state) => state.subcategories)
+    const subcategories = useSelector((state) => state.subcategories) // aca no hay subcategorias cargadas creo
+    let info = Info.filter(i=> i.id === id);
+    info = info[0];
     
-// function getInfo(){
-//     async
-//         if(info.length === 0) await dispatch(getDetailsProduct(id))
-//     }
+   console.log("info", info);
 
     useEffect(() => {
-        dispatch(getDetailsProduct(id));
-        // window.location.reload();
-    }, [dispatch, id]);
+        dispatch(getDetailsProduct());
+    }, [dispatch]);
 
     useEffect(() => {
         dispatch(getCategories());
     }, [dispatch]);
 
 
+  
     const [input, setInput] = useState({
-        name: info?.name,
-        brand: info?.brand,
-        description: info?.description,
-        price: info?.price,
-        status: info?.status,
-        stock: info?.stock,
-        image: info?.image,
-        id: getInfoGoogle?.id,
-        categoryId: info?.categoryId,
-        subcategories: info?.subcategories,
+        name: info.name,
+        brand: info.brand,
+        description: info.description,
+        price: info.price,
+        status: info.status,
+        stock: info.stock,
+        image: info.image,
+        id: getInfoGoogle.id,
+        categoryId: info.categoryId,
+        subcategories: info.subcategories,
     })
-    console.log(input)
 
     function handleSelect1(e) {
         setInput({
@@ -75,6 +73,7 @@ export default function ModifyProduct() {
     };
 
     const [errors, setErrors] = useState({});
+
     function validate(input) {
       let errors = {};
       if (!input.name) {
@@ -100,7 +99,7 @@ export default function ModifyProduct() {
     }
     const submit = (e) => {
         e.preventDefault();
-        console.log(input, "SOY INPUT DEL SUBMIT")
+        console.log("SOY INPUT DEL SUBMIT: ", input )
         dispatch(updateProduct(input));
         navigate("/panel")
         window.location.reload();
@@ -120,7 +119,7 @@ export default function ModifyProduct() {
                     <div className={s.grid1}>
                         <div className={s.derec}>
                             <div className={s.name}>
-                                <label ><span >Nombre: </span ></label>
+                                <label >Nombre: </label>
                                 <div>
                                     <input
                                         value={input.name}
@@ -134,7 +133,7 @@ export default function ModifyProduct() {
                                 </div>
                             </div>
                             <div className={s.price}>
-                                <label><span >Precio: </span ></label>
+                                <label>Precio: </label>
                                 <div>
                                     <input
                                         value={input.price}
@@ -149,7 +148,7 @@ export default function ModifyProduct() {
                             </div>
 
                             <div className={s.product}>
-                                <label><span>Tu producto es: </span></label>
+                                <label>Tu producto es: </label>
                                 <select
                                     className="text-center bg-gray-700 text-white"
                                     name="status"
@@ -162,11 +161,12 @@ export default function ModifyProduct() {
                             </div>
 
                             {(input.status === "true") ?
-                                (<div className={s.stock}>  <label> <span> Stock: </span></label>
+                                (<div className={s.stock}>  <label> Stock: </label>
                                     <input 
                                     className="text-center bg-gray-700 text-white" 
                                     type="number" 
-                                    name="stock" 
+                                    name="stock"
+                                    value={input.stock} 
                                     onChange={handleChange}
                                     autoComplete="off" />
                                 </div>) : <p></p>
@@ -178,7 +178,7 @@ export default function ModifyProduct() {
                             <div className={s.grid2}>
                                 <div>
                                     <div className={s.marca}>
-                                        <label><span >Marca: </span ></label>
+                                        <label>Marca: </label>
                                         <div>
                                             <input
                                                 className="text-center bg-gray-700 text-white"
@@ -194,7 +194,7 @@ export default function ModifyProduct() {
                                     </div>
 
                                     <div className={s.descri}>
-                                        <label><span >Descripción: </span ></label>
+                                        <label>Descripción: </label>
                                         <div >
                                             <input
                                                 className="text-justify bg-gray-700 text-white w-full h-20"
@@ -222,7 +222,7 @@ export default function ModifyProduct() {
                                             ))
 
                                         }
-                                    </select >
+                                    </select>
                                 </div>
 
                                 <div>
@@ -238,7 +238,7 @@ export default function ModifyProduct() {
                                                                 <option key={i} value={p}>{p}</option>
                                                             ))
                                                         )}
-                                                    </select >
+                                                    </select>
                                                 </div>
                                             )
                                     }

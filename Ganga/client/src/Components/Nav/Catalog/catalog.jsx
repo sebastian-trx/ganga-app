@@ -17,6 +17,7 @@ import Pagination from '../../Home/Pagination/pagination';
 export default function Catalogo() {
   const dispatch = useDispatch();
   const allProduct = useSelector((state) => state.product);
+  const products  = allProduct.filter(p=> p.approved === true);
   const userGoogle = useSelector((state) => state.getInfoGoogle);
 
   const [, setOrden] = useState("");
@@ -29,7 +30,7 @@ export default function Catalogo() {
   const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
   const indexOfLastProducts = currentPage * elementsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
-  const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);
+  const currentProducts =products?.slice(indexOfFirstProducts, indexOfLastProducts);
 
   const paginate = (pageNumbers) => {
     setCurrentPage(pageNumbers)
@@ -195,7 +196,7 @@ export default function Catalogo() {
       <div>
         <Pagination
           elementsPerPage={elementsPerPage}
-          allProduct={allProduct}
+          allProduct={products}
           paginate={paginate} />
       </div>
     </div>
