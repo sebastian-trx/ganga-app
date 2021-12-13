@@ -36,6 +36,8 @@ import {
   ALL_REVIEWS,
   APPROVE_PRODUCT,
   PUT_PRODUCT,
+  POST_PRODUCT,
+  DB_SUBCATEGORIES
 } from "../Actions/const";
 
 const initialState = {
@@ -59,6 +61,8 @@ const initialState = {
   newReview: [],
   allReviews: [],
   productApproved: [],
+  postProduct: [],
+  dbSubcategories: []
 };
 
 function rootReducer(state = initialState, { type, payload, price1, price2 }) {
@@ -297,6 +301,19 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
       ...state,
       productApproved: payload
     }
+
+    case POST_PRODUCT:
+      return {
+        ...state,
+        postProduct: payload
+      }
+    
+    case DB_SUBCATEGORIES:
+    return {
+      ...state,
+      dbSubcategories: payload
+    }
+
     default: {
       return state;
     }
