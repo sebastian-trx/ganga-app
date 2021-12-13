@@ -50,8 +50,6 @@ export default function CreateProducts() {
         dispatch(getDbSubcategories());
     }, [dispatch]);
 
-    console.log("subC", subcategories)
-
     const [error, setError] = useState({})
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState("");
@@ -141,7 +139,7 @@ export default function CreateProducts() {
             idSubcategory: " ",
         })
         alert("Producto Subido con exito, esperando aprobacion del Administrador")
-        navigate("/panel");
+        // navigate("/panel");
     }
 
 
@@ -178,12 +176,12 @@ export default function CreateProducts() {
                             <label>Tu producto es:</label>
                             <select className="text-center bg-gray-700 text-white" name="status" value={input.status} onChange={handleSelect}>
                                 <option value="" >Nuevo o Usado</option>
-                                <option value="true">Nuevo </option>
-                                <option value="false">Usado </option>
+                                <option value="nuevo">Nuevo </option>
+                                <option value="usado">Usado </option>
                             </select>
                         </div>
 
-                        {(input.status === "true") ?
+                        {(input.status === "nuevo") ?
                             (<div className={s.stock}>  <label>Stock: </label>
                                 <input className="text-center bg-gray-700 text-white" onChange={handleChange} type="number" name="stock" value={input.stock} autoComplete="off" />
                             </div>) : <p></p>

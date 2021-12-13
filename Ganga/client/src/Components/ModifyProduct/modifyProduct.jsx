@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
-import {useNavigate} from "react-router-dom";
-import { getDetailsProduct, getCategories, getSubcategory, updateProduct } from '../Redux/Actions/actions'
+import { useNavigate } from "react-router-dom";
+import { getDetailsProduct, getCategories, getSubcategory, updateProduct, getDbSubcategories } from '../Redux/Actions/actions'
 import s from './modifyProduct.module.css'
 import Boton from '../Nav/boton'
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
@@ -16,20 +16,21 @@ export default function ModifyProduct() {
     const Info = useSelector((state) => state.detailProduct);
     const categories = useSelector((state) => state.categories)
     const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
-    const subcategories = useSelector((state) => state.subcategories) // aca no hay subcategorias cargadas creo
-    let info = Info.filter(i=> i.id === id);
-    info = info[0];
-    
-   console.log("info", info);
-
+    const subcategories = useSelector((state) => state.dbSubcategories) // aca no hay subcategorias cargadas creo
+     
     useEffect(() => {
         dispatch(getDetailsProduct());
     }, [dispatch]);
-
+    
     useEffect(() => {
         dispatch(getCategories());
     }, [dispatch]);
-
+    
+    useEffect(() => {
+        dispatch(getDbSubcategories());
+    }, [dispatch]);
+    
+    let info = Info?.filter((i) => i.id === id);
 
   
     const [input, setInput] = useState({
@@ -40,19 +41,11 @@ export default function ModifyProduct() {
         status: info.status,
         stock: info.stock,
         image: info.image,
-        id: getInfoGoogle.id,
-        categoryId: info.categoryId,
-        subcategories: info.subcategories,
+        id: id,
+        idCategory: info.idCategory,
+        idSubcategory: info.idSubcategory,
     })
 
-    function handleSelect1(e) {
-        setInput({
-            ...input,
-            categoryId: e.target.value,
-        })
-        e.preventDefault();
-        dispatch(getSubcategory(e.target.value))
-    }
     const uploadImage = async (e) => {
         const files = e.target.files;
         const data = new FormData();
@@ -97,13 +90,42 @@ export default function ModifyProduct() {
             [e.target.name]: e.target.value
         })
     }
+
+    function handleSelect1(e) {
+        setInput({
+            ...input,
+            idCategory: e.target.value,
+        })
+        e.preventDefault();
+    }
+
+
+    function handleSelect2(e) {
+        setInput({
+            ...input,
+            idSubcategory: [e.target.value]
+        })
+    }
+
     const submit = (e) => {
         e.preventDefault();
-        console.log("SOY INPUT DEL SUBMIT: ", input )
         dispatch(updateProduct(input));
-        navigate("/panel")
-        window.location.reload();
+        setInput({
+            id: id,
+            name: " ",
+            brand: " ",
+            description: " ",
+            price: " ",
+            status: " ",
+            stock: " ",
+            image: " ",
+            idCategory: " ",
+            idSubcategory: " ",
+        })
+        // navigate("/panel")
+      //  window.location.reload();
     }
+
     return (
         <div >
             <div className={s.body}>
@@ -154,13 +176,13 @@ export default function ModifyProduct() {
                                     name="status"
                                     onChange={handleChange} >
                                     <option value="" >Nuevo o Usado</option>
-                                    <option value="true">Nuevo</option>
-                                    <option value="false">Usado</option>
+                                    <option value="nuevo">Nuevo</option>
+                                    <option value="usado">Usado</option>
                                 </select>
                                 {errors.status ? <p>{errors.status}</p> : null}
                             </div>
 
-                            {(input.status === "true") ?
+                            {(input.status === "nuevo") ?
                                 (<div className={s.stock}>  <label> Stock: </label>
                                     <input 
                                     className="text-center bg-gray-700 text-white" 
@@ -217,7 +239,7 @@ export default function ModifyProduct() {
                                         name="idCategory"
                                         onChange={handleSelect1}  >
                                         {
-                                            categories.map((p, i) => (
+                                            categories && categories?.map((p, i) => (
                                                 <option key={i} value={p.id}>{p.name}</option>
                                             ))
 
@@ -226,23 +248,15 @@ export default function ModifyProduct() {
                                 </div>
 
                                 <div>
-                                    {
-                                        (input.idCategory === " ") ?
-                                            (<h1>Debes Seleccionar una Categoria</h1>) :
-                                            (
-                                                <div>
                                                     <label > SubCategoria: </label>
-                                                    <select className="text-center bg-gray-700 text-white" name="subcategories"  >
+                                                    <select className="text-center bg-gray-700 text-white" name="idSubcategory"  onChange={handleSelect2}>
                                                         {(
-                                                            subcategories[0]?.subcategories.map((p, i) => (
-                                                                <option key={i} value={p}>{p}</option>
+                                                            subcategories && subcategories?.map((p, i) => (
+                                                                <option key={i} value={p.id}>{p.name}</option>
                                                             ))
                                                         )}
                                                     </select>
                                                 </div>
-                                            )
-                                    }
-                                </div>
                             </div>
                         </div>
                     </div>
