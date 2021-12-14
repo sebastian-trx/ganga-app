@@ -19,7 +19,6 @@ export default function Catalogo() {
   const user = useSelector((state) => state.getInfoGoogle);
   const allProduct = useSelector((state) => state.product);
   const products  = allProduct.filter(p=> p.approved === true);
- ;
 
   const [, setOrden] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -107,6 +106,8 @@ export default function Catalogo() {
   }
   return (
     <div>
+      {console.log(products)}
+      {console.log(allProduct)}
       <nav className="flex justify-between items-center h-20  text-black">
         <Link to="/" className="pl-10">
           <div className=" w-30">

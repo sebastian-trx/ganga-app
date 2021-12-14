@@ -48,7 +48,7 @@ console.log('soy el userReviews: ', userReviews)
         return (
           <>
             <Link to={"/product/" + id}>
-              <button className={s.editar}> <BsPencilSquare/> </button>
+              <button className={s.editar}> {/*<BsPencilSquare/>*/} </button>
             </Link>
             <button onClick={() => handleDelete(id)}>
               {" "}
