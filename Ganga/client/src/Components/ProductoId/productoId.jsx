@@ -26,7 +26,7 @@ export default function ProductId() {
 
   useEffect(() => {
     dispatch(allReviews())
-  },[dispatch]);
+  }, [dispatch]);
 
   const productReviews = Reviews.filter((review) => review.productId === id)
   console.log('soy el productReviews: ', productReviews)
@@ -34,7 +34,7 @@ export default function ProductId() {
   function handleAddToCart() {
     console.log("id User", User.id);
     console.log("Product id:", info.id);
-    if(!User.login){
+    if (!User.login) {
       navigate("/ingresar");
       return
     }
@@ -63,20 +63,15 @@ export default function ProductId() {
                 <img src={info.image} className={a.img} alt="" />
               </div>
               <div className={a.div2}>
-                <div className={a.name}>
+
+              <div className={a.name}>
                   <h1>{info.name}</h1>
                 </div>
-                <div className={a.descrip}>
-                  <p>{info.description}</p>
-                </div>
-                <div className={a.start}>⭐⭐⭐⭐⭐</div>
-                <div className={a.price}>
-                  <h2>$ {info.price}</h2>
-                </div>
+                <div className={a.start}>
                 <div>
                   {productReviews?.map((review) => {
                     console.log('soy el review mapeado: ', review)
-                    return(
+                    return (
                       <div key={review.id}>
                         <h6>Descripcion: {review.description}</h6>
                         <h4>Calificación: {review.qualificacion}</h4>
@@ -84,13 +79,35 @@ export default function ProductId() {
                     )
                   })}
                 </div>
+                  </div>
+
+             
               </div>
             </div>
 
             <div className={a.izq}>
+
               <div className={a.pago}>
-                <h3> DESCRIPCION DEL PAGO </h3>
+              <div className={a.descrip}>
+                  <p>{info.description}</p>
+                </div>
+                
+
               </div>
+
+
+              <div className={a.precio}>
+                <div className={a.colorPrecio}>
+                  <h1>Su precio en un pago:</h1>
+                </div>
+              
+                <div className={a.price}>
+                  <h2>$ {info.price}</h2>
+                </div>
+
+                </div>
+
+
               <div className={a.div3}>
                 {/* <button className={a.bnt}>Comprar</button> */}
                 {User.login && info.stock > 0 && (
@@ -103,15 +120,21 @@ export default function ProductId() {
                     />
                   </button>
                 )}
-                 {info.stock > 0 && (
+                {info.stock > 0 && (
                   <button onClick={handleAddToCart} className={a.bnt}>
-                  Agregar al carrito
-                </button>
+                    Agregar al carrito
+                  </button>
                 )}
                 {/* <button onClick={handleAddToCart} className={a.bnt}>
                   Agregar al carrito
                 </button> */}
               </div>
+
+
+
+
+
+
             </div>
           </>
         </div>
