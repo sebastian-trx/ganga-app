@@ -14,11 +14,11 @@ import Modificar from "./Components/Panels/AdminPanel/uInfo";
 import { SuccesMp } from "./Components/MercadoPago/successMp";
 import { FailMp } from "./Components/MercadoPago/failMp";
 import SubAdminForm from "./Components/Panels/AdminPanel/subAdminForm";
-import AdminPanelV from "./Components/Panels/VendorPanel/vPanel";
 import { Review } from "./Components/Reviews/Review.jsx";
 import ModifyProduct from './Components/ModifyProduct/modifyProduct';
-import { Error404 } from "./Components/Error404/404Error.jsx";
+// import { Error404 } from "./Components/Error404/404Error.jsx";
 import Nosotros from "./Components/Nav/We/we";
+import SearchCatalog from "./Components/Nav/Catalog/searchCatalog";
 
 function App() {
   return (
@@ -39,13 +39,13 @@ function App() {
         <Route path="/successMp" element={<SuccesMp />} />
         <Route path="/failMp" element={<FailMp />} />
         <Route path="/registrar" element={<SubAdminForm />} />
-        <Route exact path="/panelV" element={<AdminPanelV />} />
         <Route path="/agregarreview" element={<Review />} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/product/:id" element={<ModifyProduct/>}/>
-        <Route component={() => (
+        <Route path="/buscar/catalogo" element={<SearchCatalog/>}/>
+        {/*<Route component={() => (
         <Error404 />
-        )} />
+        )} /> */}
       </Routes>
     </BrowserRouter>
   );

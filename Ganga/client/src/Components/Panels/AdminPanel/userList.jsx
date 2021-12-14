@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
+import { BsPencilSquare } from "react-icons/bs";
 
 import NewUsersChart from "./aCharts/NewUsers";
 import s from "./admin.module.css";
@@ -32,7 +33,7 @@ export default function UserList({ users }) {
         return (
           <>
             <Link to={"/user/" + id}>
-              <button className={s.editar}> edit </button>
+              <button className={s.editar}><BsPencilSquare/></button>
             </Link>
             <button onClick={() => handleDelete(id)}>
               {" "}
