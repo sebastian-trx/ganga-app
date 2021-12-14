@@ -1,4 +1,4 @@
-.NewsletterContainer {
+.NewsletterContainerCa {
   width: 30vw;
   height: 220px;
   margin: 100px 0;
@@ -12,7 +12,7 @@
   justify-content: space-around;
 }
 
-.NewsletterTitle {
+.NewsletterTitleCa {
   font-size: 22px;
   font-weight: bold;
   display: flex;
@@ -22,14 +22,14 @@
   color: #fff;
 }
 
-.FormNewsLetter {
+.FormNewsLetterCa {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.FormNewsLetter form {
+.FormNewsLetterCa form {
   width: 70vw;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@
   justify-content: space-between;
 }
 
-.NewsletterInput {
+.NewsletterInputCa {
   width: 30vw;
   height: 30px;
   padding: 10px;
@@ -49,11 +49,11 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-.NewsletterInput:focus {
+.NewsletterInputCa:focus {
   outline: solid 1px #f00;
 }
 
-.ButtonNewsletter {
+.ButtonNewsletterCa {
   width: 120px;
   height: 35px;
   top: 144px;
@@ -71,30 +71,30 @@
   clear: both;
 }
 
-.ButtonNewsletter:hover {
+.ButtonNewsletterCa:hover {
   cursor: pointer;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
 }
 
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .NewsletterTitle {
+  .NewsletterTitleCa {
     font-size: 22px;
     font-weight: bold;
   }
 
-  .NewsletterSubTitle {
+  .NewsletterSubTitleCa {
     font-size: 14px;
     color: white;
   }
 
-  .FormNewsLetter {
+  .FormNewsLetterCa {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
   }
 
-  .FormNewsLetter form {
+  .FormNewsLetterCa form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -102,7 +102,7 @@
     justify-content: space-between;
   }
 
-  .NewsletterInput {
+  .NewsletterInputCa {
     width: 80%;
     height: 30px;
     padding: 10px;
@@ -113,7 +113,7 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   }
 
-  .ButtonNewsletter {
+  .ButtonNewsletterCa {
     width: 100px;
     height: 30px;
     margin-top: 20px;
@@ -130,7 +130,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-  .NewsletterContainer {
+  .NewsletterContainerCa {
     width: 0vw;
     max-height: 250px;
     margin: 50px 0;
@@ -142,23 +142,23 @@
     background: #cccccc40;
   }
 
-  .NewsletterTitle {
+  .NewsletterTitleCa {
     font-size: 36px;
     font-weight: bold;
   }
 
-  .NewsletterSubTitle {
+  .NewsletterSubTitleCa {
     font-size: 20px;
   }
 
-  .FormNewsLetter {
+  .FormNewsLetterCa {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
   }
 
-  .FormNewsLetter form {
+  .FormNewsLetterCa form {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -166,7 +166,7 @@
     justify-content: space-between;
   }
 
-  .NewsletterInput {
+  .NewsletterInputCa {
     width: 50%;
     height: 30px;
     padding: 10px;
@@ -176,7 +176,7 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   }
 
-  .ButtonNewsletter {
+  .ButtonNewsletterCa {
     width: 100px;
     height: 30px;
     margin-top: 20px;
@@ -192,16 +192,16 @@
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-  .NewsletterTitle {
+  .NewsletterTitleCa {
     font-size: 30px;
     margin-top: 30px;
   }
 
-  .NewsletterSubTitle {
+  .NewsletterSubTitleCa {
     font-size: 16px;
   }
 
-  .NewsletterContainer {
+  .NewsletterContainerCa {
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -210,7 +210,7 @@
     background: #cccccc40;
   }
 
-  .NewsletterInput {
+  .NewsletterInputCa {
     width: 55vw;
     height: 30px;
     font-size: 16px;
@@ -221,14 +221,14 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   }
 
-  .FormNewsLetter {
+  .FormNewsLetterCa {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
   }
 
-  .FormNewsLetter form {
+  .FormNewsLetterCa form {
     width: 70vw;
     display: flex;
     flex-direction: column;
@@ -238,7 +238,7 @@
 }
 
 @media (max-width: 575px) {
-  .NewsletterContainer {
+  .NewsletterContainerCa {
     min-height: 250px;
     height: 300px;
     display: flex;
@@ -248,15 +248,15 @@
     background: #cccccc40;
   }
 
-  .NewsletterTitle {
+  .NewsletterTitleCa {
     font-size: 28px;
   }
 
-  .NewsletterSubTitle {
+  .NewsletterSubTitleCa {
     font-size: 16px;
   }
 
-  .NewsletterInput {
+  .NewsletterInputCa {
     width: 60vw;
     height: 30px;
     font-size: 3vw;
@@ -267,7 +267,7 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   }
 
-  .ButtonNewsletter {
+  .ButtonNewsletterCa {
     width: 80px;
     height: 30px;
   }

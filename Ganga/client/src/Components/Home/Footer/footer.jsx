@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.css";
+import Newsletter from "../NewsLetter/newsletter";
 
 export default function FooterPage() {
   return (
@@ -20,6 +21,7 @@ export default function FooterPage() {
               </h3>
             </div>
           </div>
+          <Newsletter />
           <div>
             <ul>
               <h1 className="ubicacion">Estamos ubicados</h1>

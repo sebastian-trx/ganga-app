@@ -8,7 +8,6 @@ import FooterPage from "../Footer/footer";
 import ContactForm from "../ContactForm/contactForm";
 import CollagePhotos from "../CollageProducts/collagePhotos";
 import MapView from "../ContactForm/Map/map";
-import Newsletter from "../NewsLetter/newsletter";
 import s from "./home.module.css";
 
 export default function Home() {
@@ -52,7 +51,6 @@ export default function Home() {
           <ContactForm />
         </div>
         <div>
-          <Newsletter />
           <FooterPage />
         </div>
       </div>
