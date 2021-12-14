@@ -1,16 +1,15 @@
 .NewsletterContainer {
   width: 30vw;
-  height: 320px;
+  height: 220px;
   margin: 100px 0;
   padding: 20px 0;
   display: flex;
-  position: relative;
-  margin-top: 248%;
+  position: absolute;
+  top: 264%;
   left: 65%;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  /* background: #cccccc40; */
 }
 
 .NewsletterTitle {
@@ -57,7 +56,7 @@
 .ButtonNewsletter {
   width: 120px;
   height: 35px;
-  top: 194px;
+  top: 144px;
   justify-content: center;
   position: absolute;
   right: 10%;
