@@ -4,8 +4,9 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  width: 99.5vw;
   height: 100vh;
-  width: 100vw;
+  z-index: -1;
 }
 
 .containerProducModal {
@@ -18,8 +19,8 @@
   grid-row-gap: 10px;
   align-items: center;
   justify-content: center;
-  margin-top: -275px;
-  padding-left: 10%;
+  margin-top: -40%;
+  padding-left: 13%;
 }
 
 .prodModal1 {
@@ -68,12 +69,12 @@
 }
 
 .welcomeModal {
-  width: 30vw;
-  height: 30vw;
+  width: 25vw;
+  height: 25vw;
   display: flex;
   position: relative;
-  left: 35%;
-  top: -20vh;
+  left: 40%;
+  top: 25vh
 }
 
 .WeContainer {
@@ -86,7 +87,7 @@
   align-items: center;
   margin: 100px 0;
   padding: 50px;
-  top: -280px;
+  top: 10px;
   color: #fff;
 }
 
