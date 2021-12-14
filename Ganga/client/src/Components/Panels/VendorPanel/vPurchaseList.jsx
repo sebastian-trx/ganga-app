@@ -1,17 +1,20 @@
 import React from "react";
 import { Review } from "../../Reviews/Review.jsx";
 
-export default function PurchaseList({ orders }) {
+export default function PurchaseList({ orders, users }) {
   for (var i = 0; i < orders.length; i++) {
     for (var j = 0; j < orders[i].productInfo.length; j++) {
       orders[i].productInfo[j].date = orders[i].createdAt.slice(0, 10);
       orders[i].productInfo[j].total =
-        orders[i].productInfo[j].quantity * orders[i].productInfo[j].price;
+      orders[i].productInfo[j].quantity * orders[i].productInfo[j].price;
     }
   }
 
   let Products = orders.map((o) => o.productInfo);
   let products = Products.flat().reverse();
+
+
+
 
   return (
     <div>
@@ -62,7 +65,7 @@ export default function PurchaseList({ orders }) {
                         <td class="text-right">
                           <span class="text-sm lg:text-base font-medium">
                             ${el.price}
-                            {/* {console.log('soy el product mapeado: ', el)} */}
+                    
                           </span>
                         </td>
                         <td class="text-right">
