@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 import { deleteProduct, getCategories, getDbSubcategories } from "../../Redux/Actions/actions";
+import { BsPencilSquare } from "react-icons/bs";
+
 
 import s from "../AdminPanel/admin.module.css";
 
@@ -41,7 +43,7 @@ export default function VendorProductList({ products, user }) {
         return (
           <>
             <Link to={"/product/" + id}>
-              <button className={s.editar}> edit </button>
+              <button className={s.editar}> <BsPencilSquare/> </button>
             </Link>
             <button onClick={() => handleDelete(id)}>
               {" "}

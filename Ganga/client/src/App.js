@@ -16,7 +16,7 @@ import { FailMp } from "./Components/MercadoPago/failMp";
 import SubAdminForm from "./Components/Panels/AdminPanel/subAdminForm";
 import { Review } from "./Components/Reviews/Review.jsx";
 import ModifyProduct from './Components/ModifyProduct/modifyProduct';
-import { Error404 } from "./Components/Error404/404Error.jsx";
+// import { Error404 } from "./Components/Error404/404Error.jsx";
 import Nosotros from "./Components/Nav/We/we";
 import SearchCatalog from "./Components/Nav/Catalog/searchCatalog";
 
@@ -43,9 +43,9 @@ function App() {
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/product/:id" element={<ModifyProduct/>}/>
         <Route path="/buscar/catalogo" element={<SearchCatalog/>}/>
-        <Route component={() => (
+        {/*<Route component={() => (
         <Error404 />
-        )} />
+        )} /> */}
       </Routes>
     </BrowserRouter>
   );
