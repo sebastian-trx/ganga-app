@@ -30,7 +30,6 @@ export default function UserPanel({user}) {
 
   return (
     <div className="bg-gray-100">
-      <Nav />
       {!productos ? (
         <div className={s.container}>
           <UserSidebar productos={productos} verProductos={verProductos} />
