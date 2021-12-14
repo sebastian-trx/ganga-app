@@ -37,12 +37,12 @@ export default function FilterPrice() {
       </div>
       <h3 className="has">hasta</h3>
       <div className="conPriceMax">
-      <input
-        className="inputPrice"
-        type="text"
-        placeholder="precio máximo de..."
-        onChange={handleInput2}
-      />
+        <input
+          className="inputPrice"
+          type="text"
+          placeholder="precio máximo de..."
+          onChange={handleInput2}
+        />
       </div>
       <div className="conFil">
         <button className="fil" type="submit" onClick={handleSubmit}>

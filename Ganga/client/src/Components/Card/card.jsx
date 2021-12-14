@@ -15,7 +15,7 @@ export default function Card({ image, name, price, id }) {
         <div className="star">
           <p>⭐⭐⭐⭐⭐</p>
         </div>
-        <div className="price">
+        <div className="conPrice">
           <h3>$ {price} pesos</h3>
         </div>
       </Link>

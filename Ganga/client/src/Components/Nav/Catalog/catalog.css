@@ -1,15 +1,9 @@
 .containerCatalog {
   background-color: white;
-}
-
-.download {
-  width: 35vw;
-  height: 35vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 120%;
-  margin-top: -5vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @media (min-width: 1601px) {
@@ -20,7 +14,7 @@
 
     justify-content: center;
     align-items: center;
-    left: 140%;
+    left: 250%;
     margin-top: -5vh;
   }
 
@@ -149,11 +143,14 @@
   }
 
   .containerCards {
-    width: 80%;
-    min-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    padding-left: 15%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20% 20%;
+    grid-template-rows: 30% 30%;
+    padding-right: 15%;
+    text-decoration: none;
+    margin-top: -15%;
   }
 
   .cardProducts {
@@ -180,7 +177,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 140%;
+    left: 250%;
     margin-top: -5vh;
   }
 
@@ -306,11 +303,14 @@
   }
 
   .containerCards {
-    width: 75%;
-    min-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    padding-left: 15%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20% 20%;
+    grid-template-rows: 30% 30%;
+    padding-right: 15%;
+    text-decoration: none;
+    margin-top: -15%;
   }
 
   .cardProducts {
@@ -338,7 +338,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    left: 300%;
+    left: 200%;
     margin-top: -5vh;
   }
 
@@ -471,15 +471,8 @@
   }
 
   .containerCards {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
-
     padding-left: 15%;
-    
-    
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20% 20%;
     grid-template-rows: 30% 30%;
@@ -493,7 +486,7 @@
     margin-left: 5px;
     margin-bottom: 100px;
     position: relative;
-  } 
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -636,11 +629,14 @@
   }
 
   .containerCards {
-    width: 75%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    padding-left: 15%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20% 20%;
+    grid-template-rows: 30% 30%;
+    padding-right: 15%;
+    text-decoration: none;
+    margin-top: -15%;
   }
 
   .cardProducts {
@@ -802,11 +798,14 @@
   }
 
   .containerCards {
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    padding-left: 15%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20% 20%;
+    grid-template-rows: 30% 30%;
+    padding-right: 15%;
+    text-decoration: none;
+    margin-top: -15%;
   }
 
   .cardProducts {
@@ -967,11 +966,14 @@
   }
 
   .containerCards {
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    padding-left: 15%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20% 20%;
+    grid-template-rows: 30% 30%;
+    padding-right: 15%;
+    text-decoration: none;
+    margin-top: -15%;
   }
 
   .cardProducts {
@@ -1127,11 +1129,14 @@
   }
 
   .containerCards {
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    padding-left: 15%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20% 20%;
+    grid-template-rows: 30% 30%;
+    padding-right: 15%;
+    text-decoration: none;
+    margin-top: -15%;
   }
 
   .cardProducts {

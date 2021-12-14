@@ -73,7 +73,6 @@ export default function Catalogo() {
           <div className="inputContainerCatalog">
             <FilterPrice />
           </div>
-          {/* <div className="titleFilter">ordena por precio</div> */}
           <div className="selectFilter">
             <select className="select" onChange={(e) => handleOrder(e)}>
               <option> ordena por precio: </option>
@@ -112,9 +111,9 @@ export default function Catalogo() {
         elementsPerPage={elementsPerPage}
         allProduct={allProduct}
         paginate={Paginate}
-      />
-      <NewsletterCatalog className="conNewsletrerCatalog"/>
-      <FooterCatalog className="conFooterCatalog" />
+      />  
+      <NewsletterCatalog />
+      <FooterCatalog />
     </div>
   );
 }
