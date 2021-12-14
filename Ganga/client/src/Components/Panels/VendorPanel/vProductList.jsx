@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
-import { deleteProduct, getCategories, getDbSubcategories } from "../../Redux/Actions/actions";
+import { deleteProduct, getCategories, getDbSubcategories, allReviews } from "../../Redux/Actions/actions";
 
 import s from "../AdminPanel/admin.module.css";
 
@@ -12,12 +12,23 @@ export default function VendorProductList({ products, user }) {
     const categories = useSelector((state) => state.categories)
     const subcategories = useSelector((state) => state.dbSubcategories)
     let myProducts = products.filter((p) => p.owner === user.id);
+    const Reviews = useSelector((state) => state.allReviews);
+    const User = useSelector((state) => state.getInfoGoogle);
 
-
+    useEffect(() => {
+      dispatch(allReviews())
+    },[dispatch]);
 
     useEffect(() => {
       dispatch(getCategories());
   }, [dispatch]);
+
+
+const devolucion = Reviews.map((r) => r.userId)
+
+const userReviews = Reviews.filter((review) => review.userId === User.id)
+
+console.log('soy el userReviews: ', userReviews)
 
 
   const columns = [
@@ -37,7 +48,7 @@ export default function VendorProductList({ products, user }) {
         return (
           <>
             <Link to={"/product/" + id}>
-              <button className={s.editar}> edit </button>
+              <button className={s.editar}> <BsPencilSquare/> </button>
             </Link>
             <button onClick={() => handleDelete(id)}>
               {" "}
@@ -102,6 +113,55 @@ export default function VendorProductList({ products, user }) {
           checkboxSelection
         />
       </div>
+
+            <div>
+
+      {userReviews?.map((review) => {
+
+        console.log('soy el review mapeado: ', review)
+
+        return(
+
+          <div key={review.id}>
+
+            <h6>Descripcion: {review.description}</h6>
+
+            <h4>Calificación: {review.qualificacion}</h4>
+
+          </div>
+
+        )
+
+      })}
+
+      </div>
+
+
+      
+      {/* aca viene el review del user */}
     </div>
   );
 }
+
+              // <div>
+
+              //   {productReviews?.map((review) => {
+
+              //     console.log('soy el review mapeado: ', review)
+
+              //     return(
+
+              //       <div key={review.id}>
+
+              //         <h6>Descripcion: {review.description}</h6>
+
+              //         <h4>Calificación: {review.qualificacion}</h4>
+
+              //       </div>
+
+              //     )
+
+              //   })}
+
+              // </div>
+

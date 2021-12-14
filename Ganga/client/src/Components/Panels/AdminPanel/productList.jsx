@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
+import { BsPencilSquare } from "react-icons/bs";
 
 import { deleteProduct} from "../../Redux/Actions/actions";
 import ProductsChart from "./aCharts/Products";
@@ -30,7 +31,7 @@ export default function ProductList({products}) {
         return (
           <>
             <Link to={"/product/" + id}>
-              <button className={s.editar}> edit </button>
+              <button className={s.editar}> <BsPencilSquare/> </button>
             </Link>
             <button onClick={() => handleDelete(id)}>
               {" "}

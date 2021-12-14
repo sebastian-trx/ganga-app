@@ -75,7 +75,6 @@ export default function ProductId() {
                 </div>
                 <div>
                   {productReviews?.map((review) => {
-                    console.log('soy el review mapeado: ', review)
                     return(
                       <div key={review.id}>
                         <h6>Descripcion: {review.description}</h6>

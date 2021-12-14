@@ -95,15 +95,15 @@ export function Review({ idUser, idProduct }) {
             onChange={handleChange}
           ></textarea>
           {errors.description && <p>{errors.description}</p>}
-          <button
-            className="border-gray-400 border-2 rounded ml-1 px-1 text-s"
-            type="text"
-            value="submit"
-            onClick={handleSubmitReviewProduct}
-            disabled={!(input.qualificacion && input.description)}
-          >
-            Agregar devolucion a producto
-          </button>
+        <button
+          className="border-gray-400 border-2 rounded ml-1 px-1 text-s"
+          type="text"
+          value="submit"
+          onClick={handleSubmitReviewProduct}
+          disabled={!(input.qualificacion && input.description)}
+        >
+          Devolucion para el producto
+        </button>
         </div>
 
         <div class="flex item-center content-center justify-center my-1">
@@ -116,15 +116,13 @@ export function Review({ idUser, idProduct }) {
             onChange={handleChange}
           ></textarea>
           {errors.qualificacion && <p>{errors.qualificacion}</p>}
-          <button
-            className="border-gray-400 border-2 rounded ml-1 px-1 text-s"
-            type="text"
-            value="submit"
-            onClick={handleSubmitReviewUser}
-            disabled={!(input.qualificacion && input.description)}
-          >
-            Agregar devolucion al usuario
-          </button>
+        <button
+          className="border-gray-400 border-2 rounded ml-1 px-1 text-s"
+          type="text"
+          value="submit"
+          onClick={handleSubmitReviewUser}
+          disabled={!(input.qualificacion && input.description)}
+        >Devolucion para el usuario</button>
         </div>
       </form>
     </div>

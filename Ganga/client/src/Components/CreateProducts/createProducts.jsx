@@ -62,7 +62,7 @@ export default function CreateProducts() {
         description: " ",
         price: " ",
         status: " ",
-        stock: " ",
+        stock: "1",
         image: " ",
         idUser: getInfoGoogle.id,
         idCategory: " ",
@@ -100,6 +100,13 @@ export default function CreateProducts() {
             idSubcategory: [e.target.value]
         })
     }
+
+    function handleSelectStock(e) {
+        setInput({
+            ...input,
+            stock: [e.target.value]
+        })
+    }
     const uploadImage = async (e) => {
         const files = e.target.files;
         const data = new FormData();
@@ -132,7 +139,7 @@ export default function CreateProducts() {
             description: " ",
             price: " ",
             status: " ",
-            stock: " ",
+            stock: "1",
             image: " ",
             idUser: " ",
             idCategory: " ",
@@ -184,9 +191,9 @@ export default function CreateProducts() {
                         {(input.status === "nuevo") ?
                             (<div className={s.stock}>  <label>Stock: </label>
                                 <input className="text-center bg-gray-700 text-white" onChange={handleChange} type="number" name="stock" value={input.stock} autoComplete="off" />
-                            </div>) : <p></p>
-
-                        }
+                            </div>) : (<p></p>)
+                            }
+                        
                     </div>
 
                     <div className={s.izq}>
