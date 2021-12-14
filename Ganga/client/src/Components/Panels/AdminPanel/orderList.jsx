@@ -19,7 +19,7 @@ export default function OrderList({ orders, users }) {
   }
 
   let sales = orders.map((o) => o.productInfo).flat();
-  console.log("s", sales)
+  
 
   const columns = [
     { field: "id", headerName: "id", width: 30 },

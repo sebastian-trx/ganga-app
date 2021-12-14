@@ -38,29 +38,20 @@
 }
 
 .newInfo {
-    display: flex;
     padding-top: 20px;
-}
-
-.newUsersContainer {
-    flex: 1;
-    padding-bottom: 40px;
-}
-
-.newSalesContainer {
-    flex: 2;
 }
 
 .newUser {
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    margin-left: 35px;
+    margin-left: 22px;
     margin-top: 10px;
     margin-bottom: 25px;
     padding-bottom: 20px;
     width: 250px;
     background-color: rgb(243, 243, 243);
+    display: inline-block;
 }
 
 .newUser:hover {
@@ -81,8 +72,10 @@
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(31, 31, 31, 0.75);
     margin-top: 10px;
+    margin-left: 40px;
+    margin-bottom: 20px;
     justify-content: space-between;
-    width: 700px;
+    width: 1000px;
     border-width: 3px;
     border-color: rgb(112, 112, 112);
 }

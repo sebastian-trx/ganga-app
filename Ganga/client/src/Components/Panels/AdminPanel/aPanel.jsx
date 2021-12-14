@@ -18,6 +18,7 @@ import {
 import s from "./admin.module.css";
 import OrderList from "./orderList";
 import NewProducts from "./NewInfo/newProducts";
+import VerificationList from "./NewInfo/verificationList";
 
 export default function AdminPanel() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ export default function AdminPanel() {
   const [productos, verProductos] = useState(false);
   const [vendedores, verVendedores] = useState(false);
   const [ordenes, verOrdenes] = useState(false);
-
+  const [productosNuevos, verProductosNuevos]= useState(false);
 
 
   useEffect(() => {
@@ -54,6 +55,8 @@ export default function AdminPanel() {
 
   return (
     <div className="bg-gray-100">
+    {!productosNuevos ? 
+    <div>
       {!ordenes ? (
         <div>
           {!vendedores ? (
@@ -71,6 +74,8 @@ export default function AdminPanel() {
                         verVendedores={verVendedores}
                         ordenes={ordenes}
                         verOrdenes={verOrdenes}
+                        productosNuevos={productosNuevos}
+                        verProductosNuevos={verProductosNuevos}
                       />
                       <div className={s.body}>
                         <h4 className="text-3xl text-center font-light font-serif p-5">
@@ -81,13 +86,13 @@ export default function AdminPanel() {
                           products={productsSold}
                           users={allUsers.length}
                           today={today}
+                          productos={products}
                         />
-                        <ActiveUsers />
                         <div className={s.newInfo}>
                           <BrandNewUsers today={today} users={allUsers} />
                           <NewSales today={today} orders={orders} users={allUsers}  ordenes={ordenes} verOrdenes={verOrdenes}/>
                         </div>
-                          <NewProducts products={products}/>
+                         
                       </div>
                     </div>
                   ) : (
@@ -101,6 +106,8 @@ export default function AdminPanel() {
                         verVendedores={verVendedores}
                         ordenes={ordenes}
                         verOrdenes={verOrdenes}
+                        productosNuevos={productosNuevos}
+                        verProductosNuevos={verProductosNuevos}
                       />
                       <div className={s.body}>
                         <UserList users={users} />
@@ -119,6 +126,8 @@ export default function AdminPanel() {
                     verVendedores={verVendedores}
                     ordenes={ordenes}
                     verOrdenes={verOrdenes}
+                    productosNuevos={productosNuevos}
+                    verProductosNuevos={verProductosNuevos}
                   />
                   <div className={s.body}>
                     <ProductList products={products} />
@@ -137,6 +146,8 @@ export default function AdminPanel() {
                 verVendedores={verVendedores}
                 ordenes={ordenes}
                 verOrdenes={verOrdenes}
+                productosNuevos={productosNuevos}
+                verProductosNuevos={verProductosNuevos}
               />
               <div className={s.body}>
                 <VendorList vendors={vendors} products={products} />
@@ -155,12 +166,33 @@ export default function AdminPanel() {
             verVendedores={verVendedores}
             ordenes={ordenes}
             verOrdenes={verOrdenes}
+            productosNuevos={productosNuevos}
+            verProductosNuevos={verProductosNuevos}
           />
           <div className={s.body}>
             <OrderList orders={orders} users={allUsers} />
           </div>
         </div>
       )}
+      </div> : 
+      <div className={s.container}>
+          <AdminSidebar
+            usuarios={usuarios}
+            verUsuarios={verUsuarios}
+            productos={productos}
+            verProductos={verProductos}
+            vendedores={vendedores}
+            verVendedores={verVendedores}
+            ordenes={ordenes}
+            verOrdenes={verOrdenes}
+            productosNuevos={productosNuevos}
+            verProductosNuevos={verProductosNuevos}
+          />
+          <div className={s.body}>
+          <VerificationList products={products}/>
+          </div>
+        </div>
+        }
     </div>
   );
 }

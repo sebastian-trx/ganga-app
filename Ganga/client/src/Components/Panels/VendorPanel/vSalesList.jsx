@@ -2,20 +2,23 @@ import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
 export default function VendorSalesList({ user, orders, users }) {
-  console.log("user", user);
+  
   for (var i = 0; i < orders.length; i++) {
     for (var j = 0; j < orders[i].productInfo.length; j++) {
       orders[i].productInfo[j].date = orders[i].createdAt.slice(0, 10);
+      orders[i].productInfo[j].user = orders[i].userId
       orders[i].productInfo[j].total =
         orders[i].productInfo[j].quantity * orders[i].productInfo[j].price;
     }
   }
+  
 
   let sales = orders.map((o) => o.productInfo).flat();
+
+
   sales = sales.filter((s) => s.owner === user.id);
 
-  console.log("sales", sales);
-  console.log("users", users)
+
 
   const columns = [
     { field: "id", headerName: "id", width: 30 },
@@ -28,12 +31,14 @@ export default function VendorSalesList({ user, orders, users }) {
   ];
 
   const rows = sales?.map((s) => {
-      let User = users.filter(u => u.id === s.userId);
-     s.user = User[0].name + " " + User[0].surname
-     s.mail = User[0].mail
+  let comprador = users.filter(u  => u.id === s.user);
+  comprador = comprador[0];
+
+  let user = comprador.name + " " + comprador.surname;
+  let mail = comprador.mail;
     return {
-      Usuario: s.user,
-      Correo: s.mail,
+      Usuario: user,
+      Correo: mail,
       Producto: s.name,
       Cantidad: s.quantity,
       Total: "$ " + s.total,
