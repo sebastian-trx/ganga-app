@@ -32,9 +32,6 @@ export default function Catalogo() {
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
   const currentProducts =products?.slice(indexOfFirstProducts, indexOfLastProducts);
 
-  console.log("pro", products)
-  console.log("all", allProduct)
-
   const paginate = (pageNumbers) => {
     setCurrentPage(pageNumbers)
   }

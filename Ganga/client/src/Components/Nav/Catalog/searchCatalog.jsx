@@ -8,8 +8,6 @@ export default function SearchCatalog() {
     const user = useSelector((state) => state.getInfoGoogle);
     const allProducts = useSelector((state) => state.product);
     const products  = allProducts.filter(p=> p.approved === true);
-    console.log("allp", allProducts);
-    console.log("products", products);
     return (
         <div>
          {user && user.login ? (
