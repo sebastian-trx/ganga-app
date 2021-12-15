@@ -6,6 +6,7 @@ import {
   getUser,
   getCategories,
   productsByName,
+  allReviews,
 } from "../../Redux/Actions/actions";
 import Card from "../../Card/card";
 import "./catalog.css";
@@ -23,6 +24,13 @@ export default function Catalogo() {
   const allProduct = useSelector((state) => state.product);
   let products = allProduct.filter((p) => p.approved === true);
   products = products.filter((p) => p.stock > 0);
+  const Reviews = useSelector((state) => state.allReviews);
+  console.log("Rev", Reviews);
+
+  useEffect(() => {
+    dispatch(allReviews())
+  },[dispatch]);
+
 
   const [, setOrden] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -118,7 +126,7 @@ export default function Catalogo() {
                   image={el.image}
                   price={el.price}
                   id={el.id}
-                  owner={el.owner}
+                  reviews = {Reviews}
                 />
               </div>
             );
