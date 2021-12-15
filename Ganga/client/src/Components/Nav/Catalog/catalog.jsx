@@ -18,7 +18,8 @@ import FooterCatalog from "../../Home/Footer/footerCatalog";
 export default function Catalogo() {
   const dispatch = useDispatch();
   const allProduct = useSelector((state) => state.product);
-  const products = allProduct.filter((p) => p.approved === true);
+  let products = allProduct.filter((p) => p.approved === true);
+  products = products.filter((p) => p.stock > 0);
 
   const [, setOrden] = useState("");
   // const [filteredData, setFilteredData] = useState([]);

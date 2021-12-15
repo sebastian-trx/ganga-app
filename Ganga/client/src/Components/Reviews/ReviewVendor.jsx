@@ -87,7 +87,9 @@ export default function ReviewVendor({ idUser, idProduct }) {
           <input
             className="h-9 w-36 border-gray-400 border-2 rounded pl-2 ml-3 resize-none"
             name="qualificacion"
-            type="text"
+            type="number"
+            min="1"
+            max="10"
             placeholder="Calificalo 1 - 10"
             value={input.qualificacion}
             onChange={handleChange}
@@ -95,8 +97,7 @@ export default function ReviewVendor({ idUser, idProduct }) {
           {errors.qualificacion && <p>{errors.qualificacion}</p>}
           <div>
         <button
-          className="border-gray-400 border-2 rounded ml-16 px-1 m-2 text-s"
-          type="text"
+          className="border-gray-400 border-2 rounded ml-16 px-1 m-2 mb-10 text-s"
           value="submit"
           onClick={handleSubmitReviewUser}
           disabled={!(input.qualificacion && input.description)}

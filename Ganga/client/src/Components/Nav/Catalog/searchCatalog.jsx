@@ -19,7 +19,8 @@ export default function SearchCatalog() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.getInfoGoogle);
   const allProducts = useSelector((state) => state.product);
-  const products = allProducts.filter((p) => p.approved === true);
+  let products = allProducts.filter((p) => p.approved === true);
+  products = products.filter((p) => p.stock > 0);
 
   const [, setOrden] = useState("");
 
