@@ -66,7 +66,6 @@ export default function PurchaseList({ orders, users }) {
                   {products?.length !== 0 ? (
                     products?.map((el) => (
                       <>
-
                       <tr key={el.id}>
                         <td class="hidden pb-4 md:table-cell">
                           <img
@@ -101,8 +100,8 @@ export default function PurchaseList({ orders, users }) {
                         
                         </td>
                       </tr>
-                        <button className="relative top-5 left-14 border-2 p-2 rounded border-gray-400 hover:bg-gray-700 hover:text-white" onClick={Toggle}>Puntuar <br/>Producto</button>
-                        <button  className="relative top-5 left-52 border-2 p-2 rounded border-gray-400 hover:bg-gray-700 hover:text-white" onClick={toggle}>Puntuar <br/>Vendedor</button>
+                        <button className="relative top-5 left-14 border-2 p-2 mb-10 rounded border-gray-400 hover:bg-gray-700 hover:text-white" onClick={Toggle}>Puntuar <br/>Producto</button>
+                        <button  className="relative top-5 left-52 border-2 p-2 mb-10 rounded border-gray-400 hover:bg-gray-700 hover:text-white" onClick={toggle}>Puntuar <br/>Vendedor</button>
                         {
                           vendorReview? 
                           <div className="relative top-5 left-60 m-2">

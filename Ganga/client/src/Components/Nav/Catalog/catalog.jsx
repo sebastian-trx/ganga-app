@@ -21,7 +21,8 @@ export default function Catalogo() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.getInfoGoogle);
   const allProduct = useSelector((state) => state.product);
-  const products = allProduct.filter((p) => p.approved === true);
+  let products = allProduct.filter((p) => p.approved === true);
+  products = products.filter((p) => p.stock > 0);
 
   const [, setOrden] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -109,6 +110,7 @@ export default function Catalogo() {
           </div>
         ) : (
           currentProducts.map((el, i) => {
+            console.log("currentProducts", currentProducts)
             return (
               <div className="cardProducts" key={"card" + i}>
                 <Card
@@ -116,6 +118,7 @@ export default function Catalogo() {
                   image={el.image}
                   price={el.price}
                   id={el.id}
+                  owner={el.owner}
                 />
               </div>
             );
