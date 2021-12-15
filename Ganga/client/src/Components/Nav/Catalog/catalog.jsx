@@ -45,6 +45,10 @@ export default function Catalogo() {
     dispatch(getCategories())
   }, [dispatch])
 
+  useEffect(() => {
+    dispatch(getProduct())
+  }, [dispatch])
+
   function handleClick(e) {
     e.preventDefault();
     dispatch(getProduct());
