@@ -87,7 +87,7 @@ export function Review ({idUser, idProduct}){
           onClick={handleSubmitReviewProduct}
           disabled={!(input.qualificacion && input.description)}
         >
-          Agregar
+          Devolucion para el producto
         </button>
         </div>
 
@@ -107,7 +107,7 @@ export function Review ({idUser, idProduct}){
           value="submit"
           onClick={handleSubmitReviewUser}
           disabled={!(input.qualificacion && input.description)}
-        >Calificar</button>
+        >Devolucion para el usuario</button>
         </div>
 
       </form>

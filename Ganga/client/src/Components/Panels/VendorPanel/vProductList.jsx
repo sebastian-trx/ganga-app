@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
-import { deleteProduct, getCategories, getDbSubcategories } from "../../Redux/Actions/actions";
-import { BsPencilSquare } from "react-icons/bs";
-
+import { deleteProduct, getCategories, getDbSubcategories, allReviews } from "../../Redux/Actions/actions";
 
 import s from "../AdminPanel/admin.module.css";
 
@@ -14,9 +12,13 @@ export default function VendorProductList({ products, user }) {
     const categories = useSelector((state) => state.categories)
     const subcategories = useSelector((state) => state.dbSubcategories)
     let myProducts = products.filter((p) => p.owner === user.id);
+    const Reviews = useSelector((state) => state.allReviews);
+    const User = useSelector((state) => state.getInfoGoogle);
 
-    console.log("pp", products);
-    console.log("sub", subcategories);
+
+    useEffect(() => {
+      dispatch(allReviews())
+    },[dispatch]);
 
     useEffect(() => {
       dispatch(getCategories());
@@ -25,6 +27,13 @@ export default function VendorProductList({ products, user }) {
   useEffect(() => {
     dispatch(getDbSubcategories());
 }, [dispatch]);
+
+const devolucion = Reviews.map((r) => r.userId)
+
+const userReviews = Reviews.filter((review) => review.userId === User.id)
+
+console.log('soy el userReviews: ', userReviews)
+
 
   const columns = [
     { field: "id", headerName: "ID", width: 50 },
@@ -108,6 +117,55 @@ export default function VendorProductList({ products, user }) {
           checkboxSelection
         />
       </div>
+
+            <div>
+
+      {userReviews?.map((review) => {
+
+        console.log('soy el review mapeado: ', review)
+
+        return(
+
+          <div key={review.id}>
+
+            <h6>Descripcion: {review.description}</h6>
+
+            <h4>Calificación: {review.qualificacion}</h4>
+
+          </div>
+
+        )
+
+      })}
+
+      </div>
+
+
+      
+      {/* aca viene el review del user */}
     </div>
   );
 }
+
+              // <div>
+
+              //   {productReviews?.map((review) => {
+
+              //     console.log('soy el review mapeado: ', review)
+
+              //     return(
+
+              //       <div key={review.id}>
+
+              //         <h6>Descripcion: {review.description}</h6>
+
+              //         <h4>Calificación: {review.qualificacion}</h4>
+
+              //       </div>
+
+              //     )
+
+              //   })}
+
+              // </div>
+
