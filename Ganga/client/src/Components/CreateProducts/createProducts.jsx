@@ -1,40 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import { getCategories, getDbSubcategories, getSubcategory, postProducts } from '../Redux/Actions/actions'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState, useEffect } from "react";
+import {
+  getCategories,
+  getDbSubcategories,
+  getSubcategory,
+  postProducts,
+} from "../Redux/Actions/actions";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import s from './createProducts.module.css'
-import { BsFillArrowLeftSquareFill } from "react-icons/bs";
-import Boton from '../Nav/boton'
-
+import s from "./createProducts.module.css";
+import { IoMdArrowRoundBack } from "react-icons/io"
+import Boton from "../Nav/boton";
 
 function validate(input) {
-    let errores = {};
-    if (!input.name) {
-
-        errores.name = "Se requiere un Nombre"
-    } else if (!input.mark) {
-
-        errores.mark = 'Se requiere una Marca'
-    } else if (!input.description) {
-
-        errores.description = 'Se requiere una Descripción'
-    } else if (input.price <= 0) {
-
-        errores.price = 'Se requiere un precio mayor a 0'
-    } else if (input.status) {
-        errores.status = 'Se requiere un status'
-
-    } else if (!input.image) {
-        errores.image = 'Es obligatorio una imagen del prducto'
-
-    } else if (!input.idCategory) {
-        errores.idCategory = 'es obligatorio una Categoria'
-    }
-    return errores
+  let errores = {};
+  if (!input.name) {
+    errores.name = "Se requiere un Nombre";
+  } else if (!input.brand) {
+    errores.brand = "Se requiere una Marca";
+  } else if (!input.description) {
+    errores.description = "Se requiere una Descripción";
+  } else if (input.price <= 0) {
+    errores.price = "Se requiere un precio mayor a 0";
+  } else if (input.status) {
+    errores.status = "Se requiere un status";
+  } else if (!input.image) {
+    errores.image = "Es obligatorio una imagen del prducto";
+  } else if (!input.idCategory) {
+    errores.idCategory = "es obligatorio una Categoria";
+  }
+  return errores;
 }
-
-
-
 
 export default function CreateProducts() {
     const dispatch = useDispatch();
@@ -245,46 +240,132 @@ export default function CreateProducts() {
                         </div>
                     </div>
                 </div>
+              </div>
+            ) : (
+              <p></p>
+            )}
+          </div>
 
-
-
-                <div className={s.grid5}>
-                    <div className={s.grid3}>
-                        <div>
-                            <div className="pt-0 pb-2">
-                                <label>Imagen</label>
-                            </div>
-                            <div className="text-center bg-gray-700 text-white">
-                                <input
-
-                                    className={s.inputs}
-                                    onChange={uploadImage}
-                                    type="file"
-                                    name="image"
-                                    required="required"
-                                    accept="image/png,image/jpeg"
-                                />
-                                {error.image ? <p>{error.image}</p> : null}
-                            </div>
-                            <div className={s.imgName}>{(input.image = image)}</div>
-                            <label>
-                                {loading ? (
-                                    <img className={s.imagenSubida} src={image} alt="No hay imagen" />
-                                ) : (
-                                    <p>Aun no has subido una imagen</p>
-                                )}
-                            </label>
-                        </div>
-                        <div className="p-5">
-                            <button className={s.crear} type='submit'>Publicar Producto</button>
-                        </div>
-                    </div>
+          <div className={s.izq}>
+            <div className={s.grid2}>
+              <div>
+                <div className={s.marca}>
+                  <label>Marca: </label>
+                  <div>
+                    <input
+                      className="text-center bg-gray-700 text-white rounded"
+                      onChange={handleChange}
+                      type="text"
+                      name="brand"
+                      value={input.brand}
+                      autoComplete="off"
+                      required
+                    />
+                  </div>
+                  <div>
+                    {error.brand && 
+                      <p className="h-8 text-red-600 inline-block">
+                        {error.brand}
+                      </p>
+                    }
+                  </div>
                 </div>
-            </form>
 
+                <div className={s.descri}>
+                  <label>Descripción: </label>
+                  <div>
+                    <input
+                      className="text-center bg-gray-700 text-white rounded"
+                      onChange={handleChange}
+                      type="text"
+                      name="description"
+                      value={input.description}
+                      autoComplete="off"
+                      required
+                    />
+                  </div>
+                  <div>
+                    {error.description && 
+                      <p className="h-8 text-red-600 inline-block">
+                        {error.description}
+                      </p>
+                    }
+                  </div>
+                </div>
+              </div>
 
-        </div >
-    )
+              <div className={s.cate}>
+                <label> Categoria: </label>
+                <div>
+                  <select
+                    className="text-center bg-gray-700 text-white rounded"
+                    name="idCategory"
+                    onChange={handleSelect1}
+                  >
+                    {categories.map((p, i) => (
+                      <option key={i} value={p.id}>
+                        {p.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
 
+              <div>
+                <label> SubCategoria: </label>
+                <div>
+                  <select
+                    className="text-center bg-gray-700 text-white rounded"
+                    name="idSubcategory"
+                    onChange={handleSelect2}
+                  >
+                    {subcategories &&
+                      subcategories.map((p, i) => (
+                        <option key={i} value={p.id}>
+                          {p.name}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+            <div className="flex directions-columns items-center justify-center content-center">
+              <div className="pb-2">
+                <label>Imagen</label>
+              </div>
+              <div className="m-auto w-1/2 rounded text-center bg-gray-700 text-white">
+                <input
+                  className={s.inputs}
+                  onChange={uploadImage}
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png,image/jpeg"
+                />
+                {error.image ? <p>{error.image}</p> : null}
+              </div>
+              <div className={s.imgName}>{(input.image = image)}</div>
+              <label>
+                {loading ? (
+                  <img
+                    className={s.imagenSubida}
+                    src={image}
+                    alt="No hay imagen"
+                  />
+                ) : (
+                  <p>Aun no has subido una imagen</p>
+                )}
+              </label>
+            <div className="p-5">
+              <button className={s.crear} type="submit">
+                Publicar Producto
+              </button>
+            </div>
+            </div>
+      </form>
+    </div>
+  );
 }
-
