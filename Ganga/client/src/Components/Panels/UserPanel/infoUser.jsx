@@ -65,6 +65,7 @@ export default function InfoUser() {
     const file = await res.json();
     setImage(file.secure_url);
   };
+
   const submit = (e) => {
     e.preventDefault();
     dispatch(updateUser(input));
@@ -78,6 +79,10 @@ export default function InfoUser() {
       <form className="text-center" onSubmit={submit}>
         <div className="items-center justify-center content-center">
           <div className="pt-0 pb-2">
+            <div className="absolute right-40 top-48">
+              <h1 className="w-40 py-1 my-1 text-center rounded-full bg-gray-700 text-white">Tu imagen actual</h1>
+              <img className={s.perfil} src={user.image} alt = "imagen de perfil"/>
+            </div>
             <label>Imagen de Perfil</label>
           </div>
           <label>
@@ -88,13 +93,15 @@ export default function InfoUser() {
                   src={image}
                   alt="No hay imagen"
                 />
+                <div className={s.imgName}>{(input.image = image)}</div>
               </div>
             ) : (
               <p>Aun no has subido una imagen</p>
             )}
           </label>
-          <div className="m-auto w-1/2 rounded-full text-center bg-gray-700 text-white">
+          <div className="m-auto w-80 rounded-full text-center bg-gray-700 text-white">
             <input
+
               className={s.inputs}
               onChange={uploadImage}
               type="file"

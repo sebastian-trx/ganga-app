@@ -19,7 +19,21 @@
     border-color: rgb(165, 165, 165);
 
 }
-
+.imgName {
+    color: transparent;
+    width: 220px;
+    height: 180px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .perfil{
+      width:150px;
+      padding-left: 20px;
+      padding-bottom: 20px;
+  }
 .btnActualizar {
     background-color: rgb(131, 245, 131);
     width: 84px;
