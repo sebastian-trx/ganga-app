@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Nav from "../../Nav/NavBar/nav";
 import AdminSidebar from "./aSidebar";
 import AdminWidgets from "./aWidgets";
-import ActiveUsers from "./aCharts/ActiveUsers";
 import UserList from "./userList";
 import BrandNewUsers from "./NewInfo/brandNewUsers";
 import NewSales from "./NewInfo/newSales";
@@ -17,7 +15,7 @@ import {
 } from "../../Redux/Actions/actions";
 import s from "./admin.module.css";
 import OrderList from "./orderList";
-import NewProducts from "./NewInfo/newProducts";
+import VerificationList from "./NewInfo/verificationList";
 
 export default function AdminPanel() {
   const dispatch = useDispatch();
@@ -28,7 +26,7 @@ export default function AdminPanel() {
   const [productos, verProductos] = useState(false);
   const [vendedores, verVendedores] = useState(false);
   const [ordenes, verOrdenes] = useState(false);
-
+  const [productosNuevos, verProductosNuevos] = useState(false);
 
 
   useEffect(() => {
@@ -54,42 +52,65 @@ export default function AdminPanel() {
 
   return (
     <div className="bg-gray-100">
-      <Nav />
-      {!ordenes ? (
+      {!productosNuevos ?
         <div>
-          {!vendedores ? (
+          {!ordenes ? (
             <div>
-              {!productos ? (
+              {!vendedores ? (
                 <div>
-                  {!usuarios ? (
-                    <div className={s.container}>
-                      <AdminSidebar
-                        usuarios={usuarios}
-                        verUsuarios={verUsuarios}
-                        productos={productos}
-                        verProductos={verProductos}
-                        vendedores={vendedores}
-                        verVendedores={verVendedores}
-                        ordenes={ordenes}
-                        verOrdenes={verOrdenes}
-                      />
-                      <div className={s.body}>
-                        <h4 className="text-3xl text-center font-light font-serif p-5">
-                          Info del Mes
-                        </h4>
-                        <AdminWidgets
-                          sales={sales}
-                          products={productsSold}
-                          users={allUsers.length}
-                          today={today}
-                        />
-                        <ActiveUsers />
-                        <div className={s.newInfo}>
-                          <BrandNewUsers today={today} users={allUsers} />
-                          <NewSales today={today} orders={orders} users={allUsers} ordenes={ordenes} verOrdenes={verOrdenes} />
+                  {!productos ? (
+                    <div>
+                      {!usuarios ? (
+                        <div className={s.container}>
+                          <AdminSidebar
+                            usuarios={usuarios}
+                            verUsuarios={verUsuarios}
+                            productos={productos}
+                            verProductos={verProductos}
+                            vendedores={vendedores}
+                            verVendedores={verVendedores}
+                            ordenes={ordenes}
+                            verOrdenes={verOrdenes}
+                            productosNuevos={productosNuevos}
+                            verProductosNuevos={verProductosNuevos}
+                          />
+                          <div className={s.body}>
+                            <h4 className="text-3xl text-center font-light font-serif p-5">
+                              Info del Mes
+                            </h4>
+                            <AdminWidgets
+                              sales={sales}
+                              products={productsSold}
+                              users={allUsers.length}
+                              today={today}
+                              productos={products}
+                            />
+                            <div className={s.newInfo}>
+                              <BrandNewUsers today={today} users={allUsers} />
+                              <NewSales today={today} orders={orders} users={allUsers} ordenes={ordenes} verOrdenes={verOrdenes} />
+                            </div>
+
+                          </div>
                         </div>
-                        <NewProducts products={products} />
-                      </div>
+                      ) : (
+                        <div className={s.container}>
+                          <AdminSidebar
+                            usuarios={usuarios}
+                            verUsuarios={verUsuarios}
+                            productos={productos}
+                            verProductos={verProductos}
+                            vendedores={vendedores}
+                            verVendedores={verVendedores}
+                            ordenes={ordenes}
+                            verOrdenes={verOrdenes}
+                            productosNuevos={productosNuevos}
+                            verProductosNuevos={verProductosNuevos}
+                          />
+                          <div className={s.body}>
+                            <UserList users={users} />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <div className={s.container}>
@@ -102,9 +123,11 @@ export default function AdminPanel() {
                         verVendedores={verVendedores}
                         ordenes={ordenes}
                         verOrdenes={verOrdenes}
+                        productosNuevos={productosNuevos}
+                        verProductosNuevos={verProductosNuevos}
                       />
                       <div className={s.body}>
-                        <UserList users={users} />
+                        <ProductList products={products} />
                       </div>
                     </div>
                   )}
@@ -120,9 +143,11 @@ export default function AdminPanel() {
                     verVendedores={verVendedores}
                     ordenes={ordenes}
                     verOrdenes={verOrdenes}
+                    productosNuevos={productosNuevos}
+                    verProductosNuevos={verProductosNuevos}
                   />
                   <div className={s.body}>
-                    <ProductList products={products} />
+                    <VendorList vendors={vendors} products={products} />
                   </div>
                 </div>
               )}
@@ -138,14 +163,15 @@ export default function AdminPanel() {
                 verVendedores={verVendedores}
                 ordenes={ordenes}
                 verOrdenes={verOrdenes}
+                productosNuevos={productosNuevos}
+                verProductosNuevos={verProductosNuevos}
               />
               <div className={s.body}>
-                <VendorList vendors={vendors} products={products} />
+                <OrderList orders={orders} users={allUsers} />
               </div>
             </div>
           )}
-        </div>
-      ) : (
+        </div> :
         <div className={s.container}>
           <AdminSidebar
             usuarios={usuarios}
@@ -156,12 +182,14 @@ export default function AdminPanel() {
             verVendedores={verVendedores}
             ordenes={ordenes}
             verOrdenes={verOrdenes}
+            productosNuevos={productosNuevos}
+            verProductosNuevos={verProductosNuevos}
           />
           <div className={s.body}>
-            <OrderList orders={orders} users={allUsers} />
+            <VerificationList products={products} />
           </div>
         </div>
-      )}
+      }
     </div>
   );
 }

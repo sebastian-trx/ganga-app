@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getProduct, getUserInfoGoogle } from "../../Redux/Actions/actions";
+import { useDispatch, useSelector} from "react-redux";
+import { getProduct, getUserInfoGoogle  } from "../../Redux/Actions/actions";
 import Nav from "../../Nav/NavBar/nav";
 import Carousel from "./Carousel/carousel";
 import BestSellingBrands from "../BestSellingBrands/bestSellingBrands";
@@ -37,11 +37,11 @@ export default function Home() {
   return (
     <div>
       <div className={nav ? s.Nav : s.nav}>
-        {userGoogle && userGoogle.login ?
-          <div className="fixed top-5 right-20 z-50 mr-10 w-28">
-            <User />
-          </div>
-          : null}
+      {userGoogle && userGoogle.login ? 
+    <div className="fixed top-5 right-20 z-50 mr-10 w-28">
+      <User />
+      </div> 
+      : null } 
         <Nav />
       </div>
       <div className={s.bghome}>

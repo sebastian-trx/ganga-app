@@ -11,7 +11,6 @@ export default function UserSidebar({ productos, verProductos }) {
         verProductos((productos = false));
     };
 
-
     return (
         <div className={s.sidebar}>
             <h3 className="p-10 pt-32 pl-16 text-3xl opacity-60">Opciones</h3>

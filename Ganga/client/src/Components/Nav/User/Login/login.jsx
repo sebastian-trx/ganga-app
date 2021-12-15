@@ -22,9 +22,9 @@ export default function Login() {
 
   //console.log(getInfoGoogle.login);
 
-  if (getInfoGoogle.login === true && getInfoGoogle.address === null) {
+  if(getInfoGoogle.login === true && getInfoGoogle.address === null){
     navigate("/panel")
-  } else if (getInfoGoogle.login === true) {
+  }else if (getInfoGoogle.login === true) {
     // history.push("/home ")
     navigate("/");
   }

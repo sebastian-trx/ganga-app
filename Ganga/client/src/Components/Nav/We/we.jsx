@@ -4,10 +4,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import "./we.css";
-import welcomeModal from "../../Resources/bienvenidosModal.gif";
 import prodModal1 from "../../Resources/producModal1.gif";
 import prodModal2 from "../../Resources/producModal2.gif";
 import prodModal3 from "../../Resources/producModal3.gif";
+import Nav from "../NavBar/nav";
 
 function Nosotros() {
   const [open, setOpen] = React.useState(false);
@@ -16,8 +16,8 @@ function Nosotros() {
 
   return (
     <div className="bgWe">
+      <Nav className="flex justify-between items-center h-20 w-8 text-black" />
       <div className="welcomeModal">
-        <img src={welcomeModal} alt="" />
       </div>
       <div className="WeContainer" id="Nosotros">
         <h1>Todos queremos una GanGa</h1>
@@ -67,8 +67,8 @@ function Nosotros() {
                 encontrar aquí en GanGa
               </p>
               <p>
-                No esperes más y únete a nuestra comunidad de vendedores, donde
-                muchos clientes esperan por tus productos.
+                No esperes más y únete a nuestra comunidad de vendedores,
+                donde muchos clientes esperan por tus productos.
               </p>
               <br />
             </Typography>
@@ -89,15 +89,15 @@ function Nosotros() {
       <div className="containerProducModal">
         <div className="prodModal1">
           <img src={prodModal1} alt="" />
-          <h1 className="ord">tú ordenas</h1>
+          <h1 className="ord">1. tú ordenas</h1>
         </div>
         <div className="prodModal2">
           <img src={prodModal2} alt="" />
-          <h1 className="org">nosotros organizamos</h1>
+          <h1 className="org">2. nosotros organizamos</h1>
         </div>
         <div className="prodModal3">
           <img src={prodModal3} alt="" />
-          <h1 className="man">lo recibes en tus manos</h1>
+          <h1 className="man">3. lo recibes en tus manos</h1>
         </div>
       </div>
     </div>

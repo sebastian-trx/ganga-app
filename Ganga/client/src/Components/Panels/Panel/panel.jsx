@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import UserPanel from '../UserPanel/uPanel';
+import UserPanel from "../UserPanel/uPanel";
 import VendorPanel from "../VendorPanel/vPanel";
 import AdminPanel from "../AdminPanel/aPanel";
 import { getUserInfoGoogle } from "../../Redux/Actions/actions";
-
+import Nav from "../../Nav/NavBar/nav";
+import User from "../../Nav/User/user";
 
 export default function Panel() {
     const dispatch = useDispatch();
@@ -16,22 +17,23 @@ export default function Panel() {
     }, [dispatch]);
     return (
         <div>
-            {user?.login && user?.login ?
+            {user && user.login ? (
                 <div>
-                    {
-                        user && user.admin ?
-                            <AdminPanel /> : null
-                    }
-                    {
-                        !user.admin && user.seller ?
-                            <VendorPanel user={user} /> : null
-                    }
-                    {
-                        !user.admin && !user.seller ?
-                            <UserPanel user={user} /> : null
-                    }
+                    <div className="absolute top-5 right-20 z-50 mr-10 w-28">
+                        <User />
+                    </div>
+                    <Nav />
                 </div>
-                : <h1>cargando...</h1>}
+            ) : null}
+            {user?.login && user?.login ? (
+                <div>
+                    {user && user.admin ? <AdminPanel /> : null}
+                    {!user.admin && user.seller ? <VendorPanel user={user} /> : null}
+                    {!user.admin && !user.seller ? <UserPanel user={user} /> : null}
+                </div>
+            ) : (
+                <h1>cargando...</h1>
+            )}
         </div>
-    )
+    );
 }

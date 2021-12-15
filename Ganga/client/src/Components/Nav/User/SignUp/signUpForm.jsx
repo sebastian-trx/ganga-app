@@ -21,7 +21,7 @@ export default function SignUpForm() {
     province: "",
     cp: "",
     birthdate: "",
-    // seller: false,
+    seller: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -78,6 +78,13 @@ export default function SignUpForm() {
     }, 200);
   }
 
+  function handleSelectSeller(e) {
+    setInput({
+      ...input,
+      seller: e.target.value
+    })
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -102,7 +109,7 @@ export default function SignUpForm() {
             onChange={handleChange}
           ></input>
         </div>
-        <div className="flex items-start content-center justify-center h-6">
+        <div className="flex items-start content-center justify-center h-5">
           <div>
             {errors.name && <p className="text-red-600">{errors.name}</p>}
           </div>
@@ -131,7 +138,7 @@ export default function SignUpForm() {
             onChange={handleChange}
           ></input>
         </div>
-        <div className="flex items-start content-center justify-center h-6">
+        <div className="flex items-start content-center justify-center h-5">
           <div>
             {errors.cellphone && (
               <p className="text-red-600">{errors.cellphone}</p>
@@ -154,7 +161,7 @@ export default function SignUpForm() {
             onChange={handleChange}
           ></input>
         </div>
-        <div className="flex items-start content-center justify-center h-6">
+        <div className="flex items-start content-center justify-center h-5">
           <div>
             {errors.mail && <p className="text-red-600">{errors.mail}</p>}
           </div>
@@ -178,7 +185,7 @@ export default function SignUpForm() {
             onChange={handleChange}
           ></input>
         </div>
-        <div className="flex items-start content-center justify-center h-6">
+        <div className="flex items-start content-center justify-center h-5">
           <div>
             {errors.password && (
               <p className="text-red-600">{errors.password}</p>
@@ -217,7 +224,7 @@ export default function SignUpForm() {
             onChange={handleChange}
           ></input>
         </div>
-        <div className="flex items-start content-center justify-center h-6">
+        <div className="flex items-start content-center justify-center h-5">
           <div>
             {errors.country && <p className="text-red-600">{errors.country}</p>}
           </div>
@@ -229,7 +236,7 @@ export default function SignUpForm() {
           <div>{errors.cp && <p className="text-red-600">{errors.cp}</p>}</div>
         </div>
 
-        <div>
+        <div className="flex items-center content-center justify-center">
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="address"
@@ -239,10 +246,19 @@ export default function SignUpForm() {
             onChange={handleChange}
           ></input>
         </div>
-        <div className="flex items-start content-center justify-center h-6">
+        <div className="flex items-start content-center justify-center h-5">
           <div>
             {errors.address && <p className="text-red-600">{errors.address}</p>}
           </div>
+        </div>
+
+        <div className="pb-2">
+          <p className="inline-block">¿Desea ser vendedor?</p>
+          <select className="inline-block" name="seller" value={input.seller} onChange={handleSelectSeller}>
+            <option value="" disabled="disabled" >Seleccionar</option>
+            <option value="true">Si</option>
+            <option value="false">No </option>
+          </select>
         </div>
 
         <button
@@ -276,7 +292,7 @@ export default function SignUpForm() {
         <LoginG />
       </div>
 
-      <h5 className="py-3 text-lg"> ¿Ya tienes una cuenta?</h5>
+      <h5 className="pt-3 text-lg"> ¿Ya tienes una cuenta?</h5>
       <Link to="/ingresar">
         <button className="text-red-400 text-lg"> Entra aquí</button>
       </Link>

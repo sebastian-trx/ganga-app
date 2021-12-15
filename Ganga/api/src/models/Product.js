@@ -48,6 +48,10 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING,
             },
 
+            status: {
+                type: DataTypes.ENUM('new', 'nuevo', 'usado', 'used')
+            },
+
             approved: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false

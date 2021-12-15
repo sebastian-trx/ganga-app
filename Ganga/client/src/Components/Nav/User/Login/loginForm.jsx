@@ -65,10 +65,12 @@ export default function LoginForm() {
             value={input.mail}
             onChange={handleChange}
           ></input>
-          {errors.mail && <p>{errors.mail}</p>}
+        </div>
+        <div className="flex items-start content-center justify-center h-6">
+          {errors.mail && <p className="text-red-600">{errors.mail}</p>}
         </div>
 
-        <div className="py-14">
+        <div>
           <input
             className="w-96 border-gray-400 border-2 rounded pl-2"
             name="password"
@@ -77,11 +79,13 @@ export default function LoginForm() {
             value={input.password}
             onChange={handleChange}
           ></input>
-          {errors.password && <p>{errors.password}</p>}
+        </div>
+        <div className="flex items-start content-center justify-center h-6">
+          {errors.password && <p className="text-red-600">{errors.password}</p>}
         </div>
 
         <button
-          className="border-gray-400 border-2 rounded px-3 py-1 text-xl"
+          className="border-gray-400 border-2 rounded mt-2 px-3 py-1 text-xl"
           type="submit"
           value="submit"
           disabled={!(input.password && input.mail)}

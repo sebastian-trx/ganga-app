@@ -1,0 +1,148 @@
+.containerPagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 18vw;
+    flex-direction: row;
+  }
+  
+  .page {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    float: left;
+    margin: 0 5px;
+    position: relative;
+    top: -25vw;
+  }
+  
+  .pageCurrent {
+    color: rgb(86, 125, 255);
+    border-bottom: solid 2px rgb(86, 125, 255);
+  }
+  
+  .number {
+    padding: 5px;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  @media (min-width: 1400px) {
+    .page {
+      width: 20px;
+      height: 25px;
+      text-align: center;
+      float: left;
+      margin: 0 5px;
+    }
+  
+    .number {
+      font-size: 17px;
+      padding: 5px;
+      color: #000;
+      font-weight: bold;
+    }
+  
+    .pageCurrent {
+      font-size: 17px;
+      color: rgb(86, 125, 255);
+      font-weight: bold;
+      border-bottom: solid 2px rgb(86, 125, 255);
+    }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1399px) {
+    .page {
+      width: 20px;
+      height: 25px;
+      text-align: center;
+      float: left;
+      /* margin: 0 5px; */
+    }
+  
+    .number {
+      font-size: 16px;
+      padding: 5px;
+      color: #000;
+      font-weight: bold;
+    }
+  
+    .pageCurrent {
+      font-size: 16px;
+      color: rgb(86, 125, 255);
+      font-weight: bold;
+      border-bottom: solid 2px rgb(86, 125, 255);
+    }
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .page {
+      width: 20px;
+      height: 25px;
+      text-align: center;
+      float: left;
+      margin: 0 5px;
+    }
+  
+    .number {
+      font-size: 14px;
+      padding: 5px;
+      color: #000;
+      font-weight: bold;
+    }
+  
+    .pageCurrent {
+      font-size: 14px;
+      color: rgb(86, 125, 255);
+      font-weight: bold;
+      border-bottom: solid 2px rgb(86, 125, 255);
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .page {
+      width: 20px;
+      height: 25px;
+      text-align: center;
+      float: left;
+      margin: 0 5px;
+    }
+  
+    .number {
+      font-size: 14px;
+      padding: 5px;
+      color: #000;
+      font-weight: bold;
+    }
+  
+    .pageCurrent {
+      font-size: 14px;
+      color: rgb(86, 125, 255);
+      font-weight: bold;
+      border-bottom: solid 2px rgb(86, 125, 255);
+    }
+  }
+  
+  @media (min-width: 576px) and (max-width: 767px) {
+    .page {
+      width: 20px;
+      height: 25px;
+      text-align: center;
+      float: left;
+      margin: 0 5px;
+    }
+  
+    .number {
+      font-size: 14px;
+      padding: 5px;
+      color: #000;
+      font-weight: bold;
+    }
+  
+    .pageCurrent {
+      font-size: 14px;
+      color: rgb(86, 125, 255);
+      font-weight: bold;
+      border-bottom: solid 2px rgb(86, 125, 255);
+    }
+  }

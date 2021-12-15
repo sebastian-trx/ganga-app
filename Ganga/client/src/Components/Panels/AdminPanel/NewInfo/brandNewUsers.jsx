@@ -23,7 +23,7 @@ export default function BrandNewUsers({ today, users }) {
                     <div className="pt-5 text-base">{u.name + " " + u.surname}</div>
                     <div className="pt-1 text-base">{u.mail}</div>
                     <div className="pt-1 text-base">{u.address}</div>
-                    <div className="pt-1 text-base">{u.seller ? "Vendedor" : "Usuario"}</div>
+                    <div className="pt-1 text-base">{u.admin ? "Admin" : u.seller ? "Vendedor" : "Usuario"}</div>
                   </div>
                 </Link>
               </li>

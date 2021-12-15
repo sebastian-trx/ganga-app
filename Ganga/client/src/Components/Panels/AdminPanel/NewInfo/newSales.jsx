@@ -8,13 +8,21 @@ export default function NewSales({ today, orders, users, verOrdenes, ordenes }) 
     verOrdenes((ordenes = true));
   };
 
-
-  const sales = orders.map((o) => {
+  const sales = orders?.map((o) => {
+    let vendedor = "";
+    if (o.productInfo[0].owner === null) {
+      vendedor = "GanGa";
+    } else {
+      let Vendedor = o.productInfo[0].owner;
+      vendedor = users.filter((u) => u.id === Vendedor);
+      vendedor = vendedor[0].name + " " + vendedor[0].surname;
+    }
     return {
       fecha: o.createdAt.slice(8, 10),
       usuario: users.filter((u) => u.id === o.userId),
       products: o.productInfo.map((p) => p.quantity),
       total: o.total,
+      owner: vendedor // modifique
     };
   });
 
@@ -23,7 +31,8 @@ export default function NewSales({ today, orders, users, verOrdenes, ordenes }) 
     return {
       total: s.total,
       productos: s.products.reduce((a, b) => a + b, 0),
-      usuario: s.usuario[0].name + " " + s.usuario[0].surname
+      usuario: s.usuario[0].name + " " + s.usuario[0].surname,
+      vendedor: s.vendedor
     }
   })
 
@@ -38,6 +47,9 @@ export default function NewSales({ today, orders, users, verOrdenes, ordenes }) 
           <th className="h-10">
             <span>Usuario</span>
           </th>
+          <th className="h-10">
+            <span>Vendedor</span>
+          </th>
           <th>
             <span>Productos comprados</span>
           </th>
@@ -51,12 +63,17 @@ export default function NewSales({ today, orders, users, verOrdenes, ordenes }) 
               <tr className={s.sale}>
                 <td className="h-10">
                   <span>{t.usuario}</span>
-                  <button className="w-10 h-1" onClick={togglE}>___________________________________
+                  <button className="w-10 h-1" onClick={togglE}>_________________________________________
+                  </button>
+                </td>
+                <td className="h-10">
+                  <span>{t.vendedor}</span>
+                  <button className="w-10 h-1" onClick={togglE}>_____________________________________________
                   </button>
                 </td>
                 <td className="h-10">
                   <span> {t.productos} </span>
-                  <button className="w-10 h-1" onClick={togglE}>_____________________________
+                  <button className="w-10 h-1" onClick={togglE}>___________________________________
                   </button>
                 </td>
                 <td className="h-10">

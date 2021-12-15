@@ -1,7 +1,26 @@
-import React from "react";
-import { Review } from "../../Reviews/Review.jsx";
+import React, { useState } from "react";
 
-export default function PurchaseList({ orders }) {
+import ReviewProduct from "../../Reviews/ReviewProduct";
+import ReviewVendor from "../../Reviews/ReviewVendor";
+
+
+
+export default function PurchaseList({ orders, users }) {
+
+    let [vendorReview, setVendorReview] = useState(false);
+    let [productReview, setProductReview] = useState(false);
+
+    const toggle = () => {
+        setVendorReview((!vendorReview));
+        setProductReview((productReview = false));
+    };
+
+    const Toggle = () => {
+        setProductReview((!productReview));
+        setVendorReview((vendorReview = false));
+    };
+
+
     for (var i = 0; i < orders.length; i++) {
         for (var j = 0; j < orders[i].productInfo.length; j++) {
             orders[i].productInfo[j].date = orders[i].createdAt.slice(0, 10);
@@ -12,6 +31,9 @@ export default function PurchaseList({ orders }) {
 
     let Products = orders.map((o) => o.productInfo);
     let products = Products.flat().reverse();
+
+
+
 
     return (
         <div>
@@ -39,41 +61,56 @@ export default function PurchaseList({ orders }) {
                                 <tbody>
                                     {products?.length !== 0 ? (
                                         products?.map((el) => (
-                                            <tr key={el.id}>
-                                                <td class="hidden pb-4 md:table-cell">
-                                                    <img
-                                                        src={el.image}
-                                                        class="w-20 rounded"
-                                                        alt="Thumbnail"
-                                                    />
-                                                </td>
-                                                <td>
-                                                    <p class="mb-2 md:ml-4">{el.name}</p>
-                                                    <p class="mb-2 md:ml-4">Fecha: {el.date}</p>
-                                                    <p class="mb-2 md:ml-4">Vendedor: </p>
-                                                </td>
-                                                {/* <td class="hidden md:table-cell">
+                                            <>
+                                                <tr key={el.id}>
+                                                    <td class="hidden pb-4 md:table-cell">
+                                                        <img
+                                                            src={el.image}
+                                                            class="w-20 rounded"
+                                                            alt="Thumbnail"
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-2 md:ml-4">{el.name}</p>
+                                                        <p class="mb-2 md:ml-4">Fecha: {el.date}</p>
+                                                        <p class="mb-2 md:ml-4">Vendedor: </p>
+                                                    </td>
+                                                    {/* <td class="hidden md:table-cell">
                       </td> */}
-                                                <td class="text-right">
-                                                    <span class="text-sm lg:text-base font-medium">
-                                                        {el.quantity}
-                                                    </span>
-                                                </td>
-                                                <td class="text-right">
-                                                    <span class="text-sm lg:text-base font-medium">
-                                                        ${el.price}
-                                                        {/* {console.log('soy el product mapeado: ', el)} */}
-                                                    </span>
-                                                </td>
-                                                <td class="text-right">
-                                                    <span class="text-sm lg:text-base font-medium">
-                                                        ${el.price * el.quantity}
-                                                    </span>
-                                                </td>
-                                                <td class="text-right">
-                                                    <Review idUser={el.userId} idProduct={el.id} />
-                                                </td>
-                                            </tr>
+                                                    <td class="text-right">
+                                                        <span class="text-sm lg:text-base font-medium">
+                                                            {el.quantity}
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-sm lg:text-base font-medium">
+                                                            ${el.price}
+
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-sm lg:text-base font-medium">
+                                                            ${el.price * el.quantity}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <button className="relative top-5 left-14 border-2 p-2 mb-10 rounded border-gray-400 hover:bg-gray-700 hover:text-white" onClick={Toggle}>Puntuar <br />Producto</button>
+                                                <button className="relative top-5 left-52 border-2 p-2 mb-10 rounded border-gray-400 hover:bg-gray-700 hover:text-white" onClick={toggle}>Puntuar <br />Vendedor</button>
+                                                {
+                                                    vendorReview ?
+                                                        <div className="relative top-5 left-60 m-2">
+                                                            <ReviewVendor idUser={el.userId} idProduct={el.id} />
+                                                        </div>
+                                                        : null
+                                                }
+                                                {
+                                                    productReview ?
+                                                        <div className="relative top-5 left-1 m-2">
+                                                            <ReviewProduct idUser={el.userId} idProduct={el.id} />
+                                                        </div>
+                                                        : null
+                                                }
+                                            </>
                                         ))
                                     ) : (
                                         <tr>

@@ -65,6 +65,7 @@ export default function InfoUser() {
         const file = await res.json();
         setImage(file.secure_url);
     };
+
     const submit = (e) => {
         e.preventDefault();
         dispatch(updateUser(input));
@@ -78,23 +79,35 @@ export default function InfoUser() {
             <form className="text-center" onSubmit={submit}>
                 <div className="items-center justify-center content-center">
                     <div className="pt-0 pb-2">
+                        <div className="absolute right-40 top-48">
+                            <h1 className="w-40 py-1 my-1 text-center rounded-full bg-gray-700 text-white">Tu imagen actual</h1>
+                            {
+                                !user.image ?
+                                    <img className={s.perfil}
+                                        src="https://img2.freepng.es/20180420/aie/kisspng-computer-icons-silhouette-user-profile-5ada934a8f5461.2830952615242739945871.jpg"
+                                        alt=" imagen algternativa" /> :
+                                    <img className={s.perfil} src={user.image} alt="imagen de perfil" />
+                            }
+                        </div>
                         <label>Imagen de Perfil</label>
                     </div>
                     <label>
                         {loading ? (
                             <div class="flex items-center content-center justify-center">
                                 <img
-                                    class="min-w-min min-h-min w-40 h-40 rounded-full"
+                                    class="min-w-min min-h-min w-40 h-40 rounded"
                                     src={image}
                                     alt="No hay imagen"
                                 />
+                                <div className={s.imgName}>{(input.image = image)}</div>
                             </div>
                         ) : (
                             <p>Aun no has subido una imagen</p>
                         )}
                     </label>
-                    <div className="m-auto w-1/2 rounded-full text-center bg-gray-700 text-white">
+                    <div className="m-auto w-80 rounded-full text-center bg-gray-700 text-white">
                         <input
+
                             className={s.inputs}
                             onChange={uploadImage}
                             type="file"
@@ -106,12 +119,12 @@ export default function InfoUser() {
                 </div>
 
                 <div class="flex items-center justify-center content-center">
-                    <div className="px-8 py-4">
+                    <div className="px-1 py-4">
                         <div>
                             <label> Nombre </label>
                         </div>
                         <input
-                            className="w-60 text-center rounded-full bg-gray-700 text-white"
+                            className="w-60 text-center rounded bg-gray-700 text-white"
                             onChange={handleChange}
                             type="text"
                             value={input.name}
@@ -119,12 +132,12 @@ export default function InfoUser() {
                             placeholder="Nombre"
                         />
                     </div>
-                    <div className="px-8 py-4">
+                    <div className="px-1 py-4">
                         <div>
                             <label> Apellido </label>
                         </div>
                         <input
-                            className="w-60 text-center rounded-full bg-gray-700 text-white"
+                            className="w-60 text-center rounded bg-gray-700 text-white"
                             onChange={handleChange}
                             type="text"
                             value={input.surname}
@@ -140,7 +153,7 @@ export default function InfoUser() {
                             <label> Fecha de Nacimiento </label>
                         </div>
                         <input
-                            className="w-60 text-center rounded-full bg-gray-700 text-white"
+                            className="w-60 text-center rounded bg-gray-700 text-white"
                             onChange={handleChange}
                             type="date"
                             value={input.birthdate}
@@ -153,7 +166,7 @@ export default function InfoUser() {
                             <label> Número de celular </label>
                         </div>
                         <input
-                            class="w-60 text-center rounded-full bg-gray-700 text-white appearance-none"
+                            class="w-60 text-center rounded bg-gray-700 text-white appearance-none"
                             onChange={handleChange}
                             type="number"
                             value={input.cellphone}
@@ -167,7 +180,7 @@ export default function InfoUser() {
                             <label> Correo </label>
                         </div>
                         <input
-                            className="w-60 text-center rounded-full bg-gray-700 text-white"
+                            className="w-60 text-center rounded bg-gray-700 text-white"
                             onChange={handleChange}
                             type="mail"
                             value={input.mail}
@@ -183,7 +196,7 @@ export default function InfoUser() {
                             <label> País </label>
                         </div>
                         <input
-                            className="w-60 rounded-full text-center bg-gray-700 text-white"
+                            className="w-60 rounded text-center bg-gray-700 text-white"
                             onChange={handleChange}
                             type="text"
                             value={input.country}
@@ -196,7 +209,7 @@ export default function InfoUser() {
                             <label> Departamento </label>
                         </div>
                         <input
-                            className="w-60 rounded-full text-center bg-gray-700 text-white"
+                            className="w-60 rounded text-center bg-gray-700 text-white"
                             onChange={handleChange}
                             type="text"
                             value={input.province}
@@ -209,7 +222,7 @@ export default function InfoUser() {
                             <label> Código Postal </label>
                         </div>
                         <input
-                            className="w-60 rounded-full text-center bg-gray-700 text-white"
+                            className="w-60 rounded text-center bg-gray-700 text-white"
                             onChange={handleChange}
                             type="text"
                             value={input.cp}
@@ -223,7 +236,7 @@ export default function InfoUser() {
                         <label> Dirección </label>
                     </div>
                     <input
-                        className="w-96 rounded-full text-center bg-gray-700 text-white"
+                        className="w-96 rounded text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"
                         value={input.address}

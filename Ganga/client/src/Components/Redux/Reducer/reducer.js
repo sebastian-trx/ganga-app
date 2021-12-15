@@ -171,6 +171,7 @@ function rootReducer(state = initialState, { type, payload, price1, price2 }) {
         allUsers: payload,
       };
     case GET_FILTER_BY_CATEGORY:
+      console.log(payload, "ljdwboubdlwnb");
       let filter = state.allProducts2.filter((el) => el.categories === payload);
       return {
         ...state,

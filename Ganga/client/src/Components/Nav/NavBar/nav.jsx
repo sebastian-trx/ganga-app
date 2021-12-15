@@ -53,7 +53,7 @@ export default function Nav() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    navigate("/catalogo");
+    navigate("/buscar/catalogo");
     dispatch(productsByName(name))
   }
   function handleCatalago(e) {

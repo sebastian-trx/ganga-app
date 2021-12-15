@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Nav from "../../Nav/NavBar/nav";
+// import Nav from "../../Nav/NavBar/nav";
 import VendedorSidebar from "./vSidebar";
 import InfoUser from "../UserPanel/infoUser";
 import s from "./vendor.module.css";
@@ -23,7 +23,6 @@ export default function VendorPanel({ user }) {
     const allUsers = useSelector((state) => state.allUsers);
     const userOrders = orders.filter(o => o.userId === user.id);
 
-
     useEffect(() => {
         dispatch(getAllOrders());
     }, [dispatch]);
@@ -36,11 +35,8 @@ export default function VendorPanel({ user }) {
         dispatch(getAllUsers());
     }, [dispatch]);
 
-
-
     return (
         <div className="bg-gray-100">
-            <Nav />
             {!ventas ? (
                 <div>
                     {!productos ? (
@@ -74,7 +70,7 @@ export default function VendorPanel({ user }) {
                                         />
                                     </div>
                                     <div className={s.body}>
-                                        <PurchaseList orders={userOrders} />
+                                        <PurchaseList orders={userOrders} users={allUsers} />
                                     </div>
                                 </div>
                             )}

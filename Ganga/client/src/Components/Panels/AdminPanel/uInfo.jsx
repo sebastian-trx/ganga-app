@@ -6,6 +6,7 @@ import Nav from "../../Nav/NavBar/nav";
 
 import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
 import s from './admin.module.css';
+import UserPurchaseList from "./userPurchaseList";
 import VendorProducts from "./vendorProducts";
 
 
@@ -13,13 +14,11 @@ export default function UserInfo() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const allUsers = useSelector((state) => state.allUsers);
+    const orders = useSelector((state) => state.orders);
 
     // const userfil = useSelector((state) => state.getInfoGoogle)
     const { id } = useParams()
     const userfil = allUsers.filter((el) => el.id === id)
-
-
-
 
     const name = userfil[0]?.name;
     const surname = userfil[0]?.surname;
@@ -50,7 +49,6 @@ export default function UserInfo() {
         // image: image,
     })
 
-
     useEffect(() => {
         dispatch(updateUser(input))
         dispatch(getAllUsers())
@@ -68,7 +66,7 @@ export default function UserInfo() {
         console.log('soy el input del submit: ', input)
         dispatch(updateUser(input));
         navigate("/panel")
-        window.location.reload();
+
     }
 
     return (
@@ -83,71 +81,117 @@ export default function UserInfo() {
             </div>
             <h3 className="text-center text-3xl">Modificar tus datos</h3>
             <form className="text-center" onSubmit={submit}>
-                <div className="p-4">
-                    <div>
-                        <label> Nombre </label>
+
+                <div class="flex items-center justify-center content-center">
+                    <div className="px-1 py-4">
+                        <div>
+                            <label> Nombre </label>
+                        </div>
+                        <input className="w-60 text-center bg-gray-700 text-white rounded"
+                            onChange={handleChange}
+                            type="text"
+                            value={input.name}
+                            name="name"
+                            placeholder="Nombre"
+                        />
                     </div>
-                    <input className="text-center bg-gray-700 text-white"
-                        onChange={handleChange}
-                        type="text"
-                        value={input.name}
-                        name="name"
-                        placeholder="Nombre"
-                    />
-                </div>
-                <div className="p-4">
-                    <div>
-                        <label> Apellido </label>
+                    <div className="px-1 py-4">
+                        <div>
+                            <label> Apellido </label>
+                        </div>
+                        <input className="w-60 text-center bg-gray-700 text-white rounded"
+                            onChange={handleChange}
+                            type="text"
+                            value={input.surname}
+                            name="surname"
+                            placeholder="Apellido"
+                        />
                     </div>
-                    <input className="text-center bg-gray-700 text-white"
-                        onChange={handleChange}
-                        type="text"
-                        value={input.surname}
-                        name="surname"
-                        placeholder="Apellido"
-                    />
                 </div>
-                <div className="p-4">
-                    <div>
-                        <label> Correo </label>
+
+                <div class="flex items-center justify-center content-center">
+                    <div className="px-8 py-4">
+                        <div>
+                            <label> Fecha de Nacimiento </label>
+                        </div>
+                        <input className="w-60 text-center rounded bg-gray-700 text-white"
+                            onChange={handleChange}
+                            type="date"
+                            value={input.birthdate}
+                            name="birthdate"
+                            placeholder="Fecha de Nacimiento"
+                        />
                     </div>
-                    <input className="text-center bg-gray-700 text-white"
-                        onChange={handleChange}
-                        type="text"
-                        value={input.mail}
-                        name="mail"
-                        placeholder="Correo"
-                    />
-                </div>
-                <div className="p-4">
-                    <div>
-                        <label> Número de celular </label>
+                    <div className="px-8 py-4">
+                        <div>
+                            <label> Número de celular </label>
+                        </div>
+                        <input className="w-60 text-center rounded bg-gray-700 text-white appearance-none"
+                            onChange={handleChange}
+                            type="number"
+                            value={input.cellphone}
+                            name="cellphone"
+                            placeholder="Número de celular"
+                        />
                     </div>
-                    <input className="text-center bg-gray-700 text-white"
-                        onChange={handleChange}
-                        type="number"
-                        value={input.cellphone}
-                        name="cellphone"
-                        placeholder="Núnero de celular"
-                    />
-                </div>
-                <div className="p-4">
-                    <div>
-                        <label> Fecha de Nacimiento </label>
+                    <div className="px-8 py-4">
+                        <div>
+                            <label> Correo Electronico </label>
+                        </div>
+                        <input className="w-60 text-center rounded bg-gray-700 text-white"
+                            onChange={handleChange}
+                            type="mail"
+                            value={input.mail}
+                            name="mail"
+                            placeholder="Correo"
+                        />
                     </div>
-                    <input className="text-center bg-gray-700 text-white"
-                        onChange={handleChange}
-                        type="date"
-                        value={input.birthdate}
-                        name="birthdate"
-                        placeholder="Fecha de Nacimiento"
-                    />
                 </div>
-                <div className="p-4">
+
+                <div class="flex items-center justify-center content-center">
+                    <div className="px-8 py-4">
+                        <div>
+                            <label> País </label>
+                        </div>
+                        <input className="w-60 rounded text-center bg-gray-700 text-white"
+                            onChange={handleChange}
+                            type="text"
+                            value={input.country}
+                            name="country"
+                            placeholder="País"
+                        />
+                    </div>
+                    <div className="px-8 py-4">
+                        <div>
+                            <label> Departamento </label>
+                        </div>
+                        <input className="w-60 rounded text-center bg-gray-700 text-white"
+                            onChange={handleChange}
+                            type="text"
+                            value={input.province}
+                            name="province"
+                            placeholder="Departamento"
+                        />
+                    </div>
+                    <div className="px-8 py-4">
+                        <div>
+                            <label> Código Postal </label>
+                        </div>
+                        <input className="w-60 rounded text-center bg-gray-700 text-white"
+                            onChange={handleChange}
+                            type="text"
+                            value={input.cp}
+                            name="cp"
+                            placeholder="Código postal"
+                        />
+                    </div>
+                </div>
+
+                <div className="px-8 py-4">
                     <div>
                         <label> Dirección </label>
                     </div>
-                    <input className="text-center bg-gray-700 text-white"
+                    <input className="w-96 rounded text-center bg-gray-700 text-white"
                         onChange={handleChange}
                         type="text"
                         value={input.address}
@@ -155,70 +199,35 @@ export default function UserInfo() {
                         placeholder="Dirección"
                     />
                 </div>
-                <div className="p-4">
-                    <div>
-                        <label> País </label>
-                    </div>
-                    <input className="text-center bg-gray-700 text-white"
-                        onChange={handleChange}
-                        type="text"
-                        value={input.country}
-                        name="country"
-                        placeholder="País"
-                    />
-                </div>
-                <div className="p-4">
-                    <div>
-                        <label> Provincia </label>
-                    </div>
-                    <input className="text-center bg-gray-700 text-white"
-                        onChange={handleChange}
-                        type="text"
-                        value={input.province}
-                        name="province"
-                        placeholder="Provincia"
-                    />
-                </div>
-                <div className="p-4">
-                    <div>
-                        <label> Código Postal </label>
-                    </div>
-                    <input className="text-center bg-gray-700 text-white"
-                        onChange={handleChange}
-                        type="text"
-                        value={input.cp}
-                        name="cp"
-                        placeholder="Código postal"
-                    />
-                </div>
-                <div className="p-4">
+
+                <div className="px-8 py-4">
                     <div>
                         <label> Tienda Oficial </label>
                     </div>
-                    <select className="text-center bg-gray-700 text-white" name="officialStore" onChange={handleChange}>
+                    <select className="text-center bg-gray-700 text-white rounded" name="officialStore" onChange={handleChange}>
                         <option selected="true" disabled="disabled" >Seleccionar </option>
                         <option value="true" >true </option>
                         <option value="false" >false </option>
                     </select>
                 </div>
-                <div className="p-4">
+                <div className="px-8 py-4">
                     <div>
                         <label> Hacer vendedor / Deshacer vendedor </label>
                     </div>
-                    <select className="text-center bg-gray-700 text-white" name="seller" onChange={handleChange}>
+                    <select className="text-center bg-gray-700 text-white rounded" name="seller" onChange={handleChange}>
                         <option selected="true" disabled="disabled" >Seleccionar </option>
                         <option value="true" >true </option>
                         <option value="false" >false </option>
                     </select>
                 </div>
-                <div className="p-5">
+                <div className="px-8 py-4">
                     <button className={s.btnActualizar} type="submit">
                         Actualizar
                     </button>
                 </div>
 
-            </form >
-            {!seller ? null : <VendorProducts id={id} />}
-        </div >
+            </form>
+            {!seller ? <UserPurchaseList users={allUsers} orders={orders} /> : <VendorProducts id={id} />}
+        </div>
     )
 }
