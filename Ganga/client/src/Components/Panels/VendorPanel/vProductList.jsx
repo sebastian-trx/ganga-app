@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
+import { BsPencilSquare } from "react-icons/bs";
 import { deleteProduct, getCategories, getDbSubcategories, allReviews } from "../../Redux/Actions/actions";
 
 import s from "../AdminPanel/admin.module.css";
@@ -15,7 +16,6 @@ export default function VendorProductList({ products, user }) {
     const Reviews = useSelector((state) => state.allReviews);
     const User = useSelector((state) => state.getInfoGoogle);
 
-
     useEffect(() => {
       dispatch(allReviews())
     },[dispatch]);
@@ -27,6 +27,7 @@ export default function VendorProductList({ products, user }) {
   useEffect(() => {
     dispatch(getDbSubcategories());
 }, [dispatch]);
+
 
 const devolucion = Reviews.map((r) => r.userId)
 
@@ -74,17 +75,17 @@ console.log('soy el userReviews: ', userReviews)
     const MyCategory = categories.filter(c => c.id === p.categoryId);
     const myCategory = MyCategory[0].name;
     const mySubcategory = subcategories.filter(s=> s.id === p.subcategoryId);
-    console.log("subc", mySubcategory);
+   
     let mySubCategory= "";
   if (mySubcategory?.length === 0  ) {
        mySubCategory = "no definida"
-       console.log("msubc1", mySubCategory);
+      
     } else {
        mySubCategory = mySubcategory[0].name;
-       console.log("msubc2", mySubCategory);
+  
     }
    
-    console.log("msubc3", mySubCategory);
+   
     return {
       id: p.id,
       Nombre: p.name,

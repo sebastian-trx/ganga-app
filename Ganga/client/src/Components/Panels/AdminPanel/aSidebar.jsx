@@ -9,13 +9,16 @@ export default function AdminSidebar({
   vendedores,
   verVendedores,
   ordenes,
-  verOrdenes
+  verOrdenes,
+  productosNuevos,
+  verProductosNuevos
 }) {
   const toggle = () => {
     verUsuarios((usuarios = true));
     verProductos((productos = false));
     verVendedores((vendedores = false));
     verOrdenes((ordenes = false));
+    verProductosNuevos((productosNuevos = false));
   };
 
   const Toggle = () => {
@@ -23,6 +26,7 @@ export default function AdminSidebar({
     verUsuarios((usuarios = false));
     verVendedores((vendedores = false));
     verOrdenes((ordenes = false));
+    verProductosNuevos((productosNuevos = false));
   };
 
   const togle = () => {
@@ -30,6 +34,7 @@ export default function AdminSidebar({
     verUsuarios((usuarios = false));
     verProductos((productos = false));
     verOrdenes((ordenes = false));
+    verProductosNuevos((productosNuevos = false));
   };
 
   const Togle = () => {
@@ -37,6 +42,7 @@ export default function AdminSidebar({
     verProductos((productos = false));
     verUsuarios((usuarios = false));
     verOrdenes((ordenes = false));
+    verProductosNuevos((productosNuevos = false));
   };
 
   const togglE = () => {
@@ -44,6 +50,15 @@ export default function AdminSidebar({
     verProductos((productos = false));
     verUsuarios((usuarios = false));
     verOrdenes((ordenes = true));
+    verProductosNuevos((productosNuevos = false));
+  };
+
+  const TogglE = () => {
+    verVendedores((vendedores = false));
+    verProductos((productos = false));
+    verUsuarios((usuarios = false));
+    verOrdenes((ordenes = false));
+    verProductosNuevos((productosNuevos = true));
   };
 
   return (
@@ -64,6 +79,9 @@ export default function AdminSidebar({
           </li>
           <li className="p-8 text-xl hover:bg-gray-400">
             <button onClick={togglE}>Ventas</button>
+          </li>
+          <li className="p-8 text-xl hover:bg-gray-400">
+            <button onClick={TogglE}>Autorizaciónes</button>
           </li>
         </ul>
     </div>

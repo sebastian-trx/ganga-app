@@ -22,8 +22,11 @@ export default function FilterPrice() {
     function handleSubmit(e){
         e.preventDefault()
         dispatch(filterPriceByRange(price1, price2));
-        setPrice1(" ");
-        setPrice2(" ");
+        // SetInput({
+        //     setPrice1:"",
+        //     setPrice2:"",
+        // })
+      
         setCurrentPage(1); 
     }
     return (

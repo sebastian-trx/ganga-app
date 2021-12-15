@@ -24,11 +24,11 @@ export default function User() {
         <Avatar  src={infoUser.image} />
       </Menu.Button>
 
-      {/* <Menu.Items className="origin-top-right absolute shadow-lg ring-4 ring-white  ring-opacity-20 mr-1 mt-2 p-2 bg-white"> */}
-      <Menu.Items className="origin-top-right absolute shadow-lg ring-4 ring-white  ring-opacity-20 p-3 bg-white">
+     
+      <Menu.Items className="origin-top-right absolute shadow-lg ring-4 ring-white -ml-9 ring-opacity-20 p-3 bg-white">
 
         <div>
-          <Menu.Item className="py-2">
+          <Menu.Item className="py-2 px-2">
             {({ active }) => (
               <div>
                 <a

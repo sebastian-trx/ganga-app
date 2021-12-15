@@ -123,7 +123,7 @@ export default function ShoppCart() {
                         <span class="text-sm lg:text-base font-medium">
                           {prod = el.price * el.quantity}
                         </span>
-                        {sum = sum + prod}
+                        {sum = sum + prod, null}
                       </td>
                     </tr>
                   ))

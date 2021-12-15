@@ -6,6 +6,7 @@ import Nav from "../../Nav/NavBar/nav";
 
 import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
 import s from './admin.module.css';
+import UserPurchaseList from "./userPurchaseList";
 import VendorProducts from "./vendorProducts";
 
 
@@ -13,6 +14,7 @@ export default function UserInfo() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const allUsers = useSelector((state) => state.allUsers);
+    const orders = useSelector((state) => state.orders);
   
     // const userfil = useSelector((state) => state.getInfoGoogle)
     const { id } = useParams()
@@ -68,7 +70,7 @@ export default function UserInfo() {
         console.log('soy el input del submit: ', input)
         dispatch(updateUser(input));
         navigate("/panel")
-        window.location.reload();
+        
     }
 
     return (
@@ -232,8 +234,8 @@ export default function UserInfo() {
                     </button>
                 </div>
 
-            </form >
-            {!seller?  null : <VendorProducts id={id}/>}
-        </div >
+            </form>
+            {!seller?  <UserPurchaseList users={allUsers} orders={orders}/> : <VendorProducts id={id}/>}
+        </div>
     )
 }

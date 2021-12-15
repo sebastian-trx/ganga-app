@@ -141,7 +141,7 @@ export default function CreateProducts() {
             idSubcategory: " ",
         })
         alert("Producto Subido con exito, esperando aprobacion del Administrador")
-        // navigate("/panel");
+        navigate("/panel");
     }
 
 
