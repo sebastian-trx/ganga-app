@@ -146,11 +146,11 @@ export default function CreateProducts() {
       title: 'Tu producto se ha subido con exito!',
       text: 'El Administrador debe aprobar tu publicacion para que sea visible para todos.',
       showConfirmButton: false,
-      timer: 3000
+      timer: 3000,
     })
+    navigate("/panel")
     
     // alert("Producto Subido con exito, esperando aprobacion del Administrador");
-    // navigate("/panel");
   }
 
 
