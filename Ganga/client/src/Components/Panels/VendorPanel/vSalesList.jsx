@@ -56,7 +56,7 @@ export default function VendorSalesList({ user, orders, users }) {
           columns={columns}
           pageSize={10}
           rowsPerPageOptions={[10]}
-          checkboxSelection
+          // checkboxSelection
         />
       </div>
     </div>

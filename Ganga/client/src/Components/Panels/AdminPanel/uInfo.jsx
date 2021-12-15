@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate, Link } from "react-router-dom";
 import Nav from "../../Nav/NavBar/nav";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 import { updateUser, getAllUsers } from "../../Redux/Actions/actions";
 import s from './admin.module.css';
@@ -79,11 +80,11 @@ export default function UserInfo() {
             <div className="p-5">
                 <Link to="/panel">
                     <button type="button">
-                        {"<-Volver"}
+                        <IoMdArrowRoundBack className="ml-5 w-5 h-10"/>
                     </button>
                 </Link>
             </div>
-            <h3 className="text-center text-3xl">Modificar tus datos</h3>
+            <h3 className="text-center text-3xl">Modificar datos</h3>
             <form className="text-center" onSubmit={submit}>
 
 
@@ -120,7 +121,7 @@ export default function UserInfo() {
                     <div>
                         <label> Fecha de Nacimiento </label>
                     </div>
-                    <input className="w-60 text-center rounded bg-gray-700 text-white"
+                    <input className="w-60 h-6 text-center rounded bg-gray-700 text-white"
                         onChange={handleChange}
                         type="date"
                         value={input.birthdate}
@@ -210,22 +211,22 @@ export default function UserInfo() {
                 
                 <div className="px-8 py-4">
                     <div>
-                        <label> Tienda Oficial </label>
+                        <label> ¿Es Tienda Oficial? </label>
                     </div>
                     <select className="text-center bg-gray-700 text-white rounded" name="officialStore" onChange={handleChange}>
                         <option selected="true" disabled="disabled" >Seleccionar </option>
-                        <option value="true" >true </option>
-                        <option value="false" >false </option>
+                        <option value="true" >Si</option>
+                        <option value="false" >No</option>
                     </select>
                 </div>
                 <div className="px-8 py-4">
                     <div>
-                        <label> Hacer vendedor / Deshacer vendedor </label>
+                        <label> Permisos </label>
                     </div>
                     <select className="text-center bg-gray-700 text-white rounded" name="seller" onChange={handleChange}>
                         <option selected="true" disabled="disabled" >Seleccionar </option>
-                        <option value="true" >true </option>
-                        <option value="false" >false </option>
+                        <option value="true" >Vendedor </option>
+                        <option value="false" >Usuario</option>
                     </select>
                 </div>
                 <div className="px-8 py-4">

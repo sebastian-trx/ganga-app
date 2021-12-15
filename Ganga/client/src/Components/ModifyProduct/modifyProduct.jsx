@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getDetailsProduct, getCategories, getSubcategory, updateProduct, getDbSubcategories } from '../Redux/Actions/actions'
 import s from './modifyProduct.module.css'
 import Boton from '../Nav/boton'
-import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import { IoMdArrowRoundBack } from "react-icons/io"
 
 export default function ModifyProduct() {
     const { id } = useParams();
@@ -133,7 +133,7 @@ export default function ModifyProduct() {
             <div className={s.body}>
                 <Boton
                     parametro={"/panel"}
-                    icono={<BsFillArrowLeftSquareFill />}
+                    icono={<IoMdArrowRoundBack />}
                 />
                 <form onSubmit={submit} className={s.form} >
                     <div>

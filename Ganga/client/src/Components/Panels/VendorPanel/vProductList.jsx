@@ -135,7 +135,7 @@ console.log('soy el userReviews: ', userReviews)
           columns={columns}
           pageSize={10}
           rowsPerPageOptions={[10]}
-          checkboxSelection
+          // checkboxSelection
         />
       </div>
 

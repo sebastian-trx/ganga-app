@@ -13,8 +13,8 @@
 .sidebar {
     flex: 1;
     background: rgb(129, 88, 88);
-    min-height: 700px;
-    height: auto;
+    min-height: 750px;
+    max-height: auto;
     border-width: 4px;
     border-color: rgb(165, 165, 165);
 

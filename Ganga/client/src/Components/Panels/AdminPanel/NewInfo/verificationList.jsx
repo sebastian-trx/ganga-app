@@ -103,7 +103,7 @@ export default function VerificationList({ products }) {
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
-          checkboxSelection
+          // checkboxSelection
         />
       </div>
     </div>

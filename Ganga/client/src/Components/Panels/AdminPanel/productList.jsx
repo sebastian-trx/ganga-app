@@ -114,7 +114,7 @@ export default function ProductList({products}) {
           columns={columns}
           pageSize={10}
           rowsPerPageOptions={[10]}
-          checkboxSelection
+          // checkboxSelection
         />
       </div>
     </div>

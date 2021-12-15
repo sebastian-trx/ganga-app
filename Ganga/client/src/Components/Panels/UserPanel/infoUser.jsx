@@ -75,37 +75,27 @@ export default function InfoUser() {
 
   return (
     <div>
-      <h3 className="text-center text-3xl m-5 mt-20">Modificar tus datos</h3>
+      <h3 className="text-center text-3xl m-5 mt-10">Modificar datos</h3>
       <form className="text-center" onSubmit={submit}>
         <div className="items-center justify-center content-center">
           <div className="pt-0 pb-2">
-            <div className="absolute right-40 top-48">
-              <h1 className="w-40 py-1 my-1 text-center rounded-full bg-gray-700 text-white">Tu imagen actual</h1>
-              {
-                !user.image? 
-                <img className={s.perfil}
-                src="https://img2.freepng.es/20180420/aie/kisspng-computer-icons-silhouette-user-profile-5ada934a8f5461.2830952615242739945871.jpg"
-                alt=" imagen algternativa"/>:
-              <img className={s.perfil} src={user.image} alt = "imagen de perfil"/>
-              }
-            </div>
             <label>Imagen de Perfil</label>
           </div>
-          <label>
+          <label  className="flex items-center content-center justify-center">
             {loading ? (
               <div class="flex items-center content-center justify-center">
                 <img
-                  class="min-w-min min-h-min w-40 h-40 rounded"
+                  class="min-w-min min-h-min w-40 h-40 rounded-full"
                   src={image}
                   alt="No hay imagen"
                 />
-                <div className={s.imgName}>{(input.image = image)}</div>
+                {/* <div className={s.imgName}>{(input.image = image)}</div> */}
               </div>
             ) : (
               <p>Aun no has subido una imagen</p>
             )}
           </label>
-          <div className="m-auto w-80 rounded-full text-center bg-gray-700 text-white">
+          <div className="mx-auto mt-2 w-80 rounded text-center bg-gray-700 text-white">
             <input
 
               className={s.inputs}
@@ -153,7 +143,7 @@ export default function InfoUser() {
               <label> Fecha de Nacimiento </label>
             </div>
             <input
-              className="w-60 text-center rounded bg-gray-700 text-white"
+              className="w-60 h-6 text-center rounded bg-gray-700 text-white"
               onChange={handleChange}
               type="date"
               value={input.birthdate}
