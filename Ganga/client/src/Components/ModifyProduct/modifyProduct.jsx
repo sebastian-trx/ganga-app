@@ -16,8 +16,11 @@ export default function ModifyProduct() {
     const Info = useSelector((state) => state.detailProduct);
     const categories = useSelector((state) => state.categories)
     const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
-    const subcategories = useSelector((state) => state.dbSubcategories) // aca no hay subcategorias cargadas creo
-     
+
+    const subcategories = useSelector((state) => state.subcategories) // aca no hay subcategorias cargadas creo
+    let info = Info.filter(i=> i.id === id);
+    info = info[0];
+    
     useEffect(() => {
         dispatch(getDetailsProduct());
     }, [dispatch]);
@@ -129,10 +132,10 @@ export default function ModifyProduct() {
     return (
         <div >
             <div className={s.body}>
-            <Boton
-                parametro={"/panel"}
-                icono={<BsFillArrowLeftSquareFill />}
-            />
+                <Boton
+                    parametro={"/panel"}
+                    icono={<BsFillArrowLeftSquareFill />}
+                />
                 <form onSubmit={submit} className={s.form} >
                     <div>
                         <h1 className="text-center bg-gray-700 text-white text-5xl" >Modifica tu Producto</h1>
@@ -147,11 +150,11 @@ export default function ModifyProduct() {
                                         value={input.name}
                                         className="text-center bg-gray-700 text-white"
                                         onChange={handleChange}
-                                        type='text' 
+                                        type='text'
                                         name="name"
                                         placeholder="Nombre del Producto"
-                                         />
-                                        {errors.name ? <p>{errors.name}</p> : null}
+                                    />
+                                    {errors.name ? <p>{errors.name}</p> : null}
                                 </div>
                             </div>
                             <div className={s.price}>
@@ -165,7 +168,7 @@ export default function ModifyProduct() {
                                         name="price"
                                         autoComplete="off"
                                         required />
-                                        {errors.price ? <p>{errors.price}</p> : null}
+                                    {errors.price ? <p>{errors.price}</p> : null}
                                 </div>
                             </div>
 
@@ -208,10 +211,10 @@ export default function ModifyProduct() {
                                                 name="brand"
                                                 onChange={handleChange}
                                                 value={input.brand}
-                                                autoComplete="off" required />
+                                                autoComplete="off" />
                                             {errors.brand && (
-                                         <p >{errors.brand}</p>
-                                                    )}
+                                                <p >{errors.brand}</p>
+                                            )}
                                         </div>
                                     </div>
 
@@ -224,10 +227,10 @@ export default function ModifyProduct() {
                                                 type='text'
                                                 onChange={handleChange}
                                                 name="description"
-                                                autoComplete="off" required />
+                                                autoComplete="off" />
                                             {errors.description && (
-                            <p >{errors.description}</p>
-                        )}
+                                                <p >{errors.description}</p>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +278,6 @@ export default function ModifyProduct() {
                                         onChange={uploadImage}
                                         type="file"
                                         name="image"
-                                        required="required"
                                         accept="image/png,image/jpeg"
                                     />
                                     {errors.image ? <p>{errors.image}</p> : null}
@@ -283,14 +285,14 @@ export default function ModifyProduct() {
                                 <div className={s.imgName}>{(input.image = image)}</div>
                                 <label>
                                     {loading ? (
-                            <img className={s.imagenSubida} src={image} alt="No hay imagen" />
-                        ) : (
-                         <p>Aun no has subido una imagen</p>
-                                 )}
+                                        <img className={s.imagenSubida} src={image} alt="No hay imagen" />
+                                    ) : (
+                                        <p>Aun no has subido una imagen</p>
+                                    )}
                                 </label>
-                            <div className={s.btn}>
-                                <button  className={s.crear} type='submit'>Modificar Producto</button>
-                            </div>
+                                <div className={s.btn}>
+                                    <button className={s.crear} type='submit'>Modificar Producto</button>
+                                </div>
                             </div>
                         </div>
                         <div className={s.grid6}>

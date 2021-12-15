@@ -193,7 +193,6 @@ export default function CreateProducts() {
                 <input className="text-center bg-gray-700 text-white" onChange={handleChange} type="number" name="stock" value={input.stock} autoComplete="off" />
               </div>) : (<p></p>)
             }
-
           </div>
 
           <div className={s.izq}>

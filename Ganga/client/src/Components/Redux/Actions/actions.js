@@ -521,11 +521,10 @@ export function addReview(payload) {
   }
 }
 
+
 export function updateProduct(payload) {
-  console.log('soy el payload de updateProduct ', payload)
 return async function(dispatch) {
   const response = await axios.put(`${URL}product`, payload)
-  console.log('soy el response de updateProduct: ', response)
     dispatch({
       type: PUT_PRODUCT,
       payload: response.data
