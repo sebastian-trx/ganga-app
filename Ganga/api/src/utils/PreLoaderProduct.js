@@ -4,7 +4,7 @@ const infoProduct = [
   //Hogar y Muebles
   {
     name: "Silla Tolix",
-    mark: "Desillas",
+    brand: "Desillas",
     description: "Medidas Alto:85cm, Ancho:45cm, Profundidad:54cm,  Alto al Asiento:44cm, Peso:5 kg",
     price: "1999",
     stock: 12,
@@ -15,7 +15,7 @@ const infoProduct = [
   },
   {
     name: "Silla Eames",
-    mark: "Makom",
+    brand: "Makom",
     description: "Fue un diseño de Charles y Ray Eames en colaboración con Zenith Plastics para el concurso “Low-Cost Furniture Design”, que organizó The Museum of Modern Art of New York en el año 1950. Ésta fue la primera silla de plástico que se fabricó industrialmente.",
     price: "1799",
     stock: 20,
@@ -26,7 +26,7 @@ const infoProduct = [
   },
   {
     name: "Silla Master",
-    mark: "Living Style",
+    brand: "Living Style",
     description: "Ancho 53cm, alto 84cm, 56cm profundidad, Altura asiento al piso 50cm, Altura apoyabrazos al piso 68cm",
     price: "2999",
     stock: 6,
@@ -37,7 +37,7 @@ const infoProduct = [
   },
   {
     name: "Silla Plastica Ideal",
-    mark: "Ideal",
+    brand: "Ideal",
     description:
       "Silla Plastica Reforzada Ideal Juego X4 Exteriores Jardin",
     price: "8099",
@@ -50,7 +50,7 @@ const infoProduct = [
 
   {
     name: "Guirnalda Microled",
-    mark: "Libercam",
+    brand: "Libercam",
     description: "Las luces navideñas son unos de los productos más usados a la hora de decorar el interior del hogar o arboles navideños. Contribuye de manera excelente con su bajo consumo y gran iluminación.",
     price: "1099",
     stock: 80,
@@ -62,7 +62,7 @@ const infoProduct = [
 
   {
     name: "Jardin Vertical Artificial",
-    mark: "Sheshu",
+    brand: "Sheshu",
     description: "Panel de cesped de 40X60Cm",
     price: "5999",
     stock: 15,
@@ -73,7 +73,7 @@ const infoProduct = [
   },
   {
     name: "Set X 9 Cuadros Begônia",
-    mark: "Begônia",
+    brand: "Begônia",
     description: "Portaretratos Cuadros Modernos Decorativos Set X 9 Begônia",
     price: "2999",
     stock: 3,
@@ -84,7 +84,7 @@ const infoProduct = [
   },
   {
     name: "Flor Ducha Cuadrada",
-    mark: "Klatter",
+    brand: "Klatter",
     description: "Flor Ducha Cuadrada Baño 20x20 Acero Inoxidable Barral 40 Cm",
     price: "1299",
     stock: 3,
@@ -95,7 +95,7 @@ const infoProduct = [
   },
   {
     name: "Grifería de bacha",
-    mark: "FV",
+    brand: "FV",
     description: "Monocromado, ceramico, con airedor, diametro de instalacion 34mm",
     price: "6899",
     stock: 1,
@@ -106,7 +106,7 @@ const infoProduct = [
   },
   {
     name: "Cesto Organizador",
-    mark: "Begonia Home & Deco",
+    brand: "Begonia Home & Deco",
     description: "Material bambun y algodon, diametros 50cm de altura, 35cm de anchura",
     price: "5600",
     stock: 2,
@@ -117,7 +117,7 @@ const infoProduct = [
   },
   {
     name: "Secaplatos Begônia",
-    mark: "Begônia",
+    brand: "Begônia",
     description: "Plegable capacidad para 16 platos de bambú",
     price: "1980",
     stock: 5,
@@ -128,7 +128,7 @@ const infoProduct = [
   },
   {
     name: "Cubiertos Tramontina",
-    mark: "Tramontana",
+    brand: "Tramontana",
     description: "24 Juego Cuchillos Tenedores Acero Inox",
     price: "2299",
     stock: 10,
@@ -138,7 +138,7 @@ const infoProduct = [
     subcategories: ["Bazar y Cocina"],
   }, {
     name: "Termo Coleman",
-    mark: "Coleman",
+    brand: "Coleman",
     description: "Matero de acero inoxidable 1.2L verde",
     price: "4600",
     stock: 7,
@@ -149,7 +149,7 @@ const infoProduct = [
   },
   {
     name: "Combo Somier Piero",
-    mark: "Piero",
+    brand: "Piero",
     description: "Espuma Alta Densidad Ropa Cama Almohadas",
     price: "2199",
     stock: 2,
@@ -160,7 +160,7 @@ const infoProduct = [
   },
   {
     name: "Cama Marinera",
-    mark: "Inducol",
+    brand: "Inducol",
     description: "1 Somier Plaza Y Media 90 X 190 Colchon April",
     price: "43099",
     stock: 2,
@@ -171,7 +171,7 @@ const infoProduct = [
   },
   {
     name: "Sommier Box Cama",
-    mark: "Drawer Sleep",
+    brand: "Drawer Sleep",
     description: "1 Plaza Con 2 Cajones 0.80x1.90",
     price: "51099",
     stock: 7,
@@ -182,7 +182,7 @@ const infoProduct = [
   },
   {
     name: "Mopa Con Balde Escurridor",
-    mark: "Begônia",
+    brand: "Begônia",
     description: "Mopa Con Balde Escurridor Y Limpiador Trapeador",
     price: "1499",
     stock: 7,
@@ -193,7 +193,7 @@ const infoProduct = [
   },
   {
     name: "Papel higiénico",
-    mark: "Higienol",
+    brand: "Higienol",
     description: "Papel higiénico Higienol MAX simple 80 m de 4 u",
     price: "1020",
     stock: 120,
@@ -204,7 +204,7 @@ const infoProduct = [
   },
   {
     name: "Trapeador Piso Con Rociador",
-    mark: "Spin Mop",
+    brand: "Spin Mop",
     description: "Trapeador Piso Con Rociador Mopa Microfibra Gira 360 Spray",
     price: "1200",
     stock: 7,
@@ -215,7 +215,7 @@ const infoProduct = [
   },
   {
     name: "Lampara Colgante Vintage",
-    mark: "Ferrolux",
+    brand: "Ferrolux",
     description: "Lampara Colgante Vintage 1 Luz Jaula Diamante 15cm Ferrolux",
     price: "8000",
     stock: 42,
@@ -226,7 +226,7 @@ const infoProduct = [
   },
   {
     name: "Lámpara Led",
-    mark: "Osram",
+    brand: "Osram",
     description: "Lámparas Led 9w=75w Osram Luz Cálida Por E631",
     price: "4000",
     stock: 230,
@@ -237,7 +237,7 @@ const infoProduct = [
   },
   {
     name: "Plafon Aplicar Led 18w",
-    mark: "Iluminación Fábrica",
+    brand: "Iluminación Fábrica",
     description: "Plafon Aplicar Led 18w Redondo Cuadrado Luz Fria O Calida Completo Para Instalar Garantia 2 Años",
     price: "3500",
     stock: 22,
@@ -248,7 +248,7 @@ const infoProduct = [
   },
   {
     name: "Gazebo Plegable",
-    mark: "Exahome",
+    brand: "Exahome",
     description: "Gazebo Plegable Autoarmable 3x3 Impermeable Exahom",
     price: "1990",
     stock: 12,
@@ -259,7 +259,7 @@ const infoProduct = [
   },
   {
     name: "Bordeadora",
-    mark: "Wimer",
+    brand: "Wimer",
     description: "Bordeadora Wimer W400 400W 220V",
     price: "2280",
     stock: 8,
@@ -270,7 +270,7 @@ const infoProduct = [
   },
   {
     name: "Pileta estructural",
-    mark: "Pelopincho",
+    brand: "Pelopincho",
     description: "Pileta estructural rectangular Pelopincho 1076 con capacidad de 8000 litros de 4.45m de largo x 2.25m de ancho azul",
     price: "20190",
     stock: 6,
@@ -282,7 +282,7 @@ const infoProduct = [
 
   {
     name: "Juegos De Comedor",
-    mark: "Nick Muebles",
+    brand: "Nick Muebles",
     description: "Juegos De Comedor, Mesa + 6 Sillas Vestidas En Chenille",
     price: "1809",
     stock: 9,
@@ -293,7 +293,7 @@ const infoProduct = [
   },
   {
     name: "Poltrona Relax",
-    mark: "Living",
+    brand: "Living",
     description: "Poltrona Relax, Color Negro",
     price: "3890",
     stock: 6,
@@ -304,7 +304,7 @@ const infoProduct = [
   },
   {
     name: "Sillon Nordico",
-    mark: "Dadaa Muebles",
+    brand: "Dadaa Muebles",
     description: "3 Cuerpos Premium 1,80 M Dadaa",
     price: "12080",
     stock: 22,
@@ -315,7 +315,7 @@ const infoProduct = [
   },
   {
     name: "Alacena Expandible",
-    mark: "Univex",
+    brand: "Univex",
     description: "Organizador Alzada Alacena Expandible Metal Estante Reforzad",
     price: "12800",
     stock: 55,
@@ -326,7 +326,7 @@ const infoProduct = [
   },
   {
     name: "Cajas Organizadoras",
-    mark: "Begônia Home & Deco",
+    brand: "Begônia Home & Deco",
     description: "Set De 6 Cajas Organizadoras Simil Rattan Blancas Begônia",
     price: "2640",
     stock: 20,
@@ -337,7 +337,7 @@ const infoProduct = [
   },
   {
     name: "Perchas Antideslizantes",
-    mark: "Begonia Home & Deco",
+    brand: "Begonia Home & Deco",
     description: "Perchas Antideslizantes Plástico Reciclado X50 Begônia",
     price: "1399",
     stock: 50,
@@ -348,7 +348,7 @@ const infoProduct = [
   },
   {
     name: "Cámara Infrarroja",
-    mark: "Hikvision",
+    brand: "Hikvision",
     description: "Cámara Infrarroja Hikvision 1080p 2mp Full Hd Tvi Cvi Bullet Gran Angular",
     price: "9800",
     stock: 30,
@@ -359,7 +359,7 @@ const infoProduct = [
   },
   {
     name: "Motor de portón",
-    mark: "PPA",
+    brand: "PPA",
     description: "Motor de portón PPA BV Torsion 220V negro, Peso máximo soportado: 400 kg ",
     price: "17930",
     stock: 50,
@@ -370,7 +370,7 @@ const infoProduct = [
   },
   {
     name: "Camara Seguridad Ip",
-    mark: "Interior",
+    brand: "Interior",
     description: "Camara Seguridad Ip Wifi Inalambrica Motorizad P2p Hd 360° Panoramica Movimiento Desde El Celular",
     price: "19830",
     stock: 15,
@@ -381,7 +381,7 @@ const infoProduct = [
   },
   {
     name: "Cubrecama Rústico",
-    mark: "Patagonia Home",
+    brand: "Patagonia Home",
     description: "Cubrecama Rústico / Colcha Hindú / Cubre Sillón 2,00 X 2,20",
     price: "9000",
     stock: 15,
@@ -392,7 +392,7 @@ const infoProduct = [
   },
   {
     name: "Almohadones",
-    mark: "Morena Decoraciones",
+    brand: "Morena Decoraciones",
     description: "Almohadones Para Sillas 40x40 Chenille",
     price: "4000",
     stock: 30,
@@ -403,7 +403,7 @@ const infoProduct = [
   },
   {
     name: "Cubrecama",
-    mark: "Palette",
+    brand: "Palette",
     description: "Cubrecama Palette Kenia 2 1/2 Plazas (rústico 100% Algodón)",
     price: "3600",
     stock: 15,
@@ -414,7 +414,7 @@ const infoProduct = [
   },
   {
     name: "Alta Densidad Placa Sillon",
-    mark: "Espuflex",
+    brand: "Espuflex",
     description: "Goma espuma alta densidad",
     price: "6700",
     stock: 200,
@@ -426,7 +426,7 @@ const infoProduct = [
   //Tecnologia
   {
     name: "Computadora Escritorio",
-    mark: "HP",
+    brand: "HP",
     description:
       "Computadora Escritorio Hp 205 G4 Ryzen 3 4gb 1tb Win10 24",
     price: "450370",
@@ -438,7 +438,7 @@ const infoProduct = [
   },
   {
     name: "Pc Armada Intel Core I7",
-    mark: "Intel",
+    brand: "Intel",
     description: "Pc Armada Intel Core I7 1 Tb 16gb De Ram Graficos Hd",
     price: "1830400",
     stock: 5,
@@ -449,7 +449,7 @@ const infoProduct = [
   },
   {
     name: "Computadora Completa",
-    mark: "AMD",
+    brand: "AMD",
     description: "Computadora Completa Amd Intel Dual Core 8gb Led 22 Lol",
     price: "168500",
     stock: 6,
@@ -460,7 +460,7 @@ const infoProduct = [
   },
   {
     name: "Xiaomi Redmi Note 9 Pro",
-    mark: "Xiaomi",
+    brand: "Xiaomi",
     description: "Xiaomi Redmi Note 9 Pro (64 Mpx) Dual SIM 128 GB gris interestelar 6 GB RAM",
     price: "30500",
     stock: 6,
@@ -471,7 +471,7 @@ const infoProduct = [
   },
   {
     name: "Huawei Mate 10",
-    mark: "Huawei",
+    brand: "Huawei",
     description: "Huawei Mate 10 Lite Bueno Negro Liberado.",
     price: "150000",
     stock: 2,
@@ -482,7 +482,7 @@ const infoProduct = [
   },
   {
     name: "Apple iPhone 11",
-    mark: "Apple",
+    brand: "Apple",
     description: "Apple iPhone 11 (128 GB) - Amarillo",
     price: "109500",
     stock: 4,
@@ -493,7 +493,7 @@ const infoProduct = [
   },
   {
     name: "Camara B B500",
-    mark: "Nikon",
+    brand: "Nikon",
     description: "Resolucion 16px, pantalla 3' 20MB memoria interna",
     price: "34500",
     stock: 5,
@@ -504,7 +504,7 @@ const infoProduct = [
   },
   {
     name: "Camara Gadnic CK321",
-    mark: "Gadnic",
+    brand: "Gadnic",
     description: "Tamaño de la pantalla 2' resolucion 3px",
     price: "15800",
     stock: 3,
@@ -515,7 +515,7 @@ const infoProduct = [
   },
   {
     name: "Tripode Profesional",
-    mark: "Gadnic",
+    brand: "Gadnic",
     description: "Tripode Profesional Fotografia De Aluminio Ultra Liviano",
     price: "13890",
     stock: 33,
@@ -526,7 +526,7 @@ const infoProduct = [
   },
   {
     name: "Auriculares in-ear ",
-    mark: "Xiaomi",
+    brand: "Xiaomi",
     description: "Auriculares in-ear inalámbricos Xiaomi Redmi AirDots 2 negro",
     price: "12580",
     stock: 20,
@@ -537,7 +537,7 @@ const infoProduct = [
   },
   {
     name: "Smart TV BGH",
-    mark: "BGH",
+    brand: "BGH",
     description: "Smart TV BGH B5021UH6A LED 4K 50' 220V",
     price: "267980",
     stock: 15,
@@ -548,7 +548,7 @@ const infoProduct = [
   },
   {
     name: "Minicomponente ",
-    mark: "Sony",
+    brand: "Sony",
     description: "Minicomponente Sony MHC-V02 negro con bluetooth - 120V/240V",
     price: "285400",
     stock: 10,
@@ -559,7 +559,7 @@ const infoProduct = [
   },
   {
     name: "Proyector",
-    mark: "Bneq",
+    brand: "Bneq",
     description: "Proyector BenQ MS550 3600lm blanco 100V/240V",
     price: "340890",
     stock: 6,
@@ -570,7 +570,7 @@ const infoProduct = [
   },
   {
     name: "Smart Tv 50'",
-    mark: "Sansei",
+    brand: "Sansei",
     description: "Smart Tv Sansei Tds2150ui Led 4k Uhd 50",
     price: "27500",
     stock: 6,
@@ -581,7 +581,7 @@ const infoProduct = [
   },
   {
     name: "Smart Tv 50' LED",
-    mark: "Philips",
+    brand: "Philips",
     description: "Smart TV Philips 6600 Series 50PUD6654/77 LED 4K 50' 110V/240V",
     price: "29500",
     stock: 7,
@@ -592,7 +592,7 @@ const infoProduct = [
   },
   {
     name: "Miles Morales Standard Edition Sony PS4 Físico",
-    mark: "Sony",
+    brand: "Sony",
     description:
       "Hombre Araña Marvel's Spider-Man: Miles Morales Standard Edition, plataforma PS4, Formato fisico",
     price: "60500",
@@ -604,7 +604,7 @@ const infoProduct = [
   },
   {
     name: "Microsoft Xbox",
-    mark: "Microsoft",
+    brand: "Microsoft",
     description:
       "Microsoft Xbox Series S 512gb Color Blanco",
     price: "240900",
@@ -616,7 +616,7 @@ const infoProduct = [
   },
   {
     name: "Sony PlayStation 4 Slim ",
-    mark: "Sony",
+    brand: "Sony",
     description:
       "Sony PlayStation 4 Slim 1TB FIFA 20 Bundle color negro azabache",
     price: "204000",
@@ -630,7 +630,7 @@ const infoProduct = [
   //Deportes
   {
     name: "Metegol",
-    mark: "Rondi",
+    brand: "Rondi",
     description:
       "Metegol Rondi Football Game color blanco y azul con pelotas incluidas",
     price: "1200",
@@ -642,7 +642,7 @@ const infoProduct = [
   },
   {
     name: "Rollers Profesionales",
-    mark: "Papaison",
+    brand: "Papaison",
     description:
       "Rollers Profesionales Aluminio Extensible Ruedas Siliconadas Mod: 301",
     price: "8000",
@@ -654,7 +654,7 @@ const infoProduct = [
   },
   {
     name: "Pelota Nike Fútbol Playa",
-    mark: "Nike",
+    brand: "Nike",
     description:
       "Pelota de Futbol Playa, Usada como nueva. modelo Tsubasa Pro Beach Nº5",
     price: "100000",
@@ -666,7 +666,7 @@ const infoProduct = [
   },
   {
     name: "Pelota Nike Fútbol 11",
-    mark: "Nike",
+    brand: "Nike",
     description:
       "Pelota de Futbol 11, Excelente condiciones. Sirve para entrenamientos y partidos amistosos",
     price: "200000",
@@ -678,7 +678,7 @@ const infoProduct = [
   },
   {
     name: "Chaqueta Electrica Para Sable Esgrima",
-    mark: "Jiang Fencing",
+    brand: "Jiang Fencing",
     description:
       "Chaqueta eléctrica para Sable Muy liviana y resistente Consultar por talles",
     price: "37500",
@@ -690,7 +690,7 @@ const infoProduct = [
   },
   {
     name: "Juego De Badminton",
-    mark: "DF",
+    brand: "DF",
     description:
       "Juego De Badminton Raquetas + Plumas + Red + Soporte + Bolso",
     price: "4999",
@@ -702,7 +702,7 @@ const infoProduct = [
   },
   {
     name: "Camiseta Basquet",
-    mark: "NBA Athletic",
+    brand: "NBA Athletic",
     description:
       "Camiseta Basquet Campazzo Denver Nuggets Oficial Nba",
     price: "6699",
@@ -714,7 +714,7 @@ const infoProduct = [
   },
   {
     name: "Aro De Basquet",
-    mark: "NBA Athletic",
+    brand: "NBA Athletic",
     description:
       "Aro De Basquet - Basket Nº 7 Reforzado Con Red - Exahome",
     price: "1790",
@@ -726,7 +726,7 @@ const infoProduct = [
   },
   {
     name: "Paleta de pádel",
-    mark: "Davor",
+    brand: "Davor",
     description:
       "Paleta de pádel Davor 10.0",
     price: "7499",
@@ -738,7 +738,7 @@ const infoProduct = [
   },
   {
     name: "Guante de Beisbol",
-    mark: "Rawlings",
+    brand: "Rawlings",
     description:
       "Guante Rawlings De 12'' Béisbol / Softbol De Cuero - 2020",
     price: "7049",
@@ -750,7 +750,7 @@ const infoProduct = [
   },
   {
     name: "Set Bate Aluminio Guante Pelota",
-    mark: "Faydi",
+    brand: "Faydi",
     description:
       "Baseball Set Bate Aluminio Guante Pelota/ Open-toys Avell125",
     price: "7449",
@@ -763,7 +763,7 @@ const infoProduct = [
   //Electrodomesticos
   {
     name: "Recortadora de pelo",
-    mark: "Philco",
+    brand: "Philco",
     description:
       "Trimmer de recortadora de pelo, recortadora de barba Philco CB9800PN 220V - 240V",
     price: "1325",
@@ -775,7 +775,7 @@ const infoProduct = [
   },
   {
     name: "Secador de pelo",
-    mark: "GAMA",
+    brand: "GAMA",
     description:
       "Secador de pelo GA.MA Italy Salon Exclusive Ultra Ion negro 220V",
     price: "6499",
@@ -787,7 +787,7 @@ const infoProduct = [
   },
   {
     name: "Ventilador de piso ",
-    mark: "Exahome",
+    brand: "Exahome",
     description:
       "Ventilador de piso Exahome Semi Industrial negro con 5 palas, 20' de diámetro 220 V",
     price: "5930",
@@ -799,7 +799,7 @@ const infoProduct = [
   },
   {
     name: "Termotanque a gas",
-    mark: "Rheem",
+    brand: "Rheem",
     description:
       "Termotanque a gas natural Rheem AP160 gris oscuro 160L",
     price: "86489",
@@ -811,7 +811,7 @@ const infoProduct = [
   },
   {
     name: "Horno de mesa",
-    mark: "Peabody",
+    brand: "Peabody",
     description:
       "Horno de mesa eléctrico Peabody PE-HE4550 45L gris 220V",
     price: "14084",
@@ -823,7 +823,7 @@ const infoProduct = [
   },
   {
     name: "Microondas",
-    mark: "BGH",
+    brand: "BGH",
     description:
       "Microondas BGH Quick Chef B120M20 blanco 20L 220V",
     price: "15999",
@@ -835,7 +835,7 @@ const infoProduct = [
   },
   {
     name: "Anafe a gas",
-    mark: "TST",
+    brand: "TST",
     description:
       "Anafe a gas TST Sulata II acero 220V",
     price: "33123",
@@ -847,7 +847,7 @@ const infoProduct = [
   },
   {
     name: "Filtro Doble",
-    mark: "filtro watercom",
+    brand: "filtro watercom",
     description:
       "Filtro Doble Industrial Con Siliphos Y Carbon Activado",
     price: "9699",
@@ -859,7 +859,7 @@ const infoProduct = [
   },
   {
     name: "Dispenser De Agua",
-    mark: "Geko",
+    brand: "Geko",
     description:
       "Dispenser De Agua Automatico Bomba Dispensador Bidones Usb",
     price: "1099",
@@ -871,7 +871,7 @@ const infoProduct = [
   },
   {
     name: "Plancha a vapor",
-    mark: "Peabody",
+    brand: "Peabody",
     description:
       "Plancha a vapor Peabody PE-PV31 color blanco y turquesa 220V",
     price: "3323",
@@ -883,7 +883,7 @@ const infoProduct = [
   },
   {
     name: "Batidora de pie",
-    mark: "Peabody",
+    brand: "Peabody",
     description:
       "Batidora de pie Peabody PE-BM120 roja 50 Hz x 60 Hz 220 V - 240 V",
     price: "27899",
@@ -895,7 +895,7 @@ const infoProduct = [
   },
   {
     name: "Freezer horizontal ",
-    mark: "Gafa",
+    brand: "Gafa",
     description:
       "Freezer horizontal Gafa Eternity L290 blanco 277L 220V",
     price: "57416",
@@ -907,7 +907,7 @@ const infoProduct = [
   },
   {
     name: "Heladera",
-    mark: "Patrick",
+    brand: "Patrick",
     description:
       "Heladera Patrick HPK136M00 black steel con freezer 300L 220V",
     price: "63750",
@@ -919,7 +919,7 @@ const infoProduct = [
   },
   {
     name: "Freezer vertical",
-    mark: "Lacar",
+    brand: "Lacar",
     description:
       "Freezer vertical Lacar 150 blanco 120L 220V",
     price: "63750",
@@ -931,7 +931,7 @@ const infoProduct = [
   },
   {
     name: "Lavarropas automático ",
-    mark: "Drean",
+    brand: "Drean",
     description:
       "Lavarropas automático Drean Concept 5.05 blanco 5kg 220 V",
     price: "43999",
@@ -943,7 +943,7 @@ const infoProduct = [
   },
   {
     name: "Lavavajillas",
-    mark: "Whirlpool",
+    brand: "Whirlpool",
     description:
       "Lavavajillas Whirlpool WSFO3T2 de 10 cubiertos acero inoxidable 220V - 240V",
     price: "94499",
@@ -955,7 +955,7 @@ const infoProduct = [
   },
   {
     name: "Lavarropas",
-    mark: "Patriot",
+    brand: "Patriot",
     description:
       "Lavarropas semiautomático Patriot 56 RB blanco 5kg 220 V",
     price: "17999",
@@ -967,7 +967,7 @@ const infoProduct = [
   },
   {
     name: "Recarga Sodastream",
-    mark: "Sodastream",
+    brand: "Sodastream",
     description:
       "Recarga y recambio de cilindro de sodastream",
     price: "6990",
@@ -979,7 +979,7 @@ const infoProduct = [
   },
   {
     name: "Zapatillas Nike Hoops 2.0",
-    mark: "Nike",
+    brand: "Nike",
     description: "Zapatillas para todo uso, marca Adidas 100% originales",
     price: "35000",
     stock: 4,
@@ -990,7 +990,7 @@ const infoProduct = [
   },
   {
     name: "Zapatillas Nike Hoops 2.0",
-    mark: "Nike",
+    brand: "Nike",
     description: "Zapatillas para todo uso, marca Adidas 100% originales",
     price: "350000",
     stock: 4,
@@ -1001,7 +1001,7 @@ const infoProduct = [
   },
   {
     name: "Zapatillas Nike Air Max Excee",
-    mark: "Nike",
+    brand: "Nike",
     description: "Zapatillas en excelente calidad talla 10.5 US.",
     price: "380000",
     stock: 4,
@@ -1012,7 +1012,7 @@ const infoProduct = [
   },
   {
     name: "Camiseta De Argentina Adidas",
-    mark: "Adidas",
+    brand: "Adidas",
     description: "CAMISETA DE ARGENTINA TITULAR MUNDIAL MEXICO 1986",
     price: "200000",
     stock: 1,
@@ -1023,7 +1023,7 @@ const infoProduct = [
   },
   {
     name: "Camiseta Holanda Titular Adidas",
-    mark: "Adidas",
+    brand: "Adidas",
     description: "Johan Cruyff, Camiseta Holanda Mundial 1974",
     price: "200000",
     stock: 1,
@@ -1034,7 +1034,7 @@ const infoProduct = [
   },
   {
     name: "Bicicleta Sunny",
-    mark: "Sunny",
+    brand: "Sunny",
     description:
       "Bicicleta Sunny Modelo Mts 290 Rodado 29 Negro Amarillo,Asiento acolchado regulabe Incluye manual de instrucciones para su correcto armado",
     price: "600000",
@@ -1046,7 +1046,7 @@ const infoProduct = [
   },
   {
     name: "Samsung Galaxy Note20",
-    mark: "Samsung",
+    brand: "Samsung",
     description:
       "Especificaciones: 256 GB gris místico 8 GB RAM, Cámara trasera principal: 64 Mpx ",
     price: "1200000",
@@ -1058,7 +1058,7 @@ const infoProduct = [
   },
   {
     name: "LG K52",
-    mark: "LG",
+    brand: "LG",
     description: "64 Gb + 4 Gb Ram Azul Cámara trasera principal: 48 Mpx",
     price: "700000",
     stock: 1,
@@ -1069,7 +1069,7 @@ const infoProduct = [
   },
   {
     name: "Samsung Smart TV",
-    mark: "Samsung",
+    brand: "Samsung",
     description:
       "Samsung Series 7 UN50TU7000GCZB LED 4K 50. Aplicaciones integradas: Samsung Promotion, YouTube, Netflix, Google Play, Apple TV, SmartThings, Web browser, Prime Video, Gallery, Google Play Movies & TV ",
     price: "1500000",
@@ -1081,7 +1081,7 @@ const infoProduct = [
   },
   {
     name: "Monitor Gamer LG",
-    mark: "LG",
+    brand: "LG",
     description:
       "LG 27GL650F led 27 negro, Full HD, tiene una resolución de 1920px-1080px. ",
     price: "900000",
@@ -1093,7 +1093,7 @@ const infoProduct = [
   },
   {
     name: "Notebook HP 14-dq2024la",
-    mark: "HP",
+    brand: "HP",
     description:
       "Core I3 1115g4 8gb 256gb M2 Ssd W10,  pantalla de 14'', Duración de la batería 9 h  ",
     price: "1200000",
@@ -1105,7 +1105,7 @@ const infoProduct = [
   },
   {
     name: "Miles Morales Standard Edition Sony PS4 Físico",
-    mark: "Sony",
+    brand: "Sony",
     description:
       "Hombre Araña Marvel's Spider-Man: Miles Morales Standard Edition, plataforma PS4, Formato fisico",
     price: "60000",
@@ -1117,7 +1117,7 @@ const infoProduct = [
   },
   {
     name: "Silla Plastica Ideal",
-    mark: "Ideal",
+    brand: "Ideal",
     description:
       "Silla Plastica Reforzada Ideal Juego X4 Exteriores Jardin",
     price: "80000",
@@ -1129,7 +1129,7 @@ const infoProduct = [
   },
   {
     name: "Manguera Pvc",
-    mark: "Pvc",
+    brand: "Pvc",
     description:
       "Manguera Para Riego Pvc 1/2 X 50 Metros Caño Virgen",
     price: "30000",
@@ -1141,7 +1141,7 @@ const infoProduct = [
   },
   {
     name: "Aire Acondicionado Bgh",
-    mark: "Bgh",
+    brand: "Bgh",
     description:
       "Aire Acondicionado Bgh Silent Air Split Inverter 3500w",
     price: "200000",
@@ -1153,7 +1153,7 @@ const infoProduct = [
   },
   {
     name: "Taladro Atornillador Klatter",
-    mark: "Klatter",
+    brand: "Klatter",
     description:
       "Taladro Atornillador Klatter 14v Inalambrico 10mm",
     price: "70000",
@@ -1165,7 +1165,7 @@ const infoProduct = [
   },
   {
     name: "Hidrolavadora Kärcher",
-    mark: "Sony",
+    brand: "Sony",
     description:
       "Hidrolavadora Kärcher Home & Garden K3 Full Control *AR con 120bar de presión máxima 220V",
     price: "160000",
@@ -1177,7 +1177,7 @@ const infoProduct = [
   },
   {
     name: "Kit De Herramientas Manuales",
-    mark: "Deco Estrella",
+    brand: "Deco Estrella",
     description:
       "Kit De Herramientas Manuales 113 Pzs Set Acero Inoxidable",
     price: "55000",
@@ -1189,7 +1189,7 @@ const infoProduct = [
   },
   {
     name: "Juego Llave Combinada",
-    mark: "Qtools",
+    brand: "Qtools",
     description:
       "Juego Llave Combinada 6 A 22 Mm 12 Piezas",
     price: "25000",
@@ -1201,7 +1201,7 @@ const infoProduct = [
   },
   {
     name: "Volkswagen Gol 1.0 De Baja",
-    mark: "Volkswagen",
+    brand: "Volkswagen",
     description:
       "Vw Gol 1.0 Mod. 1999 3p Dado de Baja Definitiva total Sirve solo para repuestos",
     price: "60000000",
@@ -1213,7 +1213,7 @@ const infoProduct = [
   },
   {
     name: "Honda Cb250 Twister Inyeccion",
-    mark: "Honda",
+    brand: "Honda",
     description:
       "Honda Cb250 Twister Inyeccion año 2020 250 cc 16mil Km",
     price: "30000000",
@@ -1225,7 +1225,7 @@ const infoProduct = [
   },
   {
     name: "Honda Elite 125",
-    mark: "Honda",
+    brand: "Honda",
     description:
       "Moto scooter honda élite 125 con casco de regalo año 2017 11000 km",
     price: "19000000",
