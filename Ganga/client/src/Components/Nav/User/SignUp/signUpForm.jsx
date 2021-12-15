@@ -133,7 +133,7 @@ export default function SignUpForm() {
             className="w-40 h-7 border-gray-400 border-2 rounded pl-2 mx-2"
             name="birthdate"
             type="date"
-            placeholder="fecha de nacimiento"
+            placeholder="Fecha de Nacimiento"
             value={input.birthdate}
             onChange={handleChange}
           ></input>

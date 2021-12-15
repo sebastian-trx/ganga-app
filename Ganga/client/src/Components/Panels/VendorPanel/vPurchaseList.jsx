@@ -26,6 +26,11 @@ export default function PurchaseList({ orders, users }) {
       orders[i].productInfo[j].date = orders[i].createdAt.slice(0, 10);
       orders[i].productInfo[j].total =
       orders[i].productInfo[j].quantity * orders[i].productInfo[j].price;
+      for ( var k = 0; k < users.length ; k++) {
+        if ( orders[i].productInfo[j].owner === users[k].id) {
+          orders[i].productInfo[j].owner = users[k].mail
+        }
+      }
     }
   }
 
@@ -73,7 +78,7 @@ export default function PurchaseList({ orders, users }) {
                         <td>
                           <p class="mb-2 md:ml-4">{el.name}</p>
                           <p class="mb-2 md:ml-4">Fecha: {el.date}</p>
-                          <p class="mb-2 md:ml-4">Vendedor: </p>
+                          <p class="mb-2 md:ml-4">Vendedor: {el.owner ? el.owner : "renso@ganga.com"} </p>
                         </td>
                         {/* <td class="hidden md:table-cell">
                       </td> */}
