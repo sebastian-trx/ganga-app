@@ -5,6 +5,7 @@ import {
   orderByPrice,
   getUser,
   getCategories,
+  allReviews,
   /*productsByName*/
 } from "../../Redux/Actions/actions";
 import Card from "../../Card/card";
@@ -17,9 +18,18 @@ import FooterCatalog from "../../Home/Footer/footerCatalog";
 
 export default function Catalogo() {
   const dispatch = useDispatch();
+
   const allProduct = useSelector((state) => state.product);
   let products = allProduct.filter((p) => p.approved === true);
   products = products.filter((p) => p.stock > 0);
+
+  const Reviews = useSelector((state) => state.allReviews);
+  console.log("Rev", Reviews);
+
+  useEffect(() => {
+    dispatch(allReviews())
+  },[dispatch]);
+
 
   const [, setOrden] = useState("");
   // const [filteredData, setFilteredData] = useState([]);
