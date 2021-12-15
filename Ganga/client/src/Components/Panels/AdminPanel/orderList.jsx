@@ -4,8 +4,8 @@ import { DataGrid } from "@mui/x-data-grid";
 
 export default function OrderList({ orders, users }) {
 
-  for (var i = 0; i < orders.length; i++) {
-    for (var j = 0; j < orders[i].productInfo.length; j++) {
+  for (let i = 0; i < orders.length; i++) {
+    for (let j = 0; j < orders[i].productInfo.length; j++) {
       orders[i].productInfo[j].date = orders[i].createdAt.slice(0, 10);
       orders[i].productInfo[j].total =
       orders[i].productInfo[j].quantity * orders[i].productInfo[j].price;
