@@ -38,18 +38,3 @@ export default function Pagination({
     </nav>
   );
 }
-
-// return (
-//   <nav className="paginacion">
-//     <ul>
-//       {pageNumbers &&
-//         pageNumbers.map((number) => (
-//           <li key={number}>
-//             <button className="btn" onClick={() => paginate(number)}>
-//               {number}
-//             </button>
-//           </li>
-//         ))}
-//     </ul>
-//   </nav>
-// );

@@ -5,7 +5,7 @@ import {
   orderByPrice,
   getUser,
   getCategories,
-  productsByName,
+  /*productsByName*/
 } from "../../Redux/Actions/actions";
 import Card from "../../Card/card";
 import "./catalog.css";
@@ -14,20 +14,17 @@ import Pagination from "../../Home/Pagination/pagination";
 import download from "../../Resources/cargando.gif";
 import Nav from "../NavBar/nav";
 import FooterCatalog from "../../Home/Footer/footerCatalog";
-import NewsletterCatalog from "../../Home/Newsletter/newsletterCatalog";
-import User from "../User/user";
 
 export default function Catalogo() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.getInfoGoogle);
   const allProduct = useSelector((state) => state.product);
   const products = allProduct.filter((p) => p.approved === true);
 
   const [, setOrden] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
-  const [wordEntered, setWordEntered] = useState("");
+  // const [filteredData, setFilteredData] = useState([]);
+  // const [wordEntered, setWordEntered] = useState("");
 
-  const [name, setName] = useState(" ");
+  // const [name, setName] = useState(" ");
 
   const [currentPage, setCurrentPage] = useState(1);
   const [elementsPerPage /*setElementsPerPage*/] = useState(12);
@@ -67,19 +64,21 @@ export default function Catalogo() {
     setOrden(`Ordenado ${e.target.value}`);
   }
 
-  function handleInput(e) {
-    e.preventDefault();
-    setName(e.target.value);
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(productsByName(name));
-    setName(" ");
-  }
+  // function handleInput(e) {
+  //   e.preventDefault();
+  //   setName(e.target.value);
+  // }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   dispatch(productsByName(name));
+  //   setName(" ");
+  // }
   return (
     <div className="containerCatalog">
       <Nav className="flex justify-between items-center h-20 w-8 text-black" />
-      <div className="bannerProd"></div>
+      <div className="bannerProd">
+
+      </div>
       <div className="inf">
         <div className="filtros">
           <div className="conNameFil">
@@ -127,7 +126,6 @@ export default function Catalogo() {
         allProduct={products}
         paginate={paginate}
       />
-      <NewsletterCatalog />
       <FooterCatalog />
     </div>
   );

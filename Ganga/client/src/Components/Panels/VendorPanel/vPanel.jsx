@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Nav from "../../Nav/NavBar/nav";
+// import Nav from "../../Nav/NavBar/nav";
 import VendedorSidebar from "./vSidebar";
 import InfoUser from "../UserPanel/infoUser";
 import s from "./vendor.module.css";

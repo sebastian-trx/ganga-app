@@ -31,7 +31,7 @@ export default function VendorProductList({ products, user }) {
 }, [dispatch]);
 
 
-const devolucion = Reviews.map((r) => r.userId)
+// const devolucion = Reviews.map((r) => r.userId)
 
 const userReviews = Reviews.filter((review) => review.userId === User.id)
 

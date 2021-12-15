@@ -1,6 +1,5 @@
 import React from "react";
 import "./footerCatalog.css";
-// import Newsletter from "../NewsLetter/newsletter";
 
 export default function FooterCatalog() {
   return (
@@ -25,6 +24,16 @@ export default function FooterCatalog() {
             <div className="textUbicacion">
               <h3>En toda Colombia</h3>
               <h3>Próximamente en Argentina</h3>
+            </div>
+          </div>
+          <div>
+            <ul>
+              <h1 className="ubicacionCategory">Vende tus productos</h1>
+            </ul>
+            <div className="textUbicacionCategory">
+              <h3>Ten un equipo detrás de ti, con buen soporte las 24 horas</h3>
+              <h3>aumenta tus ingresos, únete a GanGa. No esperes más.</h3>
+              <h3>Puedes vender productos nuevos y usados, con garantía.</h3>
             </div>
           </div>
         </div>

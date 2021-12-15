@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import "./we.css";
-// import welcomeModal from "../../Resources/bienvenidosModal.gif";
 import prodModal1 from "../../Resources/producModal1.gif";
 import prodModal2 from "../../Resources/producModal2.gif";
 import prodModal3 from "../../Resources/producModal3.gif";
@@ -19,7 +18,6 @@ function Nosotros() {
     <div className="bgWe">
       <Nav className="flex justify-between items-center h-20 w-8 text-black" />
         <div className="welcomeModal">
-          {/* <img src={welcomeModal} alt="" /> */}
         </div>
         <div className="WeContainer" id="Nosotros">
           <h1>Todos queremos una GanGa</h1>

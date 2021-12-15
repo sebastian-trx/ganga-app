@@ -8,7 +8,7 @@ export default function NewSales({today, orders, users, verOrdenes, ordenes}) {
     verOrdenes((ordenes = true));
   };
 
-  const sales = orders.map((o) => {
+  const sales = orders?.map((o) => {
    let vendedor = ""; 
    if (o.productInfo[0].owner === null ) {
      vendedor = "GanGa";
@@ -22,7 +22,7 @@ export default function NewSales({today, orders, users, verOrdenes, ordenes}) {
       usuario: users.filter((u) => u.id === o.userId),
       products: o.productInfo.map((p) => p.quantity),
       total: o.total,
-      vendedor: vendedor
+      owner: vendedor // modifique
     };
   });
 

@@ -1,5 +1,5 @@
 import React, {  useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
@@ -11,7 +11,6 @@ import ProductsChart from "./aCharts/Products";
 import s from "./admin.module.css";
 
 export default function ProductList({products}) {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
   const subcategories = useSelector((state) => state.dbSubcategories);

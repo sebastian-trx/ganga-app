@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 
-import Nav from "../../Nav/NavBar/nav";
+// import Nav from "../../Nav/NavBar/nav";
 import UserSidebar from "./uSidebar";
 import InfoUser from "../UserPanel/infoUser";
 import s from "./user.module.css";

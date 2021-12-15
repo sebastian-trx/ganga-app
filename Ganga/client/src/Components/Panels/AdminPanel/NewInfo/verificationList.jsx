@@ -1,10 +1,10 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 
 import s from "../admin.module.css";
-import { approveProduct, deleteProduct} from "../../../Redux/Actions/actions";
+import { approveProduct, deleteProduct, getProduct} from "../../../Redux/Actions/actions";
 import { BsPencilSquare } from "react-icons/bs";
 
 export default function VerificationList({ products }) {
@@ -15,8 +15,6 @@ export default function VerificationList({ products }) {
   
     // let newProducts = products.filter((p) => p.approved === false);
     // console.log("newP", newProducts);
-
-
 
   const columns = [
     { field: "id", headerName: "ID", width: 50 },
@@ -50,13 +48,17 @@ export default function VerificationList({ products }) {
 
   function handleSubmit(id) {
     console.log("aprobadoo")
+    // e.preventDefault();
     dispatch(approveProduct(id));
     setRows(rows.filter((i) => i.id !== id));
+    dispatch(getProduct());
+
   }
 
+// page will reload whenever data is updated.
   function handleDelete(id) {
+    setRows(rows.filter((i) => i.id !== id));
     dispatch(deleteProduct(id));
-     setRows(rows.filter((i) => i.id !== id));
      window.location.reload();
   }
 

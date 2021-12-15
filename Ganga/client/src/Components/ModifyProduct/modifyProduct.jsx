@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
-import { getDetailsProduct, getCategories, getSubcategory, updateProduct, getDbSubcategories } from '../Redux/Actions/actions'
+// import { useNavigate } from "react-router-dom";
+import { getDetailsProduct, getCategories, /*getSubcategory,*/ updateProduct, getDbSubcategories } from '../Redux/Actions/actions'
 import s from './modifyProduct.module.css'
 import Boton from '../Nav/boton'
-import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import { IoMdArrowRoundBack } from "react-icons/io"
 
 export default function ModifyProduct() {
     const { id } = useParams();
     const dispatch = useDispatch()
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState("");
     const Info = useSelector((state) => state.detailProduct);
     const categories = useSelector((state) => state.categories)
-    const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
+    // const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
     const subcategories = useSelector((state) => state.dbSubcategories) // aca no hay subcategorias cargadas creo
 
     useEffect(() => {
@@ -129,15 +129,14 @@ export default function ModifyProduct() {
     }
 
     return (
-        <div >
             <div className={s.body}>
                 <Boton
                     parametro={"/panel"}
-                    icono={<BsFillArrowLeftSquareFill />}
+                    icono={<IoMdArrowRoundBack />}
                 />
                 <form onSubmit={submit} className={s.form} >
                     <div>
-                        <h1 className="text-center bg-gray-700 text-white text-5xl" >Modifica tu Producto</h1>
+                        <h1 className="text-center bg-gray-400 text-white text-5xl" >Modificar datos del Producto</h1>
                     </div>
 
                     <div className={s.grid1}>
@@ -147,12 +146,14 @@ export default function ModifyProduct() {
                                 <div>
                                     <input
                                         value={input.name}
-                                        className="text-center bg-gray-700 text-white"
+                                        className="text-center bg-gray-700 text-white rounded"
                                         onChange={handleChange}
                                         type='text'
                                         name="name"
                                         placeholder="Nombre del Producto"
                                     />
+                                </div>
+                                <div>
                                     {errors.name ? <p>{errors.name}</p> : null}
                                 </div>
                             </div>
@@ -161,27 +162,33 @@ export default function ModifyProduct() {
                                 <div>
                                     <input
                                         value={input.price}
-                                        className="text-center bg-gray-700 text-white"
+                                        className="text-center bg-gray-700 text-white rounded"
                                         onChange={handleChange}
                                         type='Number'
                                         name="price"
                                         autoComplete="off"
                                         required />
+                                </div>
+                                <div>
                                     {errors.price ? <p>{errors.price}</p> : null}
                                 </div>
                             </div>
 
                             <div className={s.product}>
+                                <div>
                                 <label>Tu producto es: </label>
+                                </div>
                                 <select
-                                    className="text-center bg-gray-700 text-white"
+                                    className="text-center bg-gray-700 text-white rounded"
                                     name="status"
                                     onChange={handleChange} >
                                     <option value="" >Nuevo o Usado</option>
                                     <option value="nuevo">Nuevo</option>
                                     <option value="usado">Usado</option>
                                 </select>
+                                <div>
                                 {errors.status ? <p>{errors.status}</p> : null}
+                                </div>
                             </div>
 
                             {(input.status === "nuevo") ?
@@ -205,12 +212,14 @@ export default function ModifyProduct() {
                                         <label>Marca: </label>
                                         <div>
                                             <input
-                                                className="text-center bg-gray-700 text-white"
+                                                className="text-center bg-gray-700 text-white rounded"
                                                 type='text'
                                                 name="brand"
                                                 onChange={handleChange}
                                                 value={input.brand}
                                                 autoComplete="off" required />
+                                        </div>
+                                        <div>
                                             {errors.brand && (
                                                 <p >{errors.brand}</p>
                                             )}
@@ -221,12 +230,14 @@ export default function ModifyProduct() {
                                         <label>Descripción: </label>
                                         <div >
                                             <input
-                                                className="text-justify bg-gray-700 text-white w-full h-20"
+                                                className="text-justify bg-gray-700 text-white w-full h-20 rounded"
                                                 value={input.description}
                                                 type='text'
                                                 onChange={handleChange}
                                                 name="description"
                                                 autoComplete="off" required />
+                                        </div>
+                                        <div>
                                             {errors.description && (
                                                 <p >{errors.description}</p>
                                             )}
@@ -236,8 +247,10 @@ export default function ModifyProduct() {
 
 
                                 <div className={s.cate}>
+                                    <div>
                                     <label > Categoria: </label>
-                                    <select className="text-center bg-gray-700 text-white"
+                                    </div>
+                                    <select className="text-center bg-gray-700 text-white rounded"
                                         name="idCategory"
                                         onChange={handleSelect1}  >
                                         {
@@ -250,8 +263,10 @@ export default function ModifyProduct() {
                                 </div>
 
                                 <div>
+                                    <div>
                                     <label > SubCategoria: </label>
-                                    <select className="text-center bg-gray-700 text-white" name="idSubcategory" onChange={handleSelect2}>
+                                    </div>
+                                    <select className="text-center bg-gray-700 text-white rounded" name="idSubcategory" onChange={handleSelect2}>
                                         {(
                                             subcategories && subcategories?.map((p, i) => (
                                                 <option key={i} value={p.id}>{p.name}</option>
@@ -280,6 +295,8 @@ export default function ModifyProduct() {
                                         required="required"
                                         accept="image/png,image/jpeg"
                                     />
+                                </div>
+                                <div>
                                     {errors.image ? <p>{errors.image}</p> : null}
                                 </div>
                                 <div className={s.imgName}>{(input.image = image)}</div>
@@ -306,6 +323,5 @@ export default function ModifyProduct() {
                     </div>
                 </form>
             </div>
-        </div>
     )
 }

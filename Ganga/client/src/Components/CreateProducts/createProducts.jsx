@@ -101,12 +101,12 @@ export default function CreateProducts() {
     })
   }
 
-  function handleSelectStock(e) {
-    setInput({
-      ...input,
-      stock: [e.target.value]
-    })
-  }
+  // function handleSelectStock(e) {
+  //   setInput({
+  //     ...input,
+  //     stock: [e.target.value]
+  //   })
+  // }
   const uploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
@@ -153,9 +153,9 @@ export default function CreateProducts() {
       showConfirmButton: false,
       timer: 3000
     })
+    navigate("/panel");
     
     // alert("Producto Subido con exito, esperando aprobacion del Administrador");
-    // navigate("/panel");
   }
 
 
