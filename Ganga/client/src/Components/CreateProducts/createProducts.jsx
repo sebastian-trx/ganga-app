@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import s from "./createProducts.module.css";
 import { IoMdArrowRoundBack } from "react-icons/io"
 import Boton from "../Nav/boton";
+import Swal from 'sweetalert2';
 
 function validate(input) {
   let errores = {};
@@ -130,7 +131,16 @@ export default function CreateProducts() {
       idCategory: " ",
       idSubcategory: " ",
     });
-    alert("Producto Subido con exito, esperando aprobacion del Administrador");
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Tu producto se ha subido con exito!',
+      text: 'El Administrador debe aprobar tu publicacion para que sea visible para todos.',
+      showConfirmButton: false,
+      timer: 3000
+    })
+    
+    // alert("Producto Subido con exito, esperando aprobacion del Administrador");
     // navigate("/panel");
   }
 

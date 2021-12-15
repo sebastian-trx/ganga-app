@@ -2,6 +2,8 @@ import React, { useState, /*useEffect*/ } from "react";
 import { /*useSelector,*/ useDispatch } from "react-redux";
 import { addProduct, decreseProduct, /*getDetailsProduct*/ } from "../Redux/Actions/actions";
 import s from "./counterInput.module.css";
+import Swal from 'sweetalert2';
+
 
 export default function CounterInput({ idUser, idProd, quantP, stock }) {
   const dispatch = useDispatch();
@@ -40,7 +42,14 @@ export default function CounterInput({ idUser, idProd, quantP, stock }) {
         addProduct({ id: idUser, item: { id: idProd }, cant: 1, que: "+" })
       );
     } else {
-      alert("No se puede superar la cantidad maxima de Stock");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'No se puede superar la cantidad maxima de Stock',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      // alert("No se puede superar la cantidad maxima de Stock");
     }
   }
 

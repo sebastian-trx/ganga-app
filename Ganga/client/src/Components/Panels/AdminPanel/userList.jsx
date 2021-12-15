@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 import { BsPencilSquare } from "react-icons/bs";
+import { Swal } from 'sweetalert2';
 
 import NewUsersChart from "./aCharts/NewUsers";
 import s from "./admin.module.css";
@@ -59,8 +60,26 @@ export default function UserList({ users }) {
   const [rows, setRows] = useState(Rows);
 
   function handleDelete(id) {
-    dispatch(deleteUser(id));
-    setRows(rows.filter((i) => i.id !== id));
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Se borraran todos los datos del usuario.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Confirmar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'El usuario ha sido eliminado.',
+          'success'
+          )
+          dispatch(deleteUser(id));
+          setRows(rows.filter((i) => i.id !== id));
+      }
+    })
     window.location.reload();
   }
 

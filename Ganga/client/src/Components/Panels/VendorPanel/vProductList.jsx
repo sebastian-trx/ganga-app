@@ -5,6 +5,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 import { deleteProduct, getCategories, getDbSubcategories } from "../../Redux/Actions/actions";
 import { BsPencilSquare } from "react-icons/bs";
+import { Swal } from 'sweetalert2';
 
 
 import s from "../AdminPanel/admin.module.css";
@@ -56,8 +57,26 @@ export default function VendorProductList({ products, user }) {
   ];
 
   function handleDelete(id) {
-    dispatch(deleteProduct(id));
-    setRows(rows.filter((i) => i.id !== id));
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Se borraran todos los datos del producto.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Confirmar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'Tu producto ha sido eliminado.',
+          'success'
+          )
+          dispatch(deleteProduct(id));
+          setRows(rows.filter((i) => i.id !== id));
+      }
+    })
     window.location.reload();
   }
 
