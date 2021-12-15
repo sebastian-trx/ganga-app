@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Nav from "../../Nav/NavBar/nav";
 import AdminSidebar from "./aSidebar";
 import AdminWidgets from "./aWidgets";
-import ActiveUsers from "./aCharts/ActiveUsers";
 import UserList from "./userList";
 import BrandNewUsers from "./NewInfo/brandNewUsers";
 import NewSales from "./NewInfo/newSales";
@@ -17,7 +15,6 @@ import {
 } from "../../Redux/Actions/actions";
 import s from "./admin.module.css";
 import OrderList from "./orderList";
-import NewProducts from "./NewInfo/newProducts";
 import VerificationList from "./NewInfo/verificationList";
 
 export default function AdminPanel() {

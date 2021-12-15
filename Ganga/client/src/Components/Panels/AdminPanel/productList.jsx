@@ -13,6 +13,7 @@ export default function ProductList({products}) {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
   const subcategories = useSelector((state) => state.dbSubcategories);
+  products = products.filter(p => p.approved === true);
 
   const columns = [
     { field: "id", headerName: "ID", width: 50 },
@@ -46,6 +47,7 @@ export default function ProductList({products}) {
   function handleDelete(id) {
     dispatch(deleteProduct(id));
     setRows(rows.filter((i) => i.id !== id));
+    window.location.reload()
   }
 
   let Rows = products?.map((p) => {

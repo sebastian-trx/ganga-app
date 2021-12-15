@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getProduct, orderByPrice, getUser, getCategories, productsByName,  getProductByName } from "../../Redux/Actions/actions";
+import { getProduct, orderByPrice, getUser, getCategories, productsByName } from "../../Redux/Actions/actions";
 import Card from "../../Card/card";
 import s from "./catalog.module.css";
 import Logo from "../Logo/logo";
@@ -32,14 +32,13 @@ export default function Catalogo() {
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
   const currentProducts =products?.slice(indexOfFirstProducts, indexOfLastProducts);
 
+  console.log("pro", products)
+  console.log("all", allProduct)
+
   const paginate = (pageNumbers) => {
     setCurrentPage(pageNumbers)
   }
 
-
-  useEffect(() => {
-    dispatch(getProduct())
-  }, [dispatch])
 
   useEffect(() => {
     dispatch(getUser())
@@ -65,35 +64,6 @@ export default function Catalogo() {
 
   }
 
-  // function handleFilter(e) {
-  //   const search = e.target.value;
-  //   setWordEntered(search)
-  //   const newFilter = allProduct.filter((el) => {
-  //     return el.name.toLowerCase().includes(search.toLowerCase())
-  //   });
-  //   if (search === "") {
-  //     setFilteredData([])
-  //   } else {
-  //     setFilteredData(newFilter)
-  //   }
-  // }
-
-  // function handleInput(e) {
-  //   setName(e.target.value);
-  //   setWordEntered(e.target.value);
-  //   setFilteredData([])
-  // }
-  // function clearInput() {
-  //   setFilteredData([]);
-  //   setWordEntered("")
-  // }
-
-
-  // function handleSumit(e) {
-  //   dispatch(getProductByName(name))
-  //   setName("")
-  //   setWordEntered("")
-  // }
 
   function handleInput(e) {
     e.preventDefault()
@@ -106,8 +76,6 @@ export default function Catalogo() {
   }
   return (
     <div>
-      {console.log(products)}
-      {console.log(allProduct)}
       <nav className="flex justify-between items-center h-20  text-black">
         <Link to="/" className="pl-10">
           <div className=" w-30">

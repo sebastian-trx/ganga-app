@@ -18,6 +18,7 @@ export default function AdminSidebar({
     verProductos((productos = false));
     verVendedores((vendedores = false));
     verOrdenes((ordenes = false));
+    verProductosNuevos((productosNuevos = false));
   };
 
   const Toggle = () => {
@@ -25,6 +26,7 @@ export default function AdminSidebar({
     verUsuarios((usuarios = false));
     verVendedores((vendedores = false));
     verOrdenes((ordenes = false));
+    verProductosNuevos((productosNuevos = false));
   };
 
   const togle = () => {

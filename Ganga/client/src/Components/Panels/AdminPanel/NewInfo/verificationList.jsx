@@ -1,16 +1,20 @@
 import React, { useState} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 
 import s from "../admin.module.css";
 import { approveProduct, deleteProduct} from "../../../Redux/Actions/actions";
+import { BsPencilSquare } from "react-icons/bs";
 
 export default function VerificationList({ products }) {
     console.log("products", products);
     const dispatch = useDispatch();
-    let newProducts = products.filter((p) => p.approved === false);
-    console.log("newP", newProducts);
+    const categories = useSelector((state) => state.categories);
+    const subcategories = useSelector((state) => state.dbSubcategories);
+  
+    // let newProducts = products.filter((p) => p.approved === false);
+    // console.log("newP", newProducts);
 
 
 
@@ -31,8 +35,7 @@ export default function VerificationList({ products }) {
         return (
           <>
             <button className={s.editar} onClick={() => handleSubmit(id)}>
-              {" "}
-              autorizar{" "}
+            <BsPencilSquare/>
             </button>
 
             <button onClick={() => handleDelete(id)}>
@@ -53,16 +56,36 @@ export default function VerificationList({ products }) {
 
   function handleDelete(id) {
     dispatch(deleteProduct(id));
-    setRows(rows.filter((i) => i.id !== id));
+     setRows(rows.filter((i) => i.id !== id));
+     window.location.reload();
   }
 
-  let Rows = newProducts?.map((p) => {
+  let Rows = products?.map((p) => {
+    if (p.categories === null) {
+      p.categories = categories.filter(c => c.id === p.categoryId);
+      p.categories = p.categories[0].name;
+    } 
+   
+    if (p.subcategoryId > 0) {
+      let sub = subcategories.filter(s=> s.id === p.subcategoryId);
+      console.log("sub1", sub)
+      sub = sub[0]?.name
+      p.subcategories = sub;
+      console.log("sub2", sub)
+    } 
+
+    if (p.brand === null || p.brand === undefined) {
+      p.brand = "indefinida"
+    }
+  
     return {
       id: p.id,
       Nombre: p.name,
       Precio: "$" + p.price,
       Categoria: p.categories,
+      Subcategoria: p.subcategories,
       Stock: p.stock,
+      Marca: p.brand
     };
   });
 

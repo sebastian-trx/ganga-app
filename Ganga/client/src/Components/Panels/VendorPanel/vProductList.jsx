@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
+import { BsPencilSquare } from "react-icons/bs";
 import { deleteProduct, getCategories, getDbSubcategories, allReviews } from "../../Redux/Actions/actions";
 
 import s from "../AdminPanel/admin.module.css";
@@ -22,6 +23,10 @@ export default function VendorProductList({ products, user }) {
     useEffect(() => {
       dispatch(getCategories());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getDbSubcategories());
+}, [dispatch]);
 
 
 const devolucion = Reviews.map((r) => r.userId)
@@ -48,7 +53,7 @@ console.log('soy el userReviews: ', userReviews)
         return (
           <>
             <Link to={"/product/" + id}>
-              <button className={s.editar}> {/*<BsPencilSquare/>*/} </button>
+              <button className={s.editar}> <BsPencilSquare/> </button>
             </Link>
             <button onClick={() => handleDelete(id)}>
               {" "}
