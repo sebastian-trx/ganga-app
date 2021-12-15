@@ -10,6 +10,8 @@ import {
 import Nav from "../../Components/Nav/NavBar/nav";
 import a from "./productoId.module.css";
 import { MercadoPago2 } from "../MercadoPago/mercadoPago2";
+import Swal from 'sweetalert2';
+
 
 export default function ProductId() {
   const dispatch = useDispatch();
@@ -41,7 +43,15 @@ export default function ProductId() {
     dispatch(
       addProduct({ id: User.id, item: { id: info.id }, cant: 1, que: "+" })
     );
-    alert("Tu producto se ha agregado al carrito.")
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Tu producto se ha agregado al carrito.',
+      showConfirmButton: false,
+      timer: 2000
+    })
+    
+    // alert("Tu producto se ha agregado al carrito.")
   }
 
   useEffect(() => {
