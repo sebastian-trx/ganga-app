@@ -16,37 +16,36 @@ export default function ModifyProduct() {
     const Info = useSelector((state) => state.detailProduct);
     const categories = useSelector((state) => state.categories)
     const getInfoGoogle = useSelector((state) => state.getInfoGoogle)
+    const subcategories = useSelector((state) => state.dbSubcategories) // aca no hay subcategorias cargadas creo
 
-    const subcategories = useSelector((state) => state.subcategories) // aca no hay subcategorias cargadas creo
-    let info = Info.filter(i=> i.id === id);
-    info = info[0];
-    
     useEffect(() => {
         dispatch(getDetailsProduct());
     }, [dispatch]);
-    
+
     useEffect(() => {
         dispatch(getCategories());
     }, [dispatch]);
-    
+
     useEffect(() => {
         dispatch(getDbSubcategories());
     }, [dispatch]);
-    
+
     let info = Info?.filter((i) => i.id === id);
 
-  
+    info = info[0];
+
+
     const [input, setInput] = useState({
-        name: info.name,
-        brand: info.brand,
-        description: info.description,
-        price: info.price,
-        status: info.status,
-        stock: info.stock,
-        image: info.image,
+        name: info?.name,
+        brand: info?.brand,
+        description: info?.description,
+        price: info?.price,
+        status: info?.status,
+        stock: info?.stock,
+        image: info?.image,
         id: id,
-        idCategory: info.idCategory,
-        idSubcategory: info.idSubcategory,
+        idCategory: info?.idCategory,
+        idSubcategory: info?.idSubcategory,
     })
 
     const uploadImage = async (e) => {
@@ -126,7 +125,7 @@ export default function ModifyProduct() {
             idSubcategory: " ",
         })
         // navigate("/panel")
-      //  window.location.reload();
+        //  window.location.reload();
     }
 
     return (
@@ -187,13 +186,13 @@ export default function ModifyProduct() {
 
                             {(input.status === "nuevo") ?
                                 (<div className={s.stock}>  <label> Stock: </label>
-                                    <input 
-                                    className="text-center bg-gray-700 text-white" 
-                                    type="number" 
-                                    name="stock"
-                                    value={input.stock} 
-                                    onChange={handleChange}
-                                    autoComplete="off" />
+                                    <input
+                                        className="text-center bg-gray-700 text-white"
+                                        type="number"
+                                        name="stock"
+                                        value={input.stock}
+                                        onChange={handleChange}
+                                        autoComplete="off" />
                                 </div>) : <p></p>
                             }
                             {errors.stock ? <p>{errors.stock}</p> : null}
@@ -211,7 +210,7 @@ export default function ModifyProduct() {
                                                 name="brand"
                                                 onChange={handleChange}
                                                 value={input.brand}
-                                                autoComplete="off" />
+                                                autoComplete="off" required />
                                             {errors.brand && (
                                                 <p >{errors.brand}</p>
                                             )}
@@ -227,7 +226,7 @@ export default function ModifyProduct() {
                                                 type='text'
                                                 onChange={handleChange}
                                                 name="description"
-                                                autoComplete="off" />
+                                                autoComplete="off" required />
                                             {errors.description && (
                                                 <p >{errors.description}</p>
                                             )}
@@ -251,15 +250,15 @@ export default function ModifyProduct() {
                                 </div>
 
                                 <div>
-                                                    <label > SubCategoria: </label>
-                                                    <select className="text-center bg-gray-700 text-white" name="idSubcategory"  onChange={handleSelect2}>
-                                                        {(
-                                                            subcategories && subcategories?.map((p, i) => (
-                                                                <option key={i} value={p.id}>{p.name}</option>
-                                                            ))
-                                                        )}
-                                                    </select>
-                                                </div>
+                                    <label > SubCategoria: </label>
+                                    <select className="text-center bg-gray-700 text-white" name="idSubcategory" onChange={handleSelect2}>
+                                        {(
+                                            subcategories && subcategories?.map((p, i) => (
+                                                <option key={i} value={p.id}>{p.name}</option>
+                                            ))
+                                        )}
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -278,6 +277,7 @@ export default function ModifyProduct() {
                                         onChange={uploadImage}
                                         type="file"
                                         name="image"
+                                        required="required"
                                         accept="image/png,image/jpeg"
                                     />
                                     {errors.image ? <p>{errors.image}</p> : null}
@@ -300,7 +300,7 @@ export default function ModifyProduct() {
                                 <h1 className="text-center bg-gray-700 text-white">Imagen de tu producto</h1>
                             </div>
                             <div >
-                                <img className={s.imgCargada} src={info.image} alt="imagen del producto" />
+                                <img className={s.imgCargada} src={info?.image} alt="imagen del producto" />
                             </div>
                         </div>
                     </div>
@@ -309,5 +309,3 @@ export default function ModifyProduct() {
         </div>
     )
 }
-
-
