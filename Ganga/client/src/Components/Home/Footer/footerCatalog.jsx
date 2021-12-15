@@ -1,8 +1,8 @@
 import React from "react";
-import "./footer.css";
-import Newsletter from "../Newsletter/newsletter";
+import "./footerCatalog.css";
+// import Newsletter from "../NewsLetter/newsletter";
 
-export default function FooterPage() {
+export default function FooterCatalog() {
   return (
     <div className="body">
       <div fluid="true" className="text-center text-md-left">
@@ -13,15 +13,11 @@ export default function FooterPage() {
           </div>
           <div>
             <div className="texTuEres">
-              <h3>
-                GANGA nace con la intensión de incorporar productos asequibles a
-                todo tipo de publico, dentro de sus capacidades, siempre hay un
-                producto para cada día de buena calidad y al mejor precio. Y tú
-                que esperas? Ven por tu GanGa.
-              </h3>
+              <h3>GANGA nace con la intensión de incorporar productos asequibles
+              a todo tipo de publico, dentro de sus capacidades, siempre hay un producto para cada día
+              de buena calidad y al mejor precio. Y tú que esperas? Ven por tu GanGa.</h3>
             </div>
-          </div>
-          <Newsletter />
+          </div>      
           <div>
             <ul>
               <h1 className="ubicacion">Estamos ubicados</h1>

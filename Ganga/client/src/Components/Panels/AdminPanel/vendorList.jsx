@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Link} from "react-router-dom";
 import { TiDeleteOutline } from "react-icons/ti";
 import { BsPencilSquare } from "react-icons/bs";
-import { Swal } from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 import RevenueChart from "./aCharts/Revenue";
 import s from "./admin.module.css";
@@ -61,9 +61,9 @@ export default function VendorList({ vendors, products}) {
           )
           dispatch(deleteUser(id));
           setRows(rows.filter((i) => i.id !== id));
+          window.location.reload();
       }
     })
-    window.location.reload();
   }
 
   const Rows = vendors?.map((u) => {

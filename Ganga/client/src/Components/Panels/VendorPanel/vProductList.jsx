@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 import { BsPencilSquare } from "react-icons/bs";
-import { Swal } from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 import { deleteProduct, getCategories, getDbSubcategories, allReviews } from "../../Redux/Actions/actions";
 
@@ -86,9 +86,9 @@ console.log('soy el userReviews: ', userReviews)
           )
           dispatch(deleteProduct(id));
           setRows(rows.filter((i) => i.id !== id));
+          window.location.reload();
       }
     })
-    window.location.reload();
   }
 
   let Rows = myProducts?.map((p) => {

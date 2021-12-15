@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { getProduct, getUserInfoGoogle } from "../../Redux/Actions/actions";
+import { getProduct, getUserInfoGoogle  } from "../../Redux/Actions/actions";
 import Nav from "../../Nav/NavBar/nav";
 import Carousel from "./Carousel/carousel";
 import BestSellingBrands from "../BestSellingBrands/bestSellingBrands";

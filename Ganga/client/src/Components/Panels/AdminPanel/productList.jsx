@@ -1,16 +1,17 @@
 import React, {  useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 import { BsPencilSquare } from "react-icons/bs";
-import { Swal } from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 import { deleteProduct} from "../../Redux/Actions/actions";
 import ProductsChart from "./aCharts/Products";
 import s from "./admin.module.css";
 
 export default function ProductList({products}) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
   const subcategories = useSelector((state) => state.dbSubcategories);
@@ -64,9 +65,9 @@ export default function ProductList({products}) {
           )
           dispatch(deleteProduct(id));
           setRows(rows.filter((i) => i.id !== id));
+          window.location.reload();
       }
     })
-    window.location.reload();
   }
 
   let Rows = products?.map((p) => {

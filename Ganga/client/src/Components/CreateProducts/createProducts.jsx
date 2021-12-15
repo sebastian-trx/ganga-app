@@ -163,7 +163,7 @@ export default function CreateProducts() {
     <div className={s.body}>
       <Boton
         parametro={"/panel"}
-        icono={<BsFillArrowLeftSquareFill />} />
+        icono={<IoMdArrowRoundBack />} />
 
       <form className={s.form} onSubmit={handleSubmit}>
 

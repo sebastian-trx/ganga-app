@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
 import { BsPencilSquare } from "react-icons/bs";
-import { Swal } from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 import NewUsersChart from "./aCharts/NewUsers";
 import s from "./admin.module.css";
@@ -78,9 +78,9 @@ export default function UserList({ users }) {
           )
           dispatch(deleteUser(id));
           setRows(rows.filter((i) => i.id !== id));
+          window.location.reload();
       }
     })
-    window.location.reload();
   }
 
   return (

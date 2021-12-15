@@ -1,13 +1,13 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import "./newsletter.css";
+import "./newsletterCatalog.css";
 
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { postNewsletter } from "../../Redux/Actions/actions";
 
-export default function Newsletter() {
+export default function NewsletterCatalog() {
   const dispatch = useDispatch();
   let newsletter = document.getElementById("hola");
 
@@ -32,29 +32,29 @@ export default function Newsletter() {
   };
 
   return (
-    <div className="NewsletterContainer">
+    <div className="NewsletterContainerCa">
       <Box sx={{ width: "80%" }}>
         <Typography variant="h4">
-          <p className="NewsletterTitle">Newsletter</p>
+          <p className="NewsletterTitleCa">Newsletter</p>
         </Typography>
         <Typography variant="h5">
-          <p className="NewsletterSubTitle">
-            Regístrate y obten de primera mano nuestras promociones y entérate
-            antes de los nuevos productos.
+          <p className="NewsletterSubTitleCa">
+            Regístrate y obten de primera mano nuestras promociones y entérate antes de los
+            nuevos productos.
           </p>
         </Typography>
 
-        <div className="FormNewsLetter">
+        <div className="FormNewsLetterCa">
           <form onSubmit={(e) => handleSubmit(e)}>
             <input
               name="email"
               type="email"
-              className="NewsletterInput"
+              className="NewsletterInputCa"
               placeholder="Email"
               onChange={(e) => handleChange(e)}
             />
             <input
-              className="ButtonNewsletter hvr-grow-shadow"
+              className="ButtonNewsletterCa hvr-grow-shadow"
               type="submit"
               name="email"
               value="Registrarme"

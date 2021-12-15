@@ -81,7 +81,13 @@ export default function InfoUser() {
           <div className="pt-0 pb-2">
             <div className="absolute right-40 top-48">
               <h1 className="w-40 py-1 my-1 text-center rounded-full bg-gray-700 text-white">Tu imagen actual</h1>
+              {
+                !user.image? 
+                <img className={s.perfil}
+                src="https://img2.freepng.es/20180420/aie/kisspng-computer-icons-silhouette-user-profile-5ada934a8f5461.2830952615242739945871.jpg"
+                alt=" imagen algternativa"/>:
               <img className={s.perfil} src={user.image} alt = "imagen de perfil"/>
+              }
             </div>
             <label>Imagen de Perfil</label>
           </div>

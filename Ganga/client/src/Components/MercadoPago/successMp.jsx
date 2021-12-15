@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getUserInfoGoogle } from "../Redux/Actions/actions";
 import { SuccessLogicMp } from "./successLogicMp";
 import Nav from "../Nav/NavBar/nav";
-
+import User from "../Nav/User/user";
 
 export function SuccesMp() {
   const dispatch = useDispatch();
@@ -35,29 +35,14 @@ export function SuccesMp() {
     // </div>
 
     <div class="flex justify-center my-6">
-      <Nav />
       <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
         <div class="flex-1">
           <th class="w-full text-sm lg:text-base" cellspacing="0">
-            <button onClick={volver} class="flex justify-center w-full px-4 py-2 font-medium text-white uppercase bg-red-600 rounded-full shadow item-center hover:bg-red-500 focus:shadow-outline focus:outline-none">
-              <svg
-                aria-hidden="true"
-                data-prefix="far"
-                data-icon="trash-alt"
-                class="inline w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M268 416h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12zM432 80h-82.41l-34-56.7A48 48 0 00274.41 0H173.59a48 48 0 00-41.16 23.3L98.41 80H16A16 16 0 000 96v16a16 16 0 0016 16h16v336a48 48 0 0048 48h288a48 48 0 0048-48V128h16a16 16 0 0016-16V96a16 16 0 00-16-16zM171.84 50.91A6 6 0 01177 48h94a6 6 0 015.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12z"
-                />
-              </svg>
-              <span class="ml-2 mt-5px">
-                {/* <ClearCart idUser={User.id}/> */}
-                {/* boton para vvolver?? */}
-                VOLVER
-              </span>
+            <button
+              onClick={volver}
+              class="flex justify-center w-full px-4 py-2 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-red-500 focus:shadow-outline focus:outline-none"
+            >
+              <span class="ml-2 mt-5px">VOLVER</span>
             </button>
           </th>
           <table class="w-full text-sm lg:text-base" cellspacing="0">
@@ -69,7 +54,7 @@ export function SuccesMp() {
                   <span class="lg:hidden" title="Quantity">
                     Cant
                   </span>
-                  <span class="hidden lg:inline">Cantidad</span>
+                  <span class="hidden lg:inline">Cant</span>
                 </th>
                 <th class="hidden text-right md:table-cell">Precio U.</th>
                 <th class="text-right">Total</th>
@@ -296,7 +281,7 @@ export function SuccesMp() {
           {/* </hr> */}
         </div>
       </div>
-      { User.login && <SuccessLogicMp sum= {sum} user={User}/> }
+      {User.login && <SuccessLogicMp sum={sum} user={User} />}
     </div>
   );
 }

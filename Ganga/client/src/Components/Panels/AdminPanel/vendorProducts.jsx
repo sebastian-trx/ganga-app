@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../Redux/Actions/actions";
 import { TiDeleteOutline } from "react-icons/ti";
-import { Swal } from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { BsPencilSquare } from "react-icons/bs";
 
 import { deleteProduct } from "../../Redux/Actions/actions";
@@ -73,9 +73,9 @@ export default function VendorProducts({ id }) {
           )
           dispatch(deleteProduct(id));
           setRows(rows.filter((i) => i.id !== id));
+          window.location.reload();
       }
     })
-    window.location.reload();
   }
 
   let Rows = vendorProducts?.map((p) => {
