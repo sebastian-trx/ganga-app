@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getUserInfoGoogle } from "../Redux/Actions/actions";
 import { SuccessLogicMp } from "./successLogicMp";
+import Nav from "../Nav/NavBar/nav";
+
 
 export function SuccesMp() {
   const dispatch = useDispatch();
@@ -33,6 +35,7 @@ export function SuccesMp() {
     // </div>
 
     <div class="flex justify-center my-6">
+      <Nav />
       <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
         <div class="flex-1">
           <th class="w-full text-sm lg:text-base" cellspacing="0">

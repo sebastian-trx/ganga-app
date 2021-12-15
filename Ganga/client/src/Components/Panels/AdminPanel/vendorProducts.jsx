@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../Redux/Actions/actions";
 import { TiDeleteOutline } from "react-icons/ti";
 import { Swal } from 'sweetalert2';
+import { BsPencilSquare } from "react-icons/bs";
 
 import { deleteProduct } from "../../Redux/Actions/actions";
 
@@ -15,6 +16,8 @@ export default function VendorProducts({ id }) {
 
   const products = useSelector((state) => state.product);
   const vendorProducts = products.filter((p) => p.owner === id);
+  const categories = useSelector((state) => state.categories)
+  const subcategories = useSelector((state) => state.dbSubcategories)
 
   useEffect(() => {
     dispatch(getProduct());
@@ -39,7 +42,7 @@ export default function VendorProducts({ id }) {
         return (
           <>
             <Link to={"/product/" + id}>
-              <button className={s.editar}> edit </button>
+              <button className={s.editar}> <BsPencilSquare/> </button>
             </Link>
             <button onClick={() => handleDelete(id)}>
               {" "}
@@ -76,12 +79,28 @@ export default function VendorProducts({ id }) {
   }
 
   let Rows = vendorProducts?.map((p) => {
+    const MyCategory = categories.filter(c => c.id === p.categoryId);
+    const myCategory = MyCategory[0].name;
+    const mySubcategory = subcategories.filter(s=> s.id === p.subcategoryId);
+    console.log("mySubcategory", mySubcategory);
+   
+    let mySubCategory= "";
+  if (mySubcategory?.length === 0  ) {
+       mySubCategory = "no definida"
+      
+    } else {
+       mySubCategory = mySubcategory[0].name;
+  
+    }
+   
     return {
       id: p.id,
       Nombre: p.name,
       Precio: "$ " + p.price,
-      Categoria: p.categories,
+      Categoria: myCategory,
+      Subcategoria: mySubCategory,
       Stock: p.stock,
+      Marca:p.brand
     };
   });
 

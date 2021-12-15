@@ -14,7 +14,6 @@ import Modificar from "./Components/Panels/AdminPanel/uInfo";
 import { SuccesMp } from "./Components/MercadoPago/successMp";
 import { FailMp } from "./Components/MercadoPago/failMp";
 import SubAdminForm from "./Components/Panels/AdminPanel/subAdminForm";
-import { Review } from "./Components/Reviews/Review.jsx";
 import ModifyProduct from './Components/ModifyProduct/modifyProduct';
 // import { Error404 } from "./Components/Error404/404Error.jsx";
 import Nosotros from "./Components/Nav/We/we";
@@ -39,7 +38,6 @@ function App() {
         <Route path="/successMp" element={<SuccesMp />} />
         <Route path="/failMp" element={<FailMp />} />
         <Route path="/registrar" element={<SubAdminForm />} />
-        <Route path="/agregarreview" element={<Review />} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/product/:id" element={<ModifyProduct/>}/>
         <Route path="/buscar/catalogo" element={<SearchCatalog/>}/>

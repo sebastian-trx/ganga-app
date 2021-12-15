@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getProduct, orderByPrice, getUser, getCategories, getProductByName } from "../../Redux/Actions/actions";
+import { getProduct, orderByPrice, getUser, getCategories, productsByName } from "../../Redux/Actions/actions";
 import Card from "../../Card/card";
 import s from "./catalog.module.css";
 import Logo from "../Logo/logo";
@@ -19,7 +19,6 @@ export default function Catalogo() {
   const user = useSelector((state) => state.getInfoGoogle);
   const allProduct = useSelector((state) => state.product);
   const products  = allProduct.filter(p=> p.approved === true);
- ;
 
   const [, setOrden] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -39,15 +38,15 @@ export default function Catalogo() {
 
 
   useEffect(() => {
-    dispatch(getProduct())
-  }, [dispatch])
-
-  useEffect(() => {
     dispatch(getUser())
   }, [dispatch])
 
   useEffect(() => {
     dispatch(getCategories())
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getProduct())
   }, [dispatch])
 
   function handleClick(e) {
@@ -66,34 +65,15 @@ export default function Catalogo() {
 
   }
 
-  function handleFilter(e) {
-    const search = e.target.value;
-    setWordEntered(search)
-    const newFilter = allProduct.filter((el) => {
-      return el.name.toLowerCase().includes(search.toLowerCase())
-    });
-    if (search === "") {
-      setFilteredData([])
-    } else {
-      setFilteredData(newFilter)
-    }
-  }
 
   function handleInput(e) {
-    setName(e.target.value);
-    setWordEntered(e.target.value);
-    setFilteredData([])
+    e.preventDefault()
+    setName(e.target.value)
   }
-  function clearInput() {
-    setFilteredData([]);
-    setWordEntered("")
-  }
-
-
-  function handleSumit(e) {
-    dispatch(getProductByName(name))
-    setName("")
-    setWordEntered("")
+  function handleSubmit(e) {
+    e.preventDefault()
+    dispatch(productsByName(name))
+    setName(" ")
   }
   return (
     <div>
@@ -127,9 +107,25 @@ export default function Catalogo() {
             <option value="Mayor-Menor"> Menor a Mayor </option>
           </select>
         </div>
-
-
+        
         <input
+          // className="px-4"
+          type="text"
+          placeholder="Busca tu producto"
+          name="busca"
+          onChange={handleInput}
+          className="bg-gray-100 pt-3 pb-1 ml-10 h-7 border-gray-500"
+        // border-l-2 border-t-2 border-b-2"
+        />
+        <button
+          type="submit"
+          onClick={handleSubmit}
+        // className=" px-1  h-7 bg-gray-100 mr-4 mb-2 border-gray-500 border-r-2 border-t-2 border-b-2"
+        >
+          <ImSearch />
+        </button>
+
+        {/* <input
           type="text"
           value={wordEntered}
           onChange={handleFilter}
@@ -147,7 +143,7 @@ export default function Catalogo() {
             }
 
           </div>
-        )}
+        )} */}
         <Link to="/shopCart" className="pl-6 pr-10">
           <button>
             <IoIosCart />

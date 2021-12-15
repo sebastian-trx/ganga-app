@@ -1,20 +1,22 @@
-import React, {  useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TiDeleteOutline } from "react-icons/ti";
+
+import s from "../admin.module.css";
+import { approveProduct, deleteProduct} from "../../../Redux/Actions/actions";
 import { BsPencilSquare } from "react-icons/bs";
-import { Swal } from 'sweetalert2';
 
-import { deleteProduct} from "../../Redux/Actions/actions";
-import ProductsChart from "./aCharts/Products";
-import s from "./admin.module.css";
+export default function VerificationList({ products }) {
+    console.log("products", products);
+    const dispatch = useDispatch();
+    const categories = useSelector((state) => state.categories);
+    const subcategories = useSelector((state) => state.dbSubcategories);
+  
+    // let newProducts = products.filter((p) => p.approved === false);
+    // console.log("newP", newProducts);
 
-export default function ProductList({products}) {
-  const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categories);
-  const subcategories = useSelector((state) => state.dbSubcategories);
-  products = products.filter(p => p.approved === true);
+
 
   const columns = [
     { field: "id", headerName: "ID", width: 50 },
@@ -32,9 +34,10 @@ export default function ProductList({products}) {
         const id = params.row.id;
         return (
           <>
-            <Link to={"/product/" + id}>
-              <button className={s.editar}> <BsPencilSquare/> </button>
-            </Link>
+            <button className={s.editar} onClick={() => handleSubmit(id)}>
+            <BsPencilSquare/>
+            </button>
+
             <button onClick={() => handleDelete(id)}>
               {" "}
               <TiDeleteOutline className={s.delete} />{" "}
@@ -45,28 +48,16 @@ export default function ProductList({products}) {
     },
   ];
 
+  function handleSubmit(id) {
+    console.log("aprobadoo")
+    dispatch(approveProduct(id));
+    setRows(rows.filter((i) => i.id !== id));
+  }
+
   function handleDelete(id) {
-    Swal.fire({
-      title: 'Estas seguro?',
-      text: "Se borraran todos los datos del producto.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Confirmar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Eliminado!',
-          'El producto ha sido eliminado.',
-          'success'
-          )
-          dispatch(deleteProduct(id));
-          setRows(rows.filter((i) => i.id !== id));
-      }
-    })
-    window.location.reload();
+    dispatch(deleteProduct(id));
+     setRows(rows.filter((i) => i.id !== id));
+     window.location.reload();
   }
 
   let Rows = products?.map((p) => {
@@ -77,8 +68,10 @@ export default function ProductList({products}) {
    
     if (p.subcategoryId > 0) {
       let sub = subcategories.filter(s=> s.id === p.subcategoryId);
+      console.log("sub1", sub)
       sub = sub[0]?.name
       p.subcategories = sub;
+      console.log("sub2", sub)
     } 
 
     if (p.brand === null || p.brand === undefined) {
@@ -96,27 +89,23 @@ export default function ProductList({products}) {
     };
   });
 
+  
   const [rows, setRows] = useState(Rows);
+  console.log("rows", rows)
 
   return (
     <div>
-      <h4 className="text-5xl text-center font-light pt-10 pb-12">Productos</h4>
-      <Link to="/create">
-        <button className="absolute top-40 right-10 rounded-3xl bg-gray-300 hover:bg-gray-400 p-3">
-          Crear
-        </button>
-      </Link>
-      <ProductsChart />
+      <h1 className="text-3xl p-8"> Productos a revisar:</h1>
+
       <div className={s.listaProductos}>
         <DataGrid
           rows={rows}
           columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
+          pageSize={20}
+          rowsPerPageOptions={[20]}
           checkboxSelection
         />
       </div>
     </div>
   );
 }
-
