@@ -24,6 +24,7 @@
     max-height: 200px;
     height: 40vh;
     margin-top: 50px;
+    border-radius: 10px;
     background-image: url(../../Resources/bannerCatalog2.gif) !important;
     background-position: center center;
     background-repeat: no-repeat;
@@ -197,6 +198,7 @@
     width: 100%;
     max-height: 400px;
     height: 40vh;
+    border-radius: 10px;
     background-image: url(../../Resources/bannerCatalog2.gif) !important;
     background-position: center center;
     background-repeat: no-repeat;
@@ -373,6 +375,7 @@
     max-height: 350px;
     height: 300px;
     margin-left: 10%;
+    border-radius: 10px;
     background-image: url(../../Resources/bannerCatalog2.gif) !important;
     background-position: center center;
     background-repeat: no-repeat;
@@ -551,6 +554,7 @@
     width: 100%;
     max-height: 300px;
     height: 300px;
+    border-radius: 10px;
     background-image: url(../../Resources/bannerCatalog2.gif) !important;
     background-position: center center;
     background-repeat: no-repeat;
@@ -728,6 +732,7 @@
     width: 100%;
     max-height: 250px;
     height: 250px;
+    border-radius: 10px;
     background-image: url(../../Resources/bannerCatalog2.gif) !important;
     background-position: center center;
     background-position: center center;
@@ -907,6 +912,7 @@
     width: 100%;
     max-height: 250px;
     height: 250px;
+    border-radius: 10px;
     background-image: url(../../Resources/bannerCatalog2.gif) !important;
     background-position: center center;
     background-repeat: no-repeat;
@@ -1085,6 +1091,7 @@
     width: 100%;
     max-height: 170px;
     height: 150px;
+    border-radius: 10px;
     background-image: url(../../Resources/bannerCatalog2.gif) !important;
     background-position: center center;
     background-repeat: no-repeat;

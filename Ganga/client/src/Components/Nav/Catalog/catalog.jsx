@@ -63,7 +63,6 @@ export default function Catalogo() {
     <div className="containerCatalog">
       <Nav className="flex justify-between items-center h-20 w-8 text-black" />
       <div className="bannerProd">
-        <h1 className="alone">SOLO AQUÍ EN GANGA</h1>
       </div>
       <div className="inf">
         <div className="filtros">
