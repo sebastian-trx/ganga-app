@@ -70,8 +70,7 @@ export default function ProductId() {
                 <div className={a.start}>
                 <div>
                   {productReviews?.map((review) => {
-                    console.log('soy el review mapeado: ', review)
-                    return (
+                    return(
                       <div key={review.id}>
                         <h6>Descripcion: {review.description}</h6>
                         <h4>Calificación: {review.qualificacion}</h4>

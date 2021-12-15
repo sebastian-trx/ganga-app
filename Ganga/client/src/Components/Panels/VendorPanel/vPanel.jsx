@@ -40,7 +40,6 @@ export default function VendorPanel({ user }) {
 
   return (
     <div className="bg-gray-100">
-      <Nav />
       {!ventas ? (
         <div>
           {!productos ? (
@@ -74,7 +73,7 @@ export default function VendorPanel({ user }) {
                     />
                   </div>
                   <div className={s.body}>
-                    <PurchaseList orders={userOrders} />
+                    <PurchaseList orders={userOrders} users={allUsers}/>
                   </div>
                 </div>
               )}

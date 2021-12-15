@@ -162,10 +162,12 @@ export function getUserInfoGoogle(payload) {
 
 // action para hacer el local login
 export function localLogin(payload) {
+  console.log('soy el payload del localLogin: ', payload)
   return async function (dispatch) {
     await axios
       .post(`${URL}localLogin/`, payload, { withCredentials: true })
       .then((response) => {
+        console.log('soy el response de localLogin: ', response)
         dispatch({
           type: LOCAL_LOGIN,
           payload: response.data,
@@ -519,17 +521,14 @@ export function addReview(payload) {
   }
 }
 
-export function updateProduct(payload){
-  console.log(payload, "Soy el input de la actions")
-return async function (dispatch) {
-  await axios.put( URL + "product" , payload)
-  .then((response) => {
+
+export function updateProduct(payload) {
+return async function(dispatch) {
+  const response = await axios.put(`${URL}product`, payload)
     dispatch({
-      type:PUT_PRODUCT,
+      type: PUT_PRODUCT,
       payload: response.data
     })
-  })
-  .catch((error) => console.log(error));
 }
 }
 

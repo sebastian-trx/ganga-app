@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { getDetailsProduct, getCategories, getSubcategory, updateProduct } from '../Redux/Actions/actions'
+import { getDetailsProduct, getCategories, getSubcategory, updateProduct, getDbSubcategories } from '../Redux/Actions/actions'
 import s from './modifyProduct.module.css'
 import Boton from '../Nav/boton'
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
@@ -21,17 +21,19 @@ export default function ModifyProduct() {
     let info = Info.filter(i=> i.id === id);
     info = info[0];
     
-   console.log("info", info);
-
-
     useEffect(() => {
         dispatch(getDetailsProduct());
     }, [dispatch]);
-
+    
     useEffect(() => {
         dispatch(getCategories());
     }, [dispatch]);
-
+    
+    useEffect(() => {
+        dispatch(getDbSubcategories());
+    }, [dispatch]);
+    
+    let info = Info?.filter((i) => i.id === id);
 
   
     const [input, setInput] = useState({
@@ -42,26 +44,11 @@ export default function ModifyProduct() {
         status: info.status,
         stock: info.stock,
         image: info.image,
-        id: getInfoGoogle.id,
-        categoryId: info.categoryId,
-        subcategories: info.subcategories,
+        id: id,
+        idCategory: info.idCategory,
+        idSubcategory: info.idSubcategory,
     })
 
-    function handleSelect1(e) {
-        setInput({
-            ...input,
-            categoryId: e.target.value,
-        })
-        e.preventDefault();
-        dispatch(getSubcategory(e.target.value))
-    }
-
-    function handleSelect2(e) {
-        setInput({
-            ...input,
-            subcategories: [e.target.value]
-        })
-    }
     const uploadImage = async (e) => {
         const files = e.target.files;
         const data = new FormData();
@@ -81,38 +68,67 @@ export default function ModifyProduct() {
         setImage(file.secure_url);
     };
 
-    const [errors, setErrors] = useState({});
+    const [errors, /*setErrors*/] = useState({});
 
-    function validate(input) {
-        let errors = {};
-        if (!input.name) {
-            errors.name = "Debe poner el nombre de su producto.";
-        } else if (!input.price) {
-            errors.price = "Debe poner el Precio de su Producto.";
-        } else if (!input.description) {
-            errors.description = "Debe tener una descripción";
-        } else if (!input.stock) {
-            errors.stock = "Debe igresar la cantidad de stock.";
-        } else if (input.brand === "") {
-            errors.brand = "Debe colocar la marca del producto";
-        } else if (input.status === "") {
-            errors.status = "Debe seleccionar la condicion del Producto";
-        }
-        return errors;
-    }
+    // function validate(input) {
+    //   let errors = {};
+    //   if (!input.name) {
+    //     errors.name = "Debe poner el nombre de su producto.";
+    //   } else if (!input.price) {
+    //     errors.price = "Debe poner el Precio de su Producto.";
+    //   } else if (!input.description) {
+    //     errors.description = "Debe tener una descripción";
+    //   } else if (!input.stock) {
+    //     errors.stock = "Debe igresar la cantidad de stock.";
+    //   } else if (input.brand === "") {
+    //     errors.brand = "Debe colocar la marca del producto";
+    //   }else if (input.status === "") {
+    //     errors.status = "Debe seleccionar la condicion del Producto";
+    //   }
+    //   return errors;
+    // }
     function handleChange(e) {
         setInput({
             ...input,
             [e.target.name]: e.target.value
         })
     }
-    function submit(e) {
+
+    function handleSelect1(e) {
+        setInput({
+            ...input,
+            idCategory: e.target.value,
+        })
         e.preventDefault();
-        console.log("SOY INPUT DEL SUBMIT: ", input )
-        dispatch(updateProduct(input));
-        navigate("/panel")
-        window.location.reload();
     }
+
+
+    function handleSelect2(e) {
+        setInput({
+            ...input,
+            idSubcategory: [e.target.value]
+        })
+    }
+
+    const submit = (e) => {
+        e.preventDefault();
+        dispatch(updateProduct(input));
+        setInput({
+            id: id,
+            name: " ",
+            brand: " ",
+            description: " ",
+            price: " ",
+            status: " ",
+            stock: " ",
+            image: " ",
+            idCategory: " ",
+            idSubcategory: " ",
+        })
+        // navigate("/panel")
+      //  window.location.reload();
+    }
+
     return (
         <div >
             <div className={s.body}>
@@ -163,21 +179,21 @@ export default function ModifyProduct() {
                                     name="status"
                                     onChange={handleChange} >
                                     <option value="" >Nuevo o Usado</option>
-                                    <option value="true">Nuevo</option>
-                                    <option value="false">Usado</option>
+                                    <option value="nuevo">Nuevo</option>
+                                    <option value="usado">Usado</option>
                                 </select>
                                 {errors.status ? <p>{errors.status}</p> : null}
                             </div>
 
-                            {(input.status === "true") ?
-
-                                (<div className={s.stock}>  <label> <span> Stock: </span></label>
-                                    <input
-                                        className="text-center bg-gray-700 text-white"
-                                        type="number"
-                                        name="stock"
-                                        onChange={handleChange}
-                                        autoComplete="off" />
+                            {(input.status === "nuevo") ?
+                                (<div className={s.stock}>  <label> Stock: </label>
+                                    <input 
+                                    className="text-center bg-gray-700 text-white" 
+                                    type="number" 
+                                    name="stock"
+                                    value={input.stock} 
+                                    onChange={handleChange}
+                                    autoComplete="off" />
                                 </div>) : <p></p>
                             }
                             {errors.stock ? <p>{errors.stock}</p> : null}
@@ -226,7 +242,7 @@ export default function ModifyProduct() {
                                         name="idCategory"
                                         onChange={handleSelect1}  >
                                         {
-                                            categories.map((p, i) => (
+                                            categories && categories?.map((p, i) => (
                                                 <option key={i} value={p.id}>{p.name}</option>
                                             ))
 
@@ -235,23 +251,15 @@ export default function ModifyProduct() {
                                 </div>
 
                                 <div>
-                                    {
-                                        (input.idCategory === " ") ?
-                                            (<h1>Debes Seleccionar una Categoria</h1>) :
-                                            (
-                                                <div>
                                                     <label > SubCategoria: </label>
-                                                    <select className="text-center bg-gray-700 text-white" name="subcategories" onChange={handleSelect2} >
+                                                    <select className="text-center bg-gray-700 text-white" name="idSubcategory"  onChange={handleSelect2}>
                                                         {(
-                                                            subcategories[0]?.subcategories.map((p, i) => (
-                                                                <option key={i} value={p}>{p}</option>
+                                                            subcategories && subcategories?.map((p, i) => (
+                                                                <option key={i} value={p.id}>{p.name}</option>
                                                             ))
                                                         )}
                                                     </select>
                                                 </div>
-                                            )
-                                    }
-                                </div>
                             </div>
                         </div>
                     </div>

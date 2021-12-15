@@ -38,29 +38,20 @@
 }
 
 .newInfo {
-    display: flex;
     padding-top: 20px;
-}
-
-.newUsersContainer {
-    flex: 1;
-    padding-bottom: 40px;
-}
-
-.newSalesContainer {
-    flex: 2;
 }
 
 .newUser {
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    margin-left: 35px;
+    margin-left: 22px;
     margin-top: 10px;
     margin-bottom: 25px;
     padding-bottom: 20px;
     width: 250px;
     background-color: rgb(243, 243, 243);
+    display: inline-block;
 }
 
 .newUser:hover {
@@ -81,8 +72,10 @@
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(31, 31, 31, 0.75);
     margin-top: 10px;
+    margin-left: 40px;
+    margin-bottom: 20px;
     justify-content: space-between;
-    width: 700px;
+    width: 1000px;
     border-width: 3px;
     border-color: rgb(112, 112, 112);
 }
@@ -115,52 +108,47 @@
 }
 
 .delete {
-    color:rgb(199, 2, 2);
-    width: 60px;
+    text-align: center;
+    color:rgb(218, 0, 0);
+    /* width: 60px; */
     font-size: 30px;
+}
+.delete:hover {
+    transform: translateY(-2px);
+    color:rgb(126, 0, 0);
 }
 
 .editar {
-    background-color: rgb(131, 245, 131);
-    width: 54px;
-    height: 15px;
-    color: honeydew;
-    border-radius: 23%;
-    border-width: 1px;
-    border-color: rgb(149, 207, 149);
-    padding-bottom: 30px;
-    vertical-align: text-top;
+    padding-top: 22px;
+    padding-left: 20px;
+    text-align: center;
+    color: rgb(76, 207, 76);
+    font-size: 25px;
 }
-
 .editar:hover {
-    background-color: rgb(219, 248, 219);
-    width: 54px;
-    height: 15px;
-    color: rgb(4, 245, 4);
-    border-radius: 13%;
-    border-width: 2px;
-    border-color: rgb(0, 255, 0);
-    padding-bottom: 30px;
-    vertical-align: text-top;
+    transform: translateY(-2px);
+    color: rgb(46, 129, 46);
 }
 
 .btnActualizar {
     background-color: rgb(131, 245, 131);
-    width: 84px;
-    height: 25px;
-    color: honeydew;
-    border-radius: 23%;
-    border-width: 1px;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    color: rgba(55,65,81);
+    border-radius: 5%;
+    border-width: 3px;
     border-color: rgb(149, 207, 149);
-    padding-bottom: 10px;
 }
 
 .btnActualizar:hover {
     background-color: rgb(219, 248, 219);
-    width: 84px;
-    height: 25px;
-    color: rgb(4, 245, 4);
-    border-radius: 13%;
-    border-width: 2px;
+    font-weight: bold;
+    color: rgba(55,65,81);
+    border-radius: 5%;
+    border-width: 3px;
     border-color: rgb(0, 255, 0);
 }

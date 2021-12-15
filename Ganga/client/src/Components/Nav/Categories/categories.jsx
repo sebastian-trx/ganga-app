@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Card from "../../Card/card";
-import { orderByPrice, getUser, getSubCategoryByName, getProduct, getFilterByCategory, filterBySubCat } from "../../Redux/Actions/actions";
-import s from './categories.module.css'
+import {
+  orderByPrice,
+  getUser,
+  getSubCategoryByName,
+  getProduct,
+  getFilterByCategory,
+  filterBySubCat,
+} from "../../Redux/Actions/actions";
+import s from "./categories.module.css";
 import FilterPrice from "../Filter/filterPrice";
-import Pagination from '../../Home/Pagination/pagination'
+import Pagination from "../../Home/Pagination/pagination";
 import { IoIosCart } from "react-icons/io";
 
 import Logo from "../Logo/logo";
-import User from '../User/user'
+import User from "../User/user";
 import { VscDebugRestart } from "react-icons/vsc";
 
 // let PageSize = 10;
 
 export default function Categorias() {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,14 +34,17 @@ export default function Categorias() {
   // - - - Paginado anterior - - - //
 
   const [currentPage, setCurrentPage] = useState(1);
-const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
+  const [elementsPerPage /*setElementsPerPage*/] = useState(12);
   const indexOfLastProducts = currentPage * elementsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - elementsPerPage;
-  const currentProducts =allProduct?.slice(indexOfFirstProducts, indexOfLastProducts);
+  const currentProducts = allProduct?.slice(
+    indexOfFirstProducts,
+    indexOfLastProducts
+  );
 
   const paginate = (pageNumbers) => {
-    setCurrentPage(pageNumbers)
-  }
+    setCurrentPage(pageNumbers);
+  };
 
   // - - - Paginado nuevo - - - //
 
@@ -47,31 +56,29 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
   //   return allProduct.slice(firstPageIndex, lastPageIndex);
   // }, [currentPage]);
 
-  // - - - Paginado nuevo - - - //
 
   useEffect(() => {
-    dispatch(getFilterByCategory(nombre))
-  }, [dispatch, nombre])
+    dispatch(getFilterByCategory(nombre));
+  }, [dispatch, nombre]);
 
   useEffect(() => {
     dispatch(getSubCategoryByName(nombre));
-  }, [dispatch, nombre])
+  }, [dispatch, nombre]);
 
   useEffect(() => {
-    dispatch(getUser())
-  }, [dispatch])
+    dispatch(getUser());
+  }, [dispatch]);
 
   function handleClick(e) {
     e.preventDefault();
-    navigate("/catalogo")
-    dispatch(getProduct())
+    navigate("/catalogo");
+    dispatch(getProduct());
   }
 
   function handleSubCat(e) {
     e.preventDefault();
-    dispatch(filterBySubCat(e.target.value))
+    dispatch(filterBySubCat(e.target.value));
     setCurrentPage(1);
-
   }
 
   function handleOrder(e) {
@@ -92,18 +99,14 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
 
         <div>
           <select className="w-40" onChange={handleSubCat}>
-            <option > SubCategorias </option>
-            {
-              subcategories[0]?.subcategories.map((el, i) =>
-              (
-                <option key={i} value={el}>
-                  {el}
-                </option>
-              ))
-            }
+            <option> SubCategorias </option>
+            {subcategories[0]?.subcategories.map((el, i) => (
+              <option key={i} value={el}>
+                {el}
+              </option>
+            ))}
           </select>
         </div>
-
 
         <div className=" w-30">
           <button onClick={handleClick}>
@@ -111,13 +114,9 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
           </button>
         </div>
 
-
-
         <div className="px-6">
           <FilterPrice />
         </div>
-
-
 
         <div className="pr-10">
           <select className="w-38" onChange={(e) => handleOrder(e)}>
@@ -127,25 +126,26 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
           </select>
         </div>
 
-
         <Link to="/carrito" className="pl-6 pr-10">
           <button>
             <IoIosCart />
           </button>
         </Link>
-        {
-          userGoogle && userGoogle.login ?
-            <User /> :
-            <>
-              <Link to="/registrarme" className="pl-4">
-                <span>Crear cuenta</span>
-              </Link>
+        {userGoogle && userGoogle.login ? (
+          <div className="absolute top-5 right-10 z-50 mr-10 w-28">
+            <User />
+          </div>
+        ) : (
+          <>
+            <Link to="/registrarme" className="pl-4">
+              <span>Crear cuenta</span>
+            </Link>
 
-              <Link to="/ingresar" className="pl-4">
-                <span>Iniciar Sesión</span>
-              </Link>
-            </>
-        }
+            <Link to="/ingresar" className="pl-4">
+              <span>Iniciar Sesión</span>
+            </Link>
+          </>
+        )}
       </nav>
 
       <div className={s.cards}>
@@ -168,19 +168,12 @@ const [elementsPerPage, /*setElementsPerPage*/] = useState(12)
           })
         )}
       </div>
-      {/* <div>
-        <Pagination
-          currentPage={currentPage}
-          totalCount={allProduct.length}
-          pageSize={PageSize}
-          onPageChange={page => setCurrentPage(page)}
-        />
-      </div> */}
       <div>
         <Pagination
           elementsPerPage={elementsPerPage}
           allProduct={allProduct}
-          paginate={paginate} />
+          paginate={paginate}
+        />
       </div>
     </div>
   );

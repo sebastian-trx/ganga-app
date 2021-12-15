@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link} from "react-router-dom";
 import { TiDeleteOutline } from "react-icons/ti";
+import { BsPencilSquare } from "react-icons/bs";
 
 import RevenueChart from "./aCharts/Revenue";
 import s from "./admin.module.css";
@@ -28,7 +29,7 @@ export default function VendorList({ vendors, products}) {
         return (
           <>
             <Link to={"/user/" + id}>
-              <button className={s.editar}> edit </button>
+              <button className={s.editar}> <BsPencilSquare/> </button>
             </Link>
             <button onClick={() => handleDelete(id)}>
               {" "}

@@ -18,6 +18,7 @@ async function postProduct(req, res) {
     idUser,
     idCategory,
     idSubcategory,
+    status
   } = req.body;
   // Formato para enviar cumpleaños: 1991-11-28       // modificar en postman brand por mark y agregar owner
 
@@ -37,6 +38,7 @@ async function postProduct(req, res) {
       stock,
       image,
       owner,
+      status,
     };
 
     try {
@@ -87,9 +89,10 @@ async function putProduct(req, res) {
     owner,
     idCategory,
     approved,
-    idSubcategory  // agregar a postman approved
+    idSubcategory,
+    status  // agregar a postman approved
   } = req.body; // modificar en postman brand por mark y agregar owner
-  //agregar en postman idSubcategory
+  //agregar en postman idSubcategory y status
 
   try {
     const infoUpdateProduct = {
@@ -100,10 +103,24 @@ async function putProduct(req, res) {
       stock,
       image,
       owner,
-      approved
+      approved,
+      status,
     };
 
     const productById = await Product.findByPk(id);
+
+    productById
+    ? await productById.update({categoryId: idCategory})
+    : console.log(
+        "No se ha podido relacionar el producto con la categoria"
+      );
+
+
+  productById
+    ? await productById.update({subcategoryId: idSubcategory})
+    : console.log(
+        "No se ha podido relacionar el producto con la subcategoria"
+      );
 
     productById
       ? res.send(await productById.update(infoUpdateProduct))
