@@ -28,7 +28,7 @@ const { preloader } = require("./src/utils/Preloader.js");
 //     console.log("%s listening at 3001"); // eslint-disable-line no-console
 //   });
 // });
-conn.sync({ force: flase }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, () => {
     preloader();
     console.log("%s listening at 3001"); // eslint-disable-line no-console
