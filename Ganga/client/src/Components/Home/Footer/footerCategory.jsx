@@ -39,7 +39,7 @@ export default function FooterCatalog() {
       <div className="copyright">
         <div fluid="true">
           &copy; {new Date().getFullYear()} Copyright:{" "}
-          <a href="https://ganga-app-78mh2uop7-eze-yisus.vercel.app/catalogo">
+          <a href="https://ganga-app1-78mh2uop7-eze-yisus.vercel.app/catalogo">
             {" "}
             GanGa{" "}
           </a>

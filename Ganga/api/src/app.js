@@ -26,7 +26,7 @@ server.name = 'API';
 // server.use(cors());
 server.use(
   cors({
-    origin: "https://ganga-app.vercel.app",             //se habilitan las credenciales de cors para los pedidos que vengan del front
+    origin: "https://ganga-app1.vercel.app",             //se habilitan las credenciales de cors para los pedidos que vengan del front
     credentials: true,
   })
 )
