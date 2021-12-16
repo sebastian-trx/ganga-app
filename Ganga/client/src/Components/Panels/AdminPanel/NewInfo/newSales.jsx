@@ -10,17 +10,17 @@ export default function NewSales({today, orders, users, verOrdenes, ordenes}) {
 
   const sales = orders?.map((o) => {
    let vendedor = ""; 
-   if (o.productInfo[0].owner === null ) {
+   if (o.productInfo[0]?.owner === null ) {
      vendedor = "GanGa";
    } else {
-    let Vendedor = o.productInfo[0].owner;
-    vendedor =  users.filter((u) => u.id === Vendedor);
-    vendedor =  vendedor[0].name + " " + vendedor[0].surname;
+    let Vendedor = o.productInfo[0]?.owner;
+    vendedor =  users?.filter((u) => u.id === Vendedor);
+    vendedor =  vendedor[0]?.name + " " + vendedor[0]?.surname; //
    }
     return {
       fecha: o.createdAt.slice(8, 10),
-      usuario: users.filter((u) => u.id === o.userId),
-      products: o.productInfo.map((p) => p.quantity),
+      usuario: users?.filter((u) => u.id === o.userId),
+      products: o.productInfo?.map((p) => p.quantity),
       total: o.total,
       owner: vendedor // modifique
     };

@@ -1,28 +1,52 @@
-    .container {
-        border: 1px solid #a8a7a7;
-        border-radius: 8px;
-        height: 80%;
-        width: auto;
-        margin: 3% 10%;
-        padding: 1%;
+.body{
+    background-color: white;
+    height:100%;
+    width: 100%;
+}
+.verificate{
+    padding-top: 15px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+}
+.logoVerificate{
+    color: rgb(23, 139, 247);
+    font-size: 2rem
+}
+.containerAll{
+    position: relative;
+    border-radius: 15px;
+    height: 80%;
+    width:90%;
+    margin: 3% 3%;
+    padding: 1%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+}
+    .containerDerecho {
+        display: flex;
+        justify-content: center;
+        background-color: rgb(250, 250, 250);
         display: grid;
+        width: 130%;
+        border-radius: 10px;
+        margin-left: 10%;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
-        background-color: transparent;
-        justify-content: center;
-        align-items: center;
-        position: relative;
+        
     }
-    
-    .todo {
-        display: flex;
-        justify-content: center;
-        background-color: white
-    }
-    
-    .derecho {
+   
+    .containerSubDerecho {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2, 1fr);
@@ -30,68 +54,59 @@
         grid-row-gap: 0px;
         width: 100%;
     }
-    
-    .izq {
-        display: flex;
-        align-items: left;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-    }
-    
     .div1 {
         display: flex;
         align-items: center;
         justify-content: center;
         padding-top: 2%;
     }
-    
+
     .name {
         font-family: "Mulish";
         font-weight: ExtraBold;
         margin-bottom: 7px;
-        font-size: 2.8em;
+        font-size: 2.5em;
         font-weight: 300;
         display: flex;
         justify-content: center;
+        text-justify: center;
         align-items: center;
-    }
-    
-    .start {
-        margin: 10px;
-        font-size: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 30px;
-    }
-    
-    .colorPrecio {
-        font-family: "Mulish";
-        font-weight: ExtraBold;
-        font-size: 30px;
-    }
-    
-    .price {
-        width: 100%;
-        font-size: 45px;
-        border-bottom: 3px solid rgba(124, 123, 123, 0.342);
-        font-family: "Mulish";
-        font-weight: Regular;
-        color: #003f91;
-    }
-    
-    .precio {
-        display: flex;
-        align-items: left;
-        justify-content: center;
         flex-direction: column;
-        width: 90%;
-        margin: 2%;
-        padding-bottom: 150px;
-        padding: 2%;
+        background-color: #003f91;
+        margin-top: 10px;
+        border-radius: 3px;
+        color:#fdfeff;
+        font-size: 2.5rem;
     }
-    
+    .brand{
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        text-justify: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #003f91;
+        color:#fdfeff;
+        font-size: 1.8rem;
+    }
+    .constainerSubIzquierdo {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .containerDescription {
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid rgba(124, 123, 123, 0.342);
+        border-radius: 10px;
+        padding: 4%;
+        margin: 2%;
+        margin-bottom: 50px;
+        box-sizing: border-box;
+    }
     .descrip {
         border-radius: 10px;
         max-height: 40%;
@@ -106,37 +121,31 @@
         font-family: "Mulish";
         font-weight: Regular;
     }
-    
-    .pago {
-        height: 50%;
+    .containerPrice{
         display: flex;
-        align-items: center;
+        align-items: left;
         justify-content: center;
-        border: 3px solid rgba(124, 123, 123, 0.342);
-        border-radius: 10px;
-        padding: 4%;
+        flex-direction: column;
+        width: 90%;
         margin: 2%;
-        margin-bottom: 50px;
-        box-sizing: border-box;
+        padding-bottom: 150px;
+        padding: 2%;
     }
-    
-    .bnt {
+    .colorPrecio {
         font-family: "Mulish";
         font-weight: ExtraBold;
-        padding: 8px;
-        border: 4px solid #D0D0D0;
-        background-color: #003f91;
-        ;
-        color: rgb(255, 255, 255);
-        width: 85%;
-        border-radius: 7px;
+        font-size: 25px;
+    }
+    .price {
+        width: 100%;
         font-size: 35px;
-        height: auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        border-bottom: 3px solid rgba(124, 123, 123, 0.342);
+        font-family: "Mulish";
+        font-weight: Regular;
+        color: #003f91;
     }
     
-    .div3 {
+    .containerButton {
         padding: 2%;
         margin: 2%;
         display: flex;
@@ -144,33 +153,75 @@
         align-items: center;
         flex-direction: column;
     }
-    
-    .div4 {
-        padding-bottom: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .div5 {
-        padding-bottom: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .cart {
+
+    .button {
         font-family: "Mulish";
         font-weight: ExtraBold;
         padding: 8px;
         border: 4px solid #D0D0D0;
-        background-color: #003f91;
-        ;
-        width: 70px;
+        background-color: #202020;
+        color: rgb(255, 255, 255);
+        width:90%;
         border-radius: 7px;
-        font-size: 40px;
+        font-size: 30px;
         height: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
+    .button:hover {
+        box-shadow: 10 10px 10px #320f6b30;
+        transition: all 0.25s ease;
+        background-color: #0b135e;
+        color: white; 
+    }
+    
+    .containerReveiws{
+        height: 100%;
+        padding-top: 10%;
+        padding-left: 50%;
+        display: flex;
+        border-radius: 8px;
+        flex-direction: column;
+    }
+
+    .titulo{
+        display:flex;
+        align-items: center;
+        text-justify: center;
+        justify-content: center;
+        padding: 10px;
+    }
+    
+    
+    
+  
+    .promedio{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-justify: center;
+    }
+.span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-justify: center;
+}
+  
+    
+    .containerDerecho:hover {
+        box-shadow: 5px 5px 10px rgb(133, 131, 131);
+    }
+    
+  
+    
+    
+    
+    
+    
+   
     
     @media screen and (max-width: 900px) {
         .div2 {

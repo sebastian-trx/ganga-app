@@ -5,12 +5,17 @@ import { useNavigate } from "react-router-dom";
 import {
   getDetailsProduct,
   addProduct,
-  allReviews
+  allReviews,
+  officialStore,
 } from "../Redux/Actions/actions";
 import Nav from "../../Components/Nav/NavBar/nav";
 import a from "./productoId.module.css";
 import { MercadoPago2 } from "../MercadoPago/mercadoPago2";
 import Swal from 'sweetalert2';
+import { IoMdArrowRoundBack } from "react-icons/io"
+import { BsPatchCheckFill } from "react-icons/bs";
+import Boton from "../Nav/boton"
+import CardReviews from "./cardReviews";
 
 
 export default function ProductId() {
@@ -20,6 +25,7 @@ export default function ProductId() {
   const info = useSelector((state) => state.detailProduct);
   const User = useSelector((state) => state.getInfoGoogle);
   const Reviews = useSelector((state) => state.allReviews)
+  const official = useSelector((state) => state.officialStore); //officialStore
   const { id } = useParams();
 
   // const getDetails = () => {
@@ -29,9 +35,23 @@ export default function ProductId() {
   useEffect(() => {
     dispatch(allReviews())
   }, [dispatch]);
+  // const productReviews = Reviews.filter((review) => review.productId === id)
+  // console.log('soy el productReviews: ', productReviews)
+  // console.log('soy el Tamaño: ', productReviews.length)
 
-  const productReviews = Reviews.filter((review) => review.productId === id)
-  console.log('soy el productReviews: ', productReviews)
+   
+    const productReviews = Reviews.filter((review) => review.productId === id)
+  //   let promedio = 0
+  //   console.log(productReviews, "PERRA")
+  
+  //   for (var i = 0; i < productReviews.length; i++) {
+  //     promedio = promedio + productReviews[i].qualificacion / productReviews.length
+  //     console.log(promedio,"intrmedio")
+  //     promedio = Math.round(promedio)
+  //   }
+   
+  
+  // console.log(promedio, "PROMEDIO")
 
   function handleAddToCart() {
     console.log("id User", User.id);
@@ -50,7 +70,7 @@ export default function ProductId() {
       showConfirmButton: false,
       timer: 2000
     })
-    
+
     // alert("Tu producto se ha agregado al carrito.")
   }
 
@@ -62,90 +82,152 @@ export default function ProductId() {
     setState(info);
   }, [info]);
 
+   //officialStore
+   useEffect(() => {
+    dispatch(officialStore(info?.userId));
+  }, [dispatch, info.userId]);
+
   return (
-    <div>
+    <div className={a.body}>
       <Nav />
-      <div className={a.todo}>
-        <div className={a.container}>
-          <>
-            <div className={a.derecho}>
-              <div className={a.div1}>
-                <img src={info.image} className={a.img} alt="" />
-              </div>
-              <div className={a.div2}>
+      <div className="absolute top-12 left-1">
+        <Boton
+          parametro={"/catalogo"}
+          icono={<IoMdArrowRoundBack />} />
+      </div>
+      <div className="absolute top-30 right-1">
+          {official.officialStore ? (
+            <div className={a.verificate}>
+              <div className={a.logoVerificate}><BsPatchCheckFill/></div>
+          <h6> Tienda Oficial: <strong>{official.name}</strong></h6>
+        </div>
+      ) : null}
+          </div>
+      <div className={a.containerAll}>
 
-              <div className={a.name}>
-                  <h1>{info.name}</h1>
-                </div>
-                <div className={a.start}>
+        <div className={a.containerDerecho}>
+
+          <div className={a.containerSubDerecho}>
+            <div className={a.div1}>
+              <img src={info.image} className={a.img} alt="" />
+            </div>
+
+            <div className={a.div2}>
+
+              <div className={a.nombre}>
+                <strong className={a.name}>{info.name}</strong>
+              </div>
+              <div className={a.start}>
+
                 <div>
-                  {productReviews?.map((review) => {
-                    return(
-                      <div key={review.id}>
-                        <h6>Descripcion: {review.description}</h6>
-                        <h4>Calificación: {review.qualificacion}</h4>
-                      </div>
-                    )
-                  })}
-                </div>
+
+                  <div className={a.brand}>
+                    <strong>{info.brand}</strong>
                   </div>
-
-             
+                </div>
               </div>
+
             </div>
+          </div>
 
-            <div className={a.izq}>
+          <div className={a.constainerSubIzquierdo}>
 
-              <div className={a.pago}>
+            <div className={a.containerDescription}>
               <div className={a.descrip}>
-                  <p>{info.description}</p>
-                </div>
-                
-
+                <strong>{info.description}</strong>
               </div>
-
-
-              <div className={a.precio}>
-                <div className={a.colorPrecio}>
-                  <h1>Su precio en un pago:</h1>
-                </div>
-              
-                <div className={a.price}>
-                  <h2>$ {info.price}</h2>
-                </div>
-
-                </div>
-
-
-              <div className={a.div3}>
-                {/* <button className={a.bnt}>Comprar</button> */}
-                {User.login && info.stock > 0 && (
-                  <button className={a.bnt}>
-                    <MercadoPago2
-                      title={info.name}
-                      unit_price={info.price}
-                      id={User.id}
-                      item_id={info.id}
-                    />
-                  </button>
-                )}
-                {info.stock > 0 && (
-                  <button onClick={handleAddToCart} className={a.bnt}>
-                    Agregar al carrito
-                  </button>
-                )}
-                {/* <button onClick={handleAddToCart} className={a.bnt}>
-                  Agregar al carrito
-                </button> */}
-              </div>
-
-
-
-
 
 
             </div>
-          </>
+            <div className={a.containerPrice}>
+              <div className={a.colorPrecio}>
+                <strong>Su precio en un pago:</strong>
+              </div>
+
+              <div className={a.price}>
+                <strong>$ {info.price}</strong>
+              </div>
+
+            </div>
+
+
+            <div className={a.containerButton}>
+              {User.login && info.stock > 0 && (
+                <button className={a.button}>
+                  <MercadoPago2
+                    title={info.name}
+                    unit_price={info.price}
+                    id={User.id}
+                    item_id={info.id}
+                  />
+                </button>
+              )}
+              {info.stock > 0 && (
+                <button onClick={handleAddToCart} className={a.button}>
+                  Agregar al carrito
+                </button>
+              )}
+         
+            </div>
+
+          </div>
+
+        </div >
+
+
+
+
+         
+          <div className={a.containerReveiws}>
+          <div className={a.titulo}>
+            <h1>Opiniones sobre <strong>{info.name}</strong></h1>
+          </div>
+      
+          <div>
+            {
+              productReviews?.length < 1 ?
+                <div className={a.span}>
+                  <strong>Aun no hay opiniones del Producto</strong>
+                </div> :
+                <div className={a.opinion}>
+                  {
+                    productReviews?.map((el) => {
+                      if (el.qualificacion === 1) {
+                        el.qualificacion = "⭐";
+                      } else if (el.qualificacion === 2) {
+                        el.qualificacion = "⭐⭐";
+                      } else if (el.qualificacion === 3) {
+                        el.qualificacion = "⭐⭐⭐";
+                      } else if (el.qualificacion === 4) {
+                        el.qualificacion = "⭐⭐⭐⭐";
+                      } else if (el.qualificacion === 5) {
+                        el.qualificacion = "⭐⭐⭐⭐⭐";
+                      } else if (el.qualificacion === 6) {
+                        el.qualificacion = "⭐⭐⭐⭐⭐⭐";
+                      } else if (el.qualificacion === 7) {
+                        el.qualificacion = "⭐⭐⭐⭐⭐⭐⭐";
+                      } else if (el.qualificacion === 8) {
+                        el.qualificacion = "⭐⭐⭐⭐⭐⭐⭐⭐";
+                      } else if  (el.qualificacion === 9) {
+                        el.qualificacion = "⭐⭐⭐⭐⭐⭐⭐⭐⭐";
+                      } else if  (el.qualificacion === 10) {
+                        el.qualificacion = "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐";
+                      }
+                      return (
+
+                        <div key={el.id}>
+                          <CardReviews
+                            calific={el.qualificacion}
+                            opinion={el.description}
+                          />
+
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+            }
+          </div>
         </div>
       </div>
     </div>

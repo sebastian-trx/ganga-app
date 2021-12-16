@@ -43,7 +43,8 @@ import {
   APPROVE_PRODUCT,
   PUT_PRODUCT,
   POST_PRODUCT,
-  DB_SUBCATEGORIES
+  DB_SUBCATEGORIES,
+  OFFICIALSTORE
 } from "./const";
 
 export function getProduct() {
@@ -574,3 +575,18 @@ export function getDbSubcategories() {
 //     });
 //   };
 // }
+export function officialStore(payload) {
+  console.log('soy el payload del officialStore: ', payload)
+  return async function (dispatch) {
+    axios
+      .get(URL + "user?id=" + payload)
+      .then((response) => {
+        console.log('soy el response de officialStore: ', response)
+        dispatch({
+          type: OFFICIALSTORE,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+}

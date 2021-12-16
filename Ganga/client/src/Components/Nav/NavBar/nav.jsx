@@ -62,6 +62,7 @@ export default function Nav() {
    dispatch(getProduct())
  }
 
+ let arrLength = userGoogle.login && userGoogle.Cart.length
 
   return (
     <div
@@ -118,11 +119,26 @@ export default function Nav() {
               <ImSearch />
             </button>
 
-            <Link to="/shopCart" className="pl-10 pr-10">
+            {/* <Link to="/shopCart" className="pl-10 pr-10">
               <button>
                 <IoIosCart />
               </button>
+            </Link> */}
+ <Link to="/shopCart" className="pl-10 pr-10">
+              {userGoogle.login && userGoogle.Cart.length < 0 ? (
+                <button>
+                <IoIosCart />
+              </button>
+              ) : (
+                <button className="inline-block">
+                  <span className="inline-block pr-1">
+                <IoIosCart/> 
+                  </span>
+                {arrLength}
+                </button>
+              )}
             </Link>
+
             {userGoogle && userGoogle.login ? (
              null
             ) : (

@@ -41,7 +41,7 @@ export function FailMp(params) {
                   </span>
                 </button>
               </th>
-              <div class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+              <div class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center">
                  
                       <span class="ml-2 mt-5px">
                         FALLÓ EL PAGO

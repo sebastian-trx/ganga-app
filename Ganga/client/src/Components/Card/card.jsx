@@ -5,10 +5,11 @@ import "./card.css";
 
 export default function Card({ image, name, price, id, reviews }) {
   
-let Reviews = reviews.filter((r) => r.product.name === name);
-let reviewsLength = Reviews.length;
-let ReviewArr = Reviews.map(r => r.qualificacion);
-let Review = ReviewArr.reduce((a, b) => a + b, 0);
+let productReviews = reviews?.filter(r=> r.product !== null);
+let Reviews = productReviews?.filter((r) => r.product.name === name);
+let reviewsLength = Reviews?.length;
+let ReviewArr = Reviews?.map(r => r.qualificacion);
+let Review = ReviewArr?.reduce((a, b) => a + b, 0);
 let promedio = Review / reviewsLength;
 let Promedio = Math.round(promedio)
 let review = parseInt(Promedio)
@@ -71,4 +72,4 @@ if (reviewFalsa === 1) {
         </div>
       </Link>
     </div>
-  );
+  )};

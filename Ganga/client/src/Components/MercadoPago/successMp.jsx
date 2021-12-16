@@ -35,6 +35,12 @@ export function SuccesMp() {
               <span class="ml-2 mt-5px">VOLVER</span>
             </button>
           </th>
+          <div class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center">
+                 
+                      <span class="ml-2 mt-5px">
+                        RESUMEN DE TU COMPRA
+                      </span>
+                    </div>
           <table class="w-full text-sm lg:text-base" cellspacing="0">
             <thead>
               <tr class="h-12 uppercase">

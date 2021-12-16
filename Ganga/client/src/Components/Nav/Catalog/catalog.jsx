@@ -6,9 +6,11 @@ import {
   getUser,
   getCategories,
   allReviews,
+  getUserInfoGoogle
   /*productsByName*/
 } from "../../Redux/Actions/actions";
 import Card from "../../Card/card";
+import User from "../User/user";
 import "./catalog.css";
 import FilterPrice from "../Filter/filterPrice";
 import Pagination from "../../Home/Pagination/pagination";
@@ -18,16 +20,17 @@ import FooterCatalog from "../../Home/Footer/footerCatalog";
 
 export default function Catalogo() {
   const dispatch = useDispatch();
-
+  const user = useSelector((state) => state.getInfoGoogle)
   const allProduct = useSelector((state) => state.product);
   let products = allProduct.filter((p) => p.approved === true);
   products = products.filter((p) => p.stock > 0);
 
   const Reviews = useSelector((state) => state.allReviews);
-  console.log("Rev", Reviews);
+  
 
   useEffect(() => {
     dispatch(allReviews())
+    dispatch(getUserInfoGoogle())
   },[dispatch]);
 
 
@@ -86,8 +89,15 @@ export default function Catalogo() {
   // }
   return (
     <div className="containerCatalog">
-      <Nav className="flex justify-between items-center h-20 w-8 text-black" />
-      <div className="bannerProd">
+       {user && user.login ? (
+        <div>
+          <div className="absolute top-5 right-20 z-50 mr-10 w-28">
+            <User />
+          </div>
+          <Nav className="flex justify-between items-center h-20 w-8 text-black" />
+        </div>
+      ) : null}
+      <div className="bannerProd"> 
 
       </div>
       <div className="inf">
@@ -126,6 +136,7 @@ export default function Catalogo() {
                   image={el.image}
                   price={el.price}
                   id={el.id}
+                  reviews={Reviews}
                 />
               </div>
             );

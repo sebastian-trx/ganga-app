@@ -11,6 +11,7 @@ import { DeleteItem } from "./deleteItem.jsx";
 import { MercadoPago } from "../MercadoPago/mercadoPago.jsx";
 // import { SuccessLogicMp } from "../MercadoPago/successLogicMp.jsx";
 import Nav from "../Nav/NavBar/nav.jsx";
+import User from "../Nav/User/user.jsx";
 
 export default function ShoppCart() {
   const dispatch = useDispatch();
@@ -19,8 +20,8 @@ export default function ShoppCart() {
     dispatch(getUserInfoGoogle());
   }, [dispatch]);
 
-  const User = useSelector((state) => state.getInfoGoogle);
-  const cart = User.Cart;
+  const user = useSelector((state) => state.getInfoGoogle);
+  const cart = user.Cart;
   // let flag = false;
   let prod = 0;
     // desc = 0,
@@ -37,7 +38,14 @@ export default function ShoppCart() {
 
   return (
     <div>
-        <Nav />
+        {user && user.login ? (
+        <div>
+          <div className="absolute top-5 right-20 z-50 mr-10 w-28">
+            <User />
+          </div>
+          <Nav />
+        </div>
+      ) : null}
       <div class="flex justify-center my-6">
         <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
           <div class="flex-1">
@@ -57,7 +65,7 @@ export default function ShoppCart() {
                           />
                         </svg>
                         <span class="ml-2 mt-5px">
-                          <ClearCart idUser={User.id}/>
+                          <ClearCart idUser={user.id}/>
                         </span>
                       </button>
               </th>
@@ -96,7 +104,7 @@ export default function ShoppCart() {
                           <p class="mb-2 md:ml-4">{el.name}</p>
                         </Link>
                         <DeleteItem
-                          idUser={User.id}
+                          idUser={user.id}
                           idProd={el.id}
                           quantP={el.quantity}
                         />
@@ -105,7 +113,7 @@ export default function ShoppCart() {
                         <div class="w-20 h-10">
                           <div class="relative flex flex-row w-full h-8">
                             <CountInput
-                              idUser={User.id}
+                              idUser={user.id}
                               idProd={el.id}
                               quantP={el.quantity}
                               stock={el.stock}
