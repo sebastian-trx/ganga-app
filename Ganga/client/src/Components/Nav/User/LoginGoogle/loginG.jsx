@@ -16,7 +16,8 @@ export function LoginG(params) {
 
   function redirectToGoogleLogin() {
     // const googleLoginURL = "http://localhost:3001/loginGoogle";
-    const googleLoginURL = "https://ganga-app.herokuapp.com/loginGoogle";
+    // const googleLoginURL = "https://ganga-app.herokuapp.com/loginGoogle";
+    const googleLoginURL = "https://app-ganga.herokuapp.com/loginGoogle";
     let newWindow = window.open(
       googleLoginURL,
       "_blank",
