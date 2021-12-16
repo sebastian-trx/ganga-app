@@ -30,7 +30,7 @@ const { preloader } = require("./src/utils/Preloader.js");
 // });
 conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, () => {
-    // preloader();
+    preloader();
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });
